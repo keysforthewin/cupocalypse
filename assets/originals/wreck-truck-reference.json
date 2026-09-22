@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6667/DQR9ifRXH4FbJ1j84nHnH.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.925143483967986
+  },
+  "seed": 100077660,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "One abandoned wrecked modern olive military transport truck, full vehicle isolated on plain light gray studio background, front three-quarter view, six heavy tires, dirty canvas cargo cover torn at corners, cracked windshield, dented metal, realistic military quarantine checkpoint prop, weathered PBR surface detail, realistic video game asset, no scene, no text."
+}

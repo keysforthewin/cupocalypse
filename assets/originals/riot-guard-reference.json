@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6646/x9YPMl9VLNAK-GefjyNSk.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.140887842979282
+  },
+  "seed": 1438101130,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Infected riot police officer, battered black riot helmet with transparent cracked face shield, ash-gray face, black protective pads and plate armor, carrying a broad cracked dark rectangular riot shield on left arm, defensive stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

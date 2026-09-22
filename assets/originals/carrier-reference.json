@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab664b/DTDPfLeElpDSflQ5WzmUp.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.910074194020126
+  },
+  "seed": 1065505398,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Broad-backed fictional infected soldier, huge cluster of dark crimson organic sacs on the back, ash-gray face and limbs, olive military webbing and torn trousers beneath organic mass, hunched walking posture, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

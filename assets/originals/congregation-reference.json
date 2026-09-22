@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6650/nRCK5W30yIvwd7nW1OI7A.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.221696539956611
+  },
+  "seed": 1300947949,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Towering fictional fusion creature boss made of infected soldiers, tall irregular central torso with ribbed bone structures, five distinct ash-gray human heads at different heights, many uneven arms, tangled military webbing, dark red organic connective tissue, two enormous supporting legs, vertically imposing silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

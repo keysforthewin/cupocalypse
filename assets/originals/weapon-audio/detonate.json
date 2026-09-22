@@ -1,0 +1,13 @@
+{
+  "provider": "ElevenLabs",
+  "state": "complete",
+  "request": {
+    "text": "Professional AAA video game sound effect: Single powerful sci fi missile explosion. Deep layered cinematic bass boom, broad warm pressure wave, rumbling debris falling away. No harsh crack. One isolated event starting immediately, no speech, no music, no background ambience, no high pitched screeching.",
+    "duration_seconds": 2,
+    "prompt_influence": 0.65,
+    "model_id": "eleven_text_to_sound_v2"
+  },
+  "createdAt": "2026-09-22T15:07:33.690Z",
+  "sha256": "664a9789f7dcef16e67e4880250d188842a9123047ed4cc93557819a3a98f7b6",
+  "characterCost": "20"
+}

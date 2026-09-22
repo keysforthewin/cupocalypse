@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6648/fwzYgE07toCnGPoiLKdgx.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.9948958230088465
+  },
+  "seed": 1288166827,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Hunched fictional infected human creature, ash gray skin and dark veins, hugely swollen throat sac, narrow ribbed torso, ragged olive trousers, long skinny arms, leaning forward, heavy bulging neck, distinct complete limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

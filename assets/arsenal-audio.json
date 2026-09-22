@@ -1,0 +1,187 @@
+{
+  "source": "Original deterministic additive/noise synthesis",
+  "generator": "scripts/generate-arsenal-audio.py",
+  "sampleRate": 32000,
+  "assets": [
+    {
+      "name": "rail",
+      "duration": 0.28,
+      "peak": 0.82,
+      "rms": 0.1009
+    },
+    {
+      "name": "impact-rail",
+      "duration": 0.224,
+      "peak": 0.82,
+      "rms": 0.1175
+    },
+    {
+      "name": "storm",
+      "duration": 0.42,
+      "peak": 0.82,
+      "rms": 0.0961
+    },
+    {
+      "name": "impact-storm",
+      "duration": 0.336,
+      "peak": 0.82,
+      "rms": 0.0941
+    },
+    {
+      "name": "saw",
+      "duration": 0.55,
+      "peak": 0.82,
+      "rms": 0.1181
+    },
+    {
+      "name": "impact-saw",
+      "duration": 0.44,
+      "peak": 0.82,
+      "rms": 0.138
+    },
+    {
+      "name": "cinder",
+      "duration": 0.5,
+      "peak": 0.82,
+      "rms": 0.1576
+    },
+    {
+      "name": "impact-cinder",
+      "duration": 0.4,
+      "peak": 0.82,
+      "rms": 0.1523
+    },
+    {
+      "name": "cryo",
+      "duration": 0.4,
+      "peak": 0.82,
+      "rms": 0.1193
+    },
+    {
+      "name": "impact-cryo",
+      "duration": 0.32,
+      "peak": 0.82,
+      "rms": 0.1084
+    },
+    {
+      "name": "gravity",
+      "duration": 0.75,
+      "peak": 0.82,
+      "rms": 0.169
+    },
+    {
+      "name": "impact-gravity",
+      "duration": 0.6,
+      "peak": 0.82,
+      "rms": 0.1704
+    },
+    {
+      "name": "cluster",
+      "duration": 0.62,
+      "peak": 0.82,
+      "rms": 0.0971
+    },
+    {
+      "name": "impact-cluster",
+      "duration": 0.496,
+      "peak": 0.82,
+      "rms": 0.1088
+    },
+    {
+      "name": "crescent",
+      "duration": 0.52,
+      "peak": 0.82,
+      "rms": 0.1246
+    },
+    {
+      "name": "impact-crescent",
+      "duration": 0.416,
+      "peak": 0.82,
+      "rms": 0.1166
+    },
+    {
+      "name": "needle",
+      "duration": 0.3,
+      "peak": 0.82,
+      "rms": 0.0688
+    },
+    {
+      "name": "impact-needle",
+      "duration": 0.24,
+      "peak": 0.82,
+      "rms": 0.0633
+    },
+    {
+      "name": "sonic",
+      "duration": 0.8,
+      "peak": 0.82,
+      "rms": 0.1757
+    },
+    {
+      "name": "impact-sonic",
+      "duration": 0.64,
+      "peak": 0.82,
+      "rms": 0.1741
+    },
+    {
+      "name": "pickup-warhead",
+      "duration": 0.44,
+      "peak": 0.82,
+      "rms": 0.1634
+    },
+    {
+      "name": "pickup-feed",
+      "duration": 0.5,
+      "peak": 0.82,
+      "rms": 0.1921
+    },
+    {
+      "name": "pickup-titan",
+      "duration": 0.56,
+      "peak": 0.82,
+      "rms": 0.1932
+    },
+    {
+      "name": "pickup-phase",
+      "duration": 0.44,
+      "peak": 0.82,
+      "rms": 0.1943
+    },
+    {
+      "name": "pickup-fork",
+      "duration": 0.5,
+      "peak": 0.82,
+      "rms": 0.1676
+    },
+    {
+      "name": "pickup-ember",
+      "duration": 0.56,
+      "peak": 0.82,
+      "rms": 0.193
+    },
+    {
+      "name": "pickup-deadeye",
+      "duration": 0.44,
+      "peak": 0.82,
+      "rms": 0.1902
+    },
+    {
+      "name": "pickup-breach",
+      "duration": 0.5,
+      "peak": 0.82,
+      "rms": 0.177
+    },
+    {
+      "name": "pickup-blast",
+      "duration": 0.56,
+      "peak": 0.82,
+      "rms": 0.1631
+    },
+    {
+      "name": "pickup-echo",
+      "duration": 0.44,
+      "peak": 0.82,
+      "rms": 0.1945
+    }
+  ]
+}

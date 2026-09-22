@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6639/up5kOTex_qu5xKVDyESpT.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.06379075703444
+  },
+  "seed": 1119604950,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Low crawling fictional human mutant, enormous long muscular forearms and broad hands dragging a narrow torso, bent shortened rear legs, ash-gray skin, dark crimson tissue on upper back, ragged civilian cloth, quadrupedal silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

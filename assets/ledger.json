@@ -1,0 +1,1341 @@
+{
+  "cap": 100,
+  "buckets": {
+    "comparison": 20,
+    "production": 60,
+    "correction": 20
+  },
+  "jobs": {
+    "reference": {
+      "model": "fal-ai/flux/dev",
+      "reserve": 0.1,
+      "bucket": "comparison",
+      "input": {
+        "prompt": "Full body infected modern military soldier, ash gray skin, dark branching veins, torn olive fatigues, broken tactical plate carrier, exposed dark crimson muscle on shoulder, worn combat boots, recognizable human anatomy, clearly separated arms and legs, realistic gritty survival horror game character, no base, neutral A pose. Isolated on a plain light gray background, front view studio character reference, entire feet and head visible.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "state": "complete",
+      "submitted": "2026-09-22T03:49:01.115Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0c73b-3756-7d00-b530-c764a5ff822b",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c73b-3756-7d00-b530-c764a5ff822b",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c73b-3756-7d00-b530-c764a5ff822b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c73b-3756-7d00-b530-c764a5ff822b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab65de/9LQk6RLlnrGRRQGTyYNBC.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.9886086560436524
+        },
+        "seed": 2091585782,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Full body infected modern military soldier, ash gray skin, dark branching veins, torn olive fatigues, broken tactical plate carrier, exposed dark crimson muscle on shoulder, worn combat boots, recognizable human anatomy, clearly separated arms and legs, realistic gritty survival horror game character, no base, neutral A pose. Isolated on a plain light gray background, front view studio character reference, entire feet and head visible."
+      }
+    },
+    "meshy-soldier": {
+      "model": "fal-ai/meshy/v6-preview/text-to-3d",
+      "reserve": 5,
+      "bucket": "comparison",
+      "input": {
+        "prompt": "Full body infected modern military soldier, ash gray skin, dark branching veins, torn olive fatigues, broken tactical plate carrier, exposed dark crimson muscle on shoulder, worn combat boots, recognizable human anatomy, clearly separated arms and legs, realistic gritty survival horror game character, no base, neutral A pose.",
+        "mode": "full",
+        "target_polycount": 6000,
+        "enable_pbr": true,
+        "pose_mode": "a-pose",
+        "enable_rigging": true
+      },
+      "state": "failed",
+      "submitted": "2026-09-22T03:49:13.689Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0c73b-659e-7a12-94f7-e661f97ff0d3",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c73b-659e-7a12-94f7-e661f97ff0d3",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c73b-659e-7a12-94f7-e661f97ff0d3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c73b-659e-7a12-94f7-e661f97ff0d3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "error": "Provider content checker rejection; retained reservation, no retry."
+    },
+    "keyart": {
+      "model": "fal-ai/flux/dev",
+      "reserve": 0.1,
+      "bucket": "production",
+      "input": {
+        "prompt": "Cinematic photorealistic military survival horror environment matte painting, ruined elevated highway into abandoned brutalist megacity at dusk, quarantine checkpoint, olive military trucks, broken concrete barriers, collapsed medical canvas tents, tangled razor wire, dusty wet asphalt, distant plume of smoke, moody cold desaturated teal shadows and pale warm sunset horizon, faint orange emergency lights, extraordinary realistic weathered materials, wide composition, no text, no logos, no interface, no people, film grain, 35mm movie still",
+        "image_size": "landscape_16_9",
+        "num_images": 1
+      },
+      "state": "complete",
+      "submitted": "2026-09-22T03:57:28.727Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0c742-f478-7a01-a7f4-82041b41d081",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c742-f478-7a01-a7f4-82041b41d081",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c742-f478-7a01-a7f4-82041b41d081/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c742-f478-7a01-a7f4-82041b41d081/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6610/SCyHiAKskKiIPovWg1Q7N.jpg",
+            "width": 1024,
+            "height": 576,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 2.477712688007159
+        },
+        "seed": 1076926553,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Cinematic photorealistic military survival horror environment matte painting, ruined elevated highway into abandoned brutalist megacity at dusk, quarantine checkpoint, olive military trucks, broken concrete barriers, collapsed medical canvas tents, tangled razor wire, dusty wet asphalt, distant plume of smoke, moody cold desaturated teal shadows and pale warm sunset horizon, faint orange emergency lights, extraordinary realistic weathered materials, wide composition, no text, no logos, no interface, no people, film grain, 35mm movie still"
+      }
+    },
+    "meshy-base": {
+      "model": "fal-ai/meshy/v6-preview/text-to-3d",
+      "reserve": 5,
+      "bucket": "comparison",
+      "input": {
+        "prompt": "Full body modern military soldier wearing worn olive fatigues, tactical plate carrier, helmet and combat boots. Neutral A pose, clearly separated limbs, realistic detailed game character, no weapon, no base.",
+        "mode": "full",
+        "target_polycount": 6000,
+        "enable_pbr": true,
+        "pose_mode": "a-pose",
+        "enable_rigging": true
+      },
+      "state": "complete",
+      "submitted": "2026-09-22T03:57:49.375Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0c743-44c0-7880-97d3-463ebcb7457e",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c743-44c0-7880-97d3-463ebcb7457e",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c743-44c0-7880-97d3-463ebcb7457e/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0c743-44c0-7880-97d3-463ebcb7457e/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab6621/Ws7wwnNzZD3qpFqS8JHus_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 8723068
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab6622/Aeie_by-gt_FVTRR89Zen_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 91832
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab6621/Ws7wwnNzZD3qpFqS8JHus_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 8723068
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab6621/phKAk5dUDQHMXPZqp6P3e_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 9034476
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab6622/8V2k-Mw9CaxwXjZoLWqQY_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 681477
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab6621/AdqJGO2LsV2pow6MQleCE_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 9216817
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab6622/wZc2l5NBvkTLRfjfBO1fA_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 305584
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab6622/Z45tvCid_QezfwwYpfkk-_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8091180
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab6623/HgBea5Jm8hHqqhgF0U_G-_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 35417
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab6623/Af0aEj3W9RpqM6Y96Elvw_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5671137
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab6623/OHSmmlX1CtyVn2iHTJv6f_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1348442
+            }
+          }
+        ],
+        "seed": 3160206818,
+        "prompt": "Full body modern military soldier wearing worn olive fatigues, tactical plate carrier, helmet and combat boots. Neutral A pose, clearly separated limbs, realistic detailed game character, no weapon, no base.",
+        "actual_prompt": null,
+        "rigged_character_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab6629/OrKZBNzd9NrOUuuRZ7Hb4_rigged_character.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "rigged_character.glb",
+          "file_size": 8664508
+        },
+        "rigged_character_fbx": {
+          "url": "https://v3b.fal.media/files/b/0aab6628/4ZTi6RZSufaOR2erO3YAI_rigged_character.fbx",
+          "content_type": "application/octet-stream",
+          "file_name": "rigged_character.fbx",
+          "file_size": 8686076
+        },
+        "basic_animations": {
+          "walking_glb": {
+            "url": "https://v3b.fal.media/files/b/0aab6628/5C4zgB6iEEiGlVhUBSSRz_walking.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "walking.glb",
+            "file_size": 8677280
+          },
+          "walking_fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab6628/wiefclW8uBLmsl92fbaol_walking.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "walking.fbx",
+            "file_size": 8710476
+          },
+          "walking_armature_glb": {
+            "url": "https://v3b.fal.media/files/b/0aab6628/n6Q6IkHp7AxeZ7sOO5syp_walking_armature.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "walking_armature.glb",
+            "file_size": 65332
+          },
+          "running_glb": {
+            "url": "https://v3b.fal.media/files/b/0aab6629/ThV-WHm92_IwYp6E3NTfZ_running.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "running.glb",
+            "file_size": 8672680
+          },
+          "running_fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab6629/rWd8jzA23DQ8IqTg7HvPQ_running.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "running.fbx",
+            "file_size": 8702204
+          },
+          "running_armature_glb": {
+            "url": "https://v3b.fal.media/files/b/0aab6628/-FAQtaGW2RJ8rqUYo6rli_running_armature.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "running_armature.glb",
+            "file_size": 60732
+          }
+        },
+        "rig_task_id": "01a0c745-d244-757d-a773-0b83b87b5609"
+      }
+    },
+    "walker-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Ordinary infected civilian, ash-gray human skin with subtle dark veins, slack posture, faded torn charcoal hoodie and dirty denim jeans, uneven gait, small dark red patches on cheek. Slender recognizable human body. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:17.646Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-32ba-73d0-b335-1ecb0e89a745",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32ba-73d0-b335-1ecb0e89a745",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32ba-73d0-b335-1ecb0e89a745/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32ba-73d0-b335-1ecb0e89a745/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6639/4jz2M73naevFKFb4hpFis.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.042315977974795
+        },
+        "seed": 1556669624,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Ordinary infected civilian, ash-gray human skin with subtle dark veins, slack posture, faded torn charcoal hoodie and dirty denim jeans, uneven gait, small dark red patches on cheek. Slender recognizable human body. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:04:28.852Z"
+    },
+    "runner-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Lean infected modern soldier with ash-gray skin, torn olive fatigues, damaged tactical chest rig, no helmet, long legs, aggressive forward lean, dark red discoloration on one arm. Distinct human limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:17.749Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-32c2-7c90-ac82-ea9785d7cf18",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32c2-7c90-ac82-ea9785d7cf18",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32c2-7c90-ac82-ea9785d7cf18/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32c2-7c90-ac82-ea9785d7cf18/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 2,
+      "user_queue_position": 1,
+      "user_queued_count": 2,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6639/e9rUImO5vAjGcEm8gFQh9.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.440020922978874
+        },
+        "seed": 501158014,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Lean infected modern soldier with ash-gray skin, torn olive fatigues, damaged tactical chest rig, no helmet, long legs, aggressive forward lean, dark red discoloration on one arm. Distinct human limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:04:28.929Z"
+    },
+    "crawler-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Low crawling fictional human mutant, enormous long muscular forearms and broad hands dragging a narrow torso, bent shortened rear legs, ash-gray skin, dark crimson tissue on upper back, ragged civilian cloth, quadrupedal silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:17.752Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-32cb-7552-b5e4-cdf3022c87ff",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32cb-7552-b5e4-cdf3022c87ff",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32cb-7552-b5e4-cdf3022c87ff/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c749-32cb-7552-b5e4-cdf3022c87ff/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 2,
+      "user_queue_position": 2,
+      "user_queued_count": 3,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6639/up5kOTex_qu5xKVDyESpT.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.06379075703444
+        },
+        "seed": 1119604950,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Low crawling fictional human mutant, enormous long muscular forearms and broad hands dragging a narrow torso, bent shortened rear legs, ash-gray skin, dark crimson tissue on upper back, ragged civilian cloth, quadrupedal silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:04:28.939Z"
+    },
+    "runner-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6639/e9rUImO5vAjGcEm8gFQh9.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:29.810Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-602e-7fc0-9a46-e38f58275ed7",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602e-7fc0-9a46-e38f58275ed7",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602e-7fc0-9a46-e38f58275ed7/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602e-7fc0-9a46-e38f58275ed7/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6645/u_ffi0tmdSkqYmcSO3Nzi_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1497352
+        },
+        "timings": {
+          "prepare": 0.00001254800008609891,
+          "generation": 3.556593234000502,
+          "export": 14.552711608000209
+        }
+      },
+      "completed": "2026-09-22T04:06:23.313Z"
+    },
+    "walker-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6639/4jz2M73naevFKFb4hpFis.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:29.824Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-602b-7a31-af17-4f2f9fac9d31",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602b-7a31-af17-4f2f9fac9d31",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602b-7a31-af17-4f2f9fac9d31/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-602b-7a31-af17-4f2f9fac9d31/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6646/tSthGwlcvVH5mXKngDJiQ_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1352424
+        },
+        "timings": {
+          "prepare": 0.000010507996194064617,
+          "generation": 2.5754446970531717,
+          "export": 9.225048577063717
+        }
+      },
+      "completed": "2026-09-22T04:06:23.176Z"
+    },
+    "crawler-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6639/up5kOTex_qu5xKVDyESpT.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:04:29.945Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c749-60aa-7692-97f3-dd9f31bfcdb3",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-60aa-7692-97f3-dd9f31bfcdb3",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-60aa-7692-97f3-dd9f31bfcdb3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c749-60aa-7692-97f3-dd9f31bfcdb3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6647/gESYOCfCGHLVjNH6u1Mef_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1750036
+        },
+        "timings": {
+          "prepare": 0.00000994099991658004,
+          "generation": 2.6813007359996845,
+          "export": 15.714894496000852
+        }
+      },
+      "completed": "2026-09-22T04:06:45.120Z"
+    },
+    "riot-guard-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Infected riot police officer, battered black riot helmet with transparent cracked face shield, ash-gray face, black protective pads and plate armor, carrying a broad cracked dark rectangular riot shield on left arm, defensive stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:23.964Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-1e12-70a3-afca-d304e834ba3a",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-1e12-70a3-afca-d304e834ba3a",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-1e12-70a3-afca-d304e834ba3a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-1e12-70a3-afca-d304e834ba3a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6646/x9YPMl9VLNAK-GefjyNSk.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.140887842979282
+        },
+        "seed": 1438101130,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Infected riot police officer, battered black riot helmet with transparent cracked face shield, ash-gray face, black protective pads and plate armor, carrying a broad cracked dark rectangular riot shield on left arm, defensive stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:06:34.500Z"
+    },
+    "charger-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Asymmetrical fictional infected soldier mutant, one enormous muscular right shoulder and arm, left arm normal, dark red sinewy right shoulder with pale bone spikes, broken olive plate armor and fatigues, ash gray skin, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:24.856Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-2185-7913-abb1-395f0867170a",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-2185-7913-abb1-395f0867170a",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-2185-7913-abb1-395f0867170a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-2185-7913-abb1-395f0867170a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6646/YfmnpSWrdJ_MxJDdIAfXD.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.7620952779543586
+        },
+        "seed": 576622165,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Asymmetrical fictional infected soldier mutant, one enormous muscular right shoulder and arm, left arm normal, dark red sinewy right shoulder with pale bone spikes, broken olive plate armor and fatigues, ash gray skin, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:06:35.196Z"
+    },
+    "riot-guard-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6646/x9YPMl9VLNAK-GefjyNSk.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:35.173Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-49d1-7841-93d9-c146fb8d20f3",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-49d1-7841-93d9-c146fb8d20f3",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-49d1-7841-93d9-c146fb8d20f3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-49d1-7841-93d9-c146fb8d20f3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6649/LeJ0Rd1xLXh1_2sLftrxX_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1515140
+        },
+        "timings": {
+          "prepare": 0.000012849000086134765,
+          "generation": 2.7020104960001845,
+          "export": 12.1801589530005
+        }
+      },
+      "completed": "2026-09-22T04:06:55.882Z"
+    },
+    "charger-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6646/YfmnpSWrdJ_MxJDdIAfXD.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:35.815Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-4c5d-7790-bf1e-8f9ee18dea4c",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-4c5d-7790-bf1e-8f9ee18dea4c",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-4c5d-7790-bf1e-8f9ee18dea4c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-4c5d-7790-bf1e-8f9ee18dea4c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6649/f_EuWSZPFlZagAsa8NHpv_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1554248
+        },
+        "timings": {
+          "prepare": 0.00001022301148623228,
+          "generation": 2.5328510829713196,
+          "export": 10.051137855974957
+        }
+      },
+      "completed": "2026-09-22T04:06:56.194Z"
+    },
+    "spitter-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Hunched fictional infected human creature, ash gray skin and dark veins, hugely swollen throat sac, narrow ribbed torso, ragged olive trousers, long skinny arms, leaning forward, heavy bulging neck, distinct complete limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:46.734Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-76fc-7911-8f27-75a0be79b557",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-76fc-7911-8f27-75a0be79b557",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-76fc-7911-8f27-75a0be79b557/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-76fc-7911-8f27-75a0be79b557/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6648/fwzYgE07toCnGPoiLKdgx.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.9948958230088465
+        },
+        "seed": 1288166827,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Hunched fictional infected human creature, ash gray skin and dark veins, hugely swollen throat sac, narrow ribbed torso, ragged olive trousers, long skinny arms, leaning forward, heavy bulging neck, distinct complete limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:06:57.114Z"
+    },
+    "bloater-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Heavy rotund fictional infected human, enormous distended ash-gray belly with dark red fissure-like markings, heavy hanging arms, small head, torn gray work trousers and industrial boots, swelling rounded body silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:56.840Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-9e7b-7703-bb7a-218068f7319e",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9e7b-7703-bb7a-218068f7319e",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9e7b-7703-bb7a-218068f7319e/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9e7b-7703-bb7a-218068f7319e/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6649/W5Zh7w4yryIJV3XUTnHNS.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.921173688955605
+        },
+        "seed": 356769827,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Heavy rotund fictional infected human, enormous distended ash-gray belly with dark red fissure-like markings, heavy hanging arms, small head, torn gray work trousers and industrial boots, swelling rounded body silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:07:07.735Z"
+    },
+    "screamer-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Tall extremely emaciated fictional infected human, elongated open jaw, exposed ridged throat, sharply visible rib-like bone structure under ashen skin, long arms, tattered black civilian trousers, head arched upward. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:57.158Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-9fbb-7e72-9c02-f8e7a5f6eb47",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9fbb-7e72-9c02-f8e7a5f6eb47",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9fbb-7e72-9c02-f8e7a5f6eb47/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-9fbb-7e72-9c02-f8e7a5f6eb47/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6649/jrjuVUzLH2Pcwq_VvyzJy.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.096419383015018
+        },
+        "seed": 813182325,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Tall extremely emaciated fictional infected human, elongated open jaw, exposed ridged throat, sharply visible rib-like bone structure under ashen skin, long arms, tattered black civilian trousers, head arched upward. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:07:07.856Z"
+    },
+    "spitter-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6648/fwzYgE07toCnGPoiLKdgx.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:06:57.653Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-a1b0-7100-be1e-b5964262cd5c",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-a1b0-7100-be1e-b5964262cd5c",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-a1b0-7100-be1e-b5964262cd5c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-a1b0-7100-be1e-b5964262cd5c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab664b/C-Qnk0sO5aDfrxOG8wjEZ_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1464092
+        },
+        "timings": {
+          "prepare": 0.000011196010746061802,
+          "generation": 2.5579867720371112,
+          "export": 9.921381397987716
+        }
+      },
+      "completed": "2026-09-22T04:07:18.288Z"
+    },
+    "bloater-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6649/W5Zh7w4yryIJV3XUTnHNS.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:08.631Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-cca0-7812-9700-53ca35ac21a2",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cca0-7812-9700-53ca35ac21a2",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cca0-7812-9700-53ca35ac21a2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cca0-7812-9700-53ca35ac21a2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab664c/FbmRXHGqTIsvzFxqkJ5se_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1575992
+        },
+        "timings": {
+          "prepare": 0.000011955969966948032,
+          "generation": 3.028505746042356,
+          "export": 13.66680227505276
+        }
+      },
+      "completed": "2026-09-22T04:07:39.674Z"
+    },
+    "screamer-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6649/jrjuVUzLH2Pcwq_VvyzJy.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:09.289Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-cf4a-73a3-b3c4-c9e7c358eb8c",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cf4a-73a3-b3c4-c9e7c358eb8c",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cf4a-73a3-b3c4-c9e7c358eb8c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74b-cf4a-73a3-b3c4-c9e7c358eb8c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab664c/71MzpEtdz21nSy6sE4kxZ_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1414568
+        },
+        "timings": {
+          "prepare": 0.000020694999875559006,
+          "generation": 2.796526477000043,
+          "export": 10.053582949999509
+        }
+      },
+      "completed": "2026-09-22T04:07:29.889Z"
+    },
+    "carrier-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Broad-backed fictional infected soldier, huge cluster of dark crimson organic sacs on the back, ash-gray face and limbs, olive military webbing and torn trousers beneath organic mass, hunched walking posture, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:19.116Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74b-f577-76e0-9658-966e7b04b25a",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-f577-76e0-9658-966e7b04b25a",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-f577-76e0-9658-966e7b04b25a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74b-f577-76e0-9658-966e7b04b25a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab664b/DTDPfLeElpDSflQ5WzmUp.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.910074194020126
+        },
+        "seed": 1065505398,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Broad-backed fictional infected soldier, huge cluster of dark crimson organic sacs on the back, ash-gray face and limbs, olive military webbing and torn trousers beneath organic mass, hunched walking posture, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:07:29.517Z"
+    },
+    "carrier-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab664b/DTDPfLeElpDSflQ5WzmUp.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:30.863Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-23af-7b93-b042-e078b61b9360",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-23af-7b93-b042-e078b61b9360",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-23af-7b93-b042-e078b61b9360/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-23af-7b93-b042-e078b61b9360/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab664e/tcLbs6haYzV3oLhYf9ZXh_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1685516
+        },
+        "timings": {
+          "prepare": 0.000019291008356958628,
+          "generation": 2.962376763985958,
+          "export": 11.885572879982647
+        }
+      },
+      "completed": "2026-09-22T04:07:51.385Z"
+    },
+    "gunner-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Infected modern infantry soldier with ash-gray face, bent military helmet, tangled rifle sling and heavy ammunition rig, holding a worn modern rifle across the chest, damaged olive fatigues, jerky slouched human stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:32.571Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-2a0a-7b40-b056-23a83a09e862",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-2a0a-7b40-b056-23a83a09e862",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-2a0a-7b40-b056-23a83a09e862/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-2a0a-7b40-b056-23a83a09e862/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab664d/hOA-Lfg6_EhXn4wCgUDSE.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.977057769021485
+        },
+        "seed": 423063630,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Infected modern infantry soldier with ash-gray face, bent military helmet, tangled rifle sling and heavy ammunition rig, holding a worn modern rifle across the chest, damaged olive fatigues, jerky slouched human stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:07:42.882Z"
+    },
+    "bulwark-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Enormous hulking fictional infected armored soldier boss, broad upright top-heavy silhouette, crushed ballistic helmet, very thick dark military armor plates pushed apart by dark crimson muscle growth, huge asymmetrical right shoulder and arm, bone spurs, massive combat boots, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:40.544Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-492a-7312-8ea4-ce86b54d55b3",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-492a-7312-8ea4-ce86b54d55b3",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-492a-7312-8ea4-ce86b54d55b3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-492a-7312-8ea4-ce86b54d55b3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab664e/Sm4YNrVmFJFrmd8o_f3Rj.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.9300008599529974
+        },
+        "seed": 188369631,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Enormous hulking fictional infected armored soldier boss, broad upright top-heavy silhouette, crushed ballistic helmet, very thick dark military armor plates pushed apart by dark crimson muscle growth, huge asymmetrical right shoulder and arm, bone spurs, massive combat boots, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:07:51.033Z"
+    },
+    "gunner-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab664d/hOA-Lfg6_EhXn4wCgUDSE.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:43.193Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-5386-7c30-9854-23897938a8f2",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-5386-7c30-9854-23897938a8f2",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-5386-7c30-9854-23897938a8f2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-5386-7c30-9854-23897938a8f2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab664f/fanxH7KLPSU8ijPL5f1VS_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1612844
+        },
+        "timings": {
+          "prepare": 0.00001340196467936039,
+          "generation": 2.6191675709560513,
+          "export": 10.273223755997606
+        }
+      },
+      "completed": "2026-09-22T04:08:03.556Z"
+    },
+    "bulwark-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab664e/Sm4YNrVmFJFrmd8o_f3Rj.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:51.623Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-7479-74e2-9376-0903202fc753",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-7479-74e2-9376-0903202fc753",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-7479-74e2-9376-0903202fc753/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-7479-74e2-9376-0903202fc753/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6651/3EQWeL9hzaJdY11HLd984_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1767332
+        },
+        "timings": {
+          "prepare": 0.000008565024472773075,
+          "generation": 2.8987618889659643,
+          "export": 15.54166713298764
+        }
+      },
+      "completed": "2026-09-22T04:08:22.680Z"
+    },
+    "broodmass-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Wide low sprawling fictional biological monster boss, many pale human arms supporting and dragging a central dark crimson fleshy mound, clustered swollen sacs on its back, several small recognizable ash-gray human faces embedded in mass, bits of olive military fabric, distinctly horizontal quadruped silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:07:52.553Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-7821-7e21-a51a-470a63b98afa",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-7821-7e21-a51a-470a63b98afa",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-7821-7e21-a51a-470a63b98afa/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-7821-7e21-a51a-470a63b98afa/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab664f/K480Pe0C_8AYpuzn-mQvG.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.9694066410011146
+        },
+        "seed": 796063777,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Wide low sprawling fictional biological monster boss, many pale human arms supporting and dragging a central dark crimson fleshy mound, clustered swollen sacs on its back, several small recognizable ash-gray human faces embedded in mass, bits of olive military fabric, distinctly horizontal quadruped silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:08:02.979Z"
+    },
+    "broodmass-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab664f/K480Pe0C_8AYpuzn-mQvG.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:08:03.750Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-a3e8-7230-acda-b4c8381116f8",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-a3e8-7230-acda-b4c8381116f8",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-a3e8-7230-acda-b4c8381116f8/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-a3e8-7230-acda-b4c8381116f8/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6652/ri0NLhy4oUW-JFR3SkhXP_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 2221464
+        },
+        "timings": {
+          "prepare": 0.00000918505247682333,
+          "generation": 2.647612823988311,
+          "export": 16.483579982072115
+        }
+      },
+      "completed": "2026-09-22T04:08:34.540Z"
+    },
+    "congregation-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "Towering fictional fusion creature boss made of infected soldiers, tall irregular central torso with ribbed bone structures, five distinct ash-gray human heads at different heights, many uneven arms, tangled military webbing, dark red organic connective tissue, two enormous supporting legs, vertically imposing silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:08:05.503Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-aaa9-7f70-baff-40e2382e75cb",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-aaa9-7f70-baff-40e2382e75cb",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-aaa9-7f70-baff-40e2382e75cb/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c74c-aaa9-7f70-baff-40e2382e75cb/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6650/nRCK5W30yIvwd7nW1OI7A.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 4.221696539956611
+        },
+        "seed": 1300947949,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "Towering fictional fusion creature boss made of infected soldiers, tall irregular central torso with ribbed bone structures, five distinct ash-gray human heads at different heights, many uneven arms, tangled military webbing, dark red organic connective tissue, two enormous supporting legs, vertically imposing silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+      },
+      "completed": "2026-09-22T04:08:16.008Z"
+    },
+    "congregation-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6650/nRCK5W30yIvwd7nW1OI7A.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:08:17.362Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c74c-d905-7ae0-81bc-218d192ff24b",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-d905-7ae0-81bc-218d192ff24b",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-d905-7ae0-81bc-218d192ff24b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c74c-d905-7ae0-81bc-218d192ff24b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6653/tRvdbNuO862DIBY8niuL9_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 2137124
+        },
+        "timings": {
+          "prepare": 0.000010015035513788462,
+          "generation": 3.046228725987021,
+          "export": 17.839051868999377
+        }
+      },
+      "completed": "2026-09-22T04:08:48.034Z"
+    },
+    "wreck-truck-reference": {
+      "model": "fal-ai/flux/dev",
+      "input": {
+        "prompt": "One abandoned wrecked modern olive military transport truck, full vehicle isolated on plain light gray studio background, front three-quarter view, six heavy tires, dirty canvas cargo cover torn at corners, cracked windshield, dented metal, realistic military quarantine checkpoint prop, weathered PBR surface detail, realistic video game asset, no scene, no text.",
+        "image_size": "square_hd",
+        "num_images": 1
+      },
+      "reserve": 0.1,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:11:55.390Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c750-2dab-7881-8bdd-0b51b00a052c",
+      "response_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c750-2dab-7881-8bdd-0b51b00a052c",
+      "status_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c750-2dab-7881-8bdd-0b51b00a052c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/01a0c750-2dab-7881-8bdd-0b51b00a052c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "user_queue_position": 0,
+      "user_queued_count": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab6667/DQR9ifRXH4FbJ1j84nHnH.jpg",
+            "width": 1024,
+            "height": 1024,
+            "content_type": "image/jpeg"
+          }
+        ],
+        "timings": {
+          "inference": 3.925143483967986
+        },
+        "seed": 100077660,
+        "has_nsfw_concepts": [
+          false
+        ],
+        "prompt": "One abandoned wrecked modern olive military transport truck, full vehicle isolated on plain light gray studio background, front three-quarter view, six heavy tires, dirty canvas cargo cover torn at corners, cracked windshield, dented metal, realistic military quarantine checkpoint prop, weathered PBR surface detail, realistic video game asset, no scene, no text."
+      },
+      "completed": "2026-09-22T04:12:06.372Z"
+    },
+    "wreck-truck-mesh": {
+      "model": "fal-ai/trellis",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab6667/DQR9ifRXH4FbJ1j84nHnH.jpg"
+      },
+      "reserve": 2,
+      "bucket": "production",
+      "state": "complete",
+      "submitted": "2026-09-22T04:12:07.117Z",
+      "attempted": true,
+      "status": "IN_QUEUE",
+      "request_id": "01a0c750-5a89-7931-9fc5-63adc9183990",
+      "response_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c750-5a89-7931-9fc5-63adc9183990",
+      "status_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c750-5a89-7931-9fc5-63adc9183990/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/trellis/requests/01a0c750-5a89-7931-9fc5-63adc9183990/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab666a/CSA9DEEhnQc5clk9qJuXO_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1838324
+        },
+        "timings": {
+          "prepare": 0.000012787990272045135,
+          "generation": 2.90732456499245,
+          "export": 18.19011658197269
+        }
+      },
+      "completed": "2026-09-22T04:12:38.218Z"
+    },
+    "trellis-soldier": {
+      "model": "fal-ai/trellis",
+      "reserve": 2,
+      "bucket": "comparison",
+      "state": "complete",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab65de/9LQk6RLlnrGRRQGTyYNBC.jpg"
+      },
+      "result": {
+        "model_mesh": {
+          "url": "https://v3b.fal.media/files/b/0aab6617/4f7K7NANZZeSwDpDV-9ER_model.glb",
+          "content_type": "application/octet-stream",
+          "file_name": "model.glb",
+          "file_size": 1612300
+        },
+        "timings": {
+          "prepare": 0.000012350967153906822,
+          "generation": 3.7749594539636746,
+          "export": 14.934157005976886
+        }
+      },
+      "reconciliation": "Recovered completed result after an early legacy-ledger concurrent-write defect. No resubmission; subsequent writes use an exclusive lock."
+    }
+  }
+}

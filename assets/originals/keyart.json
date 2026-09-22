@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6610/SCyHiAKskKiIPovWg1Q7N.jpg",
+      "width": 1024,
+      "height": 576,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 2.477712688007159
+  },
+  "seed": 1076926553,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Cinematic photorealistic military survival horror environment matte painting, ruined elevated highway into abandoned brutalist megacity at dusk, quarantine checkpoint, olive military trucks, broken concrete barriers, collapsed medical canvas tents, tangled razor wire, dusty wet asphalt, distant plume of smoke, moody cold desaturated teal shadows and pale warm sunset horizon, faint orange emergency lights, extraordinary realistic weathered materials, wide composition, no text, no logos, no interface, no people, film grain, 35mm movie still"
+}

@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab664f/K480Pe0C_8AYpuzn-mQvG.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.9694066410011146
+  },
+  "seed": 796063777,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Wide low sprawling fictional biological monster boss, many pale human arms supporting and dragging a central dark crimson fleshy mound, clustered swollen sacs on its back, several small recognizable ash-gray human faces embedded in mass, bits of olive military fabric, distinctly horizontal quadruped silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

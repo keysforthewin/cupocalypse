@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab65de/9LQk6RLlnrGRRQGTyYNBC.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.9886086560436524
+  },
+  "seed": 2091585782,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Full body infected modern military soldier, ash gray skin, dark branching veins, torn olive fatigues, broken tactical plate carrier, exposed dark crimson muscle on shoulder, worn combat boots, recognizable human anatomy, clearly separated arms and legs, realistic gritty survival horror game character, no base, neutral A pose. Isolated on a plain light gray background, front view studio character reference, entire feet and head visible."
+}

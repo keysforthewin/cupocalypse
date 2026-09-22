@@ -1,0 +1,131 @@
+{
+  "animation_glb": null,
+  "animation_fbx": null,
+  "model_glb": {
+    "url": "https://v3b.fal.media/files/b/0aab6621/Ws7wwnNzZD3qpFqS8JHus_model.glb",
+    "content_type": "model/gltf-binary",
+    "file_name": "model.glb",
+    "file_size": 8723068
+  },
+  "thumbnail": {
+    "url": "https://v3b.fal.media/files/b/0aab6622/Aeie_by-gt_FVTRR89Zen_preview.png",
+    "content_type": "image/png",
+    "file_name": "preview.png",
+    "file_size": 91832
+  },
+  "model_urls": {
+    "glb": {
+      "url": "https://v3b.fal.media/files/b/0aab6621/Ws7wwnNzZD3qpFqS8JHus_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 8723068
+    },
+    "fbx": {
+      "url": "https://v3b.fal.media/files/b/0aab6621/phKAk5dUDQHMXPZqp6P3e_model.fbx",
+      "content_type": "application/octet-stream",
+      "file_name": "model.fbx",
+      "file_size": 9034476
+    },
+    "obj": {
+      "url": "https://v3b.fal.media/files/b/0aab6622/8V2k-Mw9CaxwXjZoLWqQY_model.obj",
+      "content_type": "text/plain",
+      "file_name": "model.obj",
+      "file_size": 681477
+    },
+    "usdz": {
+      "url": "https://v3b.fal.media/files/b/0aab6621/AdqJGO2LsV2pow6MQleCE_model.usdz",
+      "content_type": "model/vnd.usdz+zip",
+      "file_name": "model.usdz",
+      "file_size": 9216817
+    },
+    "blend": null,
+    "stl": {
+      "url": "https://v3b.fal.media/files/b/0aab6622/wZc2l5NBvkTLRfjfBO1fA_model.stl",
+      "content_type": "application/octet-stream",
+      "file_name": "model.stl",
+      "file_size": 305584
+    }
+  },
+  "texture_urls": [
+    {
+      "base_color": {
+        "url": "https://v3b.fal.media/files/b/0aab6622/Z45tvCid_QezfwwYpfkk-_texture_0.png",
+        "content_type": "image/png",
+        "file_name": "texture_0.png",
+        "file_size": 8091180
+      },
+      "metallic": {
+        "url": "https://v3b.fal.media/files/b/0aab6623/HgBea5Jm8hHqqhgF0U_G-_texture_0_metallic.png",
+        "content_type": "image/png",
+        "file_name": "texture_0_metallic.png",
+        "file_size": 35417
+      },
+      "normal": {
+        "url": "https://v3b.fal.media/files/b/0aab6623/Af0aEj3W9RpqM6Y96Elvw_texture_0_normal.png",
+        "content_type": "image/png",
+        "file_name": "texture_0_normal.png",
+        "file_size": 5671137
+      },
+      "roughness": {
+        "url": "https://v3b.fal.media/files/b/0aab6623/OHSmmlX1CtyVn2iHTJv6f_texture_0_roughness.png",
+        "content_type": "image/png",
+        "file_name": "texture_0_roughness.png",
+        "file_size": 1348442
+      }
+    }
+  ],
+  "seed": 3160206818,
+  "prompt": "Full body modern military soldier wearing worn olive fatigues, tactical plate carrier, helmet and combat boots. Neutral A pose, clearly separated limbs, realistic detailed game character, no weapon, no base.",
+  "actual_prompt": null,
+  "rigged_character_glb": {
+    "url": "https://v3b.fal.media/files/b/0aab6629/OrKZBNzd9NrOUuuRZ7Hb4_rigged_character.glb",
+    "content_type": "model/gltf-binary",
+    "file_name": "rigged_character.glb",
+    "file_size": 8664508
+  },
+  "rigged_character_fbx": {
+    "url": "https://v3b.fal.media/files/b/0aab6628/4ZTi6RZSufaOR2erO3YAI_rigged_character.fbx",
+    "content_type": "application/octet-stream",
+    "file_name": "rigged_character.fbx",
+    "file_size": 8686076
+  },
+  "basic_animations": {
+    "walking_glb": {
+      "url": "https://v3b.fal.media/files/b/0aab6628/5C4zgB6iEEiGlVhUBSSRz_walking.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "walking.glb",
+      "file_size": 8677280
+    },
+    "walking_fbx": {
+      "url": "https://v3b.fal.media/files/b/0aab6628/wiefclW8uBLmsl92fbaol_walking.fbx",
+      "content_type": "application/octet-stream",
+      "file_name": "walking.fbx",
+      "file_size": 8710476
+    },
+    "walking_armature_glb": {
+      "url": "https://v3b.fal.media/files/b/0aab6628/n6Q6IkHp7AxeZ7sOO5syp_walking_armature.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "walking_armature.glb",
+      "file_size": 65332
+    },
+    "running_glb": {
+      "url": "https://v3b.fal.media/files/b/0aab6629/ThV-WHm92_IwYp6E3NTfZ_running.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "running.glb",
+      "file_size": 8672680
+    },
+    "running_fbx": {
+      "url": "https://v3b.fal.media/files/b/0aab6629/rWd8jzA23DQ8IqTg7HvPQ_running.fbx",
+      "content_type": "application/octet-stream",
+      "file_name": "running.fbx",
+      "file_size": 8702204
+    },
+    "running_armature_glb": {
+      "url": "https://v3b.fal.media/files/b/0aab6628/-FAQtaGW2RJ8rqUYo6rli_running_armature.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "running_armature.glb",
+      "file_size": 60732
+    }
+  },
+  "rig_task_id": "01a0c745-d244-757d-a773-0b83b87b5609"
+}

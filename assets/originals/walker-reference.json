@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6639/4jz2M73naevFKFb4hpFis.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.042315977974795
+  },
+  "seed": 1556669624,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Ordinary infected civilian, ash-gray human skin with subtle dark veins, slack posture, faded torn charcoal hoodie and dirty denim jeans, uneven gait, small dark red patches on cheek. Slender recognizable human body. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

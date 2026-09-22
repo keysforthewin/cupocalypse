@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab664d/hOA-Lfg6_EhXn4wCgUDSE.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.977057769021485
+  },
+  "seed": 423063630,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Infected modern infantry soldier with ash-gray face, bent military helmet, tangled rifle sling and heavy ammunition rig, holding a worn modern rifle across the chest, damaged olive fatigues, jerky slouched human stance. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

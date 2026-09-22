@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6646/YfmnpSWrdJ_MxJDdIAfXD.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.7620952779543586
+  },
+  "seed": 576622165,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Asymmetrical fictional infected soldier mutant, one enormous muscular right shoulder and arm, left arm normal, dark red sinewy right shoulder with pale bone spikes, broken olive plate armor and fatigues, ash gray skin, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

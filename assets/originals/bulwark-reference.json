@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab664e/Sm4YNrVmFJFrmd8o_f3Rj.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.9300008599529974
+  },
+  "seed": 188369631,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Enormous hulking fictional infected armored soldier boss, broad upright top-heavy silhouette, crushed ballistic helmet, very thick dark military armor plates pushed apart by dark crimson muscle growth, huge asymmetrical right shoulder and arm, bone spurs, massive combat boots, no weapon. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

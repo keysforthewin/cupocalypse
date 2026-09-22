@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6649/jrjuVUzLH2Pcwq_VvyzJy.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.096419383015018
+  },
+  "seed": 813182325,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Tall extremely emaciated fictional infected human, elongated open jaw, exposed ridged throat, sharply visible rib-like bone structure under ashen skin, long arms, tattered black civilian trousers, head arched upward. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

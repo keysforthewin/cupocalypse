@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6639/e9rUImO5vAjGcEm8gFQh9.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 4.440020922978874
+  },
+  "seed": 501158014,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Lean infected modern soldier with ash-gray skin, torn olive fatigues, damaged tactical chest rig, no helmet, long legs, aggressive forward lean, dark red discoloration on one arm. Distinct human limbs. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

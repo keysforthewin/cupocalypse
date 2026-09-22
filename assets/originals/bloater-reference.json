@@ -1,0 +1,18 @@
+{
+  "images": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aab6649/W5Zh7w4yryIJV3XUTnHNS.jpg",
+      "width": 1024,
+      "height": 1024,
+      "content_type": "image/jpeg"
+    }
+  ],
+  "timings": {
+    "inference": 3.921173688955605
+  },
+  "seed": 356769827,
+  "has_nsfw_concepts": [
+    false
+  ],
+  "prompt": "Heavy rotund fictional infected human, enormous distended ash-gray belly with dark red fissure-like markings, heavy hanging arms, small head, torn gray work trousers and industrial boots, swelling rounded body silhouette. Full body front three-quarter view, entire body and feet visible, isolated on plain light gray studio background, realistic AAA survival horror game character design, high quality weathered PBR materials, balanced lighting, clearly separated limbs, no text, no pedestal."
+}

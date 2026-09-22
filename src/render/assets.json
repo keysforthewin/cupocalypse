@@ -1,0 +1,15 @@
+{
+  "walker": "/assets/runtime/walker.glb",
+  "runner": "/assets/runtime/runner.glb",
+  "crawler": "/assets/runtime/crawler.glb",
+  "riot-guard": "/assets/runtime/riot-guard.glb",
+  "charger": "/assets/runtime/charger.glb",
+  "spitter": "/assets/runtime/spitter.glb",
+  "bloater": "/assets/runtime/bloater.glb",
+  "screamer": "/assets/runtime/screamer.glb",
+  "carrier": "/assets/runtime/carrier.glb",
+  "gunner": "/assets/runtime/gunner.glb",
+  "bulwark": "/assets/runtime/bulwark.glb",
+  "broodmass": "/assets/runtime/broodmass.glb",
+  "congregation": "/assets/runtime/congregation.glb"
+}
