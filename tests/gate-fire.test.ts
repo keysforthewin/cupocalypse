@@ -56,6 +56,37 @@ test("live spread volleys count every projectile at impact in all modes", () => 
   }
 });
 
+test("shots charge each gate once and retain full damage and piercing behind them", () => {
+  for (const kind of ["pulse", "rail"] as const) {
+    const s = new Simulation("shoot-through");
+    s.nextBoss = s.nextEncounter = 1e9;
+    s.fireClock = 999;
+    s.x = -3;
+    s.launch(kind, -3, 0, 10);
+    const bullet = s.bullets.find((b) => b.active)!;
+    const pierce = bullet.payload!.pierce;
+    for (const z of [2, 4]) {
+      s.spawnGate();
+      Object.assign(s.gates.at(-1)!, { z, left: "+", a: 10 });
+    }
+    const enemy = s.spawnEnemy("Walker", -3, 10)!;
+    enemy.hp = enemy.maxHp = 100;
+    enemy.armor = 0;
+    while (s.gates[1].hitsA === 0 && s.tick < 60) s.update({ x: -3 });
+    assert.equal(bullet.active, true, kind);
+    assert.equal(bullet.payload!.pierce, pierce, kind);
+    assert.equal(enemy.hp, 100, kind);
+    while (enemy.hp === 100 && s.tick < 120) s.update({ x: -3 });
+    assert.equal(enemy.hp, 90, kind);
+    assert.equal(bullet.active, kind === "rail", kind);
+    for (const gate of s.gates) {
+      assert.equal(gate.hitsA, bullet.gatePower, kind);
+      assert.equal(gate.a, 10 + bullet.gatePower, kind);
+      assert.equal(gate.hitsB, 0, kind);
+    }
+  }
+});
+
 test("bullets blocked by an enemy do not also improve the gate", () => {
   const s = new Simulation("blocked");
   s.nextBoss = s.nextEncounter = 1e9;

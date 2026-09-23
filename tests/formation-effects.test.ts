@@ -112,7 +112,7 @@ test("a barricade clips a wide flank even when the firing tip takes no gate", ()
     const s = clean();
     s.army = army;
     s.spawnGate(1);
-    s.gates[0].z = 0.1;
+    s.gates[0].z = s.crowd.push + 0.1;
     for (let i = 0; i < 65; i++) s.update({ x: 0 });
     assert.ok(army === 100 ? s.army === 100 : s.army < army);
     assert.equal(s.gates.length, 0);

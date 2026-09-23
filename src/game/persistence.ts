@@ -9,6 +9,7 @@ import type { Simulation } from "./simulation";
 import { playerName } from "./leaderboard";
 export interface Profile {
   playerName: string;
+  pinnedSeed: string | null;
   ownedSuperWeapons: SuperId[];
   superLoadout: SuperId[];
   helpVisible: boolean;
@@ -22,6 +23,7 @@ export interface Profile {
 }
 export const fresh = (): Profile => ({
   playerName: "",
+  pinnedSeed: null,
   ownedSuperWeapons: [],
   superLoadout: [],
   helpVisible: true,
@@ -45,6 +47,10 @@ export function loadProfile(): Profile {
     return {
       ...fresh(),
       playerName: playerName(p.playerName),
+      pinnedSeed:
+        typeof p.pinnedSeed === "string"
+          ? p.pinnedSeed.trim().slice(0, 40) || null
+          : null,
       ownedSuperWeapons: owned,
       superLoadout: sanitizeLoadout(p.superLoadout, owned),
       helpVisible: p.helpVisible !== false,
@@ -78,7 +84,7 @@ export function saveProfile(p: Profile) {
   }
 }
 export function earnings(sim: Simulation) {
-  return sim.debug ? 0 : Math.floor(sim.distance / 12) + sim.bossKills * 12;
+  return sim.debug ? 0 : Math.floor(sim.distance / 4) + sim.bossKills * 25;
 }
 export function settle(p: Profile, sim: Simulation): Profile {
   if (sim.debug) return p;

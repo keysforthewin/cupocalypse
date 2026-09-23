@@ -1,0 +1,1703 @@
+{
+  "cap": 100,
+  "currency": "USD",
+  "note": "Additional user-authorized biome allowance. Reservations are upper estimates, not invoices.",
+  "jobs": {
+    "city-kiosk": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-22T23:51:03.549Z",
+      "input": {
+        "prompt": "An elaborate abandoned Parisian cast iron newspaper kiosk, octagonal pavilion, verdigris copper domed roof and finial, closed dark green shutters, brass moldings, stone base, realistic weathered architecture. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb87-b5a4-7b22-a784-ec89ecd72b1c",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5a4-7b22-a784-ec89ecd72b1c",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5a4-7b22-a784-ec89ecd72b1c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5a4-7b22-a784-ec89ecd72b1c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8229/CsjMZ8bGpAXRScKpRIWuU_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 12693184
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab822b/Ce9_mJAeCdWVTtEmL2B7s_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 154921
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8229/CsjMZ8bGpAXRScKpRIWuU_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 12693184
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab822a/yX1CVmydxuK3QSpZc5H_w_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 12679116
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab822b/6BfzY19pvZJw15qtdcT70_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3365090
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab822a/z-T2s5X7m_fs3hDUyUc4b_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 13551999
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab822b/TUculQ4j-LLorHKvMvsge_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1463684
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab822c/v3SBqeTCTSIfoj2q4MQ0k_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8766432
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab822e/qDaNmwOeajh-z9BLp0YSD_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 622885
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab822e/uVvMx5ju6CrwMJmQQY9pN_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6550469
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab822e/pN_niaB0UPNJO6nNtXvW3_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1889809
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "An elaborate abandoned Parisian cast iron newspaper kiosk, octagonal pavilion, verdigris copper domed roof and finial, closed dark green shutters, brass moldings, stone base, realistic weathered architecture. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "city-water-tower": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-22T23:51:03.577Z",
+      "input": {
+        "prompt": "Old industrial rooftop water tower, cylindrical weathered oak plank tank, conical zinc roof, riveted iron hoops, four tall steel braced legs, access ladder, realistic architecture. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb87-b5c2-78a1-8f04-4bc285b8ba7c",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5c2-78a1-8f04-4bc285b8ba7c",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5c2-78a1-8f04-4bc285b8ba7c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb87-b5c2-78a1-8f04-4bc285b8ba7c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8229/ZhsWN9FXR9yxWQYFN81Us_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 10942516
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab822d/7UYydQMHW7ZqBvooQfyxL_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 149341
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8229/ZhsWN9FXR9yxWQYFN81Us_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 10942516
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab822a/KJDGUd6l08PaQDTdvPyAF_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 10883036
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab822b/kSUarZDcuwGhCubAxdZ2K_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3492076
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab822b/8pks6yQCmPrEkS_Sq-sKo_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11779925
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab822c/8MuBIp4yGXgQuhHW3z9Wq_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1518534
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab822d/3HZNdJPRRdZO7N4l99Q22_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8157741
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab822e/_thYmC1JQx7TAj3xCXHAA_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 234952
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab822e/eM8_u0yfkgLZ6abmctiQQ_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5799238
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab822f/k7gawHi523k-JHPL0cfqg_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1626343
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Old industrial rooftop water tower, cylindrical weathered oak plank tank, conical zinc roof, riveted iron hoops, four tall steel braced legs, access ladder, realistic architecture. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "suburb-house": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-22T23:57:15.883Z",
+      "input": {
+        "prompt": "American craftsman suburban house, two stories, sage green clapboard siding, cream trim, complex grey shingled gable roofs, deep covered porch with tapered stone columns, brick chimney, separate windows with dark glass, no ground or landscape. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb8d-6304-77e1-9a64-03c466f4413f",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-6304-77e1-9a64-03c466f4413f",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-6304-77e1-9a64-03c466f4413f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-6304-77e1-9a64-03c466f4413f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8254/q5o2sjLgAUYcoKXu1H2tD_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11399960
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8258/kRhPcTCXqWgjlrWN-mjUf_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 184737
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8254/q5o2sjLgAUYcoKXu1H2tD_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11399960
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8255/clenrEXmwBe-H3ljkrdK7_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11048796
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8256/BnWHgQpSxJLyIpxP0a5BV_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3471231
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8256/-g-BIaA76icboV5BkFAFa_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12243094
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8258/E2mYGgYJsxQyBF3kmG2Ft_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1384734
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8259/sDA4XZuHuuL2Nw-7Q7x-9_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 7751094
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab825a/6GpzfjdfDEkyWMk8TUqCO_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 27499
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab825b/Xka6KwQkqW6iexw1QyASK_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5870002
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab825c/wqS6j5Y9VzmDjtszuRgAK_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1350865
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "American craftsman suburban house, two stories, sage green clapboard siding, cream trim, complex grey shingled gable roofs, deep covered porch with tapered stone columns, brick chimney, separate windows with dark glass, no ground or landscape. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "suburb-car": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-22T23:57:26.504Z",
+      "input": {
+        "prompt": "Abandoned vintage cream colored station wagon, rust at lower panels, dusty windows, realistic rubber tires and chrome trim, wheels intact, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb8d-8d03-7263-9f56-16de2939c4bd",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-8d03-7263-9f56-16de2939c4bd",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-8d03-7263-9f56-16de2939c4bd/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb8d-8d03-7263-9f56-16de2939c4bd/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8250/X9IENYq5AUPeRYdvqhRb9_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11630032
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8257/IHlnJ8oNC8vLUJW_HNAms_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 78781
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8250/X9IENYq5AUPeRYdvqhRb9_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11630032
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8252/Gp3e6ouzDajJPTi6_DP3n_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11401772
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8256/b6HDbpfyVQ6j8s8LMdjEQ_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3294338
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8255/FbGJl7G6fBCoIE9FriVz7_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12218962
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8257/0g9K0IkpRoSaCKVrmPj4F_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1485084
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8258/17l562bYspO0AsgahBU5Z_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 7579294
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8259/dd-laIkWwHX1d2wy8uver_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 451744
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8259/IsF_rHKY-LsXyadWCQ3BY_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5756646
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab825a/y6BPnX4B9pbTbiV30vC9M_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1415779
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Abandoned vintage cream colored station wagon, rust at lower panels, dusty windows, realistic rubber tires and chrome trim, wheels intact, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "country-barn": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:29.897Z",
+      "input": {
+        "prompt": "Large weathered red timber American barn, tall gambrel shingled roof, white wooden braces on double doors, loft window, stone foundation, faded board siding, accurate agricultural architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-18f2-7be1-ae82-18db378b2506",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-18f2-7be1-ae82-18db378b2506",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-18f2-7be1-ae82-18db378b2506/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-18f2-7be1-ae82-18db378b2506/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8272/AnEcQN_dpow3r79FXyZii_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 12244736
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8273/UkP4xyJAyIfzihFsZi__H_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 221821
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8272/AnEcQN_dpow3r79FXyZii_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 12244736
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8272/yUrgN4B766Kofp8u3fEzm_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 12108140
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8273/OsMscsnC6w0m7JjmJ8sra_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3219341
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8273/13EwddWyVeZL4NQeVLlmc_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12963386
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8273/N4Xv4zDdvOJrWpKVQvBrS_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1395134
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8274/0NiwuP3_fZjs_OK-0pD5U_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8806499
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8274/tgCKWx4APQR2OuJlgay_D_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 33206
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8274/3hFg5qDIJSEyUX3ve23wt_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6617633
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8274/sMfGubLQ3qCDJfezgQ-X0_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1721310
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Large weathered red timber American barn, tall gambrel shingled roof, white wooden braces on double doors, loft window, stone foundation, faded board siding, accurate agricultural architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "forest-rock": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:30.005Z",
+      "input": {
+        "prompt": "Large asymmetrical granite boulder outcrop, fractured angular slabs, layered stone, patches of green moss in crevices, exposed roots around base, realistic natural geological formation, no pedestal. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-194e-77f1-8af8-6100c99ffcc5",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-194e-77f1-8af8-6100c99ffcc5",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-194e-77f1-8af8-6100c99ffcc5/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-194e-77f1-8af8-6100c99ffcc5/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab826b/7LZgKbxojMK0WTF9PMbS3_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11019164
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab826d/7SmYqBnBcIDM_wOP2dXxJ_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 176556
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab826b/7LZgKbxojMK0WTF9PMbS3_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11019164
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab826c/SzamvtmTbl5-R4RCEiKAB_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11156172
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab826c/HtDeiOuocScyGjxrSY8hK_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3274731
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab826c/GRxFrBGlJC9wfW--O-0ED_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11655012
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab826d/vEKqFmLYjMGBINYH-bf3u_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1558784
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab826d/OgTeMz5o6oQMeQWD-ZgQU_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8820432
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab826d/4y7is-IvsfRfN0ai2hCq2_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 58660
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab826e/g6p0AST4rdO2nxx_pqIn0_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6291678
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab826e/Mfa1dAb3sJvW83SuFRa7m_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1624615
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Large asymmetrical granite boulder outcrop, fractured angular slabs, layered stone, patches of green moss in crevices, exposed roots around base, realistic natural geological formation, no pedestal. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "ash-ruin": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:30.084Z",
+      "input": {
+        "prompt": "Bombed three story concrete building corner ruin, jagged broken outer walls, exposed floor slabs, bent steel rebar, empty rectangular window openings, collapsed masonry at base, soot blackened surfaces, realistic post apocalyptic architectural fragment. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-19c5-7c41-aff1-6bf50fa2d80c",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19c5-7c41-aff1-6bf50fa2d80c",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19c5-7c41-aff1-6bf50fa2d80c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19c5-7c41-aff1-6bf50fa2d80c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8273/O0PriOycySIt2xe8oBFoW_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 10960336
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8275/brkY2_Thu7nr1ZFLAi2O4_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 174022
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8273/O0PriOycySIt2xe8oBFoW_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 10960336
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8274/Zs5nfp8LMDVUtdr8XSCQp_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 10858684
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8275/kEqD_0IN0z_0A9UFnVhaJ_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3642382
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8275/0rihweeJkqkKqrwEtO3-i_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11958465
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8275/tfqSFvZPvbgvGcB3_HK_L_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1485434
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8276/CgQHlo5ff-3jHtIbQ8wfi_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8272906
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8276/iK39mavHRtnIzmjgUBmik_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 26675
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8276/a2fzZgp6sHQOzedhBNH03_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6117115
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8277/Nv8gKnsIA1y7IDajgLwip_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1499509
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Bombed three story concrete building corner ruin, jagged broken outer walls, exposed floor slabs, bent steel rebar, empty rectangular window openings, collapsed masonry at base, soot blackened surfaces, realistic post apocalyptic architectural fragment. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "country-tractor": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:30.131Z",
+      "input": {
+        "prompt": "Vintage abandoned green farm tractor, large rugged rear tires and small front tires, detailed engine block, exhaust pipe, leather seat, rust patina, realistic agricultural vehicle, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-19bd-7340-942e-dc07b890df4a",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19bd-7340-942e-dc07b890df4a",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19bd-7340-942e-dc07b890df4a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-19bd-7340-942e-dc07b890df4a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8277/Ni1aL-TETx3gAIgbUMb2d_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11762040
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8278/nGV1SnxfLDIObMKVd2swV_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 169382
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/Ni1aL-TETx3gAIgbUMb2d_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11762040
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/69Qa-rSttY4O8OKRdBUNQ_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11548572
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8278/-B6_pzW9_XB0J_09Vxyni_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3596180
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/fkaqdX6Gdri-xQ4ISZi7t_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12530656
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8278/ZosG2gxa23cLjM9N41TaA_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1528934
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8279/DgkpyWugSlTjZFQuc26Tf_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8090166
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8279/huD5qOwtqBBROk8nXydws_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 44103
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8279/8lEKEDx7shbwYMZcxUFFa_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5886380
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab827a/ZU_EEsM4djt3lt3KFs5SB_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1835985
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Vintage abandoned green farm tractor, large rugged rear tires and small front tires, detailed engine block, exhaust pipe, leather seat, rust patina, realistic agricultural vehicle, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "forest-stump": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:30.196Z",
+      "input": {
+        "prompt": "Ancient broken pine tree stump with gnarled exposed spreading roots, splintered jagged hollow top, deeply furrowed dark bark, subtle moss and bracket fungi, realistic woodland prop, no pedestal. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-1a03-7362-b19e-7d42ac169cfc",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a03-7362-b19e-7d42ac169cfc",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a03-7362-b19e-7d42ac169cfc/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a03-7362-b19e-7d42ac169cfc/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8276/oJzQ3UxWGkfPlpto_tOSG_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 10433088
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab827a/N6aQ-aPRXAw0Dd2ea32VN_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 162972
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8276/oJzQ3UxWGkfPlpto_tOSG_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 10433088
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/BaTmx1beI1Ia7dZX1OG49_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 10672204
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8278/NtKvhODohdAHPIxtmX2U4_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3150539
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8278/jFZ8nRFSGq-PvVdadZ4EK_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11015371
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab827a/vf7xX8itwrNs1Hh_Kvt-Z_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1562084
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab827b/70UN4ijsRkD5Qdq6tfPIq_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8599731
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab827c/OcbB0gKL9DQDvOWxAGMAv_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 21477
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab827d/xeTeKLzxL1YRDj6v3jEHv_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6211041
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab827d/H2bfqoGiRwdtSDeA9LtUn_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1602695
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Ancient broken pine tree stump with gnarled exposed spreading roots, splintered jagged hollow top, deeply furrowed dark bark, subtle moss and bracket fungi, realistic woodland prop, no pedestal. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "ash-wreck": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:03:30.218Z",
+      "input": {
+        "prompt": "Burned out abandoned heavy truck cab and chassis, blistered rusted metal, missing windshield, exposed blackened engine, buckled hood, charred tires, realistic scorched apocalypse vehicle wreck, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cb93-1a07-7d43-bec9-90047d425b69",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a07-7d43-bec9-90047d425b69",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a07-7d43-bec9-90047d425b69/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cb93-1a07-7d43-bec9-90047d425b69/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8274/8tIl_5guGouEGJk37LwMV_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11295332
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8279/K1WilgaiMw3G4v7jI7Dya_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 127072
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8274/8tIl_5guGouEGJk37LwMV_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11295332
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8275/o9mxeziI3Td4Huqp07XYy_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11040748
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/xFNIaAI_-iPkD9wIck61P_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3670388
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8277/cGSP95V4CZu1BK3fP0MK9_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12175735
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8278/qs5RxkJnxptGmJ-ade5EX_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1511584
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab827a/02AOoOka5IjOlGEUCg44m_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 7793751
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab827b/1wtWXlTHdYWOHPqgIH6G3_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 247639
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab827b/Nh68LphIQt12SD9djMc-Z_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5388479
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab827c/jIYV9YFSbMMVAiIRgzDmj_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1770875
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Burned out abandoned heavy truck cab and chassis, blistered rusted metal, missing windshield, exposed blackened engine, buckled hood, charred tires, realistic scorched apocalypse vehicle wreck, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "city-tenement": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.497Z",
+      "input": {
+        "prompt": "Detailed five story New York red brick tenement building, rectangular footprint, front facade with recessed dark windows and stone lintels, iron fire escapes, ground floor shuttered shops with dark green awnings, ornate cornice and flat accessible roof, weathered realistic architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d2f1-76a2-8bc8-6511a721819c",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d2f1-76a2-8bc8-6511a721819c",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d2f1-76a2-8bc8-6511a721819c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d2f1-76a2-8bc8-6511a721819c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82ee/Cnjh_LVKgGyoPw2VrNncY_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 12850068
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82f4/9UKVdOBTGt6Kez4BEvSjy_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 242528
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82ee/Cnjh_LVKgGyoPw2VrNncY_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 12850068
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ef/-cO-WXOL3cWaVfQhB6eOA_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 12553932
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82f2/IfeU8O14TfnWTSo0JIVqU_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3363883
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82f1/AOVyh6EooBQP68kl59-vm_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 13617894
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82f3/ZUHwITE_H0RP55ArKrj8G_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1364084
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82f5/CLDmjJYjmTn3n6JKydjw8_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8853142
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82f6/Ta2GibpFqGTAwEGmE7fVn_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 34447
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82f7/qNTt12ioyzxV0wnXES04E_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6705998
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82f8/Jyfry0_a2dYH4fkhAmx9m_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1834139
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed five story New York red brick tenement building, rectangular footprint, front facade with recessed dark windows and stone lintels, iron fire escapes, ground floor shuttered shops with dark green awnings, ornate cornice and flat accessible roof, weathered realistic architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "city-offices": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.679Z",
+      "input": {
+        "prompt": "Detailed six story early twentieth century limestone office building, rectangular narrow footprint, stone pilasters, rhythmic recessed dark windows, ground floor brass shopfront, stepped parapet cornice, flat roof with ducts, weathered realistic architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d36a-7b31-a7b0-72a06449290d",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d36a-7b31-a7b0-72a06449290d",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d36a-7b31-a7b0-72a06449290d/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d36a-7b31-a7b0-72a06449290d/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82ee/peVkZIEyGlvIoV2H-hk6v_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11732024
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82f3/CNTO9NhoxHJXrKHim4WfY_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 300130
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82ee/peVkZIEyGlvIoV2H-hk6v_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11732024
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ef/C-vAgrUfu9SyjA-qwy4gZ_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11569372
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82f1/XDAZueQWWQYe-q7tdbJ8Z_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3369211
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82f0/nKp-ncJ_CxdqWK8NXyxWw_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12594528
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82f2/4kQvAI-P0CbbqYL_RvdTH_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1407284
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82f4/_uYzaGwNmEM7CkpY2czOp_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8149635
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82f5/NH5mcd3QVFmxjJObP1nRc_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 25049
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82f6/wo3C-lWzoxjmB5UnbQ4q9_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6113872
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82f7/4yINabqCCnhTOG6TaHJKk_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1649104
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed six story early twentieth century limestone office building, rectangular narrow footprint, stone pilasters, rhythmic recessed dark windows, ground floor brass shopfront, stepped parapet cornice, flat roof with ducts, weathered realistic architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "suburb-cottage": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.775Z",
+      "input": {
+        "prompt": "Detailed American two story red brick suburban cottage, steep charcoal slate gable roofs and dormers, white trim, covered timber porch, red brick chimney, white framed dark windows, foundation and front steps, weathered realistic architecture, no garden or ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d39f-76e2-9116-b25c2d22be54",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d39f-76e2-9116-b25c2d22be54",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d39f-76e2-9116-b25c2d22be54/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d39f-76e2-9116-b25c2d22be54/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82ec/CdZMUN4zKxn1qH5Rhns7f_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 12177296
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82ee/hcFPVGzc-xAJng0-Dh4bR_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 213689
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82ec/CdZMUN4zKxn1qH5Rhns7f_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 12177296
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ed/V9Qlj9IqD0NozypNkCTOG_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 12115036
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82ed/paTq8cz69pC2TeIC3g0TN_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3335271
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82ed/GwbrjXsAQ8-zTpPhK6mLh_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 13118144
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82ee/5UOYDnuvfRpi_6RNcxTVg_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1391434
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82ef/azwaNY9_KUFlJk-9fG3Ll_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8604778
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82f1/7XI8LUbobR-qWWBM7DekI_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 20884
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82f1/_-Y08tmwe9eSqlGZq4gtt_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6542465
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82f2/iQUuM--wsQZyH9C8pFRxM_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1674875
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed American two story red brick suburban cottage, steep charcoal slate gable roofs and dormers, white trim, covered timber porch, red brick chimney, white framed dark windows, foundation and front steps, weathered realistic architecture, no garden or ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "country-barn-stone": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.861Z",
+      "input": {
+        "prompt": "Detailed old rural stone barn, long rectangular building of rough golden limestone, weathered wooden double doors and loft window, steep dark slate pitched roof with broken tiles, exposed oak beams, realistic agricultural architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d3ed-7070-b203-920c846e0ab6",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d3ed-7070-b203-920c846e0ab6",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d3ed-7070-b203-920c846e0ab6/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d3ed-7070-b203-920c846e0ab6/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82e9/IBE8z0PsI7i54Hv1qZwyh_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 10450160
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82eb/XJPNj2mZrj4aeOmFhlSoF_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 163436
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82e9/IBE8z0PsI7i54Hv1qZwyh_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 10450160
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/8-Lhf-68ZlsupokdWisoQ_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 10389404
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/-IUzzbTdDmeUM5YsSoiwO_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3414167
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/3zfJAhqCgyW_axRGCZNLU_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11241497
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82eb/jsOrhz43kEEEb_Jtep3QW_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1492334
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82eb/ELMjEW9QXwL_7wcDXCXRx_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 7808181
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82eb/cEhB47lCJ07l0_GCdcNlF_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 20423
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/yRCZaxxEOKpHLWwtbHLeh_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 5623892
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/hhHcg2FQYCHMcKInK0NfF_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1311612
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed old rural stone barn, long rectangular building of rough golden limestone, weathered wooden double doors and loft window, steep dark slate pitched roof with broken tiles, exposed oak beams, realistic agricultural architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "forest-cabin": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.909Z",
+      "input": {
+        "prompt": "Detailed abandoned woodland log cabin, interlocking weathered cedar logs, steep mossy shingled roof, stone chimney, dark glass windows, small covered porch on timber posts, stacked firewood beneath porch, realistic forest architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d439-7cb0-a8a5-d6771926d3b0",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d439-7cb0-a8a5-d6771926d3b0",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d439-7cb0-a8a5-d6771926d3b0/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d439-7cb0-a8a5-d6771926d3b0/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82ee/2YmxgT3a0CRxI04uLDJe-_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 10594636
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82f3/KRBMAs_xsVfkTBPH9c1qz_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 286601
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82ee/2YmxgT3a0CRxI04uLDJe-_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 10594636
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ef/dP5JXX0udnYzzHqesPw97_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 10672396
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82f1/b2sMA_rq4H2oagYVU3uba_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3052614
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82f0/PIrF35HDuAC9DuI-FbEqF_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 11346330
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82f2/tNpqrOOb-QsEpgaegmu_B_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1367734
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82f4/v0BkVut_bnEdyIUCNNrHV_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8329772
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82f5/TJgAGCQO4VFew6EiWLvdq_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 20908
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82f5/VlJS0TiK_rVaGoFJ2XLPj_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6040960
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82f6/va2xeWtWXkk6zAs2rf8sP_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1502723
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed abandoned woodland log cabin, interlocking weathered cedar logs, steep mossy shingled roof, stone chimney, dark glass windows, small covered porch on timber posts, stacked firewood beneath porch, realistic forest architecture, no ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "ash-ruin-arcade": {
+      "reserve": 2,
+      "model": "fal-ai/meshy/v6/text-to-3d",
+      "state": "complete",
+      "submitted": "2026-09-23T00:20:40.935Z",
+      "input": {
+        "prompt": "Detailed destroyed single story industrial factory ruin, long rectangular facade with broken arched openings, crumbled brick masonry piers, collapsed steel roof trusses, soot blackened stone and piles of concrete debris at base, scorched post apocalyptic architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "mode": "full",
+        "enable_pbr": true,
+        "target_polycount": 30000,
+        "should_remesh": true,
+        "seed": 32179
+      },
+      "status": "IN_QUEUE",
+      "request_id": "01a0cba2-d43e-72a0-b547-13aef8a3102d",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d43e-72a0-b547-13aef8a3102d",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d43e-72a0-b547-13aef8a3102d/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cba2-d43e-72a0-b547-13aef8a3102d/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab82ea/hqbBr1ssmDXfFM0E8OI96_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 11836052
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab82eb/m4AjKp6ZIOpoxl7YnLyC2_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 93223
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/hqbBr1ssmDXfFM0E8OI96_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 11836052
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/ZhEtEHK_Ve1Dm4GRL9S8R_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 11392716
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab82eb/uTns52VxSl6JeU2iyZ1OB_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 3664983
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab82ea/_vb4fEIwvepE_uNcUcaxr_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 12626036
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab82eb/Yi3bfrH0RyM_lFfFGEEIX_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 1443434
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/X9_GuyBULQ9AC8wEuTU_W_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8121950
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/mAohUCrYk2dYKL1jhOcqi_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 57031
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/zB3GgL_lSxenv9f1tGxMh_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6205702
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab82ec/rojtuk1539XS_SUX64H_J_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1461798
+            }
+          }
+        ],
+        "seed": 32179,
+        "prompt": "Detailed destroyed single story industrial factory ruin, long rectangular facade with broken arched openings, crumbled brick masonry piers, collapsed steel roof trusses, soot blackened stone and piles of concrete debris at base, scorched post apocalyptic architecture, no surrounding ground. Single isolated game asset, detailed physically based materials, coherent realistic proportions.",
+        "actual_prompt": null,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    }
+  }
+}

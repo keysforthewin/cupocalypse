@@ -1,0 +1,93 @@
+{
+  "revision": "quality2",
+  "ledgerReservedUSD": 58.15,
+  "additionalReservedUSD": 23.85,
+  "capUSD": 100,
+  "scoreRange": [
+    79.0,
+    81.8
+  ],
+  "aaaAccepted": false,
+  "assets": [
+    {
+      "file": "public/assets/bosses/grave-marshal.glb",
+      "sha256": "9c06ce8b93c8aae0f91591915bde3f5ae2aeb9f2c8f7954c5a8c45275b4c6a63",
+      "triangles": 209262,
+      "bytes": 17040996,
+      "joints": 13
+    },
+    {
+      "file": "public/assets/bosses/grave-marshal-lod.glb",
+      "sha256": "cc43dccb0f9cac8f8d25d792ac9e0314b0114f19213dba9fd7d05ffd63e87801",
+      "triangles": 40592,
+      "bytes": 4004052,
+      "joints": 13
+    },
+    {
+      "file": "public/assets/bosses/widow-of-the-salvo.glb",
+      "sha256": "2fed3a576e33cc1f0987c09c6eabd4cb6d8a0539e3d5ca89da9c933c4c1cc891",
+      "triangles": 209616,
+      "bytes": 16090192,
+      "joints": 20
+    },
+    {
+      "file": "public/assets/bosses/widow-of-the-salvo-lod.glb",
+      "sha256": "e092ce8e22ee89fdbe062fd29580fc344b460d063a7a978b0cf6ee2adbc22115",
+      "triangles": 40592,
+      "bytes": 3835564,
+      "joints": 20
+    },
+    {
+      "file": "public/assets/bosses/ossuary-engine.glb",
+      "sha256": "6330addb842d59ea61faa6935c606a878ae2d1a100e849516e8bba643366cb2e",
+      "triangles": 209508,
+      "bytes": 20968872,
+      "joints": 14
+    },
+    {
+      "file": "public/assets/bosses/ossuary-engine-lod.glb",
+      "sha256": "970e3c57ff9b6b09bd9004eeed53f495a520bec7233424fa7ea43fbd0fe1ff5a",
+      "triangles": 40592,
+      "bytes": 4914864,
+      "joints": 14
+    },
+    {
+      "file": "public/assets/bosses/seraph-of-the-wound.glb",
+      "sha256": "3299424a93cbeaf106e59a9066fd26cb95af15e79e3be0a1070eb8e7daecbc1f",
+      "triangles": 211149,
+      "bytes": 13622164,
+      "joints": 22
+    },
+    {
+      "file": "public/assets/bosses/seraph-of-the-wound-lod.glb",
+      "sha256": "a5f382fa8b54c1a62ca60b3ed591c4adddc749930f219e94c23c63125f589622",
+      "triangles": 40592,
+      "bytes": 3351064,
+      "joints": 22
+    },
+    {
+      "file": "public/assets/bosses/the-last-witness.glb",
+      "sha256": "6c7aa638e7fc6ae6cd526543dfd2b0ebc126b298aef9942e5eb336dc9c9cea66",
+      "triangles": 290786,
+      "bytes": 22642988,
+      "joints": 26
+    },
+    {
+      "file": "public/assets/bosses/the-last-witness-lod.glb",
+      "sha256": "0d50bf61719003a6adcc89a7b270245c4d0b7170ad70c702bb0ed2e2fb7d4012",
+      "triangles": 40609,
+      "bytes": 4211332,
+      "joints": 26
+    }
+  ],
+  "verification": {
+    "testsPassed": 154,
+    "productionBuild": "passed",
+    "assetValidation": "10 GLBs passed",
+    "qualitySwitchAndFallback": "passed",
+    "highArenaCaptures": 5,
+    "unexpectedArenaErrors": 0,
+    "securityScan": "passed",
+    "aaaAcceptance": "open"
+  }
+}

@@ -27,7 +27,7 @@ test("every pickup order composes with the existing weapon through actual drop c
         s.drops.push({
           id: s.id++,
           x: mode === "Mirror" ? -2.45 : 0,
-          z: 0.2,
+          z: s.crowd.push + 0.2,
           kind,
         });
         s.update({ x: 0 });

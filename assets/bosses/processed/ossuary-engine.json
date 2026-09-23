@@ -1,0 +1,46 @@
+{
+  "id": "ossuary-engine",
+  "blender": "5.2.0 LTS",
+  "height": 28,
+  "span": 26,
+  "bones": 14,
+  "trianglesHigh": 209508,
+  "trianglesPerformance": 40592,
+  "clips": {
+    "idle": {
+      "duration": 4.0,
+      "release": null
+    },
+    "entrance": {
+      "duration": 2.0,
+      "release": null
+    },
+    "transform": {
+      "duration": 2.0,
+      "release": null
+    },
+    "stagger": {
+      "duration": 2.4,
+      "release": null
+    },
+    "surgery": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "restraint": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "rivets": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "death": {
+      "duration": 6.0,
+      "release": null
+    }
+  },
+  "qualityPass": "q2",
+  "source": "candidates/ossuary-engine-q2-1.glb",
+  "triangleCountBasis": "Validated shipped GLB"
+}

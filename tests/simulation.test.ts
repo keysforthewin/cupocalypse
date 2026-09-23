@@ -110,7 +110,7 @@ test("Bloater chains and Carrier cancellation", () => {
   for (let i = 0; i < 500; i++) s.update({ x: 3 });
   assert.equal(s.enemies.filter((e) => e.kind === "Crawler").length, 0);
 });
-test("each boss transitions, clears arena on kill, and contact grants no kill reward", () => {
+test("each boss transitions, clears arena on kill, and holds its mandatory arena", () => {
   for (const kind of BOSSES) {
     const s = clean();
     s.bossActive = true;
@@ -118,7 +118,11 @@ test("each boss transitions, clears arena on kill, and contact grants no kill re
     s.damageEnemy(e, e.armor + e.hp * 0.6);
     s.update({ x: 0 });
     assert.equal(e.phase, 2);
-    s.damageEnemy(e, 10000);
+    for (let phase = 0; phase < 3 && !e.dead; phase++) {
+      s.tick = Math.max(s.tick, e.phaseUntil ?? 0);
+      s.damageEnemy(e, 1e9);
+      if (!e.dead) s.update({ x: 0 });
+    }
     assert.equal(s.bossKills, 1);
     assert.equal(s.bossActive, false);
     const c = clean();
@@ -126,9 +130,10 @@ test("each boss transitions, clears arena on kill, and contact grants no kill re
     c.shield = 20;
     const boss = c.spawnEnemy(kind, 0, 0.5, true)!;
     c.fireClock = 100;
-    const loss = Math.ceil(c.contactDamage(boss) - 20);
     c.update({ x: 0 });
-    assert.equal(c.army, 600 - loss);
+    assert.equal(c.army, 600);
+    assert.equal(boss.dead, false);
+    assert.equal(c.bossIndex, 0);
     assert.equal(c.bossKills, 0);
   }
 });

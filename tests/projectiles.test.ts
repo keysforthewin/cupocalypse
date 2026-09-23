@@ -31,7 +31,7 @@ test("every gun pickup order retains and fires the entire arsenal; duplicates le
   for (const order of pickupOrders([...GUNS])) {
     const s = quiet();
     for (const kind of order) {
-      s.drops.push({ id: s.id++, kind, x: 0, z: 0.1 });
+      s.drops.push({ id: s.id++, kind, x: 0, z: s.crowd.push + 0.1 });
       s.update({ x: 0 });
     }
     s.bullets.forEach((b) => (b.active = false));
@@ -114,7 +114,7 @@ test("shells have a visible arc, detonate after flight, and splash damages nearb
   for (let i = 0; i < 95; i++) real.s.update({ x: 0 });
   assert.ok(real.s.impacts.some((e) => e.active && e.kind === "mortar"));
 });
-test("curved sweeps hit enemies and gates intercept explosive damage", () => {
+test("curved sweeps hit enemies and explosives travel through gates before detonating", () => {
   const { s, b } = shot("cursor");
   s.fireClock = 999;
   s.gunClocks.cursor = 999;
@@ -142,9 +142,13 @@ test("curved sweeps hit enemies and gates intercept explosive damage", () => {
   q.s.spawnEnemy("Walker", -2, 6);
   q.s.enemies[0].hp = 100;
   q.s.update({ x: 0 });
-  assert.equal(q.b.active, false);
+  assert.equal(q.b.active, true);
   assert.equal(q.s.enemies[0].hp, 100);
-  assert.ok(q.s.gates[0].hitsA > 0);
+  assert.equal(q.s.gates[0].hitsA, q.b.gatePower);
+  for (let i = 0; i < 5 && q.b.active; i++) q.s.update({ x: 0 });
+  assert.equal(q.b.active, false);
+  assert.ok(q.s.enemies[0].hp < 100);
+  assert.equal(q.s.gates[0].hitsA, q.b.gatePower);
 });
 test("maximum simultaneous Mirror arsenal remains below the pool limit and preserves every firing cadence", () => {
   const s = quiet("Mirror");
@@ -176,7 +180,11 @@ test("all modes replay acquired guns, curved flight, impacts, and separate quant
     const a = new Simulation("arsenal-replay", mode);
     for (let i = 0; i < 10000 && !a.over; i++)
       a.update({
-        x: a.drops.length ? a.drops[0].x : bot(a),
+        x: a.drops.length
+          ? mode === "Mirror"
+            ? 2 * (2.45 - Math.abs(a.drops[0].x))
+            : a.drops[0].x
+          : bot(a),
         aim: Math.sin(i / 40) * 4.4,
       });
     assert.ok(Object.values(a.guns).some((v) => v > 0));

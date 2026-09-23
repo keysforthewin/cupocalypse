@@ -1,0 +1,3081 @@
+{
+  "cap": 100,
+  "currency": "USD",
+  "note": "User-authorized cap; reserves are conservative estimates, not invoices.",
+  "jobs": {
+    "grave-marshal-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Headless colossal military executioner, massive asymmetrical cracked concrete command bunker shoulder armor, exposed rebar, dark crimson tendons, blackened steel plates, two thick planted legs with combat boots, powerful long arms separated from torso, right hand holding a giant rectangular blast door cleaver pointing down. Hollow throat cavity, disciplined menacing silhouette. No pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79131
+      },
+      "reserve": 0.1,
+      "state": "failed",
+      "submitted": "2026-09-23T03:52:15.518Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc64-88e2-7951-a1b2-0e4dfd824862",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc64-88e2-7951-a1b2-0e4dfd824862",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc64-88e2-7951-a1b2-0e4dfd824862/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc64-88e2-7951-a1b2-0e4dfd824862/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "error": "Error: Provider HTTP 422: {\"detail\":[{\"loc\":[\"body\",\"prompt\"],\"msg\":\"The content could not be processed because it contained material flagged by a content checker.\",\"type\":\"content_policy_violation\",\"url\":\"https://docs.fal.ai/"
+    },
+    "grave-marshal-concept-r2-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Colossal fictional biomechanical military sentinel with an empty neck socket, massive asymmetrical cracked concrete command bunker shoulder armor, exposed rebar, dark red biomechanical cables, blackened steel plates, two thick planted legs with combat boots, powerful long arms separated from torso, right hand holding a giant rectangular blast door cleaver pointing down. Hollow armored neck cavity, disciplined menacing silhouette. No pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79131
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:54:24.786Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc66-81c4-77e0-8d63-839e7374a87b",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-81c4-77e0-8d63-839e7374a87b",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-81c4-77e0-8d63-839e7374a87b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-81c4-77e0-8d63-839e7374a87b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87bf/NEMaNbgZ92TdiZTpfv5QD_SCGl8j9a.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "NEMaNbgZ92TdiZTpfv5QD_SCGl8j9a.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79131
+      }
+    },
+    "grave-marshal-concept-r2-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Colossal fictional biomechanical military sentinel with an empty neck socket, massive asymmetrical cracked concrete command bunker shoulder armor, exposed rebar, dark red biomechanical cables, blackened steel plates, two thick planted legs with combat boots, powerful long arms separated from torso, right hand holding a giant rectangular blast door cleaver pointing down. Hollow armored neck cavity, disciplined menacing silhouette. No pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79132
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:54:41.977Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc66-c3df-75f2-b2ab-22bbf32cc336",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-c3df-75f2-b2ab-22bbf32cc336",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-c3df-75f2-b2ab-22bbf32cc336/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-c3df-75f2-b2ab-22bbf32cc336/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c1/HRLij_C7yYdaMsiFZTllt_0t4HltqT.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "HRLij_C7yYdaMsiFZTllt_0t4HltqT.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79132
+      }
+    },
+    "widow-of-the-salvo-concept-r2-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Enormous alien siege arthropod, six clearly separated long jointed legs, high arched ivory porcelain carapace, open rib cage containing three upward curved organic mortar barrels, suspended red mechanical pressure chamber abdomen, dangling weathered military plating. Forward facing central blind insect head, coherent bilaterally symmetric anatomy. Legs spread and visible, no ground or pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79144
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:54:53.551Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc66-f11d-76f3-8730-f14cefe5a8d5",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-f11d-76f3-8730-f14cefe5a8d5",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-f11d-76f3-8730-f14cefe5a8d5/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc66-f11d-76f3-8730-f14cefe5a8d5/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c2/BjXVh1AK3zlnnqkGbg-47_ofw8O9rK.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "BjXVh1AK3zlnnqkGbg-47_ofw8O9rK.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79144
+      }
+    },
+    "widow-of-the-salvo-concept-r2-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Enormous alien siege arthropod, six clearly separated long jointed legs, high arched ivory porcelain carapace, open rib cage containing three upward curved organic mortar barrels, suspended red mechanical pressure chamber abdomen, dangling weathered military plating. Forward facing central blind insect head, coherent bilaterally symmetric anatomy. Legs spread and visible, no ground or pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79145
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:55:10.265Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc67-3264-7613-b2a8-6201154a0cc6",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-3264-7613-b2a8-6201154a0cc6",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-3264-7613-b2a8-6201154a0cc6/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-3264-7613-b2a8-6201154a0cc6/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c4/vlUfVXoZeEPYY1udKllfT_wy8ZXdt0.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "vlUfVXoZeEPYY1udKllfT_wy8ZXdt0.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79145
+      }
+    },
+    "ossuary-engine-concept-r2-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Colossal walking abandoned surgical hospital tower monster, tall exposed ivory rib cage architecture, four enormous jointed skeletal support arms reaching outward and downward, suspended empty surgical beds, dangling cables, broken floodlights, pale ceramic surgical panels, tiny red alien pilot inside central chest. Biomechanical anatomy, green oxidized steel, uncanny precise mechanical silhouette. No pedestal or surrounding buildings. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79157
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:55:32.343Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc67-88a3-7cb3-9218-e422afb5e21d",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-88a3-7cb3-9218-e422afb5e21d",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-88a3-7cb3-9218-e422afb5e21d/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-88a3-7cb3-9218-e422afb5e21d/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c6/ZDbe4G4FHepApiQJS6cK__5FgrCrQk.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "ZDbe4G4FHepApiQJS6cK__5FgrCrQk.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79157
+      }
+    },
+    "ossuary-engine-concept-r2-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Colossal walking abandoned surgical hospital tower monster, tall exposed ivory rib cage architecture, four enormous jointed skeletal support arms reaching outward and downward, suspended empty surgical beds, dangling cables, broken floodlights, pale ceramic surgical panels, tiny red alien pilot inside central chest. Biomechanical anatomy, green oxidized steel, uncanny precise mechanical silhouette. No pedestal or surrounding buildings. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79158
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:55:49.242Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc67-caa6-7010-abae-a8f674b722fc",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-caa6-7010-abae-a8f674b722fc",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-caa6-7010-abae-a8f674b722fc/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc67-caa6-7010-abae-a8f674b722fc/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c8/F1qq-6aa6LDkMaG1ZRDpN_ok6Z7pXj.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "F1qq-6aa6LDkMaG1ZRDpN_ok6Z7pXj.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79158
+      }
+    },
+    "seraph-of-the-wound-concept-r2-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Monumental inverted alien seraph parasite floating with three enormous fully spread torn bat membrane wings, two lateral wings and one crown wing, intricate branching wing bones, violet patterned membranes with pale cartilage edges, folded narrow inverted central torso surrounding a dark empty oval cavity, long talons dangling down, rows of small eyes embedded in wings. Original elegant cosmic horror anatomy. Entire silhouette visible, no pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79170
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:56:06.094Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc68-0c79-7540-95df-131905d24f74",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-0c79-7540-95df-131905d24f74",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-0c79-7540-95df-131905d24f74/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-0c79-7540-95df-131905d24f74/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87c9/LgGij4WDJeyT370EIpLeF_B0oT1LAk.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "LgGij4WDJeyT370EIpLeF_B0oT1LAk.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79170
+      }
+    },
+    "seraph-of-the-wound-concept-r2-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Monumental inverted alien seraph parasite floating with three enormous fully spread torn bat membrane wings, two lateral wings and one crown wing, intricate branching wing bones, violet patterned membranes with pale cartilage edges, folded narrow inverted central torso surrounding a dark empty oval cavity, long talons dangling down, rows of small eyes embedded in wings. Original elegant cosmic horror anatomy. Entire silhouette visible, no pedestal. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79171
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:56:22.853Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc68-4df6-74c0-a292-39c0446906a0",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-4df6-74c0-a292-39c0446906a0",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-4df6-74c0-a292-39c0446906a0/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-4df6-74c0-a292-39c0446906a0/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87cb/1xBDuKuS6OOQuGTo1q-SV_FwEQxKbd.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "1xBDuKuS6OOQuGTo1q-SV_FwEQxKbd.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79171
+      }
+    },
+    "the-last-witness-concept-r2-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Apocalyptic kneeling faceless cosmic colossus, enormous two hands with five long individually separated fingers each resting wide apart, towering hunched torso of ribbed pale bone and charcoal tendons, head formed from three nested concentric blank ivory masks surrounding a deep black circular opening, opening rib cage with small amber heart core. Symmetric monumental anatomy, weathered stone-like skin, gold scar seams, mysterious monumental presence. Whole body and fingers visible, no ground pedestal or buildings. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79183
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:56:34.456Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc68-7b4a-70d2-9f8b-d53ea936dec7",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-7b4a-70d2-9f8b-d53ea936dec7",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-7b4a-70d2-9f8b-d53ea936dec7/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-7b4a-70d2-9f8b-d53ea936dec7/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87cc/hkwouWA-4JyVmU9mGQUs7_g8oGdN9Y.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "hkwouWA-4JyVmU9mGQUs7_g8oGdN9Y.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79183
+      }
+    },
+    "the-last-witness-concept-r2-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. Apocalyptic kneeling faceless cosmic colossus, enormous two hands with five long individually separated fingers each resting wide apart, towering hunched torso of ribbed pale bone and charcoal tendons, head formed from three nested concentric blank ivory masks surrounding a deep black circular opening, opening rib cage with small amber heart core. Symmetric monumental anatomy, weathered stone-like skin, gold scar seams, mysterious monumental presence. Whole body and fingers visible, no ground pedestal or buildings. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79184
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T03:56:56.573Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc68-d1a6-75d2-964e-9eb0cb6a3e96",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-d1a6-75d2-964e-9eb0cb6a3e96",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-d1a6-75d2-964e-9eb0cb6a3e96/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc68-d1a6-75d2-964e-9eb0cb6a3e96/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab87cf/xdHOS1x6M60U0vbKuOF_o_3TzeBCFx.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "xdHOS1x6M60U0vbKuOF_o_3TzeBCFx.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79184
+      }
+    },
+    "grave-marshal-model-v1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab87bf/NEMaNbgZ92TdiZTpfv5QD_SCGl8j9a.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "off",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T03:58:11.739Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc69-f7fd-7fd2-b574-7fa51f66de65",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f7fd-7fd2-b574-7fa51f66de65",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f7fd-7fd2-b574-7fa51f66de65/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f7fd-7fd2-b574-7fa51f66de65/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8801/d8gPcGQ3eTmlfD_SbXXxA_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 20664336
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8803/xZSQwh-G43HzOJRI8-uxn_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 148145
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8801/d8gPcGQ3eTmlfD_SbXXxA_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 20664336
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8801/chVHjcfD7OPjzyccRvVyg_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 20763484
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8802/cfggSGaRR-jeX9VMYpap8_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 11276240
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8802/44RpxFqhDDS_8AW7rKygb_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 22668570
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8803/IPA7Vs5_awC6VAHGb5gRt_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 5176134
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8803/KPPuMTFGKG3vFyCP-pyk-_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9209065
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8803/rllMU5HJGxmVqmGHMA3XW_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 1743493
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8804/Dc76GUHqwVTpe82AJH74D_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7653049
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8804/LrlnVrmVh3-W6lDwKAceZ_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1916607
+            }
+          }
+        ],
+        "seed": 153690596,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "widow-of-the-salvo-model-v1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab87c2/BjXVh1AK3zlnnqkGbg-47_ofw8O9rK.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T03:58:11.762Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc69-f81a-78c0-a84f-67f3c2044871",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81a-78c0-a84f-67f3c2044871",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81a-78c0-a84f-67f3c2044871/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81a-78c0-a84f-67f3c2044871/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8805/o760Y5GvYESFlEUjCDX3L_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 20564892
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8806/fRerAHdlu_L-cuT9g5PDD_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 174222
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8805/o760Y5GvYESFlEUjCDX3L_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 20564892
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8805/5PxKuq4gG_Y47elDEJDcJ_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 20032892
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8805/Bk9SXI0tBXRaFMtoYZvLE_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 11522329
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8805/-Lcguaz0Ne25vzBPPg5Qo_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 22392490
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8806/vZNiGkffU1lvVKcHkfgvT_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 5135634
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8806/J-GGpoazdO6JLcQWW0jpW_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8183386
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8806/sINOFtsRF10cElbf7SRzq_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 1519441
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8806/VpvTc7PAE1eMibWxSB1St_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7131677
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8806/NEdStvzlcbO2yghCj3L3t_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1713444
+            }
+          }
+        ],
+        "seed": 1278022179,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "ossuary-engine-model-v1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab87c6/ZDbe4G4FHepApiQJS6cK__5FgrCrQk.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T03:58:11.763Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc69-f809-7cf1-8cb6-acbdef583325",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f809-7cf1-8cb6-acbdef583325",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f809-7cf1-8cb6-acbdef583325/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f809-7cf1-8cb6-acbdef583325/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8801/ErpZUaY7aUTID9PUbOIzo_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 22520336
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8803/nx7yT41VrsNtsXIRr-CAt_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 176917
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8801/ErpZUaY7aUTID9PUbOIzo_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 22520336
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8802/_aPfutDsgsg9N4u0qyF2S_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 21404764
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8802/n2gIfTcaXl3QDm2FoIY1P_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 12050677
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8802/J6_Neo6nqxWerO9Hby0kM_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 24433089
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8803/dt1aCVrmonwPEE5M-WpZI_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 5145134
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8803/oJ5vi9P1xdDEYTTnOFisj_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8781557
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8803/J7iN9izZwWwZwLKbsTQik_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 339690
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8803/HMtaQ_JKt3V8qOBqCqCIV_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7861951
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8804/9XNXA4l04oi-c3BF1Vuca_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1808190
+            }
+          }
+        ],
+        "seed": 1785381262,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "seraph-of-the-wound-model-v1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab87c9/LgGij4WDJeyT370EIpLeF_B0oT1LAk.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T03:58:11.765Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc69-f81d-7963-b6fc-13febefff224",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81d-7963-b6fc-13febefff224",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81d-7963-b6fc-13febefff224/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81d-7963-b6fc-13febefff224/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab87fe/Vvq-drj1NuYhSyBK1XF9o_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 19865068
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8800/__G_Il8Q2Tt1ZX7QQ2Wf3_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 153981
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab87fe/Vvq-drj1NuYhSyBK1XF9o_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 19865068
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab87fe/TSi0VFMQlO0A_UD8Ul0--_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 19849276
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab87ff/J4dawKRI1H-cQmv2_VFpI_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 10917996
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab87ff/MwUa6UZi0Af6Im_og8hmg_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 21231565
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab87ff/4KExB7j4LlyKow-3XnONb_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 5194684
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8800/JilCzS3IfGO4P9qDIw1Sv_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9151648
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8800/ITg5bZ8wcxT4NPWtWJuN5_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 39862
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8800/lAtq38H3V1F5eOiiT3GXv_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7660049
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8801/6wfABpSQZSWBfaCcYc5OK_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1671139
+            }
+          }
+        ],
+        "seed": 2091903907,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "the-last-witness-model-v1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab87cf/xdHOS1x6M60U0vbKuOF_o_3TzeBCFx.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "failed",
+      "submitted": "2026-09-23T03:58:11.765Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc69-f81c-73e0-a3ae-ea13c6f2a188",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81c-73e0-a3ae-ea13c6f2a188",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81c-73e0-a3ae-ea13c6f2a188/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc69-f81c-73e0-a3ae-ea13c6f2a188/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "error": "Error: Provider HTTP 422: {\"detail\":[{\"loc\":[\"body\"],\"msg\":\"The content could not be processed because it contained material flagged by a content checker.\",\"type\":\"content_policy_violation\",\"url\":\"https://docs.fal.ai/errors#co"
+    },
+    "seraph-of-the-wound-entrance": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. A threatening arrival roar swelling from silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:05:38.915Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc70-ca19-7531-94b1-fde7c9dc865f",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-ca19-7531-94b1-fde7c9dc865f",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-ca19-7531-94b1-fde7c9dc865f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-ca19-7531-94b1-fde7c9dc865f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8802/qv0iXNP9gopaqk0DsxMb1_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "seraph-of-the-wound-windup": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. An anticipatory inhalation building tension without impact. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:05:45.508Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc70-e3cc-7f02-acc5-22dd209bbb24",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-e3cc-7f02-acc5-22dd209bbb24",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-e3cc-7f02-acc5-22dd209bbb24/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-e3cc-7f02-acc5-22dd209bbb24/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8802/SPv0uV5h-xwi6YobAFjsr_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "seraph-of-the-wound-attack": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. One forceful weapon release. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:05:51.833Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc70-fc88-7050-b5a2-7c9579496ab4",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-fc88-7050-b5a2-7c9579496ab4",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-fc88-7050-b5a2-7c9579496ab4/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc70-fc88-7050-b5a2-7c9579496ab4/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8803/WG6coJEX514lNfA6lyjTG_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "seraph-of-the-wound-impact": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. One massive physical impact followed by debris. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 3,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:05:57.618Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-131f-7da3-8746-badc6b5962b7",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-131f-7da3-8746-badc6b5962b7",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-131f-7da3-8746-badc6b5962b7/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-131f-7da3-8746-badc6b5962b7/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8803/lnxKbULxHI-96tF1UefI3_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 48945
+        }
+      }
+    },
+    "seraph-of-the-wound-phase": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. A violent anatomical transformation and rising roar. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:03.518Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-2a34-75b3-83b1-57382a09a534",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-2a34-75b3-83b1-57382a09a534",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-2a34-75b3-83b1-57382a09a534/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-2a34-75b3-83b1-57382a09a534/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8804/oVxmGcBrmRjp46-1NiMnE_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "seraph-of-the-wound-death": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir. A huge dying collapse dissipating into silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 6,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:10.056Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-43b4-7f20-b07f-5d2083f80e43",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43b4-7f20-b07f-5d2083f80e43",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43b4-7f20-b07f-5d2083f80e43/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43b4-7f20-b07f-5d2083f80e43/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8805/ROIrtidiJAbn17MprVE3Y_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 97010
+        }
+      }
+    },
+    "ossuary-engine-entrance": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. A threatening arrival roar swelling from silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:10.123Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-43f7-7272-8f79-1f3078827896",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43f7-7272-8f79-1f3078827896",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43f7-7272-8f79-1f3078827896/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-43f7-7272-8f79-1f3078827896/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8805/2nd-9_Q6Hf52NAAYPUTRP_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "grave-marshal-entrance": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. A threatening arrival roar swelling from silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:14.576Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-555a-71e3-bc7e-fa920b152cf7",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-555a-71e3-bc7e-fa920b152cf7",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-555a-71e3-bc7e-fa920b152cf7/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-555a-71e3-bc7e-fa920b152cf7/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8805/ptBAXrL0vBY-l0v2SwjYy_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "ossuary-engine-windup": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. An anticipatory inhalation building tension without impact. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:15.870Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-5a68-72c1-9913-7d970b2f8a44",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-5a68-72c1-9913-7d970b2f8a44",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-5a68-72c1-9913-7d970b2f8a44/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-5a68-72c1-9913-7d970b2f8a44/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8805/Yha1BauNxjfHee3cUZnWu_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "grave-marshal-windup": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. An anticipatory inhalation building tension without impact. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:20.389Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-6c1a-7d93-8a62-f523d5434085",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-6c1a-7d93-8a62-f523d5434085",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-6c1a-7d93-8a62-f523d5434085/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-6c1a-7d93-8a62-f523d5434085/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8806/tHy-wdCVazZ_ffPLpTlDM_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "ossuary-engine-attack": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. One forceful weapon release. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:21.501Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-706f-7730-a794-821368a1c8d0",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-706f-7730-a794-821368a1c8d0",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-706f-7730-a794-821368a1c8d0/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-706f-7730-a794-821368a1c8d0/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8806/3mFEdBzbL3F-PxH9N6LZ6_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "grave-marshal-attack": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. One forceful weapon release. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:26.278Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-830b-7b62-8461-e666fd0243f2",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-830b-7b62-8461-e666fd0243f2",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-830b-7b62-8461-e666fd0243f2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-830b-7b62-8461-e666fd0243f2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8806/wrbIUqCSWoVz-_gPVF3ax_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "ossuary-engine-impact": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. One massive physical impact followed by debris. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 3,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:27.319Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-872c-7a22-9c8a-4021532792bf",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-872c-7a22-9c8a-4021532792bf",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-872c-7a22-9c8a-4021532792bf/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-872c-7a22-9c8a-4021532792bf/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8807/vLPNPhKv8omwCXZwvc8ab_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 48945
+        }
+      }
+    },
+    "grave-marshal-impact": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. One massive physical impact followed by debris. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 3,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:32.497Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-9b57-7593-82ca-a600ab77c71e",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9b57-7593-82ca-a600ab77c71e",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9b57-7593-82ca-a600ab77c71e/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9b57-7593-82ca-a600ab77c71e/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8807/7ZHn5lBLATFksrgwju-Vv_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 48945
+        }
+      }
+    },
+    "ossuary-engine-phase": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. A violent anatomical transformation and rising roar. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:33.119Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-9dc7-7171-a143-4f8aed4e5e61",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9dc7-7171-a143-4f8aed4e5e61",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9dc7-7171-a143-4f8aed4e5e61/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-9dc7-7171-a143-4f8aed4e5e61/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8807/2GNYKSuD4imeaBg_BSnm8_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "widow-of-the-salvo-entrance": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. A threatening arrival roar swelling from silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:36.512Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-ab0b-7972-9fba-c4d026f76e7c",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ab0b-7972-9fba-c4d026f76e7c",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ab0b-7972-9fba-c4d026f76e7c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ab0b-7972-9fba-c4d026f76e7c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8807/39U_2ssq_8erGNkG2Pl2-_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "grave-marshal-phase": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. A violent anatomical transformation and rising roar. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:38.542Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-b2f3-7cc3-99a7-bd30537b29c2",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b2f3-7cc3-99a7-bd30537b29c2",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b2f3-7cc3-99a7-bd30537b29c2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b2f3-7cc3-99a7-bd30537b29c2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8808/ZYy-wqrRYMM5QFPRtnYj4_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "ossuary-engine-death": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice. A huge dying collapse dissipating into silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 6,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:39.390Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-b644-7c61-886e-e727fed679af",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b644-7c61-886e-e727fed679af",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b644-7c61-886e-e727fed679af/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-b644-7c61-886e-e727fed679af/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8808/k9J28uDPyVmMZwsOW36Vk_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 97010
+        }
+      }
+    },
+    "widow-of-the-salvo-windup": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. An anticipatory inhalation building tension without impact. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:42.514Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-c27d-7d21-a9d4-cf7ec72fde6a",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-c27d-7d21-a9d4-cf7ec72fde6a",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-c27d-7d21-a9d4-cf7ec72fde6a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-c27d-7d21-a9d4-cf7ec72fde6a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8808/NGeoKXUZDuIGjWmKTKFi4_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "grave-marshal-death": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling. A huge dying collapse dissipating into silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 6,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:44.614Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-caab-7c60-aad2-91afdd85920c",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-caab-7c60-aad2-91afdd85920c",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-caab-7c60-aad2-91afdd85920c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-caab-7c60-aad2-91afdd85920c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8808/fQvV1odLOvhVFQZywUlVM_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 97010
+        }
+      }
+    },
+    "widow-of-the-salvo-attack": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. One forceful weapon release. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:53.336Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc71-ecc2-7e92-8fb5-1c3c72d1273e",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ecc2-7e92-8fb5-1c3c72d1273e",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ecc2-7e92-8fb5-1c3c72d1273e/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc71-ecc2-7e92-8fb5-1c3c72d1273e/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8809/oylg_DUCIJuUWHOnK8yhD_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "widow-of-the-salvo-impact": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. One massive physical impact followed by debris. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 3,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:06:59.351Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc72-0444-79a1-9166-e1a4b589c683",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-0444-79a1-9166-e1a4b589c683",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-0444-79a1-9166-e1a4b589c683/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-0444-79a1-9166-e1a4b589c683/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab880a/JGGdFsN5DKAxBoOWkRRk4_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 48945
+        }
+      }
+    },
+    "widow-of-the-salvo-phase": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. A violent anatomical transformation and rising roar. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:07:05.958Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc72-1e0c-7a51-abbd-ddb4a900b4e6",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-1e0c-7a51-abbd-ddb4a900b4e6",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-1e0c-7a51-abbd-ddb4a900b4e6/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-1e0c-7a51-abbd-ddb4a900b4e6/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab880a/pQqvAM7tRgIk6iFJHCmlo_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "widow-of-the-salvo-death": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle. A huge dying collapse dissipating into silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 6,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:07:12.248Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc72-36a4-7e51-8a6d-579b2c3307dc",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-36a4-7e51-8a6d-579b2c3307dc",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-36a4-7e51-8a6d-579b2c3307dc/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc72-36a4-7e51-8a6d-579b2c3307dc/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab880b/fhwczHUp50jydIaBfXPrN_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 97010
+        }
+      }
+    },
+    "the-last-witness-concept-r3-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. A monumental fully armored robotic colossus kneeling, made entirely of solid weathered ivory ceramic armor, dark steel and gold machine cables. Broad layered chest armor with small recessed amber reactor. Enormous armored hands with five long separated mechanical fingers planted widely apart. Head is an elaborate assembly of three concentric blank ceramic masks opening around a dark circular camera aperture. Gigantic hunched silhouette, ancient machine deity, ornamental layered shoulder plates and knee armor. No human skin, no organic anatomy, no bare body, no pedestal. Entire figure and fingers visible. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. Restrained composition, exceptionally strong primary silhouette. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79183
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T04:08:04.162Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc73-0276-7c32-ab39-e97d7465c219",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-0276-7c32-ab39-e97d7465c219",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-0276-7c32-ab39-e97d7465c219/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-0276-7c32-ab39-e97d7465c219/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8811/7sxCwhOci47k8aPRP5dgh_fMAKiF00.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "7sxCwhOci47k8aPRP5dgh_fMAKiF00.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79183
+      }
+    },
+    "the-last-witness-concept-r3-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Premium dark science fiction creature production concept, highly detailed realistic 3D sculpture with physically based surfaces. A monumental fully armored robotic colossus kneeling, made entirely of solid weathered ivory ceramic armor, dark steel and gold machine cables. Broad layered chest armor with small recessed amber reactor. Enormous armored hands with five long separated mechanical fingers planted widely apart. Head is an elaborate assembly of three concentric blank ceramic masks opening around a dark circular camera aperture. Gigantic hunched silhouette, ancient machine deity, ornamental layered shoulder plates and knee armor. No human skin, no organic anatomy, no bare body, no pedestal. Entire figure and fingers visible. Front three quarter view, full body centered with generous margin, neutral gray studio background, soft broad studio key and subtle rim light, sharp readable anatomy and joints. More pronounced asymmetry and weathering, intricate tertiary surface details. No text, no labels, no watermark, no cropping, no other creatures.",
+        "image_size": {
+          "width": 1024,
+          "height": 1024
+        },
+        "seed": 79184
+      },
+      "reserve": 0.1,
+      "state": "complete",
+      "submitted": "2026-09-23T04:08:20.704Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc73-420b-7172-b393-7685cb4ef407",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-420b-7172-b393-7685cb4ef407",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-420b-7172-b393-7685cb4ef407/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cc73-420b-7172-b393-7685cb4ef407/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8813/4lRA8eG7qoan584XEp5AY_qZSWET7w.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "4lRA8eG7qoan584XEp5AY_qZSWET7w.jpg",
+            "file_size": null,
+            "width": 1024,
+            "height": 1024
+          }
+        ],
+        "seed": 79184
+      }
+    },
+    "the-last-witness-model-r3": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8811/7sxCwhOci47k8aPRP5dgh_fMAKiF00.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 100000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T04:10:30.934Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc75-3f72-7182-9526-0fb5e7a65ec8",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc75-3f72-7182-9526-0fb5e7a65ec8",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc75-3f72-7182-9526-0fb5e7a65ec8/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cc75-3f72-7182-9526-0fb5e7a65ec8/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab883a/brmo9m2slIsH5XgaswIrb_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 21788728
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab883b/rmujzTpocISYC-iu6H7rg_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 236388
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab883a/brmo9m2slIsH5XgaswIrb_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 21788728
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab883a/H4JfLhWOm1zv_Y_yC3tE6_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 21187308
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab883b/O8omUAvpFAkZovJRmmYCB_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 11429066
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab883b/CcLw4AKzHF4sI1P4fXALJ_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 23281719
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab883b/FiRKLj7olpatHp9Ub2BLY_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 5185384
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab883b/Acqpm-lwZP0MkXufiki3I_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8810077
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab883c/g4Ev6um2Sbn4PFe-7dlC9_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 1107221
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab883c/gk5xz6UBfTtsBS1UnDZ3K_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7889543
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab883c/QzZ8quS9rKM6cIdpQRGv2_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1953968
+            }
+          }
+        ],
+        "seed": 1918227943,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "the-last-witness-entrance": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. A threatening arrival roar swelling from silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:15:33.304Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc79-dc74-7ee3-a2ac-99035c20b109",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-dc74-7ee3-a2ac-99035c20b109",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-dc74-7ee3-a2ac-99035c20b109/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-dc74-7ee3-a2ac-99035c20b109/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab883d/fptAnbuubICd0n-MIlnSY_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "the-last-witness-windup": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. An anticipatory inhalation building tension without impact. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:15:40.079Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc79-f658-7770-8ecb-5c2c24077329",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-f658-7770-8ecb-5c2c24077329",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-f658-7770-8ecb-5c2c24077329/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc79-f658-7770-8ecb-5c2c24077329/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab883e/VJBGc5GQwTU1ywz1coBvF_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "the-last-witness-attack": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. One forceful weapon release. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 2,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:15:46.407Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc7a-0f16-78e0-9d61-5b9f517b5f15",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-0f16-78e0-9d61-5b9f517b5f15",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-0f16-78e0-9d61-5b9f517b5f15/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-0f16-78e0-9d61-5b9f517b5f15/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab883e/2ltP0oDjnzdyZIG1AfqNE_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 33062
+        }
+      }
+    },
+    "the-last-witness-impact": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. One massive physical impact followed by debris. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 3,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:15:53.071Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc7a-2917-72e3-940e-9fbee323ad50",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-2917-72e3-940e-9fbee323ad50",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-2917-72e3-940e-9fbee323ad50/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-2917-72e3-940e-9fbee323ad50/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab883f/Mi6QGswmaXcVys4jO9oul_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 48945
+        }
+      }
+    },
+    "the-last-witness-phase": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. A violent anatomical transformation and rising roar. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 5,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:15:59.568Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc7a-427b-7652-a672-092f8de49da2",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-427b-7652-a672-092f8de49da2",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-427b-7652-a672-092f8de49da2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-427b-7652-a672-092f8de49da2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8840/fzydDDL4P9W6KTPo6vivH_sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 81128
+        }
+      }
+    },
+    "the-last-witness-death": {
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game sound effect. World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail. A huge dying collapse dissipating into silence. Isolated original sound, no intelligible words, no music.",
+        "duration_seconds": 6,
+        "prompt_influence": 0.65
+      },
+      "reserve": 0.5,
+      "state": "complete",
+      "submitted": "2026-09-23T04:16:05.884Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cc7a-5b2b-7d01-8c93-5deb37188f75",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-5b2b-7d01-8c93-5deb37188f75",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-5b2b-7d01-8c93-5deb37188f75/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0cc7a-5b2b-7d01-8c93-5deb37188f75/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aab8840/mfMT0-brJIZmFiyuubN8__sound_effect.mp3",
+          "content_type": "audio/mpeg",
+          "file_name": "sound_effect.mp3",
+          "file_size": 97010
+        }
+      }
+    },
+    "grave-marshal-q2-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Headless giant military executioner with a deep empty neck socket and a huge asymmetrical cast-concrete command-bunker shoulder on the viewers left. Weathered charcoal forged armor, thick restrained crimson cable tendons, heavy planted military boots. On the viewers right a fully separated armored arm holds a single solid thick rectangular blast-door cleaver, blade vertical and clearly separated from the boot. Both knees, elbows and wrists clearly articulated. Large sculpted forms and sparse meaningful rebar. No helmet or head, no pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18627
+      },
+      "reserve": 0.15,
+      "state": "failed",
+      "submitted": "2026-09-23T09:30:57.094Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9a-9ddb-70b3-8a54-63bf78e4d405",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9ddb-70b3-8a54-63bf78e4d405",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9ddb-70b3-8a54-63bf78e4d405/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9ddb-70b3-8a54-63bf78e4d405/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "error": "Error: Provider HTTP 422: {\"detail\":[{\"loc\":[\"body\",\"prompt\"],\"msg\":\"The content could not be processed because it contained material flagged by a content checker.\",\"type\":\"content_policy_violation\",\"url\":\"https://docs.fal.ai/"
+    },
+    "widow-of-the-salvo-q2-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Giant six-legged siege arthropod with exactly three thick articulated legs per side, all six distinct and touching one plane. Three large hollow organic mortar barrels emerge from a high arched ochre ivory carapace. Compact blind insect face, segmented black chitin and dark crimson pressure sacs, oxidized military green armor insets. Weight rests on six substantial hooked feet; solid anatomy with clear joints. The abdomen is a connected sculptural mass rather than hanging loose strips. No pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18658
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:30:57.117Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9a-9dd4-7df1-82a4-374069f83081",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dd4-7df1-82a4-374069f83081",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dd4-7df1-82a4-374069f83081/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dd4-7df1-82a4-374069f83081/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa3/4Sirx_5SWxMU89hQ3aZfM_FGd80C9h.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "4Sirx_5SWxMU89hQ3aZfM_FGd80C9h.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18658
+      }
+    },
+    "ossuary-engine-q2-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Colossal walking surgical-hospital creature. A tall coherent cage of twelve thick ivory ribs wraps a dark central tower, crowned by an enormous sternum-shaped ceramic plate. Two long armored surgical arms extend sideways with large articulated tool hands, two thick planted support legs beneath. Three recognizable heavy empty hospital beds are fused as solid rectangular relics to the outer rib cage; a few thick dark cables connect them. Oxidized green iron supports, stained warm ceramic, recessed dark red heart aperture. Coherent massive architecture, substantial rails and ribs, no floating pieces, no thin shredded surfaces, no pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18689
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:30:57.118Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9a-9dca-7961-b76f-aa8ab43c243b",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dca-7961-b76f-aa8ab43c243b",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dca-7961-b76f-aa8ab43c243b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9dca-7961-b76f-aa8ab43c243b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa4/757mftkrdT9C8t46dDddx_dcgc4z2q.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "757mftkrdT9C8t46dDddx_dcgc4z2q.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18689
+      }
+    },
+    "seraph-of-the-wound-q2-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Monumental alien seraph parasite with two enormous spread batlike wings and a third upright crown wing. Three complete thick pale branching wing skeletons carry taut subtly translucent desaturated violet membranes with small intentional tears at outer margins. Tall slender central armored cartilage torso surrounding a dark oval void, long downward talons, small pale eyes embedded along wing ribs. Elegant severe cathedral silhouette, opaque bone edges, defined shoulder and wing-finger joints. No feathers, no metal armor, no pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18720
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:30:57.119Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9a-9de1-75d2-ad7a-477564a29de2",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9de1-75d2-ad7a-477564a29de2",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9de1-75d2-ad7a-477564a29de2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9de1-75d2-ad7a-477564a29de2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 2,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa4/UWnEPjf2hPpYRDFx1uZD6_2LjsdfAf.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "UWnEPjf2hPpYRDFx1uZD6_2LjsdfAf.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18720
+      }
+    },
+    "the-last-witness-q2-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Monumental kneeling ancient funerary effigy, a terrifying nonhuman idol built of weathered ivory funerary masks, black petrified root tendons and ancient dark bronze joints. Three nested blank oval porcelain masks form its bowed head around a pitch-black hollow aperture, with no eyes or mechanical camera. Broad hunched layered ribbed mantle and fully enclosed torso armor. Two exceptionally long arms end in gigantic clearly separated five-fingered hands planted on the ground far apart, heavy bent legs planted beneath it. Black root filaments bind its mask plates, subtle old crimson enamel in fissures. Uncanny religious cosmic-horror monument, sculpted material realism, no futuristic robot styling, no guns, no pedestal. Entire body is armored sculpture, no human skin. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18751
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:30:57.120Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9a-9df2-7321-9537-0d85422a6249",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9df2-7321-9537-0d85422a6249",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9df2-7321-9537-0d85422a6249/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9a-9df2-7321-9537-0d85422a6249/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa4/QRUQp5NmDKzvEmjJ2ETC0_0dRRwp2j.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "QRUQp5NmDKzvEmjJ2ETC0_0dRRwp2j.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18751
+      }
+    },
+    "the-last-witness-q2-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Monumental kneeling ancient funerary effigy, a terrifying nonhuman idol built of weathered ivory funerary masks, black petrified root tendons and ancient dark bronze joints. Three nested blank oval porcelain masks form its bowed head around a pitch-black hollow aperture, with no eyes or mechanical camera. Broad hunched layered ribbed mantle and fully enclosed torso armor. Two exceptionally long arms end in gigantic clearly separated five-fingered hands planted on the ground far apart, heavy bent legs planted beneath it. Black root filaments bind its mask plates, subtle old crimson enamel in fissures. Uncanny religious cosmic-horror monument, sculpted material realism, no futuristic robot styling, no guns, no pedestal. Entire body is armored sculpture, no human skin. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18752
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:31:24.369Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9b-077c-7fc3-ab90-dad8588b6f78",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-077c-7fc3-ab90-dad8588b6f78",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-077c-7fc3-ab90-dad8588b6f78/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-077c-7fc3-ab90-dad8588b6f78/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa6/DhXhdprQQNlmSXz9WfgLl_VXz9DaNl.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "DhXhdprQQNlmSXz9WfgLl_VXz9DaNl.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18752
+      }
+    },
+    "widow-of-the-salvo-q2-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Giant six-legged siege arthropod with exactly three thick articulated legs per side, all six distinct and touching one plane. Three large hollow organic mortar barrels emerge from a high arched ochre ivory carapace. Compact blind insect face, segmented black chitin and dark crimson pressure sacs, oxidized military green armor insets. Weight rests on six substantial hooked feet; solid anatomy with clear joints. The abdomen is a connected sculptural mass rather than hanging loose strips. No pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18659
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:31:24.465Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9b-07d2-7202-86e5-4c1a9f5440dc",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-07d2-7202-86e5-4c1a9f5440dc",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-07d2-7202-86e5-4c1a9f5440dc/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-07d2-7202-86e5-4c1a9f5440dc/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa6/3fZfv39y_W1iFXKmUzX4-_mfnQXINa.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "3fZfv39y_W1iFXKmUzX4-_mfnQXINa.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18659
+      }
+    },
+    "seraph-of-the-wound-q2-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Monumental alien seraph parasite with two enormous spread batlike wings and a third upright crown wing. Three complete thick pale branching wing skeletons carry taut subtly translucent desaturated violet membranes with small intentional tears at outer margins. Tall slender central armored cartilage torso surrounding a dark oval void, long downward talons, small pale eyes embedded along wing ribs. Elegant severe cathedral silhouette, opaque bone edges, defined shoulder and wing-finger joints. No feathers, no metal armor, no pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18721
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:31:29.560Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9b-1bb3-7100-ada8-b872781f8c1f",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-1bb3-7100-ada8-b872781f8c1f",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-1bb3-7100-ada8-b872781f8c1f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-1bb3-7100-ada8-b872781f8c1f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa6/VyHWvJ_RIhKQjfVik5BRE_q4cxYIuw.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "VyHWvJ_RIhKQjfVik5BRE_q4cxYIuw.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18721
+      }
+    },
+    "ossuary-engine-q2-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. Asset type: production sculpture reference for a high fidelity dark fantasy game boss. Colossal walking surgical-hospital creature. A tall coherent cage of twelve thick ivory ribs wraps a dark central tower, crowned by an enormous sternum-shaped ceramic plate. Two long armored surgical arms extend sideways with large articulated tool hands, two thick planted support legs beneath. Three recognizable heavy empty hospital beds are fused as solid rectangular relics to the outer rib cage; a few thick dark cables connect them. Oxidized green iron supports, stained warm ceramic, recessed dark red heart aperture. Coherent massive architecture, substantial rails and ribs, no floating pieces, no thin shredded surfaces, no pedestal. Single creature, entire silhouette inside the frame with generous space around every limb. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18690
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:31:35.029Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9b-3115-7811-86cc-34fb91aa992f",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-3115-7811-86cc-34fb91aa992f",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-3115-7811-86cc-34fb91aa992f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9b-3115-7811-86cc-34fb91aa992f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fa8/IHFEjbCgazShmYvf7xYCL_bWzeawxN.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "IHFEjbCgazShmYvf7xYCL_bWzeawxN.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18690
+      }
+    },
+    "grave-marshal-q3-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. Colossal fictional mechanical military sentinel with an empty circular neck collar, with no head attachment. A massive asymmetrical concrete bunker shoulder on the viewers left, with sparse rebar. Weathered matte charcoal armor, dark red synthetic cables, substantial planted armored boots. An armored arm on the viewers right holds a single thick rectangular steel blast-door tool, vertical with broad face visible, distinctly separated from the boot. Fully enclosed machine sculpture with clear mechanical elbow, knee and wrist joints. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18800
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:35:21.178Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9e-a57c-7b71-8341-1cbd8f2dd83d",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a57c-7b71-8341-1cbd8f2dd83d",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a57c-7b71-8341-1cbd8f2dd83d/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a57c-7b71-8341-1cbd8f2dd83d/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fc1/S0wC4Un31KPBfM6bBXcYZ_0JMbf4cZ.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "S0wC4Un31KPBfM6bBXcYZ_0JMbf4cZ.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18800
+      }
+    },
+    "ossuary-engine-q3-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. A gigantic walking abandoned surgical hospital embodied as a coherent dark fantasy sculpture. Tall horizontal ivory rib cage and a broad vertical sternum, two broad green oxidized steel support legs, two long articulated surgical arms extending to either side, three solid recognizable empty hospital beds integrated below the ribs. Thick substantial ribs with clean negative spaces, no thin torn ribbons. Few thick connecting cables. Stained ivory ceramic armor, dark mechanical inner chamber, restrained rust and verdigris. Distinct hospital relics and surgical claws, strong architectural silhouette. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18862
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:35:21.204Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9e-a568-79e0-aa48-637cfce2b57c",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a568-79e0-aa48-637cfce2b57c",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a568-79e0-aa48-637cfce2b57c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a568-79e0-aa48-637cfce2b57c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fbe/6LJljfg6uT2lunDjNvIG7_NJiGYO7d.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "6LJljfg6uT2lunDjNvIG7_NJiGYO7d.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18862
+      }
+    },
+    "seraph-of-the-wound-q3-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. Monumental alien seraph parasite with two enormous spread batlike wings and a third upright crown wing. Three complete thick pale branching wing skeletons carry taut subtly translucent desaturated violet membranes with small intentional tears at outer margins. Tall slender central armored cartilage torso surrounding a dark oval void, long downward talons, small pale eyes embedded along wing ribs. Elegant severe cathedral silhouette, opaque bone edges, defined shoulder and wing-finger joints. No feathers, no metal armor, no pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 2048,
+          "height": 1024
+        },
+        "seed": 18893
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:35:21.206Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9e-a580-7b00-9c94-fff5f7da61d5",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a580-7b00-9c94-fff5f7da61d5",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a580-7b00-9c94-fff5f7da61d5/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-a580-7b00-9c94-fff5f7da61d5/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fbd/z0e9gS5h5kseFJVscu5GS_IPh9qFDW.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "z0e9gS5h5kseFJVscu5GS_IPh9qFDW.jpg",
+            "file_size": null,
+            "width": 2048,
+            "height": 1024
+          }
+        ],
+        "seed": 18893
+      }
+    },
+    "seraph-of-the-wound-q3-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. Monumental alien seraph parasite with two enormous spread batlike wings and a third upright crown wing. Three complete thick pale branching wing skeletons carry taut subtly translucent desaturated violet membranes with small intentional tears at outer margins. Tall slender central armored cartilage torso surrounding a dark oval void, long downward talons, small pale eyes embedded along wing ribs. Elegant severe cathedral silhouette, opaque bone edges, defined shoulder and wing-finger joints. No feathers, no metal armor, no pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 2048,
+          "height": 1024
+        },
+        "seed": 18894
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:35:43.733Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9e-fc93-75c1-b336-5c3cd5b8e2af",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-fc93-75c1-b336-5c3cd5b8e2af",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-fc93-75c1-b336-5c3cd5b8e2af/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9e-fc93-75c1-b336-5c3cd5b8e2af/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fc0/X0Y2qKTz_xnBD9V9JdTo6_h1m8yHDc.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "X0Y2qKTz_xnBD9V9JdTo6_h1m8yHDc.jpg",
+            "file_size": null,
+            "width": 2048,
+            "height": 1024
+          }
+        ],
+        "seed": 18894
+      }
+    },
+    "ossuary-engine-q3-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. A gigantic walking abandoned surgical hospital embodied as a coherent dark fantasy sculpture. Tall horizontal ivory rib cage and a broad vertical sternum, two broad green oxidized steel support legs, two long articulated surgical arms extending to either side, three solid recognizable empty hospital beds integrated below the ribs. Thick substantial ribs with clean negative spaces, no thin torn ribbons. Few thick connecting cables. Stained ivory ceramic armor, dark mechanical inner chamber, restrained rust and verdigris. Distinct hospital relics and surgical claws, strong architectural silhouette. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18863
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:35:48.211Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9f-0e15-76d0-b3a1-41b31d0c3447",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-0e15-76d0-b3a1-41b31d0c3447",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-0e15-76d0-b3a1-41b31d0c3447/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-0e15-76d0-b3a1-41b31d0c3447/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fc0/KBZ1a22Sz9RvdcUiumYij_8v03Z05R.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "KBZ1a22Sz9RvdcUiumYij_8v03Z05R.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18863
+      }
+    },
+    "grave-marshal-q3-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. Colossal fictional mechanical military sentinel with an empty circular neck collar, with no head attachment. A massive asymmetrical concrete bunker shoulder on the viewers left, with sparse rebar. Weathered matte charcoal armor, dark red synthetic cables, substantial planted armored boots. An armored arm on the viewers right holds a single thick rectangular steel blast-door tool, vertical with broad face visible, distinctly separated from the boot. Fully enclosed machine sculpture with clear mechanical elbow, knee and wrist joints. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 18801
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:36:19.161Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cd9f-8701-7031-96bd-6acfe07c3bc1",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-8701-7031-96bd-6acfe07c3bc1",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-8701-7031-96bd-6acfe07c3bc1/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cd9f-8701-7031-96bd-6acfe07c3bc1/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab8fc3/e0Hp4JV_EsQFOeK47ykjz_wB1DHFj4.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "e0Hp4JV_EsQFOeK47ykjz_wB1DHFj4.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 18801
+      }
+    },
+    "grave-marshal-q3-model-1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8fc3/e0Hp4JV_EsQFOeK47ykjz_wB1DHFj4.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "off",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T09:39:50.201Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cda2-c02a-70c1-a34b-2d44a4ed2eff",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c02a-70c1-a34b-2d44a4ed2eff",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c02a-70c1-a34b-2d44a4ed2eff/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c02a-70c1-a34b-2d44a4ed2eff/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 3,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8ff6/CB3VFWH05CjBGbPZO5waG_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 25780340
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8ffa/RBo5ycUCgUnD_w_BJ3F_d_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 221177
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff6/CB3VFWH05CjBGbPZO5waG_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 25780340
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff7/ZLJgERw8Ioiry5NYRo7RS_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 25458924
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff9/Az7s52cjp8asfdJQA8pz3_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 22851210
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff8/N4pupJCqeBCTcXPYTDGh3_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 29043461
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8ffa/q7zguGmBaLhdDCVTCQFz6_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 10333584
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8ffb/w1SrYPOtdBBYycZo3tOGu_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9310666
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8ffb/xncVtTb9FKRcNmuCxRXj4_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 1917436
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8ffc/F2S5vEVJdVfnbYGr02fID_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7859047
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8ffc/vCB3DR0PJXhUeYcPM5uwF_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1980147
+            }
+          }
+        ],
+        "seed": 2134499874,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "widow-of-the-salvo-q2-model-0": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8fa3/4Sirx_5SWxMU89hQ3aZfM_FGd80C9h.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T09:39:50.225Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cda2-c01d-71c1-b140-ac3050788c13",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c01d-71c1-b140-ac3050788c13",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c01d-71c1-b140-ac3050788c13/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c01d-71c1-b140-ac3050788c13/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8ff3/GP3Taan8LBJlK8BIfmdkI_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 25242992
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8ff4/J4UkTG2cFkrZ8aBBM0YXq_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 206961
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff3/GP3Taan8LBJlK8BIfmdkI_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 25242992
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff3/4a4q-m_Fhob9QDkcfqWgQ_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 24771020
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff3/JLcSQfzWV8m2Tr_GhFUCc_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 22413521
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff3/56V14qrqSVKpSICnLrX-t_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 27616536
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff3/dktKrMtp_KNf_NZg9lO8w_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 10351284
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/0dFbN4UGzAQN2SEsOY0c6_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9110815
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/TnYyuVR9q8jMTMAO1FaLp_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 23890
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/XLE5pBw2acLRTISTK5ncc_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7723523
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/0pGeFBrZLhOj1oJ3oA44p_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 2066152
+            }
+          }
+        ],
+        "seed": 2130624202,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "ossuary-engine-q2-model-1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8fa8/IHFEjbCgazShmYvf7xYCL_bWzeawxN.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T09:39:50.227Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cda2-c024-7202-b903-bb52284047dd",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c024-7202-b903-bb52284047dd",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c024-7202-b903-bb52284047dd/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c024-7202-b903-bb52284047dd/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8ffb/EYHl9BzifWWfvhVsNcXkr_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 29312912
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab9003/e-CM9toC9pKCEsLOu5QDZ_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 221624
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8ffb/EYHl9BzifWWfvhVsNcXkr_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 29312912
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8ffc/oIjo69mHupXYidzCigm2L_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 27636764
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab9001/KvEpKDYah4becmlcs8qDG_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 24645006
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8ffe/yx5patYa5__NAsGlOOPJl_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 33487067
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab9003/RYGJwtgYfJgYhHohsbGlZ_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 10345884
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab9003/2ucd9sVQkK4XFaavHWDMu_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9571598
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab9004/XWPnwLs6QEo5OwJJm8p3T_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 2039651
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab9004/AfN_CMX85_zCbsSFFRPsb_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 8486344
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab9005/9xjarhWREheKwAOaGPmWU_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1939987
+            }
+          }
+        ],
+        "seed": 449025602,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "seraph-of-the-wound-q3-model-1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8fc0/X0Y2qKTz_xnBD9V9JdTo6_h1m8yHDc.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T09:39:50.228Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cda2-c03d-7de0-8552-a4c4df0ad642",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c03d-7de0-8552-a4c4df0ad642",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c03d-7de0-8552-a4c4df0ad642/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c03d-7de0-8552-a4c4df0ad642/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab8fec/jeJLM0qfxp6wJ3QRR1Le5_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 22624652
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab8ff1/aorwWYURqa0TVM2uxjDK4_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 75384
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab8fec/jeJLM0qfxp6wJ3QRR1Le5_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 22624652
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab8fed/L3MzBLajbs5CWj6GamWBC_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 22915628
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab8fee/kOrnlvqk24MRQOlcc1NK5_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 21384643
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab8fee/xfiHMowknCRC3tN2fS7GC_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 24282741
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab8ff0/EMmEuGz2PxxcEpmV9wUVQ_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 10427784
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff3/i1OG6hOhlVNenNJCMtdhu_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 9232511
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/3dyHMSKzbzntYFeOrLCBq_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 370675
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff4/UTSck5VeYTlIAcP5Aq0wa_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 7206242
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab8ff5/Ughdpf3PXtPq17SESGkju_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1652586
+            }
+          }
+        ],
+        "seed": 26131766,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    },
+    "the-last-witness-q2-model-1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab8fa6/DhXhdprQQNlmSXz9WfgLl_VXz9DaNl.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "failed",
+      "submitted": "2026-09-23T09:39:50.230Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cda2-c026-72a3-93ce-065b03dff03b",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c026-72a3-93ce-065b03dff03b",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c026-72a3-93ce-065b03dff03b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cda2-c026-72a3-93ce-065b03dff03b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "error": "Error: Provider HTTP 422: {\"detail\":[{\"loc\":[\"body\"],\"msg\":\"The content could not be processed because it contained material flagged by a content checker.\",\"type\":\"content_policy_violation\",\"url\":\"https://docs.fal.ai/errors#co"
+    },
+    "the-last-witness-q4-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. An enormous nonhuman funerary monument crouching low with both stone hands planted very far apart. A broad triangular hunched silhouette, width one and a half times its height. Entirely sculpted from opaque aged ivory stone and dark bronze, with heavy overlapping stone robes enclosing its torso and bent legs. An elaborate head composed of three overlapping elongated blank funeral masks, each an inanimate ceramic plate with a hollow dark mouth aperture. Its exceptionally long stone arms and clearly articulated five-fingered hands support the massive layered mantle. Small black petrified roots bind the plates like old masonry. Disturbing silent ancient idol, monumental dark fantasy sculpture. All surfaces are stone, ceramic or bronze. No flesh, no skin, no exposed biological anatomy, no red tissue, no futuristic robot components. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 2048,
+          "height": 1024
+        },
+        "seed": 19097
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:51:41.948Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdad-9cc6-79a3-8948-343efdee3a6d",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-9cc6-79a3-8948-343efdee3a6d",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-9cc6-79a3-8948-343efdee3a6d/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-9cc6-79a3-8948-343efdee3a6d/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab901f/SBHhPaqaDSH-yd_yxpRd__DqqRwJPs.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "SBHhPaqaDSH-yd_yxpRd__DqqRwJPs.jpg",
+            "file_size": null,
+            "width": 2048,
+            "height": 1024
+          }
+        ],
+        "seed": 19097
+      }
+    },
+    "the-last-witness-q4-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. An enormous nonhuman funerary monument crouching low with both stone hands planted very far apart. A broad triangular hunched silhouette, width one and a half times its height. Entirely sculpted from opaque aged ivory stone and dark bronze, with heavy overlapping stone robes enclosing its torso and bent legs. An elaborate head composed of three overlapping elongated blank funeral masks, each an inanimate ceramic plate with a hollow dark mouth aperture. Its exceptionally long stone arms and clearly articulated five-fingered hands support the massive layered mantle. Small black petrified roots bind the plates like old masonry. Disturbing silent ancient idol, monumental dark fantasy sculpture. All surfaces are stone, ceramic or bronze. No flesh, no skin, no exposed biological anatomy, no red tissue, no futuristic robot components. No pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 2048,
+          "height": 1024
+        },
+        "seed": 19098
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T09:52:04.188Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdad-f27b-7552-8d05-4fc46316da9b",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-f27b-7552-8d05-4fc46316da9b",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-f27b-7552-8d05-4fc46316da9b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdad-f27b-7552-8d05-4fc46316da9b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab9022/Cx9n4S79DUbTYkteawIQK_H9CRtjmr.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "Cx9n4S79DUbTYkteawIQK_H9CRtjmr.jpg",
+            "file_size": null,
+            "width": 2048,
+            "height": 1024
+          }
+        ],
+        "seed": 19098
+      }
+    },
+    "the-last-witness-q4-model-1": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab9022/Cx9n4S79DUbTYkteawIQK_H9CRtjmr.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 200000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "failed",
+      "submitted": "2026-09-23T09:55:42.323Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdb1-4762-7230-b0de-a709e5f7bcd2",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdb1-4762-7230-b0de-a709e5f7bcd2",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdb1-4762-7230-b0de-a709e5f7bcd2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdb1-4762-7230-b0de-a709e5f7bcd2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "error": "Error: Provider HTTP 422: {\"detail\":[{\"loc\":[\"body\"],\"msg\":\"The content could not be processed because it contained material flagged by a content checker.\",\"type\":\"content_policy_violation\",\"url\":\"https://docs.fal.ai/errors#co"
+    },
+    "the-last-witness-q5-concept-0": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. A single elongated inanimate ancient funeral mask prop, isolated object with no body, no head behind it and no person. Weathered ivory ceramic carved with subtle shallow ritual linework, closed neutral lips parted by a fine dark slit, two empty hollow narrow eye apertures, an exceptionally tall smooth forehead. Heavy sculpted edges, layered dark bronze edging around the back, a few black petrified root strands along one temple. Ominous quiet ceremonial relic, museum-quality physical sculpture, clean finely modeled facial planes, restrained hairline cracks and worn porcelain pores. Near-frontal view with entire object visible. No humanoid figure, no hands, no stand, no pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Monumental solid sculptural anatomy, clean silhouette and distinctly articulated joints. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 19270
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T10:03:41.950Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdb8-9906-7792-9cbf-23527525ff9a",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-9906-7792-9cbf-23527525ff9a",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-9906-7792-9cbf-23527525ff9a/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-9906-7792-9cbf-23527525ff9a/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab9067/34upRHVSBnDoI8nTjyi13_t0qtIY4P.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "34upRHVSBnDoI8nTjyi13_t0qtIY4P.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 19270
+      }
+    },
+    "the-last-witness-q5-concept-1": {
+      "model": "fal-ai/flux-2-pro",
+      "input": {
+        "prompt": "Use case: stylized-concept. An isolated high fidelity dark fantasy game creature sculpture. A single elongated inanimate ancient funeral mask prop, isolated object with no body, no head behind it and no person. Weathered ivory ceramic carved with subtle shallow ritual linework, closed neutral lips parted by a fine dark slit, two empty hollow narrow eye apertures, an exceptionally tall smooth forehead. Heavy sculpted edges, layered dark bronze edging around the back, a few black petrified root strands along one temple. Ominous quiet ceremonial relic, museum-quality physical sculpture, clean finely modeled facial planes, restrained hairline cracks and worn porcelain pores. Near-frontal view with entire object visible. No humanoid figure, no hands, no stand, no pedestal. Single isolated creature occupying only the central 75 percent of the image. Entire silhouette inside the frame, every wingtip and toe visible, broad empty margin on all sides. Camera pulled back enough to fit the complete figure. Almost straight-on front view, only ten degrees of turn, neutral bind stance suitable for rigging. Exquisitely sculpted primary and secondary forms, convincing material separation, fine restrained pores and chisel marks. Matte tactile surfaces; no shiny foil, no random noisy cracks, no melted edges. Broad neutral studio light, dark slate gray background, no dramatic painted shadows, no motion, no scenery. Older ceremonial variation, slightly more slender limbs, intricate raised relief only on large armor panels. No lettering, no text, no watermark.",
+        "image_size": {
+          "width": 1536,
+          "height": 1536
+        },
+        "seed": 19271
+      },
+      "reserve": 0.15,
+      "state": "complete",
+      "submitted": "2026-09-23T10:04:04.362Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdb8-efa9-75f1-a0d6-0fc6c875ecb3",
+      "response_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-efa9-75f1-a0d6-0fc6c875ecb3",
+      "status_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-efa9-75f1-a0d6-0fc6c875ecb3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/flux-2-pro/requests/01a0cdb8-efa9-75f1-a0d6-0fc6c875ecb3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "images": [
+          {
+            "url": "https://v3b.fal.media/files/b/0aab906a/-0bbfdPJEa6y2fgUI1hRY_nAZYQjEQ.jpg",
+            "content_type": "image/jpeg",
+            "file_name": "-0bbfdPJEa6y2fgUI1hRY_nAZYQjEQ.jpg",
+            "file_size": null,
+            "width": 1536,
+            "height": 1536
+          }
+        ],
+        "seed": 19271
+      }
+    },
+    "the-last-witness-q5-model-0": {
+      "model": "fal-ai/meshy/v6/image-to-3d",
+      "input": {
+        "image_url": "https://v3b.fal.media/files/b/0aab9067/34upRHVSBnDoI8nTjyi13_t0qtIY4P.jpg",
+        "model_type": "standard",
+        "topology": "triangle",
+        "target_polycount": 60000,
+        "should_remesh": true,
+        "should_texture": true,
+        "enable_pbr": true,
+        "symmetry_mode": "auto",
+        "texture_prompt": "Premium cinematic sculptural material quality. Preserve reference colors and material boundaries. Matte weathered ivory ceramic and aged bone, dark fibrous recesses, restrained rough oxidized metal only where shown. Subtle physically plausible wear. No baked highlights, no painted lighting, no gold foil, no random scribbles, no excessive chipped white noise.",
+        "enable_rigging": false,
+        "enable_animation": false
+      },
+      "reserve": 3,
+      "state": "complete",
+      "submitted": "2026-09-23T10:07:24.413Z",
+      "status": "IN_QUEUE",
+      "request_id": "01a0cdbb-fe22-7b93-b41a-0f5ae9c34e87",
+      "response_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdbb-fe22-7b93-b41a-0f5ae9c34e87",
+      "status_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdbb-fe22-7b93-b41a-0f5ae9c34e87/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/meshy/requests/01a0cdbb-fe22-7b93-b41a-0f5ae9c34e87/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "animation_glb": null,
+        "animation_fbx": null,
+        "model_glb": {
+          "url": "https://v3b.fal.media/files/b/0aab908f/1u6ECqV0UEYdGk8kaBOgr_model.glb",
+          "content_type": "model/gltf-binary",
+          "file_name": "model.glb",
+          "file_size": 16216896
+        },
+        "thumbnail": {
+          "url": "https://v3b.fal.media/files/b/0aab9094/BNHJTYfEV_RQQ2MsHY-wW_preview.png",
+          "content_type": "image/png",
+          "file_name": "preview.png",
+          "file_size": 141591
+        },
+        "model_urls": {
+          "glb": {
+            "url": "https://v3b.fal.media/files/b/0aab908f/1u6ECqV0UEYdGk8kaBOgr_model.glb",
+            "content_type": "model/gltf-binary",
+            "file_name": "model.glb",
+            "file_size": 16216896
+          },
+          "fbx": {
+            "url": "https://v3b.fal.media/files/b/0aab9090/jZL-NJafWLUo90jXOptUl_model.fbx",
+            "content_type": "application/octet-stream",
+            "file_name": "model.fbx",
+            "file_size": 16929580
+          },
+          "obj": {
+            "url": "https://v3b.fal.media/files/b/0aab9092/IesJaguSMQgysovyPnkXq_model.obj",
+            "content_type": "text/plain",
+            "file_name": "model.obj",
+            "file_size": 6318220
+          },
+          "usdz": {
+            "url": "https://v3b.fal.media/files/b/0aab9091/P3S4GuBOz6-SyuTiMeD2N_model.usdz",
+            "content_type": "model/vnd.usdz+zip",
+            "file_name": "model.usdz",
+            "file_size": 17631100
+          },
+          "blend": null,
+          "stl": {
+            "url": "https://v3b.fal.media/files/b/0aab9094/zx1qRZpDz7dUessB7_AEk_model.stl",
+            "content_type": "application/octet-stream",
+            "file_name": "model.stl",
+            "file_size": 3070084
+          }
+        },
+        "texture_urls": [
+          {
+            "base_color": {
+              "url": "https://v3b.fal.media/files/b/0aab9095/UutV9kpkMqBl-Jt1-o9oH_texture_0.png",
+              "content_type": "image/png",
+              "file_name": "texture_0.png",
+              "file_size": 8851363
+            },
+            "metallic": {
+              "url": "https://v3b.fal.media/files/b/0aab9096/8KYHZzK9pLaCBa5ntec69_texture_0_metallic.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_metallic.png",
+              "file_size": 783979
+            },
+            "normal": {
+              "url": "https://v3b.fal.media/files/b/0aab9099/VCPZxc6LjcAuZL3VASpNP_texture_0_normal.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_normal.png",
+              "file_size": 6677526
+            },
+            "roughness": {
+              "url": "https://v3b.fal.media/files/b/0aab909a/TT2b2cBRQtY9t01U9PgAA_texture_0_roughness.png",
+              "content_type": "image/png",
+              "file_name": "texture_0_roughness.png",
+              "file_size": 1753014
+            }
+          }
+        ],
+        "seed": 1438625549,
+        "rigged_character_glb": null,
+        "rigged_character_fbx": null,
+        "basic_animations": null,
+        "rig_task_id": null
+      }
+    }
+  }
+}

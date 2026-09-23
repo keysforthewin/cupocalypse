@@ -1,0 +1,136 @@
+{
+  "status": "Quality pass 2: improved; below AAA acceptance. Provisional editorial review, not independent certification.",
+  "scale": "0\u201310 per criterion; weighted total out of 100. Scores are judgments from captures and checks, not objective certificates. Audio scores assess design/engineering; listening-panel approval remains open.",
+  "weights": {
+    "artwork": 20,
+    "animation": 20,
+    "originality": 15,
+    "combat": 15,
+    "audio": 10,
+    "staging": 10,
+    "technical": 10
+  },
+  "acceptance": {
+    "newBossMinimum": 92,
+    "finalBossMinimum": 95,
+    "required": "No critical gameplay defects; visual and motion review, full-mix listening, representative hardware profiling and human playtesting."
+  },
+  "bosses": [
+    {
+      "id": "grave-marshal",
+      "scores": {
+        "artwork": 8.3,
+        "animation": 7.4,
+        "originality": 8.0,
+        "combat": 8.2,
+        "audio": 8.0,
+        "staging": 7.3,
+        "technical": 8.0
+      },
+      "total": 79.0,
+      "accepted": false,
+      "notes": "New detailed armor, concrete and door sculpt; attached rigid blade, clean boots, sharper anticipation/recovery. Remaining: shoulder mass transfer, close-up wrist deformation and convincing melee contact.",
+      "evidence": {
+        "arena": "../../artifacts/boss-quality/runtime/grave-marshal-arena.png",
+        "motion": "review/grave-marshal-motion.mp4",
+        "source": "source/grave-marshal.blend",
+        "studio": "review/grave-marshal-front.png",
+        "deformation": "review/grave-marshal-deformation.json"
+      },
+      "previousTotal": 75.4
+    },
+    {
+      "id": "widow-of-the-salvo",
+      "scores": {
+        "artwork": 8.4,
+        "animation": 7.4,
+        "originality": 8.3,
+        "combat": 8.4,
+        "audio": 8.1,
+        "staging": 7.5,
+        "technical": 8.0
+      },
+      "total": 80.2,
+      "accepted": false,
+      "notes": "Cleaner six-leg carapace and three-barrel sculpt; differentiated recoil and repaired barrel death deformation. Remaining: authored foot planting/IK, abdomen dynamics and mechanical joint cleanup.",
+      "evidence": {
+        "arena": "../../artifacts/boss-quality/runtime/widow-of-the-salvo-arena.png",
+        "motion": "review/widow-of-the-salvo-motion.mp4",
+        "source": "source/widow-of-the-salvo.blend",
+        "studio": "review/widow-of-the-salvo-front.png",
+        "deformation": "review/widow-of-the-salvo-deformation.json"
+      },
+      "previousTotal": 76.5
+    },
+    {
+      "id": "ossuary-engine",
+      "scores": {
+        "artwork": 8.2,
+        "animation": 7.2,
+        "originality": 8.8,
+        "combat": 8.1,
+        "audio": 8.2,
+        "staging": 7.1,
+        "technical": 8.0
+      },
+      "total": 79.5,
+      "accepted": false,
+      "notes": "Rebuilt bed/rib architecture, corrected bed weights and a rigid-frame death topple. Remaining: small surgical-joint stretches, thin cables and more complex tool articulation.",
+      "evidence": {
+        "arena": "../../artifacts/boss-quality/runtime/ossuary-engine-arena.png",
+        "motion": "review/ossuary-engine-motion.mp4",
+        "source": "source/ossuary-engine.blend",
+        "studio": "review/ossuary-engine-front.png",
+        "deformation": "review/ossuary-engine-deformation.json"
+      },
+      "previousTotal": 74.8
+    },
+    {
+      "id": "seraph-of-the-wound",
+      "scores": {
+        "artwork": 8.7,
+        "animation": 7.6,
+        "originality": 8.4,
+        "combat": 8.3,
+        "audio": 8.3,
+        "staging": 7.8,
+        "technical": 8.0
+      },
+      "total": 81.8,
+      "accepted": false,
+      "notes": "Full-width bone/membrane wings, separate wing fingers and arm talons, repaired foot-to-hand contamination. Remaining: talon/wing-root deformation outliers and stronger aerodynamic follow-through.",
+      "evidence": {
+        "arena": "../../artifacts/boss-quality/runtime/seraph-of-the-wound-arena.png",
+        "motion": "review/seraph-of-the-wound-motion.mp4",
+        "source": "source/seraph-of-the-wound.blend",
+        "studio": "review/seraph-of-the-wound-front.png",
+        "deformation": "review/seraph-of-the-wound-deformation.json"
+      },
+      "previousTotal": 79.0
+    },
+    {
+      "id": "the-last-witness",
+      "scores": {
+        "artwork": 8.4,
+        "animation": 7.6,
+        "originality": 8.2,
+        "combat": 8.4,
+        "audio": 8.5,
+        "staging": 8.0,
+        "technical": 8.0
+      },
+      "total": 81.4,
+      "accepted": false,
+      "notes": "Three detailed independently articulated ceramic masks with bronze supports on the original armored body; matte materials, recessed aperture and staggered fingers. Remaining: repetitive underlying armor, finger contacts and more substantial three-phase silhouette changes.",
+      "evidence": {
+        "arena": "../../artifacts/boss-quality/runtime/the-last-witness-arena.png",
+        "motion": "review/the-last-witness-motion.mp4",
+        "source": "source/the-last-witness.blend",
+        "studio": "review/the-last-witness-front.png",
+        "deformation": "review/the-last-witness-deformation.json"
+      },
+      "previousTotal": 75.3
+    }
+  ],
+  "reviewPass": "2026-09-23 quality2"
+}

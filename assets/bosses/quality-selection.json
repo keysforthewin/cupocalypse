@@ -1,0 +1,23 @@
+{
+  "widow-of-the-salvo-q2": 0,
+  "ossuary-engine-q2": 1,
+  "the-last-witness-q2": 1,
+  "grave-marshal-q3": 1,
+  "seraph-of-the-wound-q3": 1,
+  "rounds": {
+    "grave-marshal": "q3",
+    "widow-of-the-salvo": "q2",
+    "ossuary-engine": "q2",
+    "seraph-of-the-wound": "q3",
+    "the-last-witness": "q5"
+  },
+  "the-last-witness-q4": 1,
+  "the-last-witness-q5": 0,
+  "acceptedModelSources": {
+    "grave-marshal": "candidates/grave-marshal-q3-1.glb",
+    "widow-of-the-salvo": "candidates/widow-of-the-salvo-q2-0.glb",
+    "ossuary-engine": "candidates/ossuary-engine-q2-1.glb",
+    "seraph-of-the-wound": "candidates/seraph-of-the-wound-q3-1.glb",
+    "the-last-witness": "originals/the-last-witness.glb + three articulated copies of candidates/the-last-witness-q5-0.glb"
+  }
+}

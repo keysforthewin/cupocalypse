@@ -23,9 +23,19 @@ export const ENEMIES = [
   "Gunner",
 ] as const;
 export type EnemyKind = (typeof ENEMIES)[number];
-export const BOSSES = ["Bulwark", "Broodmass", "Congregation"] as const;
+export const BOSSES = [
+  "Bulwark",
+  "Broodmass",
+  "Congregation",
+  "Grave Marshal",
+  "Widow of the Salvo",
+  "Ossuary Engine",
+  "Seraph of the Wound",
+  "The Last Witness",
+] as const;
 export type BossKind = (typeof BOSSES)[number];
 export type Upgrade = [number, number, number];
+export const UPGRADE_PERCENT = [20, 12, 8] as const;
 export const BOOSTS = [
   "damage",
   "rate",
@@ -90,6 +100,8 @@ export interface Enemy {
   }[];
   motions: AttackMotion[];
   phaseTick: number;
+  phaseUntil?: number;
+  deathTick?: number;
 }
 export interface ShotPayload {
   superSource?: number;
@@ -109,6 +121,7 @@ export interface ShotPayload {
 export interface Bullet {
   payload?: ShotPayload;
   hitIds?: number[];
+  hitGateIds?: number[];
   returning?: boolean;
   fragment?: boolean;
   ricochets?: number;
@@ -145,6 +158,10 @@ export interface Hazard {
   kind: "charge" | "pool" | "burst" | "slam" | "strike";
   source: number;
   hit: boolean;
+  attack?: string;
+  releaseAt?: number;
+  origin?: [number, number, number];
+  trajectory?: "arc" | "spear" | "beam" | "split" | "wave";
 }
 export interface Drop {
   id: number;

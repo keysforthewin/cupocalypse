@@ -1,5 +1,6 @@
 import type { Simulation } from "./simulation";
 import type { Enemy, Gate, Hazard, ShotPayload } from "./types";
+import { UPGRADE_PERCENT } from "./types";
 import { ARSENAL, GUNS, type ProjectileKind } from "./projectiles";
 import { weaponStats } from "./weapons";
 import { SUPERS, sanitizeLoadout, type SuperId } from "./superWeapons";
@@ -72,10 +73,15 @@ export class SuperSystem {
     }));
   }
   get minimum() {
-    return this.sim.mode === "Swarm" ? 90 : 50;
+    return Math.ceil((this.sim.mode === "Swarm" ? 90 : 50) / 3);
   }
   get slot() {
     return this.slots[this.selected];
+  }
+  get readySlots() {
+    return this.slots.filter(
+      (slot) => slot.charge >= slot.quota && !this.active(slot.id),
+    );
   }
   active(id: SuperId) {
     return this.casts.find((c) => c.id === id && c.end > this.sim.tick);
@@ -153,7 +159,8 @@ export class SuperSystem {
       this.history.reduce((a, h) => a + h.count, 0) /
       Math.max(1, Math.min(60, s.time));
     slot.charge = 0;
-    slot.quota = Math.max(this.minimum, Math.ceil((rate * 75) / 5) * 5);
+    // About 25 seconds of ordinary kills: three times faster than the old target.
+    slot.quota = Math.max(this.minimum, Math.ceil(rate * 25));
     const c: SuperCast = {
       serial: ++this.serial,
       id: slot.id,
@@ -211,7 +218,7 @@ export class SuperSystem {
       const w = weaponStats(s.boosts),
         base =
           (1.4 + Math.min(12, Math.sqrt(c.army) * 0.28)) *
-          (1 + s.upgrades[1] * 0.05) *
+          (1 + s.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
           w.damage;
       c.weaponSnapshot = w;
       c.snapshot = (
@@ -227,7 +234,7 @@ export class SuperSystem {
           kind === "pulse"
             ? 60 /
               ((6 + Math.min(6, Math.sqrt(c.army) * 0.18)) *
-                (1 + s.upgrades[2] * 0.04) *
+                (1 + s.upgrades[2] * UPGRADE_PERCENT[2] / 100) *
                 w.rate)
             : (60 * ARSENAL[kind].interval) / w.gunRate,
         next: s.tick,

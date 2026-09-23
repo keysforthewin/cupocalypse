@@ -13,19 +13,24 @@ import {
   type WeaponEvent,
 } from "./projectiles";
 import { LootDeck } from "./loot";
-import { encounterScale } from "./escalation";
+import { attackScale, encounterScale, strengthDistance } from "./escalation";
 import {
   formationPositions,
-  formationShape,
   crowdEnvelope,
   formationExposure,
   edgeExposure,
   ROAD_EDGE,
-  FORMATION_TIP,
 } from "./formation";
 import { deathStyle, effectRandom } from "./deaths";
 export { formationPositions } from "./formation";
 import { commitMotion } from "./attacks";
+import {
+  BOSS_SPACING,
+  CAMPAIGN_DISTANCE,
+  bossDefinition,
+  isNewBoss,
+  scheduleBossAttack,
+} from "./bosses";
 import {
   selectedGate,
   bulletGate,
@@ -35,6 +40,7 @@ import {
 import { RNG } from "./rng";
 import {
   BOSSES,
+  UPGRADE_PERCENT,
   ENEMIES,
   type Mode,
   type Upgrade,
@@ -54,7 +60,7 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-1.9.0";
+export const VERSION = "containment-2.1.0";
 export const DT = 1 / 60,
   MOVE_SPEED = 6,
   ROAD_LIMIT = 3.8,
@@ -133,7 +139,7 @@ export class Simulation {
   kills = 0;
   bossKills = 0;
   bossIndex = 0;
-  nextBoss = 250;
+  nextBoss = BOSS_SPACING;
   bossPending = false;
   bossActive = false;
   nextEncounter = 0;
@@ -180,6 +186,8 @@ export class Simulation {
     seed: 0,
   }));
   over = false;
+  outcome: "active" | "victory" | "defeat" = "active";
+  bossRemains: Enemy[] = [];
   reason = "";
   debug = false;
   introduced = 1;
@@ -243,7 +251,7 @@ export class Simulation {
     this.upgrades = [...upgrades];
     this.rng = new RNG(seed);
     this.loot = new LootDeck(seed);
-    this.army = Math.round(24 * (1 + upgrades[0] * 0.1));
+    this.army = Math.round(24 * (1 + upgrades[0] * UPGRADE_PERCENT[0] / 100));
     this.peak = this.army;
     this.shield = 20;
     this.supers = new SuperSystem(this, superLoadout);
@@ -276,7 +284,7 @@ export class Simulation {
     return this.tick / 60;
   }
   get difficulty() {
-    return 1 + this.distance / 350;
+    return 1 + strengthDistance(this.distance) / 350;
   }
   get boss() {
     return this.enemies.find((e) => e.boss && !e.dead);
@@ -332,8 +340,9 @@ export class Simulation {
     // Large formations remain vulnerable; gate growth cannot make telegraphs irrelevant.
     // Snapshot at commitment, so moving warnings never secretly grow stronger.
     return (
-      base * Math.pow(this.difficulty, 1.1) +
-      Math.max(0, this.army - 120) * (boss ? 0.18 : 0.075)
+      (base * Math.pow(this.difficulty, 1.1) +
+        Math.max(0, this.army - 120) * (boss ? 0.18 : 0.075)) *
+      attackScale(this.distance)
     );
   }
   contactDamage(e: Enemy) {
@@ -350,7 +359,7 @@ export class Simulation {
     bypassShield = false,
     source?: number,
   ) {
-    if (this.damageSource !== undefined) return;
+    if (this.damageSource !== undefined || this.outcome === "victory") return;
     amount = this.supers.protect(Math.ceil(amount), bypassShield, source);
     const absorbed = bypassShield ? 0 : Math.min(this.shield, amount);
     this.shield -= absorbed;
@@ -373,6 +382,7 @@ export class Simulation {
     }
     if (!this.army) {
       this.over = true;
+      this.outcome = "defeat";
       this.reason = reason;
     }
   }
@@ -398,13 +408,17 @@ export class Simulation {
       ? 1 + (escalation.health - 1) * 0.7
       : escalation.health;
     const hp = Math.round(
-      st[0] * difficulty * healthScale * (this.mode === "Swarm" ? 0.55 : 1),
+      st[0] *
+        difficulty *
+        healthScale *
+        (boss ? bossDefinition(kind).healthMultiplier : 1) *
+        (this.mode === "Swarm" ? 0.55 : 1),
     );
     const e: Enemy = {
       id: this.id++,
       kind,
       x,
-      z,
+      z: boss && isNewBoss(kind) ? bossDefinition(kind).arenaZ : z,
       hp,
       maxHp: hp,
       armor: Math.round(st[1] * difficulty * escalation.armor),
@@ -548,8 +562,9 @@ export class Simulation {
           ? "spread"
           : this.loot.next({ ...this.guns, ...this.boosts });
     this.dropReward(kind, x, 24);
+    // Half as many scheduled pickups, with the same dependable opening rewards.
     this.nextSupply =
-      this.distance + (this.bossIndex > 0 ? 16 : this.distance < 150 ? 36 : 28);
+      this.distance + (this.bossIndex > 0 ? 32 : this.distance < 150 ? 72 : 56);
   }
   dropReward(kind: Pickup, x: number, z: number) {
     if (this.drops.length >= 24) return;
@@ -599,7 +614,7 @@ export class Simulation {
     const previousSource = this.damageSource;
     this.damageSource = source;
     try {
-      this.totalDamage += Math.min(e.hp + e.armor, damage);
+      const incoming = damage;
       const blocked = Math.min(e.armor, damage);
       e.armor -= blocked;
       damage -= blocked;
@@ -607,6 +622,18 @@ export class Simulation {
         this.effect(e.x, e.z, "armor");
         this.reward("ARMOR BROKEN");
       }
+      if (e.boss && isNewBoss(e.kind)) {
+        const threshold = bossDefinition(e.kind).phases[e.phase - 1];
+        const floor = threshold === undefined ? 0 : e.maxHp * threshold;
+        damage =
+          (e.phaseUntil ?? 0) > this.tick
+            ? 0
+            : Math.min(damage, Math.max(0, e.hp - floor));
+      }
+      this.totalDamage += Math.min(
+        e.hp + blocked,
+        blocked + Math.min(incoming - blocked, damage),
+      );
       e.hp -= damage;
       e.hit = this.tick + 4;
       if (damage) this.effect(e.x, e.z, "blood");
@@ -618,6 +645,10 @@ export class Simulation {
   kill(e: Enemy) {
     if (e.dead) return;
     e.dead = true;
+    if (e.boss) {
+      e.deathTick = this.tick;
+      this.bossRemains = [e];
+    }
     this.hazards = this.hazards.filter(
       (h) => h.source !== e.id || h.strikeAt <= this.tick,
     );
@@ -649,26 +680,23 @@ export class Simulation {
       this.shield += 20;
       this.reward("TARGET ELIMINATED · +30");
       this.endBoss();
+      if (this.outcome === "victory") return;
       const owned = { ...this.guns, ...this.boosts };
+      // One pickup per victory, alternating categories to retain both rewards.
       this.dropReward(
-        this.loot.draw("weapon", owned),
+        this.loot.draw(this.bossKills % 2 === 1 ? "weapon" : "modifier", owned),
         formationPositions(this.mode, this.x)[0],
         this.crowd.push + 13,
       );
-      this.dropReward(
-        this.loot.draw("modifier", owned),
-        formationPositions(this.mode, this.x)[0],
-        this.crowd.push + 19,
-      );
     } else if (this.bossIndex > 0 && this.tick >= this.nextKillLootTick) {
       this.lootEligibleMisses++;
-      if (this.loot.rng.next() < 0.12 || this.lootEligibleMisses >= 10) {
+      if (this.loot.rng.next() < 0.06 || this.lootEligibleMisses >= 20) {
         this.dropReward(
           this.loot.next({ ...this.guns, ...this.boosts }),
           e.x,
           e.z,
         );
-        this.nextKillLootTick = this.tick + 300;
+        this.nextKillLootTick = this.tick + 600;
         this.lootEligibleMisses = 0;
       }
     }
@@ -692,14 +720,26 @@ export class Simulation {
     }
   }
   endBoss() {
+    // Advancement is earned only by a kill, never by contact or expiry.
+    if (this.bossKills <= this.bossIndex) return;
     this.bossActive = false;
     this.bossIndex++;
-    this.nextBoss = (this.bossIndex + 1) * 250;
+    this.nextBoss = (this.bossIndex + 1) * BOSS_SPACING;
     this.nextEncounter = this.distance + 2;
-    this.nextSupply = this.distance + 5;
+    this.nextSupply = this.distance + 10;
     this.hazards.length = 0;
     this.fields.length = 0;
     for (const e of this.enemies) e.dead = true;
+    if (this.bossIndex === BOSSES.length) {
+      this.distance = CAMPAIGN_DISTANCE;
+      this.outcome = "victory";
+      this.over = true;
+      this.reason = "The Last Witness has fallen. The world is quiet.";
+      this.nextBoss = Infinity;
+      for (const bullet of this.bullets) bullet.active = false;
+      this.pendingShots.length = 0;
+      this.arcEffects.length = 0;
+    }
   }
   weaponSound(kind: ProjectileKind, x: number, impact: boolean) {
     this.weaponEvents.push({
@@ -720,6 +760,7 @@ export class Simulation {
         serial: ++this.shotSerial,
         trail: [],
         hitIds: [],
+        hitGateIds: [],
       });
       return b;
     }
@@ -730,6 +771,7 @@ export class Simulation {
         serial: ++this.shotSerial,
         trail: [],
         hitIds: [],
+        hitGateIds: [],
       };
       this.bullets.push(b);
       const grow = Math.min(127, BULLET_CAPACITY - this.bullets.length);
@@ -740,6 +782,7 @@ export class Simulation {
           serial: 0,
           trail: [],
           hitIds: [],
+          hitGateIds: [],
           payload: undefined,
         });
       return b;
@@ -1077,6 +1120,7 @@ export class Simulation {
   }
   update(input: Input, record = true) {
     if (this.over) return;
+    const previousPush = this.crowd.push;
     const target =
       Math.round(
         clamp(Number.isFinite(input.x) ? input.x : 0, -ROAD_LIMIT, ROAD_LIMIT) *
@@ -1107,7 +1151,11 @@ export class Simulation {
     this.supers.update();
     this.x += clamp(target - this.x, -MOVE_SPEED * DT, MOVE_SPEED * DT);
     this.crowdX += (this.x - this.crowdX) * (1 - Math.exp(-DT * 4));
-    this.distance += 3.2 * DT;
+    if (!this.bossActive)
+      this.distance = Math.min(this.nextBoss, this.distance + 3.2 * DT);
+    this.bossRemains = this.bossRemains.filter(
+      (e) => this.tick - (e.deathTick ?? 0) < 360,
+    );
     const scroll = 8 * DT;
     if (
       !this.bossActive &&
@@ -1117,6 +1165,7 @@ export class Simulation {
       this.bossPending = true;
     if (
       this.bossPending &&
+      this.distance >= this.nextBoss &&
       !this.gates.length &&
       !this.enemies.length &&
       !this.drops.length &&
@@ -1125,8 +1174,8 @@ export class Simulation {
       this.bossPending = false;
       this.bossActive = true;
       this.template = "Boss containment";
-      this.spawnEnemy(BOSSES[this.bossIndex % 3], 0, 38, true);
-      this.reward(`WARNING · ${BOSSES[this.bossIndex % 3].toUpperCase()}`);
+      this.spawnEnemy(BOSSES[this.bossIndex], 0, 38, true);
+      this.reward(`WARNING · ${BOSSES[this.bossIndex].toUpperCase()}`);
     }
     if (
       !this.bossActive &&
@@ -1161,7 +1210,7 @@ export class Simulation {
     const weapon = weaponStats(this.boosts);
     const rate =
       (6 + Math.min(6, Math.sqrt(this.army) * 0.18)) *
-      (1 + this.upgrades[2] * 0.04) *
+      (1 + this.upgrades[2] * UPGRADE_PERCENT[2] / 100) *
       weapon.rate *
       (this.supers.active("nitro") ? 3 : 1);
     while (this.fireClock <= 0) {
@@ -1170,7 +1219,7 @@ export class Simulation {
       this.weaponSound("pulse", this.x, false);
       const damage =
         (1.4 + Math.min(12, Math.sqrt(this.army) * 0.28)) *
-        (1 + this.upgrades[1] * 0.05) *
+        (1 + this.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
         weapon.damage;
       const origins = formationPositions(this.mode, this.x);
       for (const origin of origins)
@@ -1202,7 +1251,7 @@ export class Simulation {
         for (let n = 0; n < count; n++) {
           const damage =
             ((1.4 + Math.min(12, Math.sqrt(this.army) * 0.28)) *
-              (1 + this.upgrades[1] * 0.05) *
+              (1 + this.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
               weapon.damage *
               def.damage *
               (1 + 0.22 * Math.sqrt(this.guns[kind] - 1))) /
@@ -1236,7 +1285,13 @@ export class Simulation {
       const contacts: { z: number; enemy?: Enemy; gate?: Gate }[] = [];
       for (const e of this.enemies) {
         const width =
-          (e.boss ? 2.4 : e.kind === "Crawler" ? 0.4 : 0.7) +
+          (isNewBoss(e.kind)
+            ? 4.1
+            : e.boss
+              ? 2.4
+              : e.kind === "Crawler"
+                ? 0.4
+                : 0.7) +
           Math.max(0, (b.payload?.size ?? 1) - 1) * ARSENAL[b.kind].size +
           (b.kind === "sonic" ? 1.4 * (b.payload?.size ?? 1) : 0);
         if (
@@ -1251,6 +1306,7 @@ export class Simulation {
       for (const g of this.gates)
         if (
           !g.passed &&
+          !b.hitGateIds?.includes(g.id) &&
           g.z >= low &&
           g.z <= high + scroll &&
           bulletGate(crossingX(b, g.z), this.mode) !== undefined
@@ -1260,6 +1316,8 @@ export class Simulation {
       for (const contact of contacts) {
         if (!b.active) break;
         if (contact.gate) {
+          // Gates charge once per projectile without consuming its enemy hits.
+          (b.hitGateIds ??= []).push(contact.gate.id);
           improveGate(
             contact.gate,
             bulletGate(crossingX(b, contact.z), this.mode)!,
@@ -1267,7 +1325,6 @@ export class Simulation {
             this.mode,
           );
           this.projectileImpact(b, contact.z, false);
-          b.active = false;
         } else if (contact.enemy && !contact.enemy.dead) {
           const e = contact.enemy;
           (b.hitIds ??= []).push(e.id);
@@ -1360,6 +1417,7 @@ export class Simulation {
         this.effect(this.x, 0, "reward", this.army - old);
         if (!this.army) {
           this.over = true;
+          this.outcome = "defeat";
           this.reason = "Depleting gate";
         }
       }
@@ -1412,12 +1470,26 @@ export class Simulation {
         e.z -= 20 * DT * movement;
       }
       if (e.boss) {
-        e.z -= 0.45 * DT * movement;
-        if (e.z > 24) e.z -= scroll * 0.7 * movement;
-        if (e.hp < e.maxHp * 0.5 && e.phase === 1) {
-          e.phase = 2;
+        const definition = bossDefinition(e.kind);
+        // Body contact cannot despawn a required boss. Attack limbs reach the squad.
+        e.z = Math.max(definition.arenaZ, e.z - scroll * 0.7 * movement);
+        const nextPhase =
+          1 + definition.phases.filter((p) => e.hp / e.maxHp <= p).length;
+        if (nextPhase > e.phase) {
+          e.phase = nextPhase;
           e.phaseTick = this.tick;
-          this.reward("PHASE II · KEEP MOVING");
+          e.phaseUntil = this.tick + (isNewBoss(e.kind) ? 120 : 0);
+          if (isNewBoss(e.kind)) {
+            this.hazards = this.hazards.filter(
+              (h) =>
+                h.source !== e.id || (h.releaseAt ?? h.strikeAt) <= this.tick,
+            );
+            e.motions = e.motions.filter(
+              (m) => (m.release ?? m.strike) <= this.tick,
+            );
+            e.prepareUntil = this.tick;
+          }
+          this.reward(`PHASE ${e.phase} · KEEP MOVING`);
           this.effect(e.x, e.z, "armor");
         }
       } else
@@ -1435,7 +1507,12 @@ export class Simulation {
           DT *
           movement;
       this.supers.barrier(e, previousZ);
-      if (e.cooldown <= this.tick && e.z < 38 && e.prepareUntil <= this.tick) {
+      if (
+        e.cooldown <= this.tick &&
+        e.z < 38 &&
+        e.prepareUntil <= this.tick &&
+        (e.phaseUntil ?? 0) <= this.tick
+      ) {
         if (this.supers.cancelAttack(e)) {
           e.cooldown =
             this.tick +
@@ -1560,6 +1637,7 @@ export class Simulation {
               ),
             );
         }
+        if (isNewBoss(e.kind)) scheduleBossAttack(this, e, lane);
         if (e.boss)
           e.cooldown = Math.max(
             e.cooldown,
@@ -1578,7 +1656,7 @@ export class Simulation {
               -e.z + 1.1,
             )
           : 0;
-      if (exposed > 0.5 || (e.boss && e.z <= 0.6 + this.crowd.push)) {
+      if (!e.boss && exposed > 0.5) {
         this.hitSquad(
           Math.min(
             this.contactDamage(e),
@@ -1598,7 +1676,7 @@ export class Simulation {
         e.dead = true;
         this.effect(e.x, e.z, "corpse", e.boss ? 1.8 : 1, { style: "tumble" });
         if (e.boss) this.endBoss();
-      } else if (e.z < -formationShape(this.army).depth - 1) e.dead = true;
+      } else if (e.z < -this.crowd.back - 1) e.dead = true;
       if (e.dead)
         this.hazards = this.hazards.filter(
           (h) => h.source !== e.id || h.strikeAt <= this.tick,
@@ -1647,7 +1725,7 @@ export class Simulation {
           loss,
           "Crowd crushed against the curb",
           side * ROAD_EDGE,
-          -FORMATION_TIP - formationShape(this.army).depth * 0.8,
+          -(this.crowd.front + this.crowd.depth * 0.8),
           true,
         );
       }
@@ -1655,8 +1733,9 @@ export class Simulation {
     for (const d of this.drops) {
       d.z -= scroll;
       if (
-        d.z < 1 + this.crowd.push &&
-        d.z > -0.5 + this.crowd.push &&
+        // Recruitment or losses can move the tip past a pickup in one tick.
+        d.z < 1 + Math.max(previousPush, this.crowd.push) &&
+        d.z > -0.5 + Math.min(previousPush, this.crowd.push) &&
         formationPositions(this.mode, this.x).some(
           (x) => Math.abs(d.x - x) < 1.4,
         )
@@ -1677,10 +1756,7 @@ export class Simulation {
     // loop does not need four newly allocated arrays on every update.
     let write = 0;
     for (const g of this.gates)
-      if (
-        !g.passed ||
-        (g.wall >= 0 && g.z > -formationShape(this.army).depth - 1)
-      )
+      if (!g.passed || (g.wall >= 0 && g.z > -this.crowd.back - 1))
         this.gates[write++] = g;
     this.gates.length = write;
     write = 0;

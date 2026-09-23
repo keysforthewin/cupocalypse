@@ -1,4 +1,6 @@
+import { bossDefinition } from "./game/bosses";
 import { SuperHud, ControlsHelp, SuperArmory } from "./ui/SuperWeapons";
+import { ShieldHud } from "./ui/ShieldHud";
 import { Leaderboards } from "./ui/Leaderboards";
 import {
   loadPlayerId,
@@ -17,7 +19,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Scene } from "./render/Scene";
 import { RenderBoundary } from "./render/RenderBoundary";
 import { Simulation, VERSION, clamp } from "./game/simulation";
-import { MODES, ENEMIES, BOSSES, type Mode, type Replay } from "./game/types";
+import { MODES, ENEMIES, BOSSES, UPGRADE_PERCENT, type Mode, type Replay } from "./game/types";
 import {
   loadProfile,
   saveProfile,
@@ -47,7 +49,14 @@ const preview = () => {
   s.army = 36;
   return s;
 };
-type Screen = "menu" | "playing" | "paused" | "over";
+type Screen = "menu" | "playing" | "paused" | "over" | "victory";
+function randomSeed(previous = "") {
+  let next: string;
+  do {
+    next = `OP-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36).toUpperCase()}`;
+  } while (next === previous);
+  return next;
+}
 export default function App() {
   const [sim, setSim] = useState(preview);
   const [profile, setProfile] = useState(loadProfile);
@@ -68,7 +77,18 @@ export default function App() {
     "none",
   );
   const [mode, setMode] = useState<Mode>("Classic");
-  const [seed, setSeed] = useState("OUTBREAK-01");
+  const [seed, setSeed] = useState(() => profile.pinnedSeed ?? randomSeed());
+  const seedPinned = profile.pinnedSeed !== null;
+  const toggleSeedPin = () => {
+    if (seedPinned) {
+      setSeed(randomSeed(seed));
+      setProfile((p) => ({ ...p, pinnedSeed: null }));
+    } else if (seed.trim()) {
+      const pinnedSeed = seed.trim();
+      setSeed(pinnedSeed);
+      setProfile((p) => ({ ...p, pinnedSeed }));
+    }
+  };
   const [debug, setDebug] = useState(false);
   const [storageError, setStorageError] = useState(false);
   const [fps, setFps] = useState(60);
@@ -81,8 +101,14 @@ export default function App() {
     aim.current = x;
   }, []);
   useEffect(() => {
-    audio.setActive(screen === "playing");
+    audio.setActive(screen === "playing" || screen === "victory");
     pendingSuper.current = { previous: false, next: false, fire: false };
+    return () => audio.setActive(false);
+  }, [screen]);
+  useEffect(() => {
+    if (screen !== "victory") return;
+    const timer = window.setTimeout(() => setScreen("over"), 8000);
+    return () => window.clearTimeout(timer);
   }, [screen]);
   const velocity = useRef(0);
   const drag = useRef<{ x: number; target: number } | null>(null);
@@ -98,12 +124,13 @@ export default function App() {
   }, [profile]);
   const start = useCallback(
     (record?: Replay) => {
+      if (!record && !seed.trim()) return;
       if (record && (record.version !== VERSION || !validSuperReplay(record))) {
         setError("This replay uses a different balance version.");
         return;
       }
       const next = new Simulation(
-        record?.seed || seed.trim() || "OUTBREAK-01",
+        record?.seed ?? seed,
         record?.mode || mode,
         record?.upgrades || profile.upgrades,
         record?.superLoadout ??
@@ -226,14 +253,14 @@ export default function App() {
               settled.current = true;
               setProfile((p) => settle(p, sim));
             }
-            setScreen("over");
+            setScreen(sim.outcome === "victory" ? "victory" : "over");
             break;
           }
         }
         setFrameAlpha(sim, accumulator * 60);
         audio.update(sim.shots, sim.damageEvents, sim.kills);
-        audio.telegraph(sim);
         audio.weapons(sim);
+        audio.telegraph(sim);
         audio.supers(sim);
         frameTimes.current.push(actualElapsed);
         if (frameTimes.current.length > 7200) frameTimes.current.shift();
@@ -377,6 +404,11 @@ export default function App() {
           s.nextBoss = 99999;
           const isBoss = BOSSES.includes(kind as (typeof BOSSES)[number]);
           s.bossActive = isBoss;
+          if (isBoss) {
+            s.bossIndex = BOSSES.indexOf(kind as (typeof BOSSES)[number]);
+            s.bossKills = s.bossIndex;
+            s.distance = (s.bossIndex + 1) * 150;
+          }
           s.spawnEnemy(kind as (typeof ENEMIES)[number], 0, 22, isBoss);
           setSim(s);
           setScreen("playing");
@@ -521,22 +553,36 @@ export default function App() {
               <p>{modeDescriptions[mode]}</p>
             </div>
             <div className="seed-row">
-              <label htmlFor="seed">SEED</label>
+              <div className="seed-label">
+                <label htmlFor="seed">SEED</label>
+                <button
+                  type="button"
+                  className="seed-pin"
+                  aria-label={seedPinned ? "Unpin seed" : "Pin seed"}
+                  aria-pressed={seedPinned}
+                  title={seedPinned ? "Unpin and generate a new seed" : "Keep this seed across reloads"}
+                  disabled={!seed.trim()}
+                  onClick={toggleSeedPin}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 3h8l-1 7 4 4v2H5v-2l4-4-1-7Z" />
+                    <path d="M12 16v6" />
+                  </svg>
+                </button>
+              </div>
               <input
                 id="seed"
                 maxLength={40}
                 value={seed}
                 onChange={(e) => setSeed(e.target.value)}
+                readOnly={seedPinned}
                 spellCheck={false}
               />
               <button
                 title="Generate a new seed"
                 aria-label="Generate a new seed"
-                onClick={() =>
-                  setSeed(
-                    `OP-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36).toUpperCase()}`,
-                  )
-                }
+                disabled={seedPinned}
+                onClick={() => setSeed(randomSeed(seed))}
               >
                 ↻
               </button>
@@ -558,7 +604,7 @@ export default function App() {
               </strong>
               <small>CONFIGURE →</small>
             </button>
-            <button className="deploy" onClick={() => start()}>
+            <button className="deploy" disabled={!seed.trim()} onClick={() => start()}>
               <span>DEPLOY SQUAD</span>
               <span>↗</span>
             </button>
@@ -577,7 +623,12 @@ export default function App() {
             </div>
           </section>
           <div className="menu-leaderboards">
-            <Leaderboards revision={scoreRevision} playerId={playerId} />
+            <Leaderboards
+              key={mode}
+              mode={mode}
+              revision={scoreRevision}
+              playerId={playerId}
+            />
           </div>
           <footer>
             <span>01 / RALLY THE GUILD</span>
@@ -611,10 +662,7 @@ export default function App() {
               </span>
               <b>{sim.army}</b>
             </div>
-            <div className="hud-stat">
-              <span>SHIELD</span>
-              <b>{sim.shield}</b>
-            </div>
+            <ShieldHud sim={sim} />
             <div className="hud-stat">
               <span>ELIMINATED</span>
               <b>{sim.kills}</b>
@@ -682,9 +730,12 @@ export default function App() {
           </section>
           {boss && (
             <div className="boss-hud">
-              <span>CONTAINMENT TARGET · PHASE {boss.phase}</span>
-              <h2>THE {boss.kind.toUpperCase()}</h2>
-              {boss.kind === "Congregation" && (
+              <span>
+                TARGET {sim.bossIndex + 1} / 8 · PHASE {boss.phase}
+              </span>
+              <h2>{boss.kind.toUpperCase()}</h2>
+              <p className="boss-title">{bossDefinition(boss.kind).title}</p>
+              {boss.motions.length > 1 && (
                 <div className="strike-sequence">
                   {sim.hazards
                     .filter((h) => h.source === boss.id && h.endAt >= sim.tick)
@@ -731,13 +782,31 @@ export default function App() {
           />
         </>
       )}
+      {screen === "victory" && (
+        <div className="victory-reveal">
+          <span>CONTAINMENT COMPLETE</span>
+          <h1>THE WORLD IS QUIET.</h1>
+          <p>Eight targets eliminated. Your squad endured.</p>
+          <button onClick={() => setScreen("over")}>VIEW RESULTS →</button>
+        </div>
+      )}
       {(screen === "paused" || screen === "over") && panel === "none" && (
         <div className="modal-backdrop">
           <section className="dialog end-dialog">
             <span className="eyebrow">
-              {screen === "over" ? "OPERATION CONCLUDED" : "OPERATION ON HOLD"}
+              {screen === "over"
+                ? sim.outcome === "victory"
+                  ? "VICTORY · EIGHT TARGETS ELIMINATED"
+                  : "OPERATION CONCLUDED"
+                : "OPERATION ON HOLD"}
             </span>
-            <h2>{screen === "over" ? "THE LAST STAND." : "HOLD THE LINE."}</h2>
+            <h2>
+              {screen === "over"
+                ? sim.outcome === "victory"
+                  ? "THE WORLD IS QUIET."
+                  : "THE LAST STAND."
+                : "HOLD THE LINE."}
+            </h2>
             <p>
               {screen === "over"
                 ? sim.reason
@@ -823,7 +892,12 @@ export default function App() {
                     Practice runs and replays do not enter the leaderboards.
                   </p>
                 )}
-                <Leaderboards revision={scoreRevision} playerId={playerId} />
+                <Leaderboards
+                  key={sim.mode}
+                  mode={sim.mode}
+                  revision={scoreRevision}
+                  playerId={playerId}
+                />
               </>
             )}
             <button
@@ -905,7 +979,7 @@ export default function App() {
                           <div>
                             <h3>{name}</h3>
                             <p>
-                              +{[10, 5, 4][i] * profile.upgrades[i]}% · LEVEL{" "}
+                              +{UPGRADE_PERCENT[i] * profile.upgrades[i]}% · LEVEL{" "}
                               {profile.upgrades[i]} / 5
                             </p>
                             <div className="upgrade-level">
@@ -1011,9 +1085,9 @@ export default function App() {
                   ))}
                 </div>
                 <p className="fine-print">
-                  Boss sequence: Bulwark → Broodmass → Congregation. Boss
-                  stretches suspend normal encounters. Surviving contact gives
-                  no kill reward.
+                  Boss sequence: {BOSSES.join(" → ")}. All eight targets must be
+                  eliminated. Travel pauses in each arena. Defeat The Last
+                  Witness to complete the campaign.
                 </p>
               </>
             )}
@@ -1178,7 +1252,12 @@ export default function App() {
               sim.hazards = [];
               sim.bossPending = false;
               sim.bossActive = true;
-              sim.spawnEnemy(BOSSES[sim.bossIndex % 3], 0, 26, true);
+              sim.spawnEnemy(
+                BOSSES[Math.min(sim.bossIndex, BOSSES.length - 1)],
+                0,
+                26,
+                true,
+              );
             }}
           >
             SPAWN BOSS

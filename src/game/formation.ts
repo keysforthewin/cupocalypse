@@ -1,6 +1,7 @@
 import type { Mode } from "./types";
 
 export const FORMATION_TIP = 0.35;
+export const FORMATION_BACK = FORMATION_TIP;
 export const ROAD_EDGE = 5.05;
 export const SOLDIER_RADIUS = 0.1;
 const WALL_KNEE = 4.35;
@@ -47,15 +48,17 @@ export function crowdEnvelope(army: number, mode: Mode, x: number, rearX = x) {
           Math.max(0.1, halfWidth * 2),
       0,
     ) / tips.length;
-  const push = Math.min(4.8, shape.depth * pressure * 1.9);
+  // The rear stays fixed. New ranks and curb compression extend toward enemies.
+  const compression = Math.min(4.8, shape.depth * pressure * 1.9);
+  const push = shape.depth + compression;
   return {
     tips,
     rears,
     halfWidth,
     push,
     front: FORMATION_TIP - push,
-    back: FORMATION_TIP + shape.depth,
-    depth: shape.depth + push,
+    back: FORMATION_BACK,
+    depth: push,
   };
 }
 function centerAt(tip: number, rear: number, u: number) {
@@ -172,7 +175,7 @@ export function soldierPosition(
   let row = 0;
   while (row + 1 < starts.length && starts[row + 1] <= index) row++;
   const col = index - starts[row];
-  const u = starts.length <= 1 ? 0 : row / (starts.length - 1);
+  const u = starts.length <= 1 ? 1 : row / (starts.length - 1);
   const e = crowdEnvelope(army, mode, tipX, rearX);
   const center = centerAt(e.tips[copy], e.rears[copy], u);
   const across = columns[row] <= 1 ? 0 : (col / (columns[row] - 1)) * 2 - 1;
@@ -181,7 +184,7 @@ export function soldierPosition(
     row > 0 && row < starts.length - 1 ? Math.sin(index * 71.3) * 0.035 : 0;
   return {
     x: confineToRoad(center + across * half + jitter * (1 - Math.abs(across))),
-    z: e.front + e.depth * u + jitter * 0.55,
+    z: u === 1 ? e.back : e.front + e.depth * u + jitter * 0.55,
     row,
   };
 }

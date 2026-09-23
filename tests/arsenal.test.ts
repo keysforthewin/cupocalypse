@@ -228,6 +228,28 @@ test("echoes repeat the snapshot once per level without recursively scheduling",
   assert.equal(echo.payload!.echoCount, 0);
   assert.equal(s.pendingShots.length, 0);
 });
+test("scheduled supplies have twice the spacing in each phase", () => {
+  const s = fresh();
+  for (const [distance, bossIndex, spacing] of [
+    [50, 0, 72],
+    [160, 0, 56],
+    [500, 1, 32],
+  ]) {
+    s.distance = distance;
+    s.bossIndex = bossIndex;
+    s.supply(0);
+    assert.equal(s.nextSupply - s.distance, spacing);
+  }
+});
+test("ordinary enemy loot uses a six percent eligible drop chance", () => {
+  for (const roll of [0.059, 0.061]) {
+    const s = fresh();
+    s.bossIndex = 1;
+    s.loot.rng.next = () => roll;
+    s.kill(enemy(s));
+    assert.equal(s.drops.length, roll < 0.06 ? 1 : 0);
+  }
+});
 test("post-boss supplies are independent of waves; enemy pity and cooldown start only afterward", () => {
   const s = fresh();
   s.nextSupply = 0;
@@ -236,24 +258,33 @@ test("post-boss supplies are independent of waves; enemy pity and cooldown start
   s.bossIndex = 1;
   s.update({ x: 0 }, false);
   assert.equal(s.drops.length, 1);
-  assert.ok(Math.abs(s.nextSupply - s.distance - 16) < 1e-6);
+  assert.ok(Math.abs(s.nextSupply - s.distance - 32) < 1e-6);
   s.drops = [];
   s.loot.rng.next = () => 0.8;
-  for (let i = 0; i < 9; i++) s.kill(enemy(s));
+  for (let i = 0; i < 19; i++) s.kill(enemy(s));
   assert.equal(s.drops.length, 0);
   s.kill(enemy(s));
   assert.equal(s.drops.length, 1);
   for (let i = 0; i < 20; i++) s.kill(enemy(s));
   assert.equal(s.drops.length, 1);
+  s.tick += 599;
+  s.kill(enemy(s));
+  assert.equal(s.lootEligibleMisses, 0);
+  s.tick++;
+  s.kill(enemy(s));
+  assert.equal(s.lootEligibleMisses, 1);
 });
-test("boss victories award both gear categories, contact escape awards neither", () => {
+test("boss victories award one pickup and alternate gear categories; contact escape awards none", () => {
   const s = fresh();
   const boss = s.spawnEnemy("Bulwark", 0, 20, true)!;
   s.kill(boss);
   assert.equal(s.bossKills, 1);
   assert.equal(s.bossIndex, 1);
-  assert.equal(s.drops.length, 2);
+  assert.equal(s.drops.length, 1);
   assert.ok(GUNS.includes(s.drops[0].kind as Gun));
+  assert.equal(s.nextSupply, s.distance + 10);
+  s.kill(s.spawnEnemy("Broodmass", 0, 20, true)!);
+  assert.equal(s.drops.length, 2);
   assert.ok(BOOSTS.includes(s.drops[1].kind as any));
   const escaped = fresh();
   escaped.endBoss();
@@ -312,7 +343,7 @@ test("boss loot is placed ahead of a collecting formation in all six modes", () 
     s.kill(s.spawnEnemy("Bulwark", 0, 20, true)!);
     s.nextBoss = s.nextEncounter = s.nextSupply = 1e9;
     for (let i = 0; i < 180; i++) s.update({ x: 0 }, false);
-    assert.equal(s.pickupsCollected, 2, mode);
+    assert.equal(s.pickupsCollected, 1, mode);
   }
 });
 test("Ripsaw redirects into moving off-lane targets and Stitcher spaces five needles", () => {

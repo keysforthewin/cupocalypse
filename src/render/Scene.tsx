@@ -1,3 +1,11 @@
+import {
+  bossModelUrl,
+  BossCharacter,
+  BossOrdnance,
+  BossAssetBoundary,
+  BossFallback,
+} from "./BossCharacter";
+import { isNewBoss, bossDefinition } from "../game/bosses";
 import { SuperWeaponEffects } from "./SuperWeaponEffects";
 import {
   ARMY_RENDER_BUDGET,
@@ -8,6 +16,7 @@ import {
 import { DeathEffects } from "./DeathEffects";
 import { characterPose } from "./motion";
 import { squadMaterial, advanceSquadMotion } from "./squadMotion";
+import { frameSquadRear } from "./squadFraming";
 import { PickupView } from "./Pickups";
 import { Projectiles } from "./Projectiles";
 import { GATE_CENTER, GATE_WIDTH, selectedGate } from "../game/gateLayout";
@@ -23,6 +32,7 @@ import { humanoid } from "./models";
 import { Character } from "./Character";
 import assets from "./assets.json";
 import { Barricade } from "./Barricade";
+import { BOSSES } from "../game/types";
 import type { Enemy, Gate, Hazard } from "../game/types";
 const font = "/assets/BarlowCondensed-Bold.woff";
 function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
@@ -363,7 +373,7 @@ function Army({ sim }: { sim: Simulation }) {
       presentedCrowdX(sim),
     );
     if (marker.current) {
-      marker.current.position.set(crowd.rears[0], 0, Math.min(4.7, crowd.back));
+      marker.current.position.set(crowd.rears[0], 0, crowd.back);
       const label = marker.current.userData.label as HTMLDivElement | undefined;
       if (label) {
         label.textContent = sim.army.toLocaleString();
@@ -426,7 +436,7 @@ function Army({ sim }: { sim: Simulation }) {
         <primitive key={i} object={p.mesh} />
       ))}
       <group ref={marker} name="army-count-anchor">
-        <Html position={[0, 0.05, 0.55]} center zIndexRange={[15, 0]}>
+        <Html position={[0, 0.05, 0.2]} center zIndexRange={[15, 0]}>
           <div
             ref={(el) => {
               if (marker.current) marker.current.userData.label = el;
@@ -559,7 +569,13 @@ function World({
   onAim?: (x: number) => void;
 }) {
   useLayoutEffect(onReady, [onReady, sim]);
-  const { camera, gl, scene } = useThree();
+  useEffect(() => {
+    const kind = BOSSES[sim.bossIndex];
+    if (kind && isNewBoss(kind))
+      useGLTF.preload(bossModelUrl(bossDefinition(kind).id, quality));
+  }, [sim.bossIndex, quality]);
+
+  const { camera, gl, scene, size } = useThree();
   useEffect(() => {
     if (import.meta.env.DEV)
       Object.assign(window, { __sceneReview: { camera, scene } });
@@ -578,17 +594,51 @@ function World({
     gl.info.reset();
   }, -100);
   useLayoutEffect(() => {
-    camera.position.set(menu ? 11 : 0, menu ? 13 : 16, menu ? 20 : 18);
-    camera.lookAt(0, 0, menu ? -13 : -8);
-    camera.updateProjectionMatrix();
-  }, [camera, menu]);
+    if (menu) {
+      camera.position.set(11, 13, 20);
+      camera.lookAt(0, 0, -13);
+      camera.updateProjectionMatrix();
+    } else if (camera instanceof T.PerspectiveCamera) {
+      const top = gl.domElement.getBoundingClientRect().top;
+      const barTop =
+        document.querySelector(".reactor-shell")?.getBoundingClientRect().top ??
+        top + size.height - (size.width <= 1200 ? 18 : 24) - 36;
+      const boss = sim.boss ?? sim.bossRemains[0];
+      frameSquadRear(
+        camera,
+        size.height,
+        barTop - top,
+        boss && isNewBoss(boss.kind) ? bossDefinition(boss.kind).height : 0,
+      );
+    }
+  }, [
+    camera,
+    gl,
+    menu,
+    size.width,
+    size.height,
+    sim.supers.loadout.length,
+    sim.boss?.kind,
+    sim.bossRemains.length,
+  ]);
   return (
     <>
       <Environment sim={sim} quality={quality} />
       <Army sim={sim} />
-      {sim.enemies.map((e) => (
-        <Unit key={e.id} enemy={e} sim={sim} />
-      ))}
+      {sim.enemies.map((e) =>
+        isNewBoss(e.kind) ? (
+          <BossAssetBoundary
+            key={e.id}
+            fallback={<BossFallback enemy={e} sim={sim} />}
+          >
+            <Suspense fallback={<BossFallback enemy={e} sim={sim} />}>
+              <BossCharacter enemy={e} sim={sim} quality={quality} />
+            </Suspense>
+          </BossAssetBoundary>
+        ) : (
+          <Unit key={e.id} enemy={e} sim={sim} />
+        ),
+      )}
       {sim.gates.map((g) => (
         <GateView key={g.id} gate={g} sim={sim} />
       ))}
@@ -598,6 +648,16 @@ function World({
       {sim.drops.map((d) => (
         <PickupView key={d.id} drop={d} sim={sim} />
       ))}
+      <BossOrdnance sim={sim} />
+      {sim.bossRemains
+        .filter((e) => isNewBoss(e.kind))
+        .map((e) => (
+          <BossAssetBoundary key={`remains-${e.id}`} fallback={null}>
+            <Suspense fallback={null}>
+              <BossCharacter enemy={e} sim={sim} quality={quality} />
+            </Suspense>
+          </BossAssetBoundary>
+        ))}
       <Projectiles sim={sim} />
       {!menu && <SuperWeaponEffects sim={sim} quality={quality} />}
       <AimGuide sim={sim} onAim={onAim} />
@@ -631,7 +691,7 @@ export function Scene({
       shadows
       dpr={1}
       gl={{ antialias: true, powerPreference: "high-performance" }}
-      camera={{ position: [11, 13, 20], fov: 47, near: 0.1, far: 180 }}
+      camera={{ position: [11, 13, 20], fov: 47, near: 0.1, far: 400 }}
     >
       <Suspense fallback={null}>
         <World

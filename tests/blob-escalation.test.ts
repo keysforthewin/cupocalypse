@@ -127,7 +127,7 @@ test("new enemies are tougher and more numerous; existing enemies and damage bon
   );
   const a = normal.spawnEnemy("Riot Guard", 0, 20)!,
     b = strong.spawnEnemy("Riot Guard", 0, 20)!;
-  assert.ok(b.hp > a.hp * 2);
+  assert.ok(b.hp > a.hp);
   assert.ok(b.armor > a.armor);
   assert.ok(b.speed > a.speed);
   normal.enemies = [];

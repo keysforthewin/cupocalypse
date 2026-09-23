@@ -2,7 +2,7 @@ import { DatabaseSync } from "node:sqlite";
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { MODES } from "../src/game/types";
+import { MODES, type Mode } from "../src/game/types";
 import {
   playerName,
   type ScoreSubmission,
@@ -27,6 +27,7 @@ export function openScores(filename: string) {
       createdAt INTEGER NOT NULL
     );
     CREATE INDEX IF NOT EXISTS scores_player ON scores(playerId);
+    CREATE INDEX IF NOT EXISTS scores_mode_player ON scores(mode, playerId);
   `);
   return {
     submit(score: ScoreSubmission) {
@@ -43,21 +44,20 @@ export function openScores(filename: string) {
         Date.now(),
       );
     },
-    list(): Leaderboards {
-      const top = (metric: "distance" | "kills") =>
-        db
-          .prepare(
-            `
+    list(mode: Mode): Leaderboards {
+      const distance = db
+        .prepare(
+          `
         SELECT playerId, name, distance, kills, mode FROM (
           SELECT *, ROW_NUMBER() OVER (
-            PARTITION BY playerId ORDER BY ${metric} DESC, ${metric === "distance" ? "kills" : "distance"} DESC, createdAt ASC, runId ASC
-          ) AS place FROM scores
+            PARTITION BY playerId ORDER BY distance DESC, kills DESC, createdAt ASC, runId ASC
+          ) AS place FROM scores WHERE mode = ?
         ) WHERE place = 1
-        ORDER BY ${metric} DESC, ${metric === "distance" ? "kills" : "distance"} DESC, createdAt ASC, runId ASC LIMIT 10
+        ORDER BY distance DESC, kills DESC, createdAt ASC, runId ASC LIMIT 10
       `,
-          )
-          .all() as unknown as LeaderboardEntry[];
-      return { distance: top("distance"), kills: top("kills") };
+        )
+        .all(mode) as unknown as LeaderboardEntry[];
+      return { distance };
     },
     close() {
       db.close();
@@ -111,8 +111,14 @@ export function scoresHandler(store: ReturnType<typeof openScores>) {
       res.end(JSON.stringify(body));
     };
     try {
-      if (path === "/api/leaderboards" && req.method === "GET")
-        return reply(200, store.list());
+      if (path === "/api/leaderboards" && req.method === "GET") {
+        const mode = new URL(req.url!, "http://localhost").searchParams.get(
+          "mode",
+        );
+        if (!MODES.includes(mode as Mode))
+          return reply(400, { error: "Valid mission protocol required" });
+        return reply(200, store.list(mode as Mode));
+      }
       if (path !== "/api/scores" || req.method !== "POST")
         return reply(405, { error: "Method not allowed" });
       if (!req.headers["content-type"]?.startsWith("application/json"))

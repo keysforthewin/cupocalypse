@@ -1,6 +1,6 @@
 # The Last Fruit: Cupocalypse
 
-A desktop 3D endless runner built with React 19, Vite, TypeScript, React Three Fiber, and Three.js. All six protocols share a deterministic 60 Hz simulation, ten infected enemy classes, the three-boss rotation, and permanent progression.
+A desktop 3D combat runner built with React 19, Vite, TypeScript, React Three Fiber, and Three.js. All six protocols share a deterministic 60 Hz simulation, ten infected enemy classes, an eight-boss campaign, and permanent progression.
 
 ## Run
 
@@ -18,12 +18,12 @@ Use A/D, arrow keys, or horizontal mouse drag to steer. Firing is automatic. New
 
 ## Implemented
 
-- Shared top-10 distance and kill leaderboards on the front page and results screen, with remembered names and no login.
+- Shared top-10 distance leaderboards for each mission protocol on the front page and results screen, with remembered names and no login.
 
 - Classic, Reverse, Swarm, Fortress, Mirror, and Sudden Death; mode records and shared upgrades.
 - Shootable arithmetic gate pairs, barricades, funnels, supply breaks, finite shields, fifteen collectible guns that fire alongside the kinetic rifle, and fourteen permanent, stacking weapon modifiers. Mirrored formations cross mirrored copies of one authoritative gate choice.
 - Walker, Runner, Crawler, Riot Guard, Charger, Spitter, Bloater, Screamer, Carrier, and Gunner. Separate body/armor values, committed warnings, prepared Screamer pulses, corpse fragments, blood, and bounded effects.
-- Bulwark, Broodmass, and Congregation, with isolated boss stretches, phase changes, alternate pool/summon waves, and previewed strike sequences. Boss contact is survivable and gives no kill reward.
+- Eight mandatory bosses: Bulwark, Broodmass, Congregation, Grave Marshal, Widow of the Salvo, Ossuary Engine, Seraph of the Wound, and The Last Witness. Distance pauses in each arena; the eighth kill ends the campaign at 1,200 m with a victory sequence. The five new bosses use Meshy models refined and animated in Blender, distinct melee/projectile patterns, escalating sound, and protected phase transformations. See [boss designs, quality rubric, and review evidence](BOSS_REVIEW.md).
 - Local profile storage, upgrade purchases, seed entry, pause/restart, mute, quality settings, replay export/import, and last-operation playback.
 - Saved generated meshes with skeletons and animation, separate distant LODs, instanced squad rendering, batched scenery, weathered materials, extended shadow coverage, restrained bloom, generated ElevenLabs weapon sounds, and synthesized enemy combat cues. Gameplay never calls a generation API.
 
@@ -41,9 +41,9 @@ Open `http://localhost:3000`. `PORT` overrides the port. The server serves both 
 
 Alternatively, `docker compose --profile production up -d --build production` serves port 3000 and stores scores in the `scores` Docker volume.
 
-Each leaderboard shows ten distinct browser identities, with that player's best run for the selected metric across all protocols. Distance is whole meters; eliminations break distance ties, and distance breaks elimination ties, then earlier submissions win. Names can repeat because no account or unique-name registration is required. A name is requested after the first normal round, stored with the local profile, and used automatically for later submissions. Settings changes the name for future runs; previous entries retain their submitted names. Clearing browser storage creates a new identity. Practice and replay runs are excluded by the client. These are casual, client-reported scores, not server-verified competitive records.
+Each mission protocol has its own distance leaderboard showing ten distinct browser identities, with each player's furthest run in that protocol. Changing the mission protocol selector updates the front-page list; the results screen shows the completed run's protocol. Distance is whole meters; eliminations break distance ties, then earlier submissions win. Existing scores retain their recorded protocols. The leaderboard API requires a valid `mode` query parameter (for example, `/api/leaderboards?mode=Classic`). Names can repeat because no account or unique-name registration is required. A name is requested after the first normal round, stored with the local profile, and used automatically for later submissions. Settings changes the name for future runs; previous entries retain their submitted names. Clearing browser storage creates a new identity. Practice and replay runs are excluded by the client. These are casual, client-reported scores, not server-verified competitive records.
 
-Both lists refresh every 30 seconds and after a successful submission. Failed submissions show a retry button on the result screen; retrying the same round cannot duplicate it. Leaving that screen after a failed submission discards the unsaved result.
+The list refreshes every 30 seconds, when the selected protocol changes, and after a successful submission. Failed submissions show a retry button on the result screen; retrying the same round cannot duplicate it. Leaving that screen after a failed submission discards the unsaved result.
 
 ## License
 
@@ -53,7 +53,7 @@ Project code is available under the [MIT License](LICENSE). Bundled fonts retain
 
 The main-menu armory now offers **27 permanent super weapons**, each with a distinct mechanic, procedural 3D identity, and locally shipped sound. Start with none; buy weapons with credits and equip up to three at base. **Q / E** switches between equipped weapons, **Space** unleashes the selected charged weapon, and **H** shows or hides the controls guide. Equipment stays locked for the operation, while active powers can combine.
 
-Only the selected reactor gains energy from ordinary kills. Each slot retains its own charge when switched away; super-powered kills cannot refill it. Initial requirements are 50 kills, or 90 in Swarm. Later quotas adapt to recent kill rate to target about 75 seconds of focused charging, without a hard timer. A prominent animated reactor, stored-slot meters, milestone sounds, energy motes, and a full-charge transformation make progress visible.
+Only the selected reactor gains energy from ordinary kills. Each slot retains its own charge when switched away; super-powered kills cannot refill it. Initial requirements are 17 kills, or 30 in Swarm. Later quotas adapt to recent kill rate to target about 25 seconds of focused charging, without a hard timer—roughly three times faster than before. The compact combat display shows just the selected weapon's charge bar and its name underneath; the bar glows when ready. Q / E switches weapons and Space activates them.
 
 See [SUPER_WEAPONS.md](SUPER_WEAPONS.md) for the complete collection, combat rules, compatibility, and review commands. Existing profile progression is preserved; replays use the new balance version.
 
@@ -63,7 +63,7 @@ Ten more guns: **Longspike**, **Stormfork**, **Ripsaw**, **Cinderseed**, **Rimef
 
 Ten more run-long modifiers: **Warhead Press**, **Feedstorm**, **Titan Bore**, **Phase Awl**, **Fork Capacitor**, **Ember Jacket**, **Deadeye Prism**, **Breach Teeth**, **Blast Iris**, and **Echo Chamber**. Every gun benefits from shared damage, cadence, collision-size, piercing, chaining, burning, critical-hit, armor, splash, and echo bonuses. Count-limited modifiers continue increasing damage after their physical count limit. Echoes and fragments inherit shot snapshots; secondary effects cannot recursively multiply.
 
-Opening supplies keep their 36/28 m spacing and dependable first three rewards. The larger catalog enters the early supply pool before the first boss. After the first boss encounter, supplies arrive every **16 m**; ordinary kills can drop loot (12% eligible chance, five-second cooldown, ten-miss guarantee). Boss victories award a weapon and a modifier. Equipment-driven enemy scaling is reduced after the first encounter, while baseline distance and crowd difficulty remain.
+Power-up availability is reduced by roughly 50%: opening supplies use 72/56 m spacing and retain their dependable first three rewards. After the first boss encounter, supplies arrive every **32 m**; ordinary kills can drop loot (6% eligible chance, ten-second cooldown, twenty-miss guarantee). Boss victories award one pickup, alternating weapons and modifiers. Equipment-driven enemy scaling is reduced after the first encounter, while baseline distance and crowd difficulty remain.
 
 All twenty additions have original procedural 3D symbols and matching HUD glyphs. Each new gun has its own projectile silhouette and sound family. Thirty original, deterministic synthesized WAV assets are shipped locally; regenerate them with `python3 scripts/generate-arsenal-audio.py`. The complete arsenal and modifier levels are scrollable in the HUD.
 
@@ -75,9 +75,11 @@ See [ANIMATION_PASS.md](ANIMATION_PASS.md) for the new lateral squad strides, in
 
 ## Rounded crowd and escalation pass
 
-Steering pulls the tip of a rounded crowd with a flat rear. The back follows with a short delay and piles up against the sidewalk; compression extends the crowd forward and moves the firing origin with it. About 100 soldiers fit a lane. Small curb losses remain, while most troops stay on the road. The same deformed crowd is used for enemy, barricade, and lane-attack collisions. Gates, recruits, boss rewards, and Sudden Death kills can all grow the army beyond 600.
+The current balance (`containment-2.1.0`) preserves the first 60 m, then increases distance-based strength by 1.25 per meter and brings equipment-driven durability to full strength by 270 m. Attack damage gains an additional multiplier of ×1.75 at the first boss and ×3 at the second, on top of distance scaling. Warning times, spawn spacing, group-size rules, movement speed, and boss scheduling retain their existing curves. Permanent upgrade levels now grant +20% starting army, +12% weapon damage, and +8% kinetic fire rate. Runs award one credit per 4 m and 25 per defeated boss so early defeats can fund upgrades. Earlier balance-version replays are incompatible; saved purchases remain intact. See [BALANCE_REVIEW.md](BALANCE_REVIEW.md) for the paired automated runs and their limits.
 
-The opening uses 2–3 enemies per group and roughly 3.4-second gaps. Early supply groups are spaced 36 m apart, later 28 m apart. Multiplier gates are absent before 100 m, occur on roughly 2.5% of panels until 250 m, and 6% afterward. Permanent weapon bonuses retain their full value. After the opening, newly spawned enemies gain health, armor, speed, and group size in response to damage, fire rate, volley coverage, and crowd growth. Existing enemy HP does not change when an upgrade is collected. Mixed armored targets and faster attackers occupy different lanes, preserving target choices. See [BLOB_ESCALATION_PASS.md](BLOB_ESCALATION_PASS.md) for verification and screenshots.
+Steering pulls the tip of a rounded crowd with a flat rear. The back follows sideways with a short delay, while its road position stays fixed just above the super-weapon charge bar. Recruitment and sidewalk compression extend the crowd forward and move the firing origin with it; losses pull the front back without moving the rear. Camera framing keeps that rear alignment on window resize. About 100 soldiers fit a lane. Small curb losses remain, while most troops stay on the road. The same deformed crowd is used for enemy, barricade, and lane-attack collisions. Gates, recruits, boss rewards, and Sudden Death kills can all grow the army beyond 600.
+
+The opening uses 2–3 enemies per group and roughly 3.4-second gaps. Early supply groups are spaced 72 m apart, later 56 m apart. Multiplier gates are absent before 100 m, occur on roughly 2.5% of panels until 250 m, and 6% afterward. Permanent weapon bonuses retain their full value. After the opening, newly spawned enemies gain health, armor, speed, and group size in response to damage, fire rate, volley coverage, and crowd growth. Existing enemy HP does not change when an upgrade is collected. Mixed armored targets and faster attackers occupy different lanes, preserving target choices. See [BLOB_ESCALATION_PASS.md](BLOB_ESCALATION_PASS.md) for verification and screenshots.
 
 Deaths choose between collapses, tumbling bodies, directional dismemberment, rupture bursts, acid effects, and armor fragmentation. Cosmetic seeds vary body proportions, debris counts, trajectories, bounces, rotation, colors, lifetime, wet stains, mist, and flashes without consuming encounter randomness. Soldier casualties shed uniformed remains at the impact location. Procedural shaders provide torn surfaces, turbulent plumes, soft flashes and shockwaves, irregular wet decals, and contact shadows. Death audio varies with the effect type.
 
@@ -87,7 +89,7 @@ The simulation uses the full troop count, a trailing crowd position, and density
 
 Collect **Hellhound** (homing missiles), **Helix** (twin weaving plasma), **Wildshard** (erratic shards), **Wisp** (mouse-guided orbs), and **Thunder** (arcing explosive shells). All five fire independently alongside the kinetic rifle; collecting a new gun never replaces another. Duplicates increase that gun's damage for the rest of the run. Damage modifiers strengthen every gun and Overclock speeds their independent firing cycles. Split Shot widens the kinetic volley. The HUD lists the equipped arsenal and levels.
 
-Projectiles travel at visible speeds, carry shaped ammunition and trails, and create colored impact flashes, sparks, shockwaves, smoke, and turbulent fireballs. Missiles reacquire live targets; shells and energy payloads deal distance-weighted splash damage. Gates intercept shots. Wisp's road marker shows its steering lane; moving the mouse guides live orbs while keyboard movement remains independent. Replay `containment-1.7.0` records both squad movement and quantized aim.
+Projectiles travel at visible speeds, carry shaped ammunition and trails, and create colored impact flashes, sparks, shockwaves, smoke, and turbulent fireballs. Missiles reacquire live targets; shells and energy payloads deal distance-weighted splash damage. Shots improve each gate once and continue through to damage enemies behind it. Wisp's road marker shows its steering lane; moving the mouse guides live orbs while keyboard movement remains independent. Replay `containment-1.7.0` records both squad movement and quantized aim.
 
 Eight locally shipped ElevenLabs effects supply six distinct launch sounds, a compact impact, and a heavy detonation. Offline bass/treble mastering, short envelopes, stereo positioning, per-sound voice limits, and a shared compressor control simultaneous fire. The game only fetches local MP3s; it never needs a provider key. Generation provenance is in `assets/originals/weapon-audio/`. `node scripts/generate-weapon-audio.mjs` resumes saved assets without resubmitting completed requests; credentials are read only by this offline script.
 
@@ -157,3 +159,23 @@ The comparison used a Meshy V6 soldier with provider rigging and a FLUX-to-TRELL
 The conservative reservation total is **$41.60**, including the rejected Meshy request; this is **not a provider invoice**. No requests remain pending. See `artifacts/generation-budget.json`. The first legacy comparison ledger had a concurrent-write defect; its completed TRELLIS result was recovered from the original response without resubmission. The supported generator now uses an exclusive ledger lock.
 
 Provider references: [FAL queue documentation](https://docs.fal.ai/model-apis/model-endpoints/queue), [Meshy generation and rigging schema](https://fal.ai/models/fal-ai/meshy/v6-preview/text-to-3d/api), [TRELLIS schema](https://fal.ai/models/fal-ai/trellis/api). Fonts are locally hosted Barlow Condensed and IBM Plex Mono under their supplied open font licenses.
+
+## Procedural biome scenery
+
+Runs begin in **Iron District**, then visit **Haven Estates**, **Golden Hinterlands**, **Blackpine Wilds**, and **Ashfall Expanse** in seeded shuffled groups. Each group covers all five environments without consecutive repeats. Transitions begin every 60 gameplay seconds and travel through mixed scenery for roughly 20 seconds. Pausing freezes the journey; cosmetic randomness does not affect combat or replays.
+
+Scenery combines procedural architecture, terrain, and vegetation with Blender-refined Meshy assets and authored landmarks. High and Performance use the same route with different foliage density and asset LODs. The next road section is prepared incrementally before recycling.
+
+Visual review commands (against the development server):
+
+```sh
+CDP=http://127.0.0.1:9222 FULL=1 OUTPUT=artifacts/biomes/final node scripts/biome-review.mjs
+node scripts/biome-runtime.mjs artifacts/biomes/final
+node scripts/biome-film.mjs artifacts/biomes/final
+node scripts/biome-evaluate.mjs artifacts/biomes/final
+node scripts/biome-evaluator-check.mjs artifacts/biomes/final
+```
+
+The capture script also supports local Playwright without `CDP`. The evaluator fails until each biome has six complete visual assessments above 95, all transition evidence, matching source/asset hashes, and passing runtime checks. Scores require actual visual inspection and written observations; they are not synthesized from test results. See [BIOME_REVIEW.md](BIOME_REVIEW.md) and [asset provenance](assets/biomes/README.md).
+
+The completed [review gallery](artifacts/biomes/final/index.html) contains the five biome sets, model inspections, all directed transition pairs and a transition film. Lowest reviewed scores: city 97, suburb 96, country 96, forest 96, ash 97. These are subjective scores under the documented rubric. During capture, keep source and tooling files unchanged to avoid development-server reloads.

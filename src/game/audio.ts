@@ -1,6 +1,7 @@
 import { SUPER_IDS, SUPERS, type SuperId } from "./superWeapons";
 import { GUNS } from "./projectiles";
 import { BOOSTS } from "./types";
+import { NEW_BOSSES, bossDefinition, isNewBoss } from "./bosses";
 import { effectRandom } from "./deaths";
 import type { Effect } from "./types";
 import type { Simulation } from "./simulation";
@@ -8,6 +9,7 @@ export class AudioEngine {
   ctx: AudioContext | null = null;
   private isMuted = false;
   bus: GainNode | null = null;
+  weaponBus: GainNode | null = null;
   buffers = new Map<string, AudioBuffer>();
   loading: Promise<void> | null = null;
   voices = new Set<AudioBufferSourceNode>();
@@ -30,6 +32,7 @@ export class AudioEngine {
     if (value) this.stop();
   }
   stop() {
+    this.stopSuperReady();
     for (const voice of this.voices) {
       try {
         voice.stop();
@@ -52,6 +55,11 @@ export class AudioEngine {
     if (!this.ctx) return;
     await Promise.all(
       [
+        ...NEW_BOSSES.flatMap((k) =>
+          ["entrance", "windup", "attack", "impact", "phase", "death"].map(
+            (event) => `boss-${bossDefinition(k).id}-${event}`,
+          ),
+        ),
         ...SUPER_IDS.map((id) => `super-${id}`),
         "pulse",
         "seeker",
@@ -77,7 +85,9 @@ export class AudioEngine {
             "detonate",
           ].includes(name);
           const response = await fetch(
-            `/assets/audio/${name}.${legacy ? "mp3" : "wav"}`,
+            name.startsWith("boss-")
+              ? `/assets/audio/bosses/${name.slice(5)}.ogg`
+              : `/assets/audio/${name}.${legacy ? "mp3" : "wav"}`,
           );
           if (!response.ok) throw Error("Audio asset missing");
           const buffer = await this.ctx!.decodeAudioData(
@@ -93,7 +103,8 @@ export class AudioEngine {
   sample(name: string, x: number, volume: number, pitch = 1) {
     const ctx = this.ctx,
       buffer = this.buffers.get(name);
-    const priority = name.startsWith("super-");
+    const bossSound = name.startsWith("boss-");
+    const priority = name.startsWith("super-") || bossSound;
     if (
       !ctx ||
       !buffer ||
@@ -133,7 +144,7 @@ export class AudioEngine {
           mortar: 0.85,
           detonate: 1.65,
         } as Record<string, number>
-      )[name] ?? (priority ? 2.4 : 1),
+      )[name] ?? (bossSound ? buffer.duration / pitch : priority ? 2.4 : 1),
     );
     gain.gain.setValueAtTime(volume, now);
     gain.gain.setValueAtTime(volume, now + duration * 0.65);
@@ -141,7 +152,16 @@ export class AudioEngine {
     pan.pan.value = Math.max(-0.7, Math.min(0.7, x / 7));
     source.connect(gain);
     gain.connect(pan);
-    pan.connect(this.bus!);
+    pan.connect(bossSound ? this.bus! : (this.weaponBus ?? this.bus!));
+    if (bossSound && this.weaponBus) {
+      this.weaponBus.gain.cancelScheduledValues(now);
+      this.weaponBus.gain.setTargetAtTime(0.45, now, 0.04);
+      this.weaponBus.gain.setTargetAtTime(
+        1,
+        now + Math.min(duration, 2.5),
+        0.25,
+      );
+    }
     this.voices.add(source);
     this.voiceNames.set(source, name);
     source.onended = () => {
@@ -200,14 +220,67 @@ export class AudioEngine {
   lastSuperEvent = 0;
   lastChargeSound = -100;
   superMilestones = new Map<SuperId, number>();
+  superReadySource: AudioBufferSourceNode | null = null;
+  private superReadyBuffer: AudioBuffer | null = null;
+  stopSuperReady() {
+    if (!this.superReadySource) return;
+    this.superReadySource.stop();
+    this.superReadySource.disconnect();
+    this.superReadySource = null;
+  }
+  updateSuperReady(sim: Simulation) {
+    const ctx = this.ctx;
+    if (
+      !ctx ||
+      !this.bus ||
+      this.muted ||
+      !this.active ||
+      sim.over ||
+      !sim.supers.readySlots.length
+    ) {
+      this.stopSuperReady();
+      return;
+    }
+    if (this.superReadySource) return;
+    if (!this.superReadyBuffer) {
+      // A repeating three-note signal, with silence between phrases. A dedicated
+      // source keeps the alert audible even when the weapon voice pool is full.
+      const buffer = ctx.createBuffer(
+        1,
+        Math.ceil(ctx.sampleRate * 1.8),
+        ctx.sampleRate,
+      );
+      const data = buffer.getChannelData(0);
+      for (const [note, frequency] of [660, 880, 1320].entries()) {
+        const start = Math.round(note * 0.19 * ctx.sampleRate);
+        const duration = 0.24;
+        for (let i = 0; i < duration * ctx.sampleRate; i++) {
+          const t = i / ctx.sampleRate;
+          const envelope =
+            Math.min(1, t / 0.012) * Math.pow(1 - t / duration, 2);
+          data[start + i] +=
+            0.16 * envelope * Math.sin(2 * Math.PI * frequency * t);
+        }
+      }
+      this.superReadyBuffer = buffer;
+    }
+    const source = ctx.createBufferSource();
+    source.buffer = this.superReadyBuffer;
+    source.loop = true;
+    source.connect(this.bus);
+    this.superReadySource = source;
+    source.start();
+  }
   supers(sim: Simulation) {
     if (this.superSim !== sim) {
+      this.stopSuperReady();
       this.superSim = sim;
       this.lastSuperCast = 0;
       this.lastSuperEvent = 0;
       this.lastChargeSound = -100;
       this.superMilestones.clear();
     }
+    this.updateSuperReady(sim);
     for (const cast of sim.supers.archive.values())
       if (cast.serial > this.lastSuperCast) {
         this.lastSuperCast = cast.serial;
@@ -231,11 +304,6 @@ export class AudioEngine {
           this.tone(450 + stage * 240, 0.25, 0.025, "triangle");
         }
         this.superMilestones.set(e.id, stage);
-      }
-      if (e.kind === "ready") {
-        this.tone(660, 0.65, 0.06, "sine");
-        this.tone(880, 0.75, 0.045, "triangle");
-        this.tone(1320, 0.85, 0.025, "sine");
       }
       if (e.kind === "switch") this.tone(280, 0.065, 0.02, "triangle");
     }
@@ -279,6 +347,8 @@ export class AudioEngine {
     if (!this.ctx) {
       this.ctx = new AudioContext();
       this.bus = this.ctx.createGain();
+      this.weaponBus = this.ctx.createGain();
+      this.weaponBus.connect(this.bus);
       this.bus.gain.value = this.muted ? 0 : 0.72;
       const filter = this.ctx.createBiquadFilter();
       filter.type = "lowpass";
@@ -292,7 +362,14 @@ export class AudioEngine {
       compressor.release.value = 0.2;
       this.bus.connect(filter);
       filter.connect(compressor);
-      compressor.connect(this.ctx.destination);
+      const limiter = this.ctx.createWaveShaper();
+      limiter.curve = Float32Array.from(
+        { length: 8193 },
+        (_, i) => 0.89 * Math.tanh((i / 4096 - 1) / 0.89),
+      );
+      limiter.oversample = "4x";
+      compressor.connect(limiter);
+      limiter.connect(this.ctx.destination);
       this.loading = this.loadSamples();
     }
     this.setActive(true);
@@ -421,8 +498,35 @@ export class AudioEngine {
         if (deathSounds++ < 3) this.death(e);
       }
     }
+    for (const enemy of [...sim.enemies, ...sim.bossRemains]) {
+      if (!isNewBoss(enemy.kind)) continue;
+      const d = bossDefinition(enemy.kind);
+      const play = (event: string, eventTick: number, volume = 0.95) => {
+        const key = `boss:${enemy.id}:${event}:${eventTick}`;
+        if (
+          sim.tick < eventTick ||
+          sim.tick > eventTick + 8 ||
+          this.heard.has(key)
+        )
+          return;
+        this.heard.add(key);
+        this.sample(`boss-${d.id}-${event}`, enemy.x, volume);
+      };
+      if (enemy.age < 0.15 && !enemy.dead)
+        play("entrance", sim.tick - Math.round(enemy.age * 60));
+      if (enemy.dead) play("death", enemy.deathTick ?? sim.tick);
+      else {
+        if (enemy.phase > 1) play("phase", enemy.phaseTick);
+        for (const motion of enemy.motions) {
+          play("windup", motion.start, 0.65);
+          play("attack", motion.release ?? motion.strike);
+          if (motion.release !== undefined) play("impact", motion.strike);
+        }
+      }
+    }
     for (const enemy of sim.enemies)
       for (const m of enemy.motions) {
+        if (isNewBoss(enemy.kind)) continue;
         const key = `${enemy.id}:${m.kind}:${m.strike}`;
         if (
           sim.tick < m.strike ||

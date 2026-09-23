@@ -1,0 +1,60 @@
+[
+  {
+    "id": "grave-marshal",
+    "name": "Grave Marshal",
+    "title": "The Unburied Commander",
+    "height": 11,
+    "span": 8,
+    "color": "#dc815b",
+    "subject": "Colossal fictional biomechanical military sentinel with an empty neck socket, massive asymmetrical cracked concrete command bunker shoulder armor, exposed rebar, dark red biomechanical cables, blackened steel plates, two thick planted legs with combat boots, powerful long arms separated from torso, right hand holding a giant rectangular blast door cleaver pointing down. Hollow armored neck cavity, disciplined menacing silhouette. No pedestal.",
+    "sound": "Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling",
+    "qualitySubject": "Colossal fictional mechanical military sentinel with an empty circular neck collar, with no head attachment. A massive asymmetrical concrete bunker shoulder on the viewers left, with sparse rebar. Weathered matte charcoal armor, dark red synthetic cables, substantial planted armored boots. An armored arm on the viewers right holds a single thick rectangular steel blast-door tool, vertical with broad face visible, distinctly separated from the boot. Fully enclosed machine sculpture with clear mechanical elbow, knee and wrist joints. No pedestal."
+  },
+  {
+    "id": "widow-of-the-salvo",
+    "name": "Widow of the Salvo",
+    "title": "The Walking Battery",
+    "height": 18,
+    "span": 20,
+    "color": "#e7bd83",
+    "subject": "Enormous alien siege arthropod, six clearly separated long jointed legs, high arched ivory porcelain carapace, open rib cage containing three upward curved organic mortar barrels, suspended red mechanical pressure chamber abdomen, dangling weathered military plating. Forward facing central blind insect head, coherent bilaterally symmetric anatomy. Legs spread and visible, no ground or pedestal.",
+    "sound": "Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle",
+    "qualitySubject": "Giant six-legged siege arthropod with exactly three thick articulated legs per side, all six distinct and touching one plane. Three large hollow organic mortar barrels emerge from a high arched ochre ivory carapace. Compact blind insect face, segmented black chitin and dark crimson pressure sacs, oxidized military green armor insets. Weight rests on six substantial hooked feet; solid anatomy with clear joints. The abdomen is a connected sculptural mass rather than hanging loose strips. No pedestal."
+  },
+  {
+    "id": "ossuary-engine",
+    "name": "Ossuary Engine",
+    "title": "The Hospital That Walks",
+    "height": 28,
+    "span": 32,
+    "color": "#b8d9c5",
+    "subject": "Colossal walking abandoned surgical hospital tower monster, tall exposed ivory rib cage architecture, four enormous jointed skeletal support arms reaching outward and downward, suspended empty surgical beds, dangling cables, broken floodlights, pale ceramic surgical panels, tiny red alien pilot inside central chest. Biomechanical anatomy, green oxidized steel, uncanny precise mechanical silhouette. No pedestal or surrounding buildings.",
+    "sound": "Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice",
+    "qualitySubject": "A gigantic walking abandoned surgical hospital embodied as a coherent dark fantasy sculpture. Tall horizontal ivory rib cage and a broad vertical sternum, two broad green oxidized steel support legs, two long articulated surgical arms extending to either side, three solid recognizable empty hospital beds integrated below the ribs. Thick substantial ribs with clean negative spaces, no thin torn ribbons. Few thick connecting cables. Stained ivory ceramic armor, dark mechanical inner chamber, restrained rust and verdigris. Distinct hospital relics and surgical claws, strong architectural silhouette. No pedestal."
+  },
+  {
+    "id": "seraph-of-the-wound",
+    "name": "Seraph of the Wound",
+    "title": "The Skyborne Parasite",
+    "height": 44,
+    "span": 70,
+    "color": "#b39bcf",
+    "subject": "Monumental inverted alien seraph parasite floating with three enormous fully spread torn bat membrane wings, two lateral wings and one crown wing, intricate branching wing bones, violet patterned membranes with pale cartilage edges, folded narrow inverted central torso surrounding a dark empty oval cavity, long talons dangling down, rows of small eyes embedded in wings. Original elegant cosmic horror anatomy. Entire silhouette visible, no pedestal.",
+    "sound": "Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir",
+    "qualitySubject": "Monumental alien seraph parasite with two enormous spread batlike wings and a third upright crown wing. Three complete thick pale branching wing skeletons carry taut subtly translucent desaturated violet membranes with small intentional tears at outer margins. Tall slender central armored cartilage torso surrounding a dark oval void, long downward talons, small pale eyes embedded along wing ribs. Elegant severe cathedral silhouette, opaque bone edges, defined shoulder and wing-finger joints. No feathers, no metal armor, no pedestal.",
+    "landscape": true
+  },
+  {
+    "id": "the-last-witness",
+    "name": "The Last Witness",
+    "title": "The World Inside the Wound",
+    "height": 70,
+    "span": 110,
+    "color": "#edd2a2",
+    "subject": "A monumental fully armored robotic colossus kneeling, made entirely of solid weathered ivory ceramic armor, dark steel and gold machine cables. Broad layered chest armor with small recessed amber reactor. Enormous armored hands with five long separated mechanical fingers planted widely apart. Head is an elaborate assembly of three concentric blank ceramic masks opening around a dark circular camera aperture. Gigantic hunched silhouette, ancient machine deity, ornamental layered shoulder plates and knee armor. No human skin, no organic anatomy, no bare body, no pedestal. Entire figure and fingers visible.",
+    "sound": "World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail",
+    "revision": "r3",
+    "qualitySubject": "A single elongated inanimate ancient funeral mask prop, isolated object with no body, no head behind it and no person. Weathered ivory ceramic carved with subtle shallow ritual linework, closed neutral lips parted by a fine dark slit, two empty hollow narrow eye apertures, an exceptionally tall smooth forehead. Heavy sculpted edges, layered dark bronze edging around the back, a few black petrified root strands along one temple. Ominous quiet ceremonial relic, museum-quality physical sculpture, clean finely modeled facial planes, restrained hairline cracks and worn porcelain pores. Near-frontal view with entire object visible. No humanoid figure, no hands, no stand, no pedestal.",
+    "landscape": false
+  }
+]

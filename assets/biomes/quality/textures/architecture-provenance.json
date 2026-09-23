@@ -1,0 +1,274 @@
+[
+  {
+    "material": "brick",
+    "tile": 0,
+    "source": "assets/biomes/quality/textures/city-tenement.png",
+    "sample": [
+      336,
+      1584,
+      48,
+      48
+    ],
+    "color": [
+      153,
+      84,
+      57
+    ],
+    "pattern": "brick"
+  },
+  {
+    "material": "limestone",
+    "tile": 1,
+    "source": "assets/biomes/quality/textures/city-offices.png",
+    "sample": [
+      504,
+      1968,
+      48,
+      48
+    ],
+    "color": [
+      174,
+      168,
+      148
+    ],
+    "pattern": "stone"
+  },
+  {
+    "material": "siding",
+    "tile": 2,
+    "source": "assets/biomes/quality/textures/suburb-house.png",
+    "sample": [
+      1200,
+      1512,
+      48,
+      48
+    ],
+    "color": [
+      116,
+      145,
+      113
+    ],
+    "pattern": "siding"
+  },
+  {
+    "material": "redwood",
+    "tile": 3,
+    "source": "assets/biomes/quality/textures/country-barn.png",
+    "sample": [
+      288,
+      1368,
+      48,
+      48
+    ],
+    "color": [
+      122,
+      44,
+      37
+    ],
+    "pattern": "vertical"
+  },
+  {
+    "material": "slate",
+    "tile": 4,
+    "source": "assets/biomes/quality/textures/suburb-house.png",
+    "sample": [
+      96,
+      1080,
+      48,
+      48
+    ],
+    "color": [
+      77,
+      82,
+      81
+    ],
+    "pattern": "roof"
+  },
+  {
+    "material": "timber",
+    "tile": 5,
+    "source": "assets/biomes/quality/textures/forest-cabin.png",
+    "sample": [
+      1680,
+      1104,
+      48,
+      48
+    ],
+    "color": [
+      76,
+      66,
+      48
+    ],
+    "pattern": "vertical"
+  },
+  {
+    "material": "concrete",
+    "tile": 6,
+    "source": "assets/biomes/quality/textures/city-offices.png",
+    "sample": [
+      360,
+      1080,
+      48,
+      48
+    ],
+    "color": [
+      120,
+      116,
+      104
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "steel",
+    "tile": 7,
+    "source": "assets/biomes/quality/textures/forest-cabin.png",
+    "sample": [
+      1680,
+      936,
+      48,
+      48
+    ],
+    "color": [
+      47,
+      50,
+      47
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "glass",
+    "tile": 8,
+    "source": "assets/biomes/quality/textures/city-tenement.png",
+    "sample": [
+      408,
+      504,
+      48,
+      48
+    ],
+    "color": [
+      43,
+      57,
+      59
+    ],
+    "pattern": "glass"
+  },
+  {
+    "material": "trim",
+    "tile": 9,
+    "source": "assets/biomes/quality/textures/suburb-house.png",
+    "sample": [
+      1416,
+      480,
+      48,
+      48
+    ],
+    "color": [
+      202,
+      196,
+      172
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "greenmetal",
+    "tile": 10,
+    "source": "assets/biomes/quality/textures/city-tenement.png",
+    "sample": [
+      576,
+      552,
+      48,
+      48
+    ],
+    "color": [
+      42,
+      76,
+      65
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "copper",
+    "tile": 11,
+    "source": "assets/biomes/quality/textures/country-barn.png",
+    "sample": [
+      192,
+      264,
+      48,
+      48
+    ],
+    "color": [
+      117,
+      81,
+      57
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "fieldstone",
+    "tile": 12,
+    "source": "assets/biomes/quality/textures/city-offices.png",
+    "sample": [
+      360,
+      1080,
+      48,
+      48
+    ],
+    "color": [
+      118,
+      117,
+      100
+    ],
+    "pattern": "stone"
+  },
+  {
+    "material": "darkbrick",
+    "tile": 13,
+    "source": "assets/biomes/quality/textures/city-tenement.png",
+    "sample": [
+      456,
+      1728,
+      48,
+      48
+    ],
+    "color": [
+      126,
+      76,
+      56
+    ],
+    "pattern": "brick"
+  },
+  {
+    "material": "felt",
+    "tile": 14,
+    "source": "assets/biomes/quality/textures/suburb-house.png",
+    "sample": [
+      1128,
+      792,
+      48,
+      48
+    ],
+    "color": [
+      62,
+      65,
+      62
+    ],
+    "pattern": "plain"
+  },
+  {
+    "material": "soot",
+    "tile": 15,
+    "source": "assets/biomes/quality/textures/forest-cabin.png",
+    "sample": [
+      1680,
+      1920,
+      48,
+      48
+    ],
+    "color": [
+      67,
+      64,
+      56
+    ],
+    "pattern": "plain"
+  }
+]

@@ -11,6 +11,7 @@ import {
   validateScore,
 } from "../server/leaderboards";
 import { playerName, type ScoreSubmission } from "../src/game/leaderboard";
+import { MODES } from "../src/game/types";
 import { fresh, loadProfile, saveProfile } from "../src/game/persistence";
 
 const score = (values: Partial<ScoreSubmission> = {}): ScoreSubmission => ({
@@ -23,7 +24,7 @@ const score = (values: Partial<ScoreSubmission> = {}): ScoreSubmission => ({
   ...values,
 });
 
-test("rankings return ten distinct players and independent best runs, even after restart", () => {
+test("distance rankings return ten distinct players per protocol, even after restart", () => {
   const directory = mkdtempSync(join(tmpdir(), "cupocalypse-scores-"));
   const file = join(directory, "scores.sqlite");
   let store = openScores(file);
@@ -42,13 +43,25 @@ test("rankings return ten distinct players and independent best runs, even after
     store.submit(
       score({ playerId, name: "Kill Ace", distance: 1, kills: 1000 }),
     );
+    for (const mode of MODES.filter((mode) => mode !== "Classic")) {
+      store.submit(
+        score({ playerId, name: `${mode} Ace`, mode, distance: 2000 }),
+      );
+      store.submit(score({ playerId, mode, distance: 500 }));
+    }
     store.close();
     store = openScores(file);
-    const boards = store.list();
+    const boards = store.list("Classic");
     assert.equal(boards.distance.length, 10);
-    assert.equal(boards.kills.length, 10);
+    assert.deepEqual(Object.keys(boards), ["distance"]);
     assert.equal(boards.distance[0].name, "Distance Ace");
-    assert.equal(boards.kills[0].name, "Kill Ace");
+    for (const mode of MODES.filter((mode) => mode !== "Classic")) {
+      const entries = store.list(mode).distance;
+      assert.equal(entries.length, 1);
+      assert.equal(entries[0].name, `${mode} Ace`);
+      assert.equal(entries[0].distance, 2000);
+      assert.equal(entries[0].mode, mode);
+    }
     assert.equal(
       boards.distance.filter((s) => s.playerId === playerId).length,
       1,
@@ -100,9 +113,38 @@ test("HTTP API shares scores and retries are idempotent", async () => {
       (await post(JSON.stringify({ ...run, distance: 9999 }))).status,
       200,
     );
-    const boards = await (await fetch(`${base}/api/leaderboards`)).json();
+    const boards = await (
+      await fetch(`${base}/api/leaderboards?mode=Classic`)
+    ).json();
     assert.equal(boards.distance.length, 1);
     assert.equal(boards.distance[0].distance, 100);
+    assert.deepEqual(Object.keys(boards), ["distance"]);
+    for (const mode of MODES.filter((mode) => mode !== "Classic")) {
+      const url = `${base}/api/leaderboards?mode=${encodeURIComponent(mode)}`;
+      assert.deepEqual(await (await fetch(url)).json(), { distance: [] });
+      assert.equal(
+        (
+          await post(
+            JSON.stringify(
+              score({ playerId: run.playerId, mode, distance: 500 }),
+            ),
+          )
+        ).status,
+        200,
+      );
+      const response = await fetch(url);
+      assert.equal(response.status, 200);
+      const entries = (await response.json()).distance;
+      assert.equal(entries.length, 1);
+      assert.equal(entries[0].mode, mode);
+      assert.equal(entries[0].distance, 500);
+    }
+    for (const query of ["", "?mode=Unknown", "?mode="]) {
+      assert.equal(
+        (await fetch(`${base}/api/leaderboards${query}`)).status,
+        400,
+      );
+    }
     assert.equal((await post("{")).status, 400);
     assert.equal(
       (await post(JSON.stringify(score({ kills: -2 })))).status,
@@ -138,8 +180,20 @@ test("existing profiles migrate and remember a normalized player name", () => {
     );
     assert.equal(loadProfile().playerName, "");
     assert.equal(loadProfile().currency, 500);
+    assert.equal(loadProfile().pinnedSeed, null);
     saveProfile({ ...fresh(), playerName: "  Rust Guild  " });
     assert.equal(loadProfile().playerName, "Rust Guild");
+    saveProfile({ ...fresh(), pinnedSeed: "MY-MAP-42" });
+    assert.equal(loadProfile().pinnedSeed, "MY-MAP-42");
+    saveProfile({ ...loadProfile(), pinnedSeed: null });
+    assert.equal(loadProfile().pinnedSeed, null);
+    for (const pinnedSeed of [true, 123, {}, "", "   "]) {
+      values.set(
+        "gate-runner-profile",
+        JSON.stringify({ ...fresh(), pinnedSeed }),
+      );
+      assert.equal(loadProfile().pinnedSeed, null);
+    }
   } finally {
     if (original) Object.defineProperty(globalThis, "localStorage", original);
     else Reflect.deleteProperty(globalThis, "localStorage");

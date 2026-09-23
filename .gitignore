@@ -9,3 +9,5 @@ assets/.ledger-lock/
 .cache/
 data/
 artifacts/
+
+assets/biomes/.lock/

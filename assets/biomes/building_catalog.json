@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "assets": ["city-offices", "city-tenement", "city-kiosk", "city-water-tower", "suburb-house", "suburb-cottage", "country-barn", "country-barn-stone", "forest-cabin", "forest-lookout", "ash-ruin", "ash-ruin-arcade", "ash-pylon"],
+  "procedural": ["city", "house", "barn", "ruin"],
+  "variants": [0, 1, 2, 3],
+  "seeds": ["BIOME-A", "BIOME-B", "BIOME-C"],
+  "qualities": ["high", "performance"],
+  "weights": {"structure": 30, "integrity": 25, "shading": 20, "uv": 15, "runtime": 10},
+  "threshold": 95,
+  "categoryFloor": 90,
+  "viewingDistance": "gameplay",
+  "intentionalDamage": ["ash-ruin", "ash-ruin-arcade", "ash-pylon"],
+  "curvedStructures": ["city-water-tower", "forest-cabin", "ash-pylon", "forest-lookout"]
+}

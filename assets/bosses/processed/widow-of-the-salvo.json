@@ -1,0 +1,46 @@
+{
+  "id": "widow-of-the-salvo",
+  "blender": "5.2.0 LTS",
+  "height": 18,
+  "span": 22,
+  "bones": 20,
+  "trianglesHigh": 209616,
+  "trianglesPerformance": 40592,
+  "clips": {
+    "idle": {
+      "duration": 4.0,
+      "release": null
+    },
+    "entrance": {
+      "duration": 2.0,
+      "release": null
+    },
+    "transform": {
+      "duration": 2.0,
+      "release": null
+    },
+    "stagger": {
+      "duration": 2.4,
+      "release": null
+    },
+    "mortar": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "needles": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "shell": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "death": {
+      "duration": 6.0,
+      "release": null
+    }
+  },
+  "qualityPass": "q2",
+  "source": "candidates/widow-of-the-salvo-q2-0.glb",
+  "triangleCountBasis": "Validated shipped GLB"
+}

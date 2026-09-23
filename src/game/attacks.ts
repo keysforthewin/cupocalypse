@@ -8,6 +8,8 @@ export interface AttackMotion {
   end: number;
   lane: number;
   variant: number;
+  clip?: string;
+  release?: number;
 }
 // Keep completed motions for recovery after the damage hazard has expired.
 export function commitMotion(enemy: Enemy, hazard: Hazard) {
@@ -34,5 +36,6 @@ export function activeMotion(enemy: Enemy, tick: number) {
 }
 
 export function motionReleaseTick(motion: AttackMotion) {
+  if (motion.release !== undefined) return motion.release;
   return motion.kind === "pool" ? motion.strike - 27 : motion.strike;
 }

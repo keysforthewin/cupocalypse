@@ -1,3 +1,5 @@
+import type { Mode } from "./types";
+
 export const MAX_PLAYER_NAME = 24;
 export function playerName(value: unknown): string {
   return typeof value === "string"
@@ -27,7 +29,6 @@ export interface LeaderboardEntry {
 }
 export interface Leaderboards {
   distance: LeaderboardEntry[];
-  kills: LeaderboardEntry[];
 }
 
 export function loadPlayerId(): string {
@@ -47,9 +48,13 @@ export function loadPlayerId(): string {
 }
 
 export async function fetchLeaderboards(
+  mode: Mode,
   signal?: AbortSignal,
 ): Promise<Leaderboards> {
-  const response = await fetch("/api/leaderboards", { signal });
+  const response = await fetch(
+    `/api/leaderboards?mode=${encodeURIComponent(mode)}`,
+    { signal },
+  );
   if (!response.ok)
     throw new Error("Shared scores are unavailable. Please try again.");
   return response.json();

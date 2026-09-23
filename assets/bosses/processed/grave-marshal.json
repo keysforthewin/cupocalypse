@@ -1,0 +1,46 @@
+{
+  "id": "grave-marshal",
+  "blender": "5.2.0 LTS",
+  "height": 11,
+  "span": 11,
+  "bones": 13,
+  "trianglesHigh": 209262,
+  "trianglesPerformance": 40592,
+  "clips": {
+    "idle": {
+      "duration": 4.0,
+      "release": null
+    },
+    "entrance": {
+      "duration": 2.0,
+      "release": null
+    },
+    "transform": {
+      "duration": 2.0,
+      "release": null
+    },
+    "stagger": {
+      "duration": 2.4,
+      "release": null
+    },
+    "cleave": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "execution": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "heel": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "death": {
+      "duration": 6.0,
+      "release": null
+    }
+  },
+  "qualityPass": "q2",
+  "source": "candidates/grave-marshal-q3-1.glb",
+  "triangleCountBasis": "Validated shipped GLB"
+}

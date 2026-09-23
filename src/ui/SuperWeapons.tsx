@@ -76,167 +76,58 @@ export function SuperHud({
   paused: boolean;
 }) {
   const system = sim.supers,
-    slot = system.slot,
-    def = slot ? SUPERS[slot.id] : undefined;
-  const fraction = slot ? slot.charge / slot.quota : 0,
-    ready = fraction >= 1;
-  const active = slot ? system.active(slot.id) : undefined;
-  const recent = system.events.filter(
-    (e) => e.id === slot?.id && e.kind === "charge" && sim.tick - e.tick < 25,
-  );
-  const fire = system.events
-    .filter(
-      (e) => e.id === slot?.id && e.kind === "fire" && sim.tick - e.tick < 42,
-    )
-    .at(-1);
+    slot = system.slot;
+  if (!slot) return null;
+  const def = SUPERS[slot.id],
+    fraction = Math.min(1, slot.charge / slot.quota),
+    active = system.active(slot.id),
+    ready = fraction >= 1 && !active,
+    available = !sim.over && system.readySlots.length > 0;
   return (
     <section
-      className={`super-hud ${paused ? "frozen" : ""} ${ready ? "is-ready" : ""} ${fire ? "is-discharging" : ""}`}
-      aria-label="Super weapon loadout"
-      data-stage={Math.floor(fraction * 4)}
+      className={`super-hud ${paused ? "frozen" : ""} ${ready && !sim.over ? "is-ready" : ""}`}
+      aria-label="Selected super weapon"
       style={
         {
-          "--super-color": def?.color || "#71847b",
-          "--super-accent": def?.accent || "#bbc6bc",
+          "--super-color": def.color,
+          "--super-accent": def.accent,
         } as CSSProperties
       }
     >
-      <div className="super-slots">
-        <span className="super-key-side">
-          <kbd>Q</kbd>
-          <small>PREVIOUS</small>
-        </span>
-        {Array.from({ length: 3 }, (_, i) => {
-          const s = system.slots[i],
-            d = s ? SUPERS[s.id] : undefined,
-            a = s ? system.active(s.id) : undefined;
-          return (
-            <div
-              key={i}
-              className={`super-slot ${i === system.selected && s ? "selected" : ""} ${s && s.charge >= s.quota ? "ready" : ""}`}
-              style={{ "--slot-color": d?.color } as CSSProperties}
-              aria-label={
-                d
-                  ? `${d.name}, ${s.charge} of ${s.quota}${i === system.selected ? ", selected" : ""}`
-                  : `Slot ${i + 1} empty`
-              }
-            >
-              <span className="slot-number">0{i + 1}</span>
-              {s ? (
-                <SuperGlyph id={s.id} />
-              ) : (
-                <span className="empty-slot">+</span>
-              )}
-              <div>
-                <strong>{d?.name || "EMPTY SLOT"}</strong>
-                <small>
-                  {a
-                    ? `ACTIVE · ${Math.max(0, (a.end - sim.tick) / 60).toFixed(1)}s`
-                    : s
-                      ? s.charge >= s.quota
-                        ? "READY"
-                        : `${Math.floor((s.charge / s.quota) * 100)}%${i !== system.selected ? " · STORED" : ""}`
-                      : "EQUIP AT BASE"}
-                </small>
-              </div>
-              {s && (
-                <i
-                  className="slot-charge"
-                  style={{ transform: `scaleX(${s.charge / s.quota})` }}
-                />
-              )}
-            </div>
-          );
-        })}
-        <span className="super-key-side">
-          <kbd>E</kbd>
-          <small>NEXT</small>
-        </span>
+      <div
+        className="reactor-shell"
+        role="progressbar"
+        aria-label={`${def.name} charge`}
+        aria-valuemin={0}
+        aria-valuemax={slot.quota}
+        aria-valuenow={slot.charge}
+        aria-valuetext={
+          active
+            ? `Active, ${Math.floor(fraction * 100)}% recharged`
+            : ready
+              ? "Ready — press Space to activate"
+              : `${Math.floor(fraction * 100)}% charged`
+        }
+      >
+        <div
+          className="reactor-fluid"
+          style={{ transform: `scaleX(${fraction})` }}
+        />
       </div>
-      {slot && def ? (
-        <>
-          <div className="reactor-heading">
-            <span>{def.title.toUpperCase()}</span>
-            <span className="charge-numbers">
-              <b>
-                {Math.floor(fraction * 100)}
-                <small>%</small>
-              </b>
-              <span>
-                {slot.charge} / {slot.quota} KILLS
-              </span>
-            </span>
-          </div>
-          <div
-            className={`reactor-shell ${recent.length ? "receiving" : ""}`}
-            role="progressbar"
-            aria-label={`${def.name} charge`}
-            aria-valuemin={0}
-            aria-valuemax={slot.quota}
-            aria-valuenow={slot.charge}
-          >
-            <div
-              className={`reactor-fluid texture-${slot.id}`}
-              style={{ width: `${fraction * 100}%` }}
-            >
-              <div className="reactor-stream" />
-              <div className="reactor-front" />
-            </div>
-            <div className="reactor-segments">
-              {Array.from({ length: 20 }, (_, i) => (
-                <i key={i} />
-              ))}
-            </div>
-            <div className="reactor-emboss">
-              <SuperGlyph id={slot.id} />
-            </div>
-            {recent.length > 0 && (
-              <span
-                key={recent.at(-1)!.serial}
-                className="charge-impact"
-                style={{ left: `${Math.max(5, fraction * 100)}%` }}
-              >
-                +{recent.length}
-              </span>
-            )}
-          </div>
-          <div className="reactor-footer">
-            <span>
-              {active
-                ? `POWER ACTIVE · ${((active.end - sim.tick) / 60).toFixed(1)}s`
-                : ready
-                  ? "REACTOR AT CAPACITY"
-                  : fraction >= 0.9
-                    ? "CRITICAL CHARGE"
-                    : fraction >= 0.75
-                      ? "POWER SURGING"
-                      : fraction >= 0.5
-                        ? "PRESSURE RISING"
-                        : fraction >= 0.25
-                          ? "REACTOR ENGAGED"
-                          : "KILLS CHARGE THIS WEAPON"}
-            </span>
-            <strong>
-              <kbd>SPACE</kbd>{" "}
-              {active ? "ACTIVE" : ready ? "UNLEASH" : "CHARGING"}
-            </strong>
-          </div>
-          {fire && (
-            <div className="super-release" key={fire.serial}>
-              {def.name}
-              <small>{def.title}</small>
-            </div>
+      <span className="super-weapon-name">{def.name}</span>
+      {available && (
+        <span className="super-ready-prompt" role="status">
+          {ready ? (
+            <>SUPER READY · <kbd>SPACE</kbd> TO FIRE</>
+          ) : (
+            <>SUPER READY · <kbd>Q</kbd> / <kbd>E</kbd> TO SELECT</>
           )}
-        </>
-      ) : (
-        <div className="reactor-empty">
-          NO SUPER WEAPON EQUIPPED{" "}
-          <span>Build your loadout in the Armory.</span>
-        </div>
+        </span>
       )}
     </section>
   );
 }
+
 export function ControlsHelp({
   visible,
   onToggle,

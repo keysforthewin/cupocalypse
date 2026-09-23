@@ -58,15 +58,56 @@ try {
       .getByRole("table", { name: "Top 10 by kill count" })
       .locator("tbody tr")
       .count(),
-    10,
+    0,
   );
-  const inset = await page
-    .locator("#mode")
-    .evaluate((el) => ({
-      padding: getComputedStyle(el).paddingLeft,
-      position: getComputedStyle(el).backgroundPosition,
-      appearance: getComputedStyle(el).appearance,
-    }));
+  for (const mode of [
+    "Reverse",
+    "Swarm",
+    "Fortress",
+    "Mirror",
+    "Sudden Death",
+  ]) {
+    await page.locator("#mode").selectOption(mode);
+    await page
+      .getByText(`No scores yet for ${mode}. Set the first record.`, {
+        exact: true,
+      })
+      .waitFor();
+    assert.equal(await page.locator(".leaderboards tbody tr").count(), 0);
+    assert.ok(
+      (await page.locator(".leaderboard-heading").innerText()).includes(
+        mode.toUpperCase(),
+      ),
+    );
+  }
+  await page.locator("#mode").selectOption("Classic");
+  await page.locator(".leaderboards tbody tr").nth(9).waitFor();
+  // A failed request for another protocol must not leave Classic scores visible.
+  await page.route("**/api/leaderboards?mode=Reverse", (route) =>
+    route.fulfill({ status: 503, body: "Unavailable" }),
+  );
+  await page.locator("#mode").selectOption("Reverse");
+  await page
+    .getByText("Shared scores are unavailable.", { exact: false })
+    .waitFor();
+  assert.equal(await page.locator(".leaderboards tbody tr").count(), 0);
+  await page.unroute("**/api/leaderboards?mode=Reverse");
+  await page
+    .locator(".leaderboards")
+    .getByRole("button", { name: "RETRY" })
+    .click();
+  await page
+    .getByText("No scores yet for Reverse. Set the first record.", {
+      exact: true,
+    })
+    .waitFor();
+  await page.locator("#mode").selectOption("Classic");
+  await page.locator(".leaderboards tbody tr").nth(9).waitFor();
+  const inset = await page.locator("#mode").evaluate((el) => ({
+    padding: getComputedStyle(el).paddingLeft,
+    position: getComputedStyle(el).backgroundPosition,
+    appearance: getComputedStyle(el).appearance,
+  }));
   assert.equal(inset.appearance, "none");
   assert.ok(inset.position.includes(inset.padding));
   fs.mkdirSync("artifacts/leaderboards", { recursive: true });
@@ -111,6 +152,7 @@ try {
     );
     await page.getByRole("button", { name: "DEPLOY AGAIN" }).waitFor();
   };
+  await page.locator("#mode").selectOption("Reverse");
   await page.getByRole("button", { name: "DEPLOY SQUAD" }).click();
   await finish(2345, 321);
   await page.getByLabel("YOUR NAME ON THE LEADERBOARD").fill("Cup Tester");
@@ -120,9 +162,15 @@ try {
     .getByRole("table", { name: "Top 10 by distance" })
     .getByText("Cup Tester", { exact: true })
     .waitFor();
+  assert.ok(
+    (await page.locator(".leaderboard-heading").innerText()).includes(
+      "REVERSE",
+    ),
+  );
   await page.screenshot({ path: "artifacts/leaderboards/results.png" });
   const other = await browser.newPage();
   await other.goto(base);
+  await other.locator("#mode").selectOption("Reverse");
   await other
     .getByRole("table", { name: "Top 10 by distance" })
     .getByText("Cup Tester", { exact: true })
@@ -141,6 +189,7 @@ try {
     "Cup Renamed",
   );
   await page.getByRole("button", { name: "Close panel" }).click();
+  await page.locator("#mode").selectOption("Reverse");
   await page.getByRole("button", { name: "DEPLOY SQUAD" }).click();
   await page.route("**/api/scores", (route) =>
     route.fulfill({ status: 503, body: "Unavailable" }),
@@ -177,13 +226,13 @@ try {
   await finish(4000, 500);
   assert.equal(await page.locator(".score-submission").count(), 0);
   assert.ok(
-    !(await (await fetch(`${base}/api/leaderboards`)).json()).distance.some(
-      (s) => s.distance === 4000,
-    ),
+    !(
+      await (await fetch(`${base}/api/leaderboards?mode=Reverse`)).json()
+    ).distance.some((s) => s.distance === 4000),
   );
   assert.deepEqual(errors, []);
   console.log(
-    "PASS: top tens, shared browsers, responsive layout, select inset, name entry, remembered rename, auto submit, retry, unique player, practice exclusion.",
+    "PASS: distance only, protocol switching and isolation, failed switch and retry, shared browsers, responsive layout, select inset, name entry, remembered rename, auto submit, retry, unique player, practice exclusion.",
   );
 } catch (error) {
   await page.screenshot({ path: "artifacts/leaderboards/failure.png" });

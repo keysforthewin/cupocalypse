@@ -10,7 +10,10 @@
     "validate": "tsx scripts/balance.ts",
     "assets": "node scripts/assets.mjs",
     "capture": "node scripts/capture.mjs",
-    "start": "tsx server/index.ts"
+    "start": "tsx server/index.ts",
+    "buildings:audit": "node scripts/building-audit.mjs",
+    "buildings:review": "node scripts/building-review.mjs",
+    "buildings:evaluate": "node scripts/building-evaluate.mjs"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "^5.2.6",

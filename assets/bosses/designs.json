@@ -1,0 +1,53 @@
+[
+  {
+    "id": "grave-marshal",
+    "name": "Grave Marshal",
+    "title": "The Unburied Commander",
+    "height": 11,
+    "span": 11,
+    "color": "#dc815b",
+    "subject": "Colossal fictional biomechanical military sentinel with an empty neck socket, massive asymmetrical cracked concrete command bunker shoulder armor, exposed rebar, dark red biomechanical cables, blackened steel plates, two thick planted legs with combat boots, powerful long arms separated from torso, right hand holding a giant rectangular blast door cleaver pointing down. Hollow armored neck cavity, disciplined menacing silhouette. No pedestal.",
+    "sound": "Headless concrete military giant: grinding blast-door steel, heavy concrete footfall, deep distorted nonverbal command roar, rubble falling"
+  },
+  {
+    "id": "widow-of-the-salvo",
+    "name": "Widow of the Salvo",
+    "title": "The Walking Battery",
+    "height": 18,
+    "span": 22,
+    "color": "#e7bd83",
+    "subject": "Enormous alien siege arthropod, six clearly separated long jointed legs, high arched ivory porcelain carapace, open rib cage containing three upward curved organic mortar barrels, suspended red mechanical pressure chamber abdomen, dangling weathered military plating. Forward facing central blind insect head, coherent bilaterally symmetric anatomy. Legs spread and visible, no ground or pedestal.",
+    "sound": "Giant siege arthropod: pressurized organic valve inhalation, porcelain carapace cracks, bass artillery cannon recoil, falling shell whistle"
+  },
+  {
+    "id": "ossuary-engine",
+    "name": "Ossuary Engine",
+    "title": "The Hospital That Walks",
+    "height": 28,
+    "span": 26,
+    "color": "#b8d9c5",
+    "subject": "Colossal walking abandoned surgical hospital tower monster, tall exposed ivory rib cage architecture, four enormous jointed skeletal support arms reaching outward and downward, suspended empty surgical beds, dangling cables, broken floodlights, pale ceramic surgical panels, tiny red alien pilot inside central chest. Biomechanical anatomy, green oxidized steel, uncanny precise mechanical silhouette. No pedestal or surrounding buildings.",
+    "sound": "Walking surgical hospital: grinding elevator machinery, taut cables snapping, immense heartbeat pump, hospital siren transforming into a deep living voice"
+  },
+  {
+    "id": "seraph-of-the-wound",
+    "name": "Seraph of the Wound",
+    "title": "The Skyborne Parasite",
+    "height": 44,
+    "span": 97,
+    "color": "#b39bcf",
+    "subject": "Monumental inverted alien seraph parasite floating with three enormous fully spread torn bat membrane wings, two lateral wings and one crown wing, intricate branching wing bones, violet patterned membranes with pale cartilage edges, folded narrow inverted central torso surrounding a dark empty oval cavity, long talons dangling down, rows of small eyes embedded in wings. Original elegant cosmic horror anatomy. Entire silhouette visible, no pedestal.",
+    "sound": "Immense aerial cosmic parasite: displaced hurricane air, layered insect harmonics, bowed metal shriek, enormous broken wordless choir"
+  },
+  {
+    "id": "the-last-witness",
+    "name": "The Last Witness",
+    "title": "The World Inside the Wound",
+    "height": 70,
+    "span": 130,
+    "color": "#edd2a2",
+    "subject": "A monumental fully armored robotic colossus kneeling, made entirely of solid weathered ivory ceramic armor, dark steel and gold machine cables. Broad layered chest armor with small recessed amber reactor. Enormous armored hands with five long separated mechanical fingers planted widely apart. Head is an elaborate assembly of three concentric blank ceramic masks opening around a dark circular camera aperture. Gigantic hunched silhouette, ancient machine deity, ornamental layered shoulder plates and knee armor. No human skin, no organic anatomy, no bare body, no pedestal. Entire figure and fingers visible.",
+    "sound": "World sized cosmic colossus: subterranean pressure rumble, city collapse impact, nested inhuman wordless voices, colossal abyssal roar with resonant tail",
+    "revision": "r3"
+  }
+]

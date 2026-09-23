@@ -1,0 +1,46 @@
+{
+  "id": "seraph-of-the-wound",
+  "blender": "5.2.0 LTS",
+  "height": 44,
+  "span": 97,
+  "bones": 22,
+  "trianglesHigh": 211149,
+  "trianglesPerformance": 40592,
+  "clips": {
+    "idle": {
+      "duration": 4.0,
+      "release": null
+    },
+    "entrance": {
+      "duration": 2.0,
+      "release": null
+    },
+    "transform": {
+      "duration": 2.0,
+      "release": null
+    },
+    "stagger": {
+      "duration": 2.4,
+      "release": null
+    },
+    "spears": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "beam": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "talon": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "death": {
+      "duration": 6.0,
+      "release": null
+    }
+  },
+  "qualityPass": "q2",
+  "source": "candidates/seraph-of-the-wound-q3-1.glb",
+  "triangleCountBasis": "Validated shipped GLB"
+}

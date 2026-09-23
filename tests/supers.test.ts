@@ -175,7 +175,7 @@ test("selection wraps, preserves charge, and only the selected reactor fills", (
   s.kill(foe(s));
   assert.deepEqual(
     s.supers.slots.map((s) => s.charge),
-    [50, 0, 1],
+    [17, 0, 1],
   );
   const ids = ["doc"] as SuperId[];
   const locked = new Simulation("lock", "Classic", [0, 0, 0], ids);
@@ -186,7 +186,22 @@ test("selection wraps, preserves charge, and only the selected reactor fills", (
     ["doc", "mortal", "nitro"],
   );
 });
-test("adaptive requirements change only on firing, no passive or inactive charge", () => {
+test("initial super charge needs roughly one third as many kills in every mode", () => {
+  for (const mode of MODES) {
+    const s = new Simulation("fast-charge", mode, [0, 0, 0], ["doc", "panda"]);
+    const required = mode === "Swarm" ? 30 : 17;
+    assert.equal(s.supers.slot.quota, required);
+    for (let i = 0; i < required - 1; i++) s.kill(foe(s));
+    assert.equal(s.supers.activate(), false);
+    assert.equal(s.supers.slots[1].charge, 0);
+    s.kill(foe(s));
+    assert.equal(s.supers.slot.charge, required);
+    assert.equal(s.supers.events.filter((e) => e.kind === "ready").length, 1);
+    assert.equal(s.supers.activate(), true);
+    assert.equal(s.supers.slot.charge, 0);
+  }
+});
+test("adaptive charge targets 25 seconds and changes only on firing, with no passive or inactive charge", () => {
   const s = setup(["doc", "panda"]);
   s.tick = 3600;
   for (let i = 0; i < 120; i++) {
@@ -194,14 +209,14 @@ test("adaptive requirements change only on firing, no passive or inactive charge
     s.enemies.length = 0;
   }
   const c = arm(s);
-  assert.equal(s.supers.slot.quota, 150);
+  assert.equal(s.supers.slot.quota, 50);
   assert.equal(s.supers.slot.charge, 0);
   ticks(s, 30);
   assert.equal(s.supers.slot.charge, 0);
   s.kill(foe(s));
   assert.equal(s.supers.slot.charge, 1);
-  assert.equal(s.supers.slot.quota, 150);
-  s.supers.slot.charge = 150;
+  assert.equal(s.supers.slot.quota, 50);
+  s.supers.slot.charge = 50;
   assert.equal(s.supers.activate(), false);
   s.supers.select(1);
   arm(s, 1);
@@ -210,7 +225,7 @@ test("adaptive requirements change only on firing, no passive or inactive charge
   assert.equal(c.end, 4080);
   assert.equal(
     new Simulation("swarm", "Swarm", [0, 0, 0], ["doc"]).supers.slot.quota,
-    90,
+    30,
   );
 });
 test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and grants no charge", () => {

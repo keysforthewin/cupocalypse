@@ -1,0 +1,49 @@
+{
+  "id": "the-last-witness",
+  "blender": "5.2.0 LTS",
+  "height": 70,
+  "span": 130,
+  "bones": 26,
+  "trianglesHigh": 290786,
+  "trianglesPerformance": 40609,
+  "clips": {
+    "idle": {
+      "duration": 4.0,
+      "release": null
+    },
+    "entrance": {
+      "duration": 2.0,
+      "release": null
+    },
+    "transform": {
+      "duration": 2.0,
+      "release": null
+    },
+    "stagger": {
+      "duration": 2.4,
+      "release": null
+    },
+    "palm": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "eyes": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "ribs": {
+      "duration": 2.4,
+      "release": 1.2
+    },
+    "death": {
+      "duration": 6.0,
+      "release": null
+    }
+  },
+  "qualityPass": "q2",
+  "source": "originals/the-last-witness.glb",
+  "additionalSources": [
+    "candidates/the-last-witness-q5-0.glb"
+  ],
+  "triangleCountBasis": "Validated shipped GLB"
+}
