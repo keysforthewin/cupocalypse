@@ -1,0 +1,13 @@
+# Runtime-only image for deploy.sh: dist/ is built locally and rsynced in.
+FROM node:24-bookworm-slim
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY dist ./dist
+COPY server ./server
+COPY src/game ./src/game
+RUN mkdir -p data && chown node:node data
+USER node
+EXPOSE 3000
+CMD ["npm", "start"]

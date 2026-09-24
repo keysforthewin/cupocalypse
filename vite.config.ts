@@ -19,6 +19,7 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
   },
+  base: process.env.BASE_PATH || "/",
   envDir: "/tmp/gate-runner-no-env",
   build: { chunkSizeWarningLimit: 1800 },
 });

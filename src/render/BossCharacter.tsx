@@ -1,3 +1,4 @@
+import { publicPath } from "../game/paths";
 import { Component, type ReactNode, useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
@@ -8,7 +9,9 @@ import type { Simulation } from "../game/simulation";
 import { activeMotion, motionReleaseTick } from "../game/attacks";
 import { bossDefinition, bossProjectilePosition } from "../game/bosses";
 export const bossModelUrl = (id: string, quality: string) =>
-  `/assets/bosses/${id}${quality === "performance" ? "-lod" : ""}.glb?v=quality2`;
+  publicPath(
+    `/assets/bosses/${id}${quality === "performance" ? "-lod" : ""}.glb?v=quality2`,
+  );
 const assetUsers = new Map<string, number>();
 
 export class BossAssetBoundary extends Component<

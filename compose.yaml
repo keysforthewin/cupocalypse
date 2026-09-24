@@ -5,6 +5,13 @@ services:
     volumes: ["scores:/app/data"]
     restart: unless-stopped
     profiles: [production]
+  deploy:
+    # Production on the deploy host (see deploy.sh). dist/ is prebuilt locally.
+    build: { context: ., dockerfile: Dockerfile.deploy }
+    ports: ["127.0.0.1:${PORT:-3020}:3000"]
+    volumes: ["./data:/app/data"]
+    restart: unless-stopped
+    profiles: [deploy]
   game:
     image: node:24-bookworm-slim
     working_dir: /app

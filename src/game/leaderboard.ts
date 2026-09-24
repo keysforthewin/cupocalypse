@@ -1,3 +1,4 @@
+import { publicPath } from "./paths";
 import type { Mode } from "./types";
 
 export const MAX_PLAYER_NAME = 24;
@@ -52,7 +53,7 @@ export async function fetchLeaderboards(
   signal?: AbortSignal,
 ): Promise<Leaderboards> {
   const response = await fetch(
-    `/api/leaderboards?mode=${encodeURIComponent(mode)}`,
+    publicPath(`/api/leaderboards?mode=${encodeURIComponent(mode)}`),
     { signal },
   );
   if (!response.ok)
@@ -61,7 +62,7 @@ export async function fetchLeaderboards(
 }
 
 export async function submitScore(score: ScoreSubmission): Promise<void> {
-  const response = await fetch("/api/scores", {
+  const response = await fetch(publicPath("/api/scores"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(score),

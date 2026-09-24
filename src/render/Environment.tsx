@@ -1,3 +1,4 @@
+import { publicPath } from "../game/paths";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
@@ -69,7 +70,7 @@ export function Environment({
   const colors = useMemo(() => [new T.Color(), new T.Color()], []);
   const loaded = useGLTF(
     (manifest as BiomeAsset[]).map((asset) =>
-      quality === "high" ? asset.url : asset.lowUrl,
+      publicPath(quality === "high" ? asset.url : asset.lowUrl),
     ),
   ) as unknown as { scene: T.Group }[];
   const assets = useMemo(() => {

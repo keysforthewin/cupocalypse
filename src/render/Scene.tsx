@@ -1,3 +1,4 @@
+import { publicPath } from "../game/paths";
 import {
   bossModelUrl,
   BossCharacter,
@@ -41,7 +42,7 @@ import assets from "./assets.json";
 import { Barricade } from "./Barricade";
 import { BOSSES } from "../game/types";
 import type { Enemy, Gate, Hazard } from "../game/types";
-const font = "/assets/BarlowCondensed-Bold.woff";
+const font = publicPath("/assets/BarlowCondensed-Bold.woff");
 function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
   const model = useMemo(() => humanoid(e.kind), [e.kind]);
   const assetKind =
@@ -52,10 +53,11 @@ function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
           ? "runner"
           : e.kind.toLowerCase().replaceAll(" ", "-")
       : e.kind.toLowerCase().replaceAll(" ", "-");
-  const url = (assets as Record<string, string>)[assetKind]?.replace(
+  const asset = (assets as Record<string, string>)[assetKind]?.replace(
     ".glb",
     e.z > 32 && !e.boss ? "-lod.glb" : ".glb",
   );
+  const url = asset && publicPath(asset);
   const ref = useRef<T.Group>(null);
   const buff = useRef<T.Mesh>(null);
   useFrame(() => {
@@ -354,7 +356,7 @@ function Warning({ hazard: h, sim }: { hazard: Hazard; sim: Simulation }) {
   );
 }
 function Army({ sim }: { sim: Simulation }) {
-  const soldierAsset = useGLTF("/assets/soldier-crowd.glb");
+  const soldierAsset = useGLTF(publicPath("/assets/soldier-crowd.glb"));
   const uniforms = useMemo(
     () => ({ time: { value: 0 }, lateral: { value: 0 } }),
     [],

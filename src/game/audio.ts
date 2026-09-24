@@ -1,3 +1,4 @@
+import { publicPath } from "./paths";
 import { type SuperId } from "./superWeapons";
 import { GUNS } from "./projectiles";
 import { bossDefinition, isNewBoss } from "./bosses";
@@ -140,7 +141,7 @@ export class AudioEngine {
         const loaded = await Promise.all(
           cue.variants.map(async (url) => {
             try {
-              const response = await fetch(url);
+              const response = await fetch(publicPath(url));
               if (!response.ok) throw Error("Audio asset missing");
               return await this.ctx!.decodeAudioData(
                 await response.arrayBuffer(),
