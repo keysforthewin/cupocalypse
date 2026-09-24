@@ -1144,12 +1144,13 @@ export default function App() {
               <>
                 <div className="manual-intro">
                   <p>
-                    <b>Three reactors. One selected charge.</b> Equip up to
-                    three purchased super weapons in the Armory. Q / E selects
-                    the previous / next slot; only that slot gains energy from
-                    ordinary kills. Space unleashes it when full. Switch to
-                    combine active powers. H shows or hides the controls guide.
-                    Open the Armory anytime to buy or change super weapons.
+                    <b>Three weapons. One shared charge.</b> Equip up to three
+                    purchased super weapons in the Armory. Ordinary kills fill
+                    one universal meter. Q / E selects the weapon to fire;
+                    switching keeps your charge. Space spends the full meter to
+                    activate that weapon. Recharge to combine active powers. H
+                    shows or hides the controls guide. Open the Armory anytime
+                    to buy or change super weapons.
                   </p>
                   <p>
                     <b>Move horizontally. Fire automatically.</b> Use A/D, arrow

@@ -44,11 +44,12 @@ for (const mode of MODES)
       for (let t = 0; t < 18000 && !s.over; t++) {
         const slot = s.supers.slot,
           index = s.supers.selected;
-        const ready = slot.charge >= slot.quota && !s.supers.active(slot.id);
+        const ready =
+          s.supers.charge >= s.supers.quota && !s.supers.active(slot.id);
         if (ready && readyAt[index] < 0) readyAt[index] = s.tick;
         const cycle = !ready && s.supers.active(slot.id) ? 1 : 0;
         if (!cycle) focused[index]++;
-        const required = slot.quota;
+        const required = s.supers.quota;
         s.update(
           { x: bot(s), superPressed: ready, superCycle: cycle as 0 | 1 },
           false,

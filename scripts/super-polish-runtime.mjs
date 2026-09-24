@@ -32,7 +32,7 @@ async function scenario(ids, active) {
       const q = window.__gateRunner;
       for (let i = 0; i < q.sim.supers.slots.length; i++) {
         q.sim.supers.selected = i;
-        q.sim.supers.slot.charge = q.sim.supers.slot.quota;
+        q.sim.supers.charge = q.sim.supers.quota;
         q.sim.supers.activate();
       }
       q.advance(20);

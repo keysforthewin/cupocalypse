@@ -73,36 +73,37 @@ export function SuperHud({
 }) {
   const system = sim.supers,
     slot = system.slot;
-  if (!slot) return null;
-  const def = SUPERS[slot.id],
-    fraction = Math.min(1, slot.charge / slot.quota),
-    active = system.active(slot.id),
-    ready = fraction >= 1 && !active,
+  const def = slot ? SUPERS[slot.id] : undefined,
+    fraction = Math.min(1, system.charge / system.quota),
+    active = slot && system.active(slot.id),
+    ready = !!slot && fraction >= 1 && !active,
     available = !sim.over && system.readySlots.length > 0;
   return (
     <section
       className={`super-hud ${paused ? "frozen" : ""} ${ready && !sim.over ? "is-ready" : ""}`}
-      aria-label="Selected super weapon"
+      aria-label="Universal super charge"
       style={
         {
-          "--super-color": def.color,
-          "--super-accent": def.accent,
+          "--super-color": def?.color ?? "#e9bf61",
+          "--super-accent": def?.accent ?? "#fff0bd",
         } as CSSProperties
       }
     >
       <div
         className="reactor-shell"
         role="progressbar"
-        aria-label={`${def.name} charge`}
+        aria-label="Shared super charge"
         aria-valuemin={0}
-        aria-valuemax={slot.quota}
-        aria-valuenow={slot.charge}
+        aria-valuemax={system.quota}
+        aria-valuenow={system.charge}
         aria-valuetext={
-          active
-            ? `Active, ${Math.floor(fraction * 100)}% recharged`
-            : ready
-              ? "Ready — press Space to activate"
-              : `${Math.floor(fraction * 100)}% charged`
+          fraction >= 1
+            ? ready
+              ? "Super ready — fire the selected weapon or switch weapons"
+              : slot
+                ? "Super charged — select a weapon that is not already active"
+                : "Super charged — equip a weapon in the Armory"
+            : `${Math.floor(fraction * 100)}% shared super charge`
         }
       >
         <div
@@ -110,7 +111,11 @@ export function SuperHud({
           style={{ transform: `scaleX(${fraction})` }}
         />
       </div>
-      <span className="super-weapon-name">{def.name}</span>
+      <span className="super-weapon-name">
+        SHARED SUPER · {Math.floor(fraction * 100)}%
+        <br />
+        {def?.name ?? "EQUIP A WEAPON IN THE ARMORY"}
+      </span>
       {available && (
         <span className="super-ready-prompt" role="status">
           {ready ? (
@@ -174,8 +179,8 @@ export function ControlsHelp({
             Pause / resume
           </p>
           <p className="help-rule">
-            Kills charge only the selected weapon. Switch to combine ready
-            powers.
+            Kills fill one shared super meter. Switch weapons freely; firing any
+            weapon spends the full charge.
           </p>
         </div>
       )}
@@ -211,7 +216,7 @@ export function SuperArmory({
       <div className="loadout-editor">
         <div>
           <span className="eyebrow">SUPER WEAPON LOADOUT</span>
-          <p>Three slots. One selected reactor. Endless combinations.</p>
+          <p>Three weapons. One shared charge. Choose which one to fire.</p>
         </div>
         <div className="loadout-slots">
           {Array.from({ length: 3 }, (_, i) => {
@@ -278,8 +283,8 @@ export function SuperArmory({
         </div>
       </div>
       <p className="loadout-note">
-        Change weapons anytime. New reactors start empty; swapping preserves
-        each weapon’s charge. Active powers finish normally.
+        Change weapons anytime. Your shared charge carries across every weapon,
+        including newly equipped ones. Active powers finish normally.
       </p>
       <div className="super-collection-layout">
         <div className="super-collection">
@@ -376,8 +381,8 @@ export function SuperArmory({
             </button>
           )}
           <small className="super-fine">
-            Permanent unlock. Select with Q / E. Unleash with Space. Kills fill
-            only the selected meter.
+            Permanent unlock. Select with Q / E. Unleash with Space. All weapons
+            use the same super meter.
           </small>
         </article>
       </div>

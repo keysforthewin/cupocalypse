@@ -1406,7 +1406,7 @@ kbd {
   flex-shrink: 1;
 }
 
-/* Compact selected super weapon charge and name. */
+/* Universal super charge and selected weapon name. */
 .menu-super-loadout {
   display: flex;
   align-items: center;

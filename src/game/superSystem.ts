@@ -7,8 +7,6 @@ import { SUPERS, sanitizeLoadout, type SuperId } from "./superWeapons";
 
 export interface SuperSlot {
   readonly id: SuperId;
-  charge: number;
-  quota: number;
 }
 export interface SuperEvent {
   serial: number;
@@ -53,7 +51,8 @@ const hz = 60;
 export class SuperSystem {
   loadout: readonly SuperId[] = [];
   slots: SuperSlot[] = [];
-  private reactors = new Map<SuperId, SuperSlot>();
+  charge = 0;
+  quota: number;
   selected = 0;
   serial = 0;
   eventSerial = 0;
@@ -66,19 +65,13 @@ export class SuperSystem {
     readonly sim: Simulation,
     loadout: readonly SuperId[] = [],
   ) {
+    this.quota = this.minimum;
     this.setLoadout(loadout);
   }
   setLoadout(loadout: readonly SuperId[]) {
     const selectedId = this.slot?.id;
     this.loadout = Object.freeze(sanitizeLoadout(loadout));
-    this.slots = this.loadout.map((id) => {
-      let slot = this.reactors.get(id);
-      if (!slot) {
-        slot = { id, charge: 0, quota: this.minimum };
-        this.reactors.set(id, slot);
-      }
-      return slot;
-    });
+    this.slots = this.loadout.map((id) => ({ id }));
     const selected = selectedId ? this.loadout.indexOf(selectedId) : -1;
     this.selected =
       selected >= 0
@@ -92,9 +85,9 @@ export class SuperSystem {
     return this.slots[this.selected];
   }
   get readySlots() {
-    return this.slots.filter(
-      (slot) => slot.charge >= slot.quota && !this.active(slot.id),
-    );
+    return this.charge >= this.quota
+      ? this.slots.filter((slot) => !this.active(slot.id))
+      : [];
   }
   active(id: SuperId) {
     return this.casts.find((c) => c.id === id && c.end > this.sim.tick);
@@ -144,10 +137,12 @@ export class SuperSystem {
     else this.history.push({ tick: s.tick, count: 1 });
     this.prune();
     const slot = this.slot;
-    if (slot && slot.charge < slot.quota) {
-      slot.charge++;
-      this.event("charge", slot.id, e.x, e.z, slot.charge / slot.quota);
-      if (slot.charge === slot.quota) this.event("ready", slot.id);
+    if (this.charge < this.quota) {
+      this.charge++;
+      if (slot) {
+        this.event("charge", slot.id, e.x, e.z, this.charge / this.quota);
+        if (this.charge === this.quota) this.event("ready", slot.id);
+      }
     }
     const gimmy = this.active("gimmy");
     if (gimmy && ++gimmy.count % 3 === 0 && gimmy.count <= 15) s.army += 5;
@@ -165,15 +160,15 @@ export class SuperSystem {
   activate() {
     const s = this.sim,
       slot = this.slot;
-    if (s.over || !slot || slot.charge < slot.quota || this.active(slot.id))
+    if (s.over || !slot || this.charge < this.quota || this.active(slot.id))
       return false;
     this.prune();
     const rate =
       this.history.reduce((a, h) => a + h.count, 0) /
       Math.max(1, Math.min(60, s.time));
-    slot.charge = 0;
+    this.charge = 0;
     // About 25 seconds of ordinary kills: three times faster than the old target.
-    slot.quota = Math.max(this.minimum, Math.ceil(rate * 25));
+    this.quota = Math.max(this.minimum, Math.ceil(rate * 25));
     const c: SuperCast = {
       serial: ++this.serial,
       id: slot.id,

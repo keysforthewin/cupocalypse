@@ -95,7 +95,7 @@ try {
               x: ((i % 3) - 1) * 3,
               z: 12 + i * 3,
             });
-        q.sim.supers.slot.charge = q.sim.supers.slot.quota;
+        q.sim.supers.charge = q.sim.supers.quota;
         assertActivation(q.sim.supers.activate());
         if (id === "panda" || id === "pauly")
           s.hitSquad(60, "review", 0, 0, false, s.enemies[0].id);

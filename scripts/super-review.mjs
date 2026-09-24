@@ -136,7 +136,7 @@ try {
   checks.switching = true;
   await page.evaluate(() => {
     const s = window.__gateRunner.sim;
-    s.supers.slot.charge = s.supers.slot.quota;
+    s.supers.charge = s.supers.quota;
   });
   await page.keyboard.press("Space");
   await page.waitForFunction(() =>
@@ -148,7 +148,7 @@ try {
   );
   await page.evaluate(() => {
     const s = window.__gateRunner.sim;
-    s.supers.slot.charge = s.supers.slot.quota;
+    s.supers.charge = s.supers.quota;
   });
   await page.keyboard.press("Space");
   await page.waitForFunction(
@@ -192,7 +192,7 @@ try {
   ]) {
     await page.evaluate((n) => {
       const q = window.__gateRunner;
-      q.sim.supers.slot.charge = n;
+      q.sim.supers.charge = n;
       q.advance(0);
     }, charge);
     await page.waitForTimeout(220);
@@ -207,7 +207,7 @@ try {
     await page.evaluate(() => {
       const q = window.__gateRunner,
         s = q.sim;
-      s.supers.slot.charge = s.supers.slot.quota;
+      s.supers.charge = s.supers.quota;
       if (!s.supers.activate()) throw Error("Review activation failed");
       q.advance(0);
     });
@@ -254,7 +254,7 @@ try {
         const q = window.__gateRunner;
         for (let i = 0; i < 3; i++) {
           q.sim.supers.selected = i;
-          q.sim.supers.slot.charge = q.sim.supers.slot.quota;
+          q.sim.supers.charge = q.sim.supers.quota;
           q.sim.supers.activate();
         }
         q.advance(20);

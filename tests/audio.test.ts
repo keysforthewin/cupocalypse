@@ -81,7 +81,7 @@ function setup() {
     [0, 0, 0],
     ["mortal", "doc"],
   );
-  sim.supers.slot.charge = sim.supers.slot.quota;
+  sim.supers.charge = sim.supers.quota;
   return { audio, sim, sources };
 }
 
@@ -95,7 +95,6 @@ test("ready audio loops once, survives selection changes, and stops when fired",
   sim.supers.select(1);
   audio.updateSuperReady(sim);
   assert.equal(sources[0].stops, 0);
-  sim.supers.select(-1);
   assert.equal(sim.supers.activate(), true);
   audio.updateSuperReady(sim);
   assert.equal(audio.superReadySource, null);
@@ -124,14 +123,19 @@ test("ready audio respects pause and mute, restarts on resume, and stops at game
   assert.ok(sources.every((s) => s.stops === 1 && s.disconnects === 1));
 });
 
-test("another charged super keeps the alert going and a new run clears it", () => {
+test("spending the shared meter stops the alert for every weapon; a fresh run clears it", () => {
   const { audio, sim, sources } = setup();
-  sim.supers.slots[1].charge = sim.supers.slots[1].quota;
+  sim.supers.charge = sim.supers.quota;
   audio.updateSuperReady(sim);
   sim.supers.activate();
   audio.updateSuperReady(sim);
-  assert.equal(sources[0].stops, 0);
+  assert.equal(sources[0].stops, 1);
+  sim.supers.charge = sim.supers.quota;
+  audio.updateSuperReady(sim);
+  assert.equal(sources.length, 2);
+  assert.equal(sources[1].stops, 0);
   audio.supers(new Simulation("fresh-run"));
   assert.equal(audio.superReadySource, null);
   assert.equal(sources[0].stops, 1);
+  assert.equal(sources[1].stops, 1);
 });

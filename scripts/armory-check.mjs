@@ -73,7 +73,7 @@ try {
   await page.getByRole("button", { name: "Close panel", exact: true }).click();
   await page.evaluate(() => {
     const s = window.__gateRunner.sim;
-    for (let i = 0; i < s.supers.slot.quota; i++)
+    for (let i = 0; i < s.supers.quota; i++)
       s.kill(s.spawnEnemy("Walker", 0, 30));
   });
   await page.getByRole("button", { name: /RESUME OPERATION/ }).click();

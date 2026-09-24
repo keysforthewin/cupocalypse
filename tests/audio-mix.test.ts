@@ -127,7 +127,7 @@ test("recorded ready reminders vary each phrase and cannot restart after mute", 
     [0, 0, 0],
     ["mortal"],
   );
-  sim.supers.slot.charge = sim.supers.slot.quota;
+  sim.supers.charge = sim.supers.quota;
   a.updateSuperReady(sim);
   const heard: unknown[] = [];
   for (let i = 0; i < 3; i++) {

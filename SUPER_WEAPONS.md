@@ -1,8 +1,8 @@
-# Super weapons — containment-2.5.0
+# Super weapons — containment-2.6.0
 
-The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons anytime through the Armory, including during an operation or from the death screen. Opening it pauses combat and banks credits earned so far; settlement awards only the remainder. Live loadout changes preserve each weapon’s charge and quota, including when removed and re-equipped, and active powers finish normally. Newly equipped weapons start empty. Death-screen changes apply to the next deployment. New and migrated profiles own none.
+The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons anytime through the Armory, including during an operation or from the death screen. Opening it pauses combat and banks credits earned so far; settlement awards only the remainder. Live loadout changes preserve the universal charge meter and its quota, including when all weapons are removed. Newly equipped weapons use that same charge, and active powers finish normally. Death-screen changes apply to the next deployment. New and migrated profiles own none.
 
-**Q / E** select the previous / next reactor, **Space** activates it, and **H** toggles the controls guide. The selected reactor receives eligible kills; switching preserves stored charge. Powers already running continue after switching, so different weapons can combine. A power cannot reactivate until its current effect ends. Controls stay visible beside the reactor even with the guide hidden.
+**Q / E** select the previous / next weapon, **Space** spends the shared charge to activate it, and **H** toggles the controls guide. Eligible kills fill one universal meter; switching weapons preserves it. Powers already running continue after switching, so different weapons can combine. A power cannot reactivate until its current effect ends. Controls stay visible beside the reactor even with the guide hidden.
 
 ## Extended activation timers
 
@@ -12,15 +12,17 @@ The permanent armory contains all 27 named super weapons. Buy each once for 50, 
 | 15 seconds | Pauly, Nitro, Pokey |
 | 30 seconds | Shannondoa, Bronze Leopard |
 
-Existing per-activation limits still apply: Gimmy grants recruitment up to five times, Kismet affects three gates, Bronze Leopard makes six pounces, Pokey has 24 quills, and Doc's shield can be depleted. The replay balance version is now `containment-2.5.0`; earlier replays are rejected because activation timing changed. Saved credits, purchases and loadouts remain compatible.
+Existing per-activation limits still apply: Gimmy grants recruitment up to five times, Kismet affects three gates, Bronze Leopard makes six pounces, Pokey has 24 quills, and Doc's shield can be depleted. The replay balance version is now `containment-2.6.0`; earlier replays are rejected because activation timing and shared charging changed. Saved credits, purchases and loadouts remain compatible.
 
 ## Charging
 
-All slots begin empty, with a requirement of 50 kills (90 in Swarm). There is no passive fill. On activation, the fired slot's next requirement is the greater of its starting requirement or 75 times the eligible kill rate over the preceding 60 simulation seconds, rounded up to five kills. Requirements stay fixed while filling. Fast runs can charge in under 60 seconds; 75 seconds is a pacing target, not a minimum timer.
+The shared meter begins empty each run and needs 17 kills (30 in Swarm) for its first activation. Eligible kills charge it even with no weapon equipped. There is no passive fill. On activation, the meter is consumed once and its next requirement becomes the greater of the starting requirement or 25 times the eligible kill rate over the preceding 60 simulation seconds, rounded up. The requirement stays fixed while filling and follows the shared meter when weapons are switched or replaced.
 
-Each eligible enemy counts once, including bosses and summoned enemies. Super kills, amplified arsenal kills, and their chain reactions still award ordinary rewards but do not fuel any reactor. Escapes, contact despawns, and boss cleanup do not count. Excess charge on a full selected reactor is discarded. Pause freezes the authoritative state; charge never carries between operations.
+Each eligible enemy counts once, including bosses and summoned enemies. Super kills, amplified arsenal kills, and their chain reactions still award ordinary rewards but do not charge the meter. Escapes, contact despawns, and boss cleanup do not count. Excess charge on a full meter is discarded. Pause freezes charge, and charge never carries between operations.
 
-Charge feedback includes moving energy motes, per-kill impact pulses, a numerical meter, milestone audio, escalating textures, a full-charge transformation, and a release animation. Inactive slot meters and active-effect durations remain visible. Reduced-motion presentation removes camera kicks and moving motes.
+A full meter makes every equipped, inactive weapon available. Q / E selects which one to fire. Firing any weapon resets the shared meter to zero; switching cannot grant another free activation. Attempting to fire an already-active weapon or an empty loadout preserves charge. Recharge while powers are active to combine them.
+
+The HUD shows one shared charge percentage and the selected weapon. Charge feedback includes energy motes, per-kill pulses, audio and a ready prompt. The ready reminder follows the shared meter and stops after any weapon fires. Reduced-motion presentation removes camera kicks and moving motes.
 
 ## Collection
 

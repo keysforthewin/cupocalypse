@@ -44,7 +44,7 @@ try {
         e.hp = e.maxHp = 100000;
       }
       if (id === "kismet") {s.x=-3;s.spawnGate();s.gates[0].z = 7;}
-      s.supers.slot.charge = s.supers.slot.quota;
+      s.supers.charge = s.supers.quota;
       if (!s.supers.activate()) throw Error("Activation failed");
       if (id === "hondo") { const e=s.enemies[0], front=s.crowd.push+8; e.z=front-.01; s.supers.barrier(e,front+.01); }
       if (id === "panda") s.hitSquad(60,"review",0,0,false,s.enemies[0].id);

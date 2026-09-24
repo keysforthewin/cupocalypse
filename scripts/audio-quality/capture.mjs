@@ -133,11 +133,11 @@ try {
             if (scenario === "creature-roar") {
               if (frame === 0) a.roar();
             } else if (scenario === "ui-ready") {
-              sim.supers.slot.charge = sim.supers.slot.quota;
+              sim.supers.charge = sim.supers.quota;
               a.updateSuperReady(sim);
             } else {
               if (scenario === "super" && frame === 120) {
-                sim.supers.slot.charge = sim.supers.slot.quota;
+                sim.supers.charge = sim.supers.quota;
                 sim.supers.activate();
               }
               sim.update({ x: Math.sin(frame / 120) * 2, aim: 0 });

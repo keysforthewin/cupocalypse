@@ -28,8 +28,7 @@ const setup = (ids: SuperId[] = ["mortal"]) => {
 };
 const arm = (s: Simulation, i = 0) => {
   s.supers.selected = i;
-  const slot = s.supers.slot;
-  slot.charge = slot.quota;
+  s.supers.charge = s.supers.quota;
   assert.equal(s.supers.activate(), true);
   return s.supers.casts.at(-1)!;
 };
@@ -158,25 +157,19 @@ test("profile migration, permanent purchases and unique three-slot loadouts", ()
   assert.equal(saved.helpVisible, false);
   delete (globalThis as { localStorage?: unknown }).localStorage;
 });
-test("selection wraps, preserves charge, and only the selected reactor fills", () => {
+test("selection wraps and preserves one shared charge across every weapon", () => {
   const s = setup(["doc", "mortal", "nitro"]);
   for (let n = 0; n < 3; n++) s.kill(foe(s));
-  assert.equal(s.supers.slot.charge, 3);
+  assert.equal(s.supers.charge, 3);
   s.supers.select(-1);
   assert.equal(s.supers.selected, 2);
   s.kill(foe(s));
   s.supers.select(1);
   assert.equal(s.supers.selected, 0);
-  assert.deepEqual(
-    s.supers.slots.map((s) => s.charge),
-    [3, 0, 1],
-  );
-  s.supers.slot.charge = s.supers.slot.quota;
+  assert.equal(s.supers.charge, 4);
+  s.supers.charge = s.supers.quota;
   s.kill(foe(s));
-  assert.deepEqual(
-    s.supers.slots.map((s) => s.charge),
-    [17, 0, 1],
-  );
+  assert.equal(s.supers.charge, 17);
   const ids = ["doc"] as SuperId[];
   const locked = new Simulation("lock", "Classic", [0, 0, 0], ids);
   ids.push("mortal");
@@ -190,18 +183,19 @@ test("initial super charge needs roughly one third as many kills in every mode",
   for (const mode of MODES) {
     const s = new Simulation("fast-charge", mode, [0, 0, 0], ["doc", "panda"]);
     const required = mode === "Swarm" ? 30 : 17;
-    assert.equal(s.supers.slot.quota, required);
+    assert.equal(s.supers.quota, required);
     for (let i = 0; i < required - 1; i++) s.kill(foe(s));
     assert.equal(s.supers.activate(), false);
-    assert.equal(s.supers.slots[1].charge, 0);
+    assert.equal(s.supers.charge, required - 1);
+    s.supers.select(1);
     s.kill(foe(s));
-    assert.equal(s.supers.slot.charge, required);
+    assert.equal(s.supers.charge, required);
     assert.equal(s.supers.events.filter((e) => e.kind === "ready").length, 1);
     assert.equal(s.supers.activate(), true);
-    assert.equal(s.supers.slot.charge, 0);
+    assert.equal(s.supers.charge, 0);
   }
 });
-test("adaptive charge targets 25 seconds and changes only on firing, with no passive or inactive charge", () => {
+test("shared adaptive charge targets 25 seconds and changes only on firing, with no passive charge", () => {
   const s = setup(["doc", "panda"]);
   s.tick = 3600;
   for (let i = 0; i < 120; i++) {
@@ -209,22 +203,28 @@ test("adaptive charge targets 25 seconds and changes only on firing, with no pas
     s.enemies.length = 0;
   }
   const c = arm(s);
-  assert.equal(s.supers.slot.quota, 50);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.quota, 50);
+  assert.equal(s.supers.charge, 0);
   ticks(s, 30);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
   s.kill(foe(s));
-  assert.equal(s.supers.slot.charge, 1);
-  assert.equal(s.supers.slot.quota, 50);
-  s.supers.slot.charge = 50;
+  assert.equal(s.supers.charge, 1);
+  assert.equal(s.supers.quota, 50);
+  s.supers.charge = 50;
   assert.equal(s.supers.activate(), false);
+  assert.equal(
+    s.supers.charge,
+    50,
+    "a blocked activation preserves the full meter",
+  );
   s.supers.select(1);
-  arm(s, 1);
+  assert.equal(s.supers.activate(), true);
+  assert.equal(s.supers.charge, 0);
   assert.equal(s.supers.casts.length, 2);
   assert.ok(s.supers.active("doc"));
   assert.equal(c.end, 7200);
   assert.equal(
-    new Simulation("swarm", "Swarm", [0, 0, 0], ["doc"]).supers.slot.quota,
+    new Simulation("swarm", "Swarm", [0, 0, 0], ["doc"]).supers.quota,
     30,
   );
 });
@@ -239,7 +239,7 @@ test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and
   ticks(s, 36);
   assert.ok(a.dead && b.dead);
   assert.ok(boss.hp >= hp * 0.65 - 1e-8);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
   assert.equal(s.kills, 2);
 });
 test("Keys strips armor, executes on an arsenal hit, and adapts its first boss hit", () => {
@@ -253,7 +253,7 @@ test("Keys strips armor, executes on an arsenal hit, and adapts its first boss h
   assert.equal(boss.armor, armor * 0.5);
   s.damagePayload(e, 1);
   assert.ok(e.dead);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
   const hp = boss.hp;
   s.damagePayload(boss, 1);
   assert.ok(boss.hp <= hp - boss.maxHp * 0.25);
@@ -307,7 +307,7 @@ test("Nitro snapshots source attribution through projectiles, echoes and burns",
   assert.equal(e.burns?.[0].superSource, b.payload?.superSource);
   s.supers.select(1);
   s.damagePayload(e, 1000, b.payload);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
 });
 test("Baezil damages inside its three sigils but not outside", () => {
   const s = setup(["baezil"]);
@@ -330,7 +330,7 @@ test("Pauly prevents damage and retaliates without spending ordinary shield", ()
   assert.equal(s.army, 100);
   assert.equal(s.shield, 0);
   assert.ok(e.hp < hp);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
 });
 test("MachineGunQueen prioritizes ordinary threats and fires repeatedly", () => {
   const s = setup(["machinegunqueen"]);
@@ -615,12 +615,12 @@ test("super-triggered Bloater chains neither refill charge nor harm the squad an
   s.supers.damage(c, a, a.hp + a.armor);
   assert.ok(b.dead);
   assert.equal(s.army, 24);
-  assert.equal(s.supers.slot.charge, 0);
+  assert.equal(s.supers.charge, 0);
   assert.ok(boss.hp >= boss.maxHp * 0.65 - 1e-8);
 });
 test("selection is applied before firing on a tick, empty slots and early firing are safe", () => {
   const s = setup(["mortal", "doc"]);
-  s.supers.slots[1].charge = 50;
+  s.supers.charge = 50;
   s.update({ x: 0, superCycle: 1, superPressed: true });
   assert.ok(s.supers.active("doc"));
   assert.equal(s.supers.selected, 1);
@@ -658,8 +658,7 @@ test("natural-play replay reproduces selection, activations, charge, enemies and
   );
   for (let i = 0; i < 12000 && !s.over; i++) {
     const ready =
-      s.supers.slot.charge >= s.supers.slot.quota &&
-      !s.supers.active(s.supers.slot.id);
+      s.supers.charge >= s.supers.quota && !s.supers.active(s.supers.slot.id);
     s.update({
       x: bot(s),
       superPressed: ready,
@@ -675,6 +674,8 @@ test("natural-play replay reproduces selection, activations, charge, enemies and
   assert.equal(r.rng.state, s.rng.state);
   assert.equal(r.supers.selected, s.supers.selected);
   assert.deepEqual(r.supers.slots, s.supers.slots);
+  assert.equal(r.supers.charge, s.supers.charge);
+  assert.equal(r.supers.quota, s.supers.quota);
   assert.deepEqual(r.enemies, s.enemies);
   assert.equal(r.supers.serial, s.supers.serial);
   assert.equal(validSuperReplay({ ...replay, superInputs: [6] }), false);
@@ -716,34 +717,32 @@ test("Nitro preserves ordinary armor penetration after its boss bonus budget is 
   assert.equal(b.hp, a.hp);
 });
 
-test("live loadouts preserve reactors, selection and active casts across removal and reordering", () => {
+test("live loadouts preserve shared charge, selection and active casts across removal and reordering", () => {
   const s = setup(["doc", "nitro"]);
   const cast = arm(s);
-  s.supers.slot.charge = 5;
-  s.supers.slot.quota = 40;
+  s.supers.charge = 5;
+  s.supers.quota = 40;
   s.setSuperLoadout(["nitro", "doc", "mortal"]);
   assert.equal(s.supers.selected, 1);
-  assert.equal(s.supers.slot.charge, 5);
-  assert.equal(s.supers.slots[2].charge, 0);
+  assert.equal(s.supers.charge, 5);
+  assert.equal(s.supers.quota, 40);
   s.setSuperLoadout(["mortal"]);
   assert.equal(s.supers.selected, 0);
   assert.equal(s.supers.active("doc"), cast);
   s.kill(foe(s));
   s.setSuperLoadout(["doc", "mortal"]);
   assert.equal(s.supers.selected, 1);
-  assert.deepEqual(
-    s.supers.slots.map(({ charge, quota }) => [charge, quota]),
-    [
-      [5, 40],
-      [1, 17],
-    ],
-  );
+  assert.equal(s.supers.charge, 6);
+  assert.equal(s.supers.quota, 40);
   s.setSuperLoadout([]);
+  s.kill(foe(s));
+  assert.equal(s.supers.charge, 7);
   assert.equal(s.supers.activate(), false);
+  assert.equal(s.supers.charge, 7);
   ticks(s, 3600);
   assert.equal(s.supers.active("doc"), undefined);
   s.setSuperLoadout(["mortal"]);
-  for (let i = 0; i < 16; i++) s.kill(foe(s));
+  for (let i = 0; i < 33; i++) s.kill(foe(s));
   assert.equal(s.supers.activate(), true);
 });
 
@@ -774,6 +773,8 @@ test("replays reproduce live loadout changes, including multiple edits at the sa
   const r = replayRun(record);
   assert.deepEqual(r.supers.loadout, s.supers.loadout);
   assert.deepEqual(r.supers.slots, s.supers.slots);
+  assert.equal(r.supers.charge, s.supers.charge);
+  assert.equal(r.supers.quota, s.supers.quota);
   assert.equal(r.supers.selected, s.supers.selected);
   assert.deepEqual(r.supers.casts, s.supers.casts);
   assert.deepEqual(r.enemies, s.enemies);
@@ -829,4 +830,42 @@ test("requested super timers stay active until their exact new expiry tick", () 
       id,
     );
   }
+});
+
+test("one full shared meter can fire any equipped weapon exactly once", () => {
+  for (let chosen = 0; chosen < 3; chosen++) {
+    const s = setup(["doc", "nitro", "pauly"]);
+    for (let i = 0; i < s.supers.quota; i++) {
+      s.supers.select(1);
+      s.kill(foe(s));
+    }
+    assert.equal(s.supers.readySlots.length, 3);
+    s.supers.selected = chosen;
+    assert.equal(s.supers.activate(), true);
+    assert.equal(s.supers.charge, 0);
+    assert.equal(s.supers.readySlots.length, 0);
+    assert.equal(s.supers.casts[0].id, s.supers.slots[chosen].id);
+    for (let i = 0; i < 3; i++) {
+      s.supers.select(1);
+      assert.equal(
+        s.supers.activate(),
+        false,
+        "switching cannot spend the same charge twice",
+      );
+    }
+  }
+});
+
+test("charge earned before equipping a weapon can fire a newly purchased loadout", () => {
+  const s = setup([]);
+  for (let i = 0; i < s.supers.quota; i++) s.kill(foe(s));
+  assert.equal(s.supers.charge, s.supers.quota);
+  assert.equal(s.supers.activate(), false);
+  s.setSuperLoadout(["nitro"]);
+  assert.equal(s.supers.activate(), true);
+  assert.ok(s.supers.active("nitro"));
+  assert.equal(s.supers.charge, 0);
+  const freshRun = setup(["nitro"]);
+  assert.equal(freshRun.supers.charge, 0);
+  assert.equal(freshRun.supers.quota, freshRun.supers.minimum);
 });

@@ -88,7 +88,7 @@ try {
       [0, 0, 0],
       ["mortal"],
     );
-    sim.supers.slot.charge = sim.supers.slot.quota;
+    sim.supers.charge = sim.supers.quota;
     a.updateSuperReady(sim);
     const ready = !!a.superReadySource;
     a.muted = true;
