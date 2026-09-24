@@ -3,6 +3,42 @@ import assert from "node:assert/strict";
 import { AudioEngine } from "../src/game/audio";
 import { Simulation } from "../src/game/simulation";
 
+test("gate passage plays once, distinguishes losses, and resets for a new run", () => {
+  const audio = new AudioEngine();
+  const notes: number[] = [];
+  audio.tone = (frequency) => {
+    notes.push(frequency);
+  };
+  for (const x of [-3, 3, 0]) {
+    const sim = new Simulation("gate-audio");
+    sim.nextBoss = sim.nextEncounter = sim.nextSupply = sim.fireClock = 1e9;
+    sim.x = x;
+    sim.spawnGate();
+    Object.assign(sim.gates[0], {
+      z: sim.crowd.push,
+      left: "+",
+      a: 10,
+      right: "−",
+      b: 3,
+    });
+    notes.length = 0;
+    audio.telegraph(sim);
+    assert.deepEqual(notes, []);
+    sim.update({ x });
+    audio.telegraph(sim);
+    assert.deepEqual(
+      notes,
+      x < 0 ? [110, 660, 990] : x > 0 ? [110, 220, 261.6] : [],
+    );
+    const count = notes.length;
+    for (let i = 0; i < 45; i++) {
+      sim.update({ x });
+      audio.telegraph(sim);
+    }
+    assert.equal(notes.length, count);
+  }
+});
+
 function setup() {
   const audio = new AudioEngine();
   const sources: {

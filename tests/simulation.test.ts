@@ -37,8 +37,10 @@ test("gates absorb fire, reveal, improve, and only apply once", () => {
   s.x = -2;
   for (let i = 0; i < 35; i++) s.update({ x: -2 });
   const army = s.army;
-  assert.equal(s.gates.length, 0);
+  assert.equal(g.passed, true);
+  assert.equal(g.passage?.side, "a");
   for (let i = 0; i < 50; i++) s.update({ x: -2 });
+  assert.equal(s.gates.length, 0);
   assert.equal(s.army, army);
   assert.ok(army >= 38);
 });

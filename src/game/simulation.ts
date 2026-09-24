@@ -36,6 +36,7 @@ import {
   bulletGate,
   GATE_CENTER,
   GATE_WIDTH,
+  GATE_PASS_TICKS,
 } from "./gateLayout";
 import { RNG } from "./rng";
 import {
@@ -114,16 +115,16 @@ export function improveGate(
     g[side] = current === "+" ? 0 : 1;
 }
 const stats: Record<EnemyKind, [number, number, number]> = {
-  Walker: [14, 0, 1],
-  Runner: [12, 0, 4],
-  Crawler: [5, 0, 2.4],
-  "Riot Guard": [22, 35, 0.5],
-  Charger: [38, 12, 0.9],
-  Spitter: [22, 0, 0.6],
-  Bloater: [36, 0, 0.5],
-  Screamer: [25, 0, 0.6],
-  Carrier: [48, 0, 0.4],
-  Gunner: [24, 8, 0.6],
+  Walker: [7, 0, 1],
+  Runner: [6, 0, 4],
+  Crawler: [2.5, 0, 2.4],
+  "Riot Guard": [11, 35, 0.5],
+  Charger: [19, 12, 0.9],
+  Spitter: [11, 0, 0.6],
+  Bloater: [18, 0, 0.5],
+  Screamer: [12.5, 0, 0.6],
+  Carrier: [24, 0, 0.4],
+  Gunner: [12, 8, 0.6],
 };
 export class Simulation {
   supers: SuperSystem;
@@ -421,12 +422,12 @@ export class Simulation {
     const st = boss
       ? [
           {
-            Classic: 320,
-            Reverse: 320,
-            Swarm: 470,
-            Fortress: 290,
-            Mirror: 300,
-            "Sudden Death": 230,
+            Classic: 160,
+            Reverse: 160,
+            Swarm: 235,
+            Fortress: 145,
+            Mirror: 150,
+            "Sudden Death": 115,
           }[this.mode] * Math.pow(this.difficulty, 2.2),
           kind === "Bulwark" ? 130 : 0,
           0.12,
@@ -1482,6 +1483,7 @@ export class Simulation {
             gateResult(this.army, g.right, g.b, this.mode),
           ),
         );
+        g.passage = { tick: this.tick, side, delta: this.army - old };
         this.reward(
           `${this.army >= old ? "+" : ""}${this.army - old} SOLDIERS`,
         );
@@ -1831,7 +1833,11 @@ export class Simulation {
     // loop does not need four newly allocated arrays on every update.
     let write = 0;
     for (const g of this.gates)
-      if (!g.passed || (g.wall >= 0 && g.z > -this.crowd.back - 1))
+      if (
+        !g.passed ||
+        (g.passage && this.tick - g.passage.tick < GATE_PASS_TICKS) ||
+        (g.wall >= 0 && g.z > -this.crowd.back - 1)
+      )
         this.gates[write++] = g;
     this.gates.length = write;
     write = 0;

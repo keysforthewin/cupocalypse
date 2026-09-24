@@ -28,7 +28,12 @@ import { squadMaterial, advanceSquadMotion } from "./squadMotion";
 import { frameSquadRear } from "./squadFraming";
 import { PickupView } from "./Pickups";
 import { Projectiles } from "./Projectiles";
-import { GATE_CENTER, GATE_WIDTH, selectedGate } from "../game/gateLayout";
+import {
+  GATE_CENTER,
+  GATE_WIDTH,
+  GATE_PASS_TICKS,
+  selectedGate,
+} from "../game/gateLayout";
 import { presentedX, presentedCrowdX, presentedDistance } from "./presentation";
 import {
   Suspense,
@@ -162,23 +167,36 @@ function GateLabel({
       lastHits.current = hits;
       hitTick.current = sim.tick;
     }
-    const pulse = Math.max(0, 1 - (sim.tick - hitTick.current) / 7);
+    const crossed = g.passage?.side === side;
+    const passPulse = crossed
+      ? Math.max(0, 1 - (sim.tick - g.passage!.tick) / GATE_PASS_TICKS)
+      : 0;
+    const pulse = Math.max(
+      passPulse * 2,
+      Math.max(0, 1 - (sim.tick - hitTick.current) / 7),
+    );
     const good = op === "+" || op === "×" || (op === "÷" && value <= 1);
     el.className = `gate-number ${good ? "positive" : "negative"} ${sim.mode === "Mirror" ? "mirrored" : ""}`;
     el.style.transform = `scale(${1 + pulse * 0.08})`;
     el.style.filter = `brightness(${1 + pulse * 0.8})`;
     const texts = [
-      g.revealed
-        ? selectedGate(sim.x) === side
-          ? "SELECTED"
-          : side === "a"
-            ? "LEFT LANE"
-            : "RIGHT LANE"
-        : "UNIDENTIFIED",
+      crossed
+        ? "ACTIVATED"
+        : g.revealed
+          ? selectedGate(sim.x) === side
+            ? "SELECTED"
+            : side === "a"
+              ? "LEFT LANE"
+              : "RIGHT LANE"
+          : "UNIDENTIFIED",
       g.revealed
         ? `${op}${op === "+" || op === "−" ? Math.floor(value) : Math.round(value * 1000) / 1000}`
         : "?",
-      g.revealed ? "EVERY HIT COUNTS" : "FIRE TO REVEAL",
+      crossed
+        ? `${g.passage!.delta >= 0 ? "+" : ""}${g.passage!.delta} SOLDIERS`
+        : g.revealed
+          ? "EVERY HIT COUNTS"
+          : "FIRE TO REVEAL",
     ];
     texts.forEach((text, i) => {
       if (el.children[i].textContent !== text)
@@ -204,6 +222,8 @@ function GateLabel({
 function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
   const ref = useRef<T.Group>(null);
   const planes = useRef<(T.Mesh | null)[]>([]);
+  const panels = useRef<(T.Mesh | null)[]>([]);
+  const ripples = useRef<(T.Mesh | null)[]>([]);
   useFrame(() => {
     if (ref.current)
       ref.current.position.z =
@@ -211,9 +231,36 @@ function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
     const selected = selectedGate(sim.x);
     planes.current.forEach((plane, index) => {
       if (!plane) return;
-      const side = index % 2 ? "b" : "a";
-      (plane.material as T.MeshBasicMaterial).opacity =
-        selected === side ? 0.22 : 0.08;
+      const side = index === 0 || index === 3 ? "a" : "b";
+      const pulse =
+        g.passage?.side === side
+          ? Math.max(0, 1 - (sim.tick - g.passage.tick) / GATE_PASS_TICKS)
+          : 0;
+      (plane.material as T.MeshBasicMaterial).opacity = pulse
+        ? 0.22 + pulse * 0.6
+        : g.passed
+          ? 0.03
+          : selected === side
+            ? 0.22
+            : 0.08;
+      const panel = panels.current[index];
+      if (panel) {
+        const material = panel.material as T.MeshBasicMaterial;
+        const op = side === "a" ? g.left : g.right;
+        const good = op === "+" || op === "×" || (op === "÷" && g[side] <= 1);
+        material.opacity = 0.07 + pulse * pulse * 0.65;
+        material.color.set(pulse ? "#ffffff" : good ? "#51d4c3" : "#f07459");
+      }
+      const ripple = ripples.current[index];
+      if (ripple) {
+        ripple.visible = pulse > 0;
+        ripple.scale.setScalar(0.25 + (1 - pulse) * 2.3);
+        const material = ripple.material as T.MeshBasicMaterial;
+        material.opacity = pulse * 0.9;
+        material.color.set(
+          (g.passage?.delta ?? 0) >= 0 ? "#aaffeb" : "#ff987a",
+        );
+      }
     });
   });
   return (
@@ -252,13 +299,37 @@ function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
                 depthWrite={false}
               />
             </mesh>
-            <mesh position={[0, 1.8, 0]}>
+            <mesh
+              position={[0, 1.8, 0]}
+              ref={(mesh) => {
+                panels.current[index] = mesh;
+              }}
+            >
               <boxGeometry args={[GATE_WIDTH, 3.6, 0.07]} />
               <meshBasicMaterial
                 color={color}
                 transparent
                 opacity={0.07}
                 depthWrite={false}
+              />
+            </mesh>
+            <mesh
+              name={`gate-passage-${g.id}-${index}`}
+              position={[0, 1.8, 0.12]}
+              visible={false}
+              ref={(mesh) => {
+                ripples.current[index] = mesh;
+              }}
+            >
+              <ringGeometry args={[0.86, 1, 48]} />
+              <meshBasicMaterial
+                color="#aaffeb"
+                transparent
+                opacity={0}
+                side={T.DoubleSide}
+                depthWrite={false}
+                toneMapped={false}
+                blending={T.AdditiveBlending}
               />
             </mesh>
             {[-GATE_WIDTH / 2, GATE_WIDTH / 2].map((x) => (

@@ -680,6 +680,18 @@ export class AudioEngine {
       this.lastCrowd = -300;
     }
     let deathSounds = 0;
+    for (const gate of sim.gates) {
+      const passage = gate.passage;
+      const key = `gate:${gate.id}`;
+      if (!passage || this.heard.has(key) || sim.tick - passage.tick > 8)
+        continue;
+      this.heard.add(key);
+      const positive = passage.delta >= 0;
+      // A short impact and chord cut through combat using the priority UI bus.
+      this.tone(110, 0.12, 0.07, "triangle");
+      this.tone(positive ? 660 : 220, 0.3, 0.055, "sine");
+      this.tone(positive ? 990 : 261.6, 0.42, 0.035, "sine");
+    }
     for (const e of sim.effects) {
       const key = `death:${e.seed}`;
       if (

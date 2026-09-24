@@ -67,6 +67,7 @@ export interface Gate {
   revealed: boolean;
   wall: number;
   passed: boolean;
+  passage?: { tick: number; side: "a" | "b"; delta: number };
 }
 export interface Enemy {
   id: number;

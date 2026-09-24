@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { Simulation, improveGate } from "../src/game/simulation";
 import { MODES } from "../src/game/types";
+import { GATE_PASS_TICKS } from "../src/game/gateLayout";
 
 test("each hit changes signs immediately, including crossing from minus to plus", () => {
   const s = new Simulation("signs", "Reverse");
@@ -73,11 +74,11 @@ test("shots charge each gate once and retain full damage and piercing behind the
     s.launch(kind, -3, 0, 10);
     const bullet = s.bullets.find((b) => b.active)!;
     const pierce = bullet.payload!.pierce;
-    for (const z of [2, 4]) {
+    for (const z of [6, 8]) {
       s.spawnGate();
       Object.assign(s.gates.at(-1)!, { z, left: "+", a: 10 });
     }
-    const enemy = s.spawnEnemy("Walker", -3, 10)!;
+    const enemy = s.spawnEnemy("Walker", -3, 14)!;
     enemy.hp = enemy.maxHp = 100;
     enemy.armor = 0;
     while (s.gates[1].hitsA === 0 && s.tick < 60) s.update({ x: -3 });
@@ -91,6 +92,42 @@ test("shots charge each gate once and retain full damage and piercing behind the
       assert.equal(gate.hitsA, bullet.gatePower, kind);
       assert.equal(gate.a, 10 + bullet.gatePower, kind);
       assert.equal(gate.hitsB, 0, kind);
+    }
+  }
+});
+
+test("crossed gates retain feedback for one pulse and apply their result only once", () => {
+  for (const mode of MODES) {
+    for (const x of [-3, 0, 3]) {
+      const s = new Simulation("gate-passage", mode);
+      s.nextBoss = s.nextEncounter = s.nextSupply = s.fireClock = 1e9;
+      s.x = x;
+      s.spawnGate();
+      const g = s.gates[0];
+      Object.assign(g, { z: s.crowd.push, left: "+", a: 10, right: "−", b: 3 });
+      const old = s.army;
+      s.update({ x });
+      assert.equal(g.passed, true);
+      if (x === 0) {
+        assert.equal(g.passage, undefined);
+        assert.equal(s.army, old);
+        assert.equal(s.gates.length, 0);
+        continue;
+      }
+      const delta = x > 0 ? -3 : mode === "Sudden Death" ? 0 : 10;
+      assert.deepEqual(g.passage, {
+        tick: s.tick,
+        side: x < 0 ? "a" : "b",
+        delta,
+      });
+      assert.equal(s.army, old + delta);
+      for (let i = 1; i < GATE_PASS_TICKS; i++) {
+        s.update({ x });
+        assert.ok(s.gates.includes(g));
+        assert.equal(s.army, old + delta);
+      }
+      s.update({ x });
+      assert.equal(s.gates.length, 0);
     }
   }
 });
