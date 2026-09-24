@@ -1,6 +1,6 @@
 # Super weapons — containment-1.9.0
 
-The permanent armory contains all 27 named super weapons. Buy each once for 300, 600, or 900 credits. Equip up to three different weapons at base; their order and membership are locked for the operation. New and migrated profiles own none.
+The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons at base; their order and membership are locked for the operation. New and migrated profiles own none.
 
 **Q / E** select the previous / next reactor, **Space** activates it, and **H** toggles the controls guide. The selected reactor receives eligible kills; switching preserves stored charge. Powers already running continue after switching, so different weapons can combine. A power cannot reactivate until its current effect ends. Controls stay visible beside the reactor even with the guide hidden.
 
@@ -16,33 +16,33 @@ Charge feedback includes moving energy motes, per-kill impact pulses, a numerica
 
 | Name | Weapon | Credits | Role |
 | --- | --- | ---: | --- |
-| Mortal | Last Rites | 900 | Screen execution |
-| Keys | Skeleton Key | 600 | Armor stripping and one-hit vulnerability |
-| Sybex | Clockbreak | 600 | Enemy and attack stasis |
-| Tuna | Broadside Tide | 600 | Tidal displacement |
-| Nitro | Redline | 300 | Arsenal overdrive |
-| Baezil | Infernal Garden | 600 | Persistent burning sigils |
-| Pauly | Protection Racket | 300 | Reduction and retaliation |
-| MachineGunQueen | Royal Fusillade | 900 | Crown turret |
-| Meesh | Ghostwalk | 300 | Temporary intangibility |
-| Zunneh | Storm Parliament | 600 | Linked lightning |
-| Rae | Daybreak Lance | 900 | Mouse-aimed solar beam |
-| Doc | Second Opinion | 300 | Casualty recovery and temporary shield |
-| Kismet | Loaded Fate | 300 | Favorable gate outcomes |
-| Mmiguel | Dos Amigos | 600 | Two spectral arsenals |
-| Strawberry | Sweet Rot | 600 | Seed contagion and recruitment |
-| Nemesis | Personal Matter | 900 | Focused bonus damage |
-| Bronze Leopard | Six Pounces | 300 | Six targeted executions |
-| Five10 | Ten Count | 900 | Ten-column bombardment |
-| Shannondoa | River’s Mercy | 300 | Safe center corridor |
-| Kuttula | Below the Asphalt | 600 | Six grappling tentacles |
-| Gimmy | Mine, Mine, Mine | 300 | Doubled salvage and recruitment |
-| Haut Carl | Special Delivery | 600 | Sticky cluster artillery |
-| Hondo | Hold the Line | 600 | Three defensive barricades |
-| Panda | Gentle Giant | 900 | Absorb damage and release a shockwave |
-| Pokey | Keep Your Distance | 300 | Proximity quills |
-| Platypus | Wrong-Way Warfare | 600 | Reverse hostile hazards |
-| So1ician | Final Objection | 600 | Cancel and punish attacks |
+| Mortal | Last Rites | 1000 | Screen execution |
+| Keys | Skeleton Key | 500 | Armor stripping and one-hit vulnerability |
+| Sybex | Clockbreak | 500 | Enemy and attack stasis |
+| Tuna | Broadside Tide | 500 | Tidal displacement |
+| Nitro | Redline | 50 | Arsenal overdrive |
+| Baezil | Infernal Garden | 500 | Persistent burning sigils |
+| Pauly | Protection Racket | 50 | Reduction and retaliation |
+| MachineGunQueen | Royal Fusillade | 1000 | Crown turret |
+| Meesh | Ghostwalk | 50 | Temporary intangibility |
+| Zunneh | Storm Parliament | 500 | Linked lightning |
+| Rae | Daybreak Lance | 1000 | Mouse-aimed solar beam |
+| Doc | Second Opinion | 50 | Casualty recovery and temporary shield |
+| Kismet | Loaded Fate | 50 | Favorable gate outcomes |
+| Mmiguel | Dos Amigos | 500 | Two spectral arsenals |
+| Strawberry | Sweet Rot | 500 | Seed contagion and recruitment |
+| Nemesis | Personal Matter | 1000 | Focused bonus damage |
+| Bronze Leopard | Six Pounces | 50 | Six targeted executions |
+| Five10 | Ten Count | 1000 | Ten-column bombardment |
+| Shannondoa | River’s Mercy | 50 | Safe center corridor |
+| Kuttula | Below the Asphalt | 500 | Six grappling tentacles |
+| Gimmy | Mine, Mine, Mine | 50 | Doubled salvage and recruitment |
+| Haut Carl | Special Delivery | 500 | Sticky cluster artillery |
+| Hondo | Hold the Line | 500 | Three defensive barricades |
+| Panda | Gentle Giant | 1000 | Absorb damage and release a shockwave |
+| Pokey | Keep Your Distance | 50 | Proximity quills |
+| Platypus | Wrong-Way Warfare | 500 | Reverse hostile hazards |
+| So1ician | Final Objection | 500 | Cancel and punish attacks |
 
 The armory shows exact descriptions, duration, boss adaptations, procedural 3D previews, and sound auditions for every entry. `src/game/superWeapons.ts` is the catalog's source of truth.
 

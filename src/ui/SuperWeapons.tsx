@@ -297,9 +297,9 @@ export function SuperArmory({
             >
               <option value="all">All weapons</option>
               <option value="owned">Owned</option>
-              <option value="300">300 CR</option>
-              <option value="600">600 CR</option>
-              <option value="900">900 CR</option>
+              <option value="50">50 CR</option>
+              <option value="500">500 CR</option>
+              <option value="1000">1000 CR</option>
             </select>
           </div>
           <div className="super-card-grid">

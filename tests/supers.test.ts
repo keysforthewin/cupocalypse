@@ -125,7 +125,7 @@ test("profile migration, permanent purchases and unique three-slot loadouts", ()
   p = { ...p, currency: 5000 };
   for (const id of ["mortal", "doc", "panda", "keys"] as SuperId[])
     p = purchaseSuper(p, id);
-  assert.equal(p.currency, 5000 - 900 - 300 - 900 - 600);
+  assert.equal(p.currency, 5000 - 1000 - 50 - 1000 - 500);
   assert.equal(purchaseSuper(p, "mortal"), p);
   p = setSuperLoadout(p, ["mortal", "doc", "mortal", "keys", "panda"]);
   assert.deepEqual(p.superLoadout, ["mortal", "doc", "keys"]);

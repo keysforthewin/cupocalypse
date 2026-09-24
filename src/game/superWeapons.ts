@@ -57,7 +57,7 @@ const rows: [
   [
     "Mortal",
     "Last Rites",
-    900,
+    1000,
     1.4,
     "#f5eee2",
     "#795ca9",
@@ -69,7 +69,7 @@ const rows: [
   [
     "Keys",
     "Skeleton Key",
-    600,
+    500,
     8,
     "#e9bf61",
     "#fff0bd",
@@ -81,7 +81,7 @@ const rows: [
   [
     "Sybex",
     "Clockbreak",
-    600,
+    500,
     6,
     "#72cfff",
     "#dfedff",
@@ -93,7 +93,7 @@ const rows: [
   [
     "Tuna",
     "Broadside Tide",
-    600,
+    500,
     7,
     "#68d7ed",
     "#e0fbff",
@@ -105,7 +105,7 @@ const rows: [
   [
     "Nitro",
     "Redline",
-    300,
+    50,
     8,
     "#ff863e",
     "#fff3b7",
@@ -117,7 +117,7 @@ const rows: [
   [
     "Baezil",
     "Infernal Garden",
-    600,
+    500,
     8,
     "#f35a77",
     "#ffb55c",
@@ -129,7 +129,7 @@ const rows: [
   [
     "Pauly",
     "Protection Racket",
-    300,
+    50,
     10,
     "#edc24c",
     "#fff6cf",
@@ -141,7 +141,7 @@ const rows: [
   [
     "MachineGunQueen",
     "Royal Fusillade",
-    900,
+    1000,
     8,
     "#ff66bb",
     "#f5d778",
@@ -153,7 +153,7 @@ const rows: [
   [
     "Meesh",
     "Ghostwalk",
-    300,
+    50,
     6,
     "#c6a8ff",
     "#f8eaff",
@@ -165,7 +165,7 @@ const rows: [
   [
     "Zunneh",
     "Storm Parliament",
-    600,
+    500,
     6,
     "#64a7ff",
     "#d9f5ff",
@@ -177,7 +177,7 @@ const rows: [
   [
     "Rae",
     "Daybreak Lance",
-    900,
+    1000,
     6,
     "#ffd75a",
     "#ffffe5",
@@ -189,7 +189,7 @@ const rows: [
   [
     "Doc",
     "Second Opinion",
-    300,
+    50,
     8,
     "#72f0bf",
     "#eafff5",
@@ -201,7 +201,7 @@ const rows: [
   [
     "Kismet",
     "Loaded Fate",
-    300,
+    50,
     15,
     "#ffcc78",
     "#ccabff",
@@ -213,7 +213,7 @@ const rows: [
   [
     "Mmiguel",
     "Dos Amigos",
-    600,
+    500,
     10,
     "#62e8d4",
     "#ff947c",
@@ -225,7 +225,7 @@ const rows: [
   [
     "Strawberry",
     "Sweet Rot",
-    600,
+    500,
     4.5,
     "#ff5278",
     "#b9ee91",
@@ -237,7 +237,7 @@ const rows: [
   [
     "Nemesis",
     "Personal Matter",
-    900,
+    1000,
     10,
     "#ff435d",
     "#ffd5da",
@@ -249,7 +249,7 @@ const rows: [
   [
     "Bronze Leopard",
     "Six Pounces",
-    300,
+    50,
     2.6,
     "#dba066",
     "#fff1bc",
@@ -261,7 +261,7 @@ const rows: [
   [
     "Five10",
     "Ten Count",
-    900,
+    1000,
     5.5,
     "#91aaff",
     "#edf5ff",
@@ -273,7 +273,7 @@ const rows: [
   [
     "Shannondoa",
     "River’s Mercy",
-    300,
+    50,
     10,
     "#6ddbc8",
     "#d9f2ee",
@@ -285,7 +285,7 @@ const rows: [
   [
     "Kuttula",
     "Below the Asphalt",
-    600,
+    500,
     6,
     "#b980ed",
     "#f5bfed",
@@ -297,7 +297,7 @@ const rows: [
   [
     "Gimmy",
     "Mine, Mine, Mine",
-    300,
+    50,
     8,
     "#b8ee58",
     "#f1ffce",
@@ -309,7 +309,7 @@ const rows: [
   [
     "Haut Carl",
     "Special Delivery",
-    600,
+    500,
     7.5,
     "#d6ac51",
     "#f2d1a2",
@@ -321,7 +321,7 @@ const rows: [
   [
     "Hondo",
     "Hold the Line",
-    600,
+    500,
     8,
     "#ee7662",
     "#ffcdc0",
@@ -333,7 +333,7 @@ const rows: [
   [
     "Panda",
     "Gentle Giant",
-    900,
+    1000,
     8,
     "#eef2e7",
     "#9ab9b4",
@@ -345,7 +345,7 @@ const rows: [
   [
     "Pokey",
     "Keep Your Distance",
-    300,
+    50,
     8,
     "#ffb077",
     "#fff2d3",
@@ -357,7 +357,7 @@ const rows: [
   [
     "Platypus",
     "Wrong-Way Warfare",
-    600,
+    500,
     8,
     "#54dfe8",
     "#c08bff",
@@ -369,7 +369,7 @@ const rows: [
   [
     "So1ician",
     "Final Objection",
-    600,
+    500,
     10,
     "#ddd4ff",
     "#ffffff",
