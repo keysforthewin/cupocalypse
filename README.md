@@ -47,6 +47,26 @@ Each mission protocol has its own distance leaderboard showing ten distinct brow
 
 The list refreshes every 30 seconds, when the selected protocol changes, and after a successful submission. Failed submissions show a retry button on the result screen; retrying the same round cannot duplicate it. Leaving that screen after a failed submission discards the unsaved result.
 
+## Asset caching and releases
+
+Production serves versioned models, sounds, images, fonts, JavaScript and CSS with `Cache-Control: public, max-age=31536000, immutable` (one year). Returning browsers and shared caches reuse their stored copies without rechecking every asset. Browsers can still evict cached files when storage is low or the player clears their cache.
+
+Every build hashes each file in `public/` and writes `dist/asset-manifest.json`. Runtime requests, CSS artwork and HTML icons use `?v=<content hash>`; Vite fingerprints the generated bundles and bundled fonts. Unchanged files retain the same URL across builds and deployments, regardless of timestamps. Changing an asset automatically changes its URL. Publish the entire `dist/` together with the server; the manifest is required by `npm start`.
+
+HTML and unversioned files use `no-cache` with content-based ETags, so a normal visit discovers the current release while unchanged responses can return 304. Leaderboards and score submissions remain `no-store`. A request using an outdated asset version redirects without caching to the current version, including behind a subpath proxy.
+
+Usually no manual version bump is needed. To force every public asset to refresh, change `ASSET_CACHE_VERSION` from its default `1`, then rebuild and deploy:
+
+```sh
+ASSET_CACHE_VERSION=2 npm run build
+# Or build and deploy in one step:
+ASSET_CACHE_VERSION=2 ./deploy.sh
+```
+
+`deploy.sh` also reads this setting from `.env`; the production Docker build accepts it through Compose or `--build-arg ASSET_CACHE_VERSION=2`. Keep the value stable between releases to preserve unchanged downloads. Proxies/CDNs should preserve origin Cache-Control headers and include the query string in their cache key. Development mode keeps assets unversioned for hot reload.
+
+Validation: `npm test` covers content changes, manual resets, headers, conditional requests, stale versions and API freshness. After a production build, `npx tsx scripts/cache-check.ts` verifies that a returning browser transfers zero bytes for representative assets.
+
 ## License
 
 Project code is available under the [MIT License](LICENSE). Bundled fonts retain their supplied licenses in `assets/licenses/`; generated asset provenance remains in `assets/`.
@@ -64,7 +84,7 @@ Late runs used to stutter once several modifiers stacked: thousands of projectil
 
 ## Super weapons — containment-1.9.0
 
-The main-menu armory now offers **27 permanent super weapons**, each with a distinct mechanic, procedural 3D identity, and locally shipped sound. Start with none; buy weapons with credits and equip up to three at base. **Q / E** switches between equipped weapons, **Space** unleashes the selected charged weapon, and **H** shows or hides the controls guide. Equipment stays locked for the operation, while active powers can combine.
+The armory offers **27 permanent super weapons**, each with a distinct mechanic, procedural 3D identity, and locally shipped sound. Start with none; buy weapons with credits and equip up to three anytime, including during a run or from the death screen. Opening the Armory pauses combat and makes credits earned so far available to spend. **Q / E** switches between equipped weapons, **Space** unleashes the selected charged weapon, and **H** shows or hides the controls guide. Loadout changes apply immediately during a run and carry into your next deployment. New weapons start uncharged; swapping preserves each weapon’s charge and active powers finish normally.
 
 Only the selected reactor gains energy from ordinary kills. Each slot retains its own charge when switched away; super-powered kills cannot refill it. Initial requirements are 17 kills, or 30 in Swarm. Later quotas adapt to recent kill rate to target about 25 seconds of focused charging, without a hard timer—roughly three times faster than before. The compact combat display shows just the selected weapon's charge bar and its name underneath; the bar glows when ready. Q / E switches weapons and Space activates them.
 

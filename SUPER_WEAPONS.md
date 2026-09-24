@@ -1,6 +1,6 @@
 # Super weapons — containment-1.9.0
 
-The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons at base; their order and membership are locked for the operation. New and migrated profiles own none.
+The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons anytime through the Armory, including during an operation or from the death screen. Opening it pauses combat and banks credits earned so far; settlement awards only the remainder. Live loadout changes preserve each weapon’s charge and quota, including when removed and re-equipped, and active powers finish normally. Newly equipped weapons start empty. Death-screen changes apply to the next deployment. New and migrated profiles own none.
 
 **Q / E** select the previous / next reactor, **Space** activates it, and **H** toggles the controls guide. The selected reactor receives eligible kills; switching preserves stored charge. Powers already running continue after switching, so different weapons can combine. A power cannot reactivate until its current effect ends. Controls stay visible beside the reactor even with the guide hidden.
 
@@ -54,7 +54,7 @@ Protection order is immunity / hazard conversion, Pauly's reduction, Panda's abs
 
 Temporary powers do not change permanent upgrades or equipment-driven enemy scaling. Companion arsenals snapshot ordinary weapon statistics, excluding other supers. Delayed payloads retain their originating activation for charge exclusion and boss caps. Cosmetic budgets are independent of gameplay effects.
 
-Profiles retain the original storage key and existing currency, upgrades, settings and records. Replays now record the starting loadout and tick-level selection/fire commands; old balance versions are rejected. Replay playback is practice-only and never unlocks an imported weapon for normal play.
+Profiles retain the original storage key and existing currency, upgrades, settings and records. Replays now record the starting loadout, ordered loadout changes, and tick-level selection/fire commands; old balance versions are rejected. Replay playback is practice-only and never unlocks an imported weapon for normal play.
 
 ## Assets and review
 

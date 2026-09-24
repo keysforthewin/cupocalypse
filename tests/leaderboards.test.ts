@@ -134,6 +134,7 @@ test("HTTP API shares scores and retries are idempotent", async () => {
       );
       const response = await fetch(url);
       assert.equal(response.status, 200);
+      assert.equal(response.headers.get("cache-control"), "no-store");
       const entries = (await response.json()).distance;
       assert.equal(entries.length, 1);
       assert.equal(entries[0].mode, mode);

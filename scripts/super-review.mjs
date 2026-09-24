@@ -164,13 +164,23 @@ try {
   assert.equal(await page.evaluate(() => window.__gateRunner.sim.tick), paused);
   checks.pause = true;
   await page.getByRole("button", { name: "ARMORY", exact: true }).click();
-  assert.ok(await page.locator(".loadout-lock").isVisible());
-  assert.equal(await page.locator(".super-buy:disabled").count(), 1);
+  await page
+    .getByRole("button", { name: "Unequip Mortal", exact: true })
+    .click();
+  assert.deepEqual(
+    await page.evaluate(() => window.__gateRunner.sim.supers.loadout),
+    ["doc", "nitro"],
+  );
+  await page.getByRole("button", { name: /^EQUIP IN SLOT/ }).click();
+  assert.deepEqual(
+    await page.evaluate(() => window.__gateRunner.sim.supers.loadout),
+    ["mortal", "nitro"],
+  );
   await page.getByRole("button", { name: "Close panel", exact: true }).click();
   await page
     .getByRole("button", { name: "RETURN TO BASE", exact: true })
     .click();
-  checks.locked = true;
+  checks.liveLoadout = true;
   await scenario(["mortal", "doc", "nitro"]);
   for (const [label, charge] of [
     ["00", 0],
@@ -306,6 +316,7 @@ try {
 } finally {
   const video = page.video();
   await context.close();
-  if (video) fs.renameSync(await video.path(), `${out}/super-weapons-review.webm`);
+  if (video)
+    fs.renameSync(await video.path(), `${out}/super-weapons-review.webm`);
   await browser.close();
 }

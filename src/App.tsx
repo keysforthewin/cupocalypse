@@ -34,6 +34,8 @@ import {
   saveProfile,
   settle,
   earnings,
+  claimEarnings,
+  setSuperLoadout,
   purchase,
   PRICES,
   modeDescriptions,
@@ -122,7 +124,28 @@ export default function App() {
   const velocity = useRef(0);
   const drag = useRef<{ x: number; target: number } | null>(null);
   const replay = useRef<Replay | null>(null);
+  const replayLoadoutIndex = useRef(0);
   const settled = useRef(false);
+  const claimedCredits = useRef(0);
+  const openArmory = () => {
+    if (screen !== "menu" && !settled.current && !replay.current) {
+      const claimed = claimedCredits.current;
+      claimedCredits.current = earnings(sim);
+      setProfile((p) => claimEarnings(p, sim, claimed));
+    }
+    keys.current.clear();
+    velocity.current = 0;
+    drag.current = null;
+    pendingSuper.current = { previous: false, next: false, fire: false };
+    if (screen === "playing") setScreen("paused");
+    setPanel("armory");
+  };
+  const changeLoadout = (ids: SuperId[]) => {
+    const next = setSuperLoadout(profile, ids);
+    setProfile(next);
+    if ((screen === "playing" || screen === "paused") && !replay.current)
+      sim.setSuperLoadout(next.superLoadout);
+  };
   const qaFrozen = useRef(false);
   const qaAutopilot = useRef(false);
   // Advances whenever the scene's React tree must reconcile: entity membership
@@ -158,14 +181,13 @@ export default function App() {
         record?.seed ?? seed,
         record?.mode || mode,
         record?.upgrades || profile.upgrades,
-        record?.superLoadout ??
-          (screen === "over" && !replay.current
-            ? sim.supers.loadout
-            : profile.superLoadout),
+        record?.superLoadout ?? profile.superLoadout,
       );
       next.debug = !!record || debug;
       replay.current = record || null;
+      replayLoadoutIndex.current = 0;
       settled.current = false;
+      claimedCredits.current = 0;
       runId.current = crypto.randomUUID();
       scoreInFlight.current = false;
       setScoreStatus("idle");
@@ -182,7 +204,7 @@ export default function App() {
       setPanel("none");
       audio.init();
     },
-    [seed, mode, profile.upgrades, profile.superLoadout, debug, screen, sim],
+    [seed, mode, profile.upgrades, profile.superLoadout, debug],
   );
   const postScore = useCallback(
     async (name: string) => {
@@ -250,6 +272,11 @@ export default function App() {
             velocity.current = next.velocity;
           }
           const recorded = replay.current?.inputs[sim.tick];
+          const changes = replay.current?.superLoadoutChanges ?? [];
+          while (changes[replayLoadoutIndex.current]?.tick === sim.tick) {
+            sim.setSuperLoadout(changes[replayLoadoutIndex.current].loadout);
+            replayLoadoutIndex.current++;
+          }
           if (replay.current && recorded === undefined) {
             setScreen("paused");
             break;
@@ -284,7 +311,8 @@ export default function App() {
           if (sim.over) {
             if (!settled.current) {
               settled.current = true;
-              setProfile((p) => settle(p, sim));
+              const claimed = claimedCredits.current;
+              setProfile((p) => settle(p, sim, claimed));
             }
             setScreen(sim.outcome === "victory" ? "victory" : "over");
             break;
@@ -357,6 +385,11 @@ export default function App() {
       if (e.repeat && ["escape", "p", "`"].includes(k)) return;
       keys.current.add(k);
       if (k === "escape" || k === "p") {
+        if (panel !== "none") {
+          e.preventDefault();
+          setPanel("none");
+          return;
+        }
         setScreen((s) =>
           s === "playing" ? "paused" : s === "paused" ? "playing" : s,
         );
@@ -428,6 +461,7 @@ export default function App() {
             );
           qaFrozen.current = true;
           settled.current = false;
+          claimedCredits.current = 0;
           setReady(false);
           setSim(s);
           setScreen("playing");
@@ -455,6 +489,7 @@ export default function App() {
           const s = new Simulation("QA-SEED", m);
           s.debug = true;
           settled.current = false;
+          claimedCredits.current = 0;
           setReady(false);
           setSim(s);
           setScreen("playing");
@@ -661,7 +696,7 @@ export default function App() {
               className="menu-super-loadout"
               onClick={() => {
                 setArmoryTab("supers");
-                setPanel("armory");
+                openArmory();
               }}
             >
               <span>SUPER LOADOUT</span>
@@ -684,7 +719,7 @@ export default function App() {
             </button>
             <AssetLoading variant="menu" />
             <div className="menu-secondary">
-              <button onClick={() => setPanel("armory")}>
+              <button onClick={openArmory}>
                 ARMORY <span>{profile.currency} CR</span>
               </button>
               <button onClick={() => setPanel("intel")}>FIELD MANUAL ↗</button>
@@ -799,6 +834,11 @@ export default function App() {
             <button className="outline" onClick={() => setScreen("paused")}>
               Ⅱ PAUSE <kbd>ESC</kbd>
             </button>
+            {screen === "playing" && (
+              <button className="outline" onClick={openArmory}>
+                ARMORY
+              </button>
+            )}
             {sim.debug && (
               <div className="debug-badge">PRACTICE · NO REWARDS</div>
             )}
@@ -994,7 +1034,7 @@ export default function App() {
               >
                 RETURN TO BASE
               </button>
-              <button onClick={() => setPanel("armory")}>ARMORY</button>
+              <button onClick={openArmory}>ARMORY</button>
               <button onClick={download}>SAVE REPLAY</button>
             </div>
           </section>
@@ -1040,11 +1080,17 @@ export default function App() {
                 <div className="wallet">
                   {profile.currency} <small>CREDITS AVAILABLE</small>
                 </div>
+                {replay.current && screen !== "menu" && (
+                  <p>
+                    Loadout edits during replay playback apply to your next
+                    deployment.
+                  </p>
+                )}
                 {armoryTab === "supers" ? (
                   <SuperArmory
                     profile={profile}
                     setProfile={setProfile}
-                    editable={screen === "menu"}
+                    onLoadoutChange={changeLoadout}
                   />
                 ) : (
                   <>
@@ -1083,7 +1129,7 @@ export default function App() {
                       ),
                     )}
                     <p className="fine-print">
-                      Credits are awarded at the end of each operation.
+                      Earned credits are available whenever you open the Armory.
                       <br />
                       Upgrades apply when you deploy a new squad.
                     </p>
@@ -1096,11 +1142,11 @@ export default function App() {
                 <div className="manual-intro">
                   <p>
                     <b>Three reactors. One selected charge.</b> Equip up to
-                    three purchased super weapons at base. Q / E selects the
-                    previous / next slot; only that slot gains energy from
+                    three purchased super weapons in the Armory. Q / E selects
+                    the previous / next slot; only that slot gains energy from
                     ordinary kills. Space unleashes it when full. Switch to
                     combine active powers. H shows or hides the controls guide.
-                    Loadout changes require returning to base.
+                    Open the Armory anytime to buy or change super weapons.
                   </p>
                   <p>
                     <b>Move horizontally. Fire automatically.</b> Use A/D, arrow

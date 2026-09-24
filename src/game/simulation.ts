@@ -128,6 +128,8 @@ const stats: Record<EnemyKind, [number, number, number]> = {
 };
 export class Simulation {
   supers: SuperSystem;
+  private initialSuperLoadout: SuperId[];
+  private superLoadoutChanges: NonNullable<Replay["superLoadoutChanges"]> = [];
   superInputs: number[] = [];
   damageSource?: number;
   seed: string;
@@ -260,6 +262,16 @@ export class Simulation {
     this.peak = this.army;
     this.shield = 20;
     this.supers = new SuperSystem(this, superLoadout);
+    this.initialSuperLoadout = [...this.supers.loadout];
+  }
+  setSuperLoadout(loadout: readonly SuperId[], record = true) {
+    if (this.supers.loadout.join(",") === loadout.join(",")) return;
+    this.supers.setLoadout(loadout);
+    if (record)
+      this.superLoadoutChanges.push({
+        tick: this.tick,
+        loadout: [...this.supers.loadout],
+      });
   }
   private crowdCache?: {
     army: number;
@@ -1855,7 +1867,11 @@ export class Simulation {
   replay(): Replay {
     return {
       version: VERSION,
-      superLoadout: [...this.supers.loadout],
+      superLoadout: [...this.initialSuperLoadout],
+      superLoadoutChanges: this.superLoadoutChanges.map((change) => ({
+        ...change,
+        loadout: [...change.loadout],
+      })),
       superInputs: this.superInputs,
       seed: this.seed,
       mode: this.mode,
@@ -1876,7 +1892,9 @@ export function replayRun(replay: Replay) {
     replay.superLoadout,
   );
   sim.debug = replay.debug;
-  for (const [i, x] of replay.inputs.entries())
+  for (const [i, x] of replay.inputs.entries()) {
+    for (const change of replay.superLoadoutChanges ?? [])
+      if (change.tick === i) sim.setSuperLoadout(change.loadout, false);
     sim.update(
       {
         x,
@@ -1891,5 +1909,9 @@ export function replayRun(replay: Replay) {
       },
       false,
     );
+  }
+  for (const change of replay.superLoadoutChanges ?? [])
+    if (change.tick === replay.inputs.length)
+      sim.setSuperLoadout(change.loadout, false);
   return sim;
 }

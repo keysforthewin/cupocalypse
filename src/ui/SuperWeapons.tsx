@@ -6,11 +6,7 @@ import {
   type SetStateAction,
 } from "react";
 import { SUPER_IDS, SUPERS, type SuperId } from "../game/superWeapons";
-import {
-  purchaseSuper,
-  setSuperLoadout,
-  type Profile,
-} from "../game/persistence";
+import { purchaseSuper, type Profile } from "../game/persistence";
 import type { Simulation } from "../game/simulation";
 import { SuperPreview } from "../render/SuperWeaponEffects";
 import { SUPER_GLYPHS } from "./superGlyphs";
@@ -118,9 +114,13 @@ export function SuperHud({
       {available && (
         <span className="super-ready-prompt" role="status">
           {ready ? (
-            <>SUPER READY · <kbd>SPACE</kbd> TO FIRE</>
+            <>
+              SUPER READY · <kbd>SPACE</kbd> TO FIRE
+            </>
           ) : (
-            <>SUPER READY · <kbd>Q</kbd> / <kbd>E</kbd> TO SELECT</>
+            <>
+              SUPER READY · <kbd>Q</kbd> / <kbd>E</kbd> TO SELECT
+            </>
           )}
         </span>
       )}
@@ -185,11 +185,11 @@ export function ControlsHelp({
 export function SuperArmory({
   profile,
   setProfile,
-  editable,
+  onLoadoutChange,
 }: {
   profile: Profile;
   setProfile: Dispatch<SetStateAction<Profile>>;
-  editable: boolean;
+  onLoadoutChange: (ids: SuperId[]) => void;
 }) {
   const [inspect, setInspect] = useState<SuperId>("mortal"),
     [slot, setSlot] = useState(0),
@@ -198,10 +198,10 @@ export function SuperArmory({
     owned = profile.ownedSuperWeapons.includes(inspect),
     equipped = profile.superLoadout.includes(inspect);
   const update = (ids: SuperId[]) => {
-    if (editable) setProfile((p) => setSuperLoadout(p, ids));
+    onLoadoutChange(ids);
   };
   const equip = () => {
-    if (!editable || !owned || equipped) return;
+    if (!owned || equipped) return;
     const ids = [...profile.superLoadout];
     ids[Math.min(slot, ids.length)] = inspect;
     update(ids);
@@ -210,7 +210,7 @@ export function SuperArmory({
     <div className="super-armory">
       <div className="loadout-editor">
         <div>
-          <span className="eyebrow">DEPLOYMENT LOADOUT</span>
+          <span className="eyebrow">SUPER WEAPON LOADOUT</span>
           <p>Three slots. One selected reactor. Endless combinations.</p>
         </div>
         <div className="loadout-slots">
@@ -241,7 +241,7 @@ export function SuperArmory({
                 {id && (
                   <div className="loadout-actions">
                     <button
-                      disabled={!editable || i === 0}
+                      disabled={i === 0}
                       onClick={() => {
                         const a = [...profile.superLoadout];
                         [a[i - 1], a[i]] = [a[i], a[i - 1]];
@@ -252,7 +252,6 @@ export function SuperArmory({
                       ←
                     </button>
                     <button
-                      disabled={!editable}
                       onClick={() =>
                         update(profile.superLoadout.filter((_, n) => n !== i))
                       }
@@ -261,9 +260,7 @@ export function SuperArmory({
                       REMOVE
                     </button>
                     <button
-                      disabled={
-                        !editable || i === profile.superLoadout.length - 1
-                      }
+                      disabled={i === profile.superLoadout.length - 1}
                       onClick={() => {
                         const a = [...profile.superLoadout];
                         [a[i], a[i + 1]] = [a[i + 1], a[i]];
@@ -280,12 +277,10 @@ export function SuperArmory({
           })}
         </div>
       </div>
-      {!editable && (
-        <p className="loadout-lock">
-          LOADOUT LOCKED · Return to the main menu to purchase or change super
-          weapons.
-        </p>
-      )}
+      <p className="loadout-note">
+        Change weapons anytime. New reactors start empty; swapping preserves
+        each weapon’s charge. Active powers finish normally.
+      </p>
       <div className="super-collection-layout">
         <div className="super-collection">
           <div className="collection-filter">
@@ -367,17 +362,13 @@ export function SuperArmory({
           {!owned ? (
             <button
               className="super-buy"
-              disabled={!editable || profile.currency < d.price}
+              disabled={profile.currency < d.price}
               onClick={() => setProfile((p) => purchaseSuper(p, inspect))}
             >
               UNLOCK · {d.price} CR <span>→</span>
             </button>
           ) : (
-            <button
-              className="super-buy"
-              disabled={!editable || equipped}
-              onClick={equip}
-            >
+            <button className="super-buy" disabled={equipped} onClick={equip}>
               {equipped
                 ? `EQUIPPED · SLOT ${profile.superLoadout.indexOf(inspect) + 1}`
                 : `EQUIP IN SLOT ${Math.min(slot, profile.superLoadout.length) + 1}`}

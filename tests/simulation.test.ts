@@ -9,7 +9,15 @@ import {
   MOVE_SPEED,
 } from "../src/game/simulation";
 import { MODES, BOSSES, ENEMIES } from "../src/game/types";
-import { fresh, purchase, settle, PRICES } from "../src/game/persistence";
+import {
+  fresh,
+  purchase,
+  settle,
+  PRICES,
+  claimEarnings,
+  earnings,
+  purchaseSuper,
+} from "../src/game/persistence";
 const clean = () => {
   const s = new Simulation("test");
   s.nextEncounter = 1e9;
@@ -183,4 +191,29 @@ test("purchases have five levels, require currency and do not mutate profile", (
   assert.equal(q.currency, 50000 - PRICES.reduce((a, b) => a + b, 0));
   assert.equal(purchase(q, 0), q);
   assert.equal(purchase(fresh(), 0).upgrades[0], 0);
+});
+
+test("Armory credits can be spent mid-run and are not paid twice on reopening or settlement", () => {
+  const s = clean();
+  s.distance = 200;
+  let p = claimEarnings(fresh(), s);
+  let claimed = earnings(s);
+  assert.equal(p.currency, 50);
+  p = purchaseSuper(p, "doc");
+  assert.equal(p.currency, 0);
+  assert.deepEqual(p.ownedSuperWeapons, ["doc"]);
+  p = claimEarnings(p, s, claimed);
+  assert.equal(p.currency, 0);
+  s.distance = 400;
+  s.bossKills = 1;
+  p = claimEarnings(p, s, claimed);
+  claimed = earnings(s);
+  assert.equal(p.currency, 150);
+  s.distance = 600;
+  p = settle(p, s, claimed);
+  assert.equal(p.currency, 200);
+  assert.equal(p.runs, 1);
+  assert.equal(p.records.Classic, 600);
+  s.debug = true;
+  assert.equal(claimEarnings(p, s).currency, 200);
 });

@@ -703,3 +703,84 @@ test("Nitro preserves ordinary armor penetration after its boss bonus budget is 
   assert.equal(b.armor, a.armor);
   assert.equal(b.hp, a.hp);
 });
+
+test("live loadouts preserve reactors, selection and active casts across removal and reordering", () => {
+  const s = setup(["doc", "nitro"]);
+  const cast = arm(s);
+  s.supers.slot.charge = 5;
+  s.supers.slot.quota = 40;
+  s.setSuperLoadout(["nitro", "doc", "mortal"]);
+  assert.equal(s.supers.selected, 1);
+  assert.equal(s.supers.slot.charge, 5);
+  assert.equal(s.supers.slots[2].charge, 0);
+  s.setSuperLoadout(["mortal"]);
+  assert.equal(s.supers.selected, 0);
+  assert.equal(s.supers.active("doc"), cast);
+  s.kill(foe(s));
+  s.setSuperLoadout(["doc", "mortal"]);
+  assert.equal(s.supers.selected, 1);
+  assert.deepEqual(
+    s.supers.slots.map(({ charge, quota }) => [charge, quota]),
+    [
+      [5, 40],
+      [1, 17],
+    ],
+  );
+  s.setSuperLoadout([]);
+  assert.equal(s.supers.activate(), false);
+  ticks(s, 480);
+  assert.equal(s.supers.active("doc"), undefined);
+  s.setSuperLoadout(["mortal"]);
+  for (let i = 0; i < 16; i++) s.kill(foe(s));
+  assert.equal(s.supers.activate(), true);
+});
+
+test("replays reproduce live loadout changes, including multiple edits at the same tick", () => {
+  const s = new Simulation(
+    "live-armory",
+    "Classic",
+    [5, 5, 5],
+    ["doc", "nitro"],
+  );
+  for (let i = 0; i < 1800 && !s.over; i++) {
+    if (i === 60) s.setSuperLoadout(["mortal", "doc"]);
+    if (i === 120) {
+      s.setSuperLoadout([]);
+      s.setSuperLoadout(["nitro", "doc", "mortal"]);
+    }
+    if (i === 300) s.setSuperLoadout(["panda", "doc"]);
+    s.update({
+      x: bot(s),
+      superPressed: true,
+      superCycle: i % 200 === 0 ? 1 : 0,
+    });
+  }
+  s.setSuperLoadout(["doc", "panda"]);
+  const record = s.replay();
+  assert.deepEqual(record.superLoadout, ["doc", "nitro"]);
+  assert.equal(validSuperReplay(record), true);
+  const r = replayRun(record);
+  assert.deepEqual(r.supers.loadout, s.supers.loadout);
+  assert.deepEqual(r.supers.slots, s.supers.slots);
+  assert.equal(r.supers.selected, s.supers.selected);
+  assert.deepEqual(r.supers.casts, s.supers.casts);
+  assert.deepEqual(r.enemies, s.enemies);
+  assert.equal(r.army, s.army);
+  assert.equal(r.rng.state, s.rng.state);
+  for (const changes of [
+    null,
+    [{}],
+    [{ tick: -1, loadout: [] }],
+    [{ tick: 1, loadout: ["fake"] }],
+    [{ tick: 1, loadout: ["doc", "doc"] }],
+    [{ tick: record.inputs.length + 1, loadout: [] }],
+    [
+      { tick: 2, loadout: [] },
+      { tick: 1, loadout: [] },
+    ],
+  ])
+    assert.equal(
+      validSuperReplay({ ...record, superLoadoutChanges: changes }),
+      false,
+    );
+});

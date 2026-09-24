@@ -1652,7 +1652,7 @@ kbd {
   padding: 4px 6px;
   color: var(--text-muted);
 }
-.loadout-lock {
+.loadout-note {
   font: 11px var(--mono);
   background: var(--accent-soft);
   padding: 12px;

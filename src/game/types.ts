@@ -193,6 +193,7 @@ export interface Input {
 }
 export interface Replay {
   superLoadout: SuperId[];
+  superLoadoutChanges?: { tick: number; loadout: SuperId[] }[];
   superInputs: number[];
   version: string;
   seed: string;

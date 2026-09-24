@@ -6,6 +6,7 @@ COPY tsconfig.json vite.config.ts index.html ./
 COPY src ./src
 COPY server ./server
 COPY public ./public
+ARG ASSET_CACHE_VERSION=1
 RUN npm run build
 
 FROM node:24-bookworm-slim

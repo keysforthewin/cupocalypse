@@ -88,11 +88,17 @@ export function earnings(sim: Simulation) {
   const bossCredits = 50 * sim.bossKills * (sim.bossKills + 1);
   return sim.debug ? 0 : Math.floor(sim.distance / 4) + bossCredits;
 }
-export function settle(p: Profile, sim: Simulation): Profile {
+export function claimEarnings(
+  p: Profile,
+  sim: Simulation,
+  claimed = 0,
+): Profile {
+  return { ...p, currency: p.currency + Math.max(0, earnings(sim) - claimed) };
+}
+export function settle(p: Profile, sim: Simulation, claimed = 0): Profile {
   if (sim.debug) return p;
   return {
-    ...p,
-    currency: p.currency + earnings(sim),
+    ...claimEarnings(p, sim, claimed),
     records: {
       ...p.records,
       [sim.mode]: Math.max(p.records[sim.mode] || 0, Math.floor(sim.distance)),

@@ -5,5 +5,23 @@ const base: string = (
   (import.meta as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? "/"
 ).replace(/\/$/, "");
 
+export function versionAssetUrl(url: string, versions: Record<string, string>) {
+  const [resource, fragment] = url.split("#", 2);
+  const [path, query] = resource.split("?", 2);
+  const version = versions[path];
+  if (!version) return url;
+  const params = new URLSearchParams(query);
+  params.set("v", version);
+  return `${path}?${params}${fragment === undefined ? "" : `#${fragment}`}`;
+}
+
 export const publicPath = (url: string) =>
-  url.startsWith("/") ? base + url : url;
+  url.startsWith("/") && !url.startsWith("//")
+    ? base +
+      versionAssetUrl(
+        url,
+        typeof __PUBLIC_ASSET_VERSIONS__ === "undefined"
+          ? {}
+          : __PUBLIC_ASSET_VERSIONS__,
+      )
+    : url;

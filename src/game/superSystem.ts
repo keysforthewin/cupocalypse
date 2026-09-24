@@ -51,8 +51,9 @@ export interface SuperCast {
 }
 const hz = 60;
 export class SuperSystem {
-  readonly loadout: readonly SuperId[];
-  readonly slots: SuperSlot[];
+  loadout: readonly SuperId[] = [];
+  slots: SuperSlot[] = [];
+  private reactors = new Map<SuperId, SuperSlot>();
   selected = 0;
   serial = 0;
   eventSerial = 0;
@@ -65,12 +66,24 @@ export class SuperSystem {
     readonly sim: Simulation,
     loadout: readonly SuperId[] = [],
   ) {
+    this.setLoadout(loadout);
+  }
+  setLoadout(loadout: readonly SuperId[]) {
+    const selectedId = this.slot?.id;
     this.loadout = Object.freeze(sanitizeLoadout(loadout));
-    this.slots = this.loadout.map((id) => ({
-      id,
-      charge: 0,
-      quota: this.minimum,
-    }));
+    this.slots = this.loadout.map((id) => {
+      let slot = this.reactors.get(id);
+      if (!slot) {
+        slot = { id, charge: 0, quota: this.minimum };
+        this.reactors.set(id, slot);
+      }
+      return slot;
+    });
+    const selected = selectedId ? this.loadout.indexOf(selectedId) : -1;
+    this.selected =
+      selected >= 0
+        ? selected
+        : Math.max(0, Math.min(this.selected, this.slots.length - 1));
   }
   get minimum() {
     return Math.ceil((this.sim.mode === "Swarm" ? 90 : 50) / 3);
@@ -218,7 +231,7 @@ export class SuperSystem {
       const w = weaponStats(s.boosts),
         base =
           (1.4 + Math.min(12, Math.sqrt(c.army) * 0.28)) *
-          (1 + s.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
+          (1 + (s.upgrades[1] * UPGRADE_PERCENT[1]) / 100) *
           w.damage;
       c.weaponSnapshot = w;
       c.snapshot = (
@@ -234,7 +247,7 @@ export class SuperSystem {
           kind === "pulse"
             ? 60 /
               ((6 + Math.min(6, Math.sqrt(c.army) * 0.18)) *
-                (1 + s.upgrades[2] * UPGRADE_PERCENT[2] / 100) *
+                (1 + (s.upgrades[2] * UPGRADE_PERCENT[2]) / 100) *
                 w.rate)
             : (60 * ARSENAL[kind].interval) / w.gunRate,
         next: s.tick,

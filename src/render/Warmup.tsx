@@ -21,6 +21,7 @@ import { AttackEffects } from "./AttackEffects";
 import { PickupBase, pickupIcon } from "./Pickups";
 import { CastEffect } from "./SuperWeaponEffects";
 import type { BiomeId } from "./biomes";
+import { compileWarmup } from "./compileWarmup";
 
 /** Builds one representative scenery section per biome with the live library. */
 export interface SceneryWarmup {
@@ -419,13 +420,13 @@ export function Warmup({
       let compiled = 0;
       const parts = [...root.children, ...sections.children];
       const compiling = parts.map((part) =>
-        gl.compileAsync(part, camera, scene).then(() => {
+        compileWarmup(gl, part, camera, scene).then(() => {
           compiled++;
           progress(0.1 + (0.5 * compiled) / parts.length, "Compiling shaders");
         }),
       );
       // Effect pools (projectiles, debris, super effects) are mounted but hidden.
-      compiling.push(gl.compileAsync(scene, camera).then(() => undefined));
+      compiling.push(compileWarmup(gl, scene, camera));
       scene.visible = false;
       gl.setRenderTarget(previous);
       await Promise.all(compiling);

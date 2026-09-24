@@ -21,7 +21,7 @@ export const TEXT_FONT = publicPath("/assets/BarlowCondensed-Bold.woff");
 
 export const bossModelUrl = (id: string, quality: string) =>
   publicPath(
-    `/assets/bosses/${id}${quality === "performance" ? "-lod" : ""}.glb?v=quality2`,
+    `/assets/bosses/${id}${quality === "performance" ? "-lod" : ""}.glb`,
   );
 export const enemyModelUrl = (asset: string, lod: boolean) =>
   publicPath(lod ? asset.replace(".glb", "-lod.glb") : asset);

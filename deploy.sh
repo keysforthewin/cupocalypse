@@ -7,6 +7,7 @@ env_value() { grep -E "^$1=" .env 2>/dev/null | head -n1 | cut -d= -f2- | tr -d 
 target="$(env_value DEPLOY_TARGET)"
 url="$(env_value DEPLOY_URL)"
 port="$(env_value PORT)"; port="${port:-3020}"
+cache_version="${ASSET_CACHE_VERSION:-$(env_value ASSET_CACHE_VERSION || true)}"
 [ -n "$target" ] || { echo "Set DEPLOY_TARGET=user@host:/path in .env"; exit 1; }
 host="${target%%:*}"
 dir="${target#*:}"
@@ -17,7 +18,7 @@ case "$rest" in */*) base="/${rest#*/}" ;; *) base="/" ;; esac
 base="${base%/}/"
 
 echo "==> Building (base $base)"
-BASE_PATH="$base" npm run build
+ASSET_CACHE_VERSION="${cache_version:-1}" BASE_PATH="$base" npm run build
 
 echo "==> Syncing to $target"
 ssh "$host" "mkdir -p '$dir/data'"

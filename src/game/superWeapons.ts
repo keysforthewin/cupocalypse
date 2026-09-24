@@ -415,6 +415,7 @@ export function validSuperReplay(r: {
   inputs: unknown[];
   superLoadout?: unknown;
   superInputs?: unknown;
+  superLoadoutChanges?: unknown;
 }) {
   return (
     Array.isArray(r.inputs) &&
@@ -426,6 +427,21 @@ export function validSuperReplay(r: {
     r.superInputs.length === r.inputs.length &&
     r.superInputs.every(
       (n) => Number.isInteger(n) && Number(n) >= 0 && Number(n) <= 5,
-    )
+    ) &&
+    (r.superLoadoutChanges === undefined ||
+      (Array.isArray(r.superLoadoutChanges) &&
+        r.superLoadoutChanges.every(
+          (change, i, changes) =>
+            change !== null &&
+            typeof change === "object" &&
+            Number.isInteger(change.tick) &&
+            change.tick >= 0 &&
+            change.tick <= r.inputs.length &&
+            (i === 0 || change.tick >= changes[i - 1].tick) &&
+            Array.isArray(change.loadout) &&
+            change.loadout.length <= 3 &&
+            change.loadout.every(isSuperId) &&
+            new Set(change.loadout).size === change.loadout.length,
+        )))
   );
 }
