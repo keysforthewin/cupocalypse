@@ -1,8 +1,18 @@
-# Super weapons — containment-1.9.0
+# Super weapons — containment-2.5.0
 
 The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons anytime through the Armory, including during an operation or from the death screen. Opening it pauses combat and banks credits earned so far; settlement awards only the remainder. Live loadout changes preserve each weapon’s charge and quota, including when removed and re-equipped, and active powers finish normally. Newly equipped weapons start empty. Death-screen changes apply to the next deployment. New and migrated profiles own none.
 
 **Q / E** select the previous / next reactor, **Space** activates it, and **H** toggles the controls guide. The selected reactor receives eligible kills; switching preserves stored charge. Powers already running continue after switching, so different weapons can combine. A power cannot reactivate until its current effect ends. Controls stay visible beside the reactor even with the guide hidden.
+
+## Extended activation timers
+
+| Duration | Weapons |
+| --- | --- |
+| 60 seconds | Gimmy, Doc, Meesh, Kismet |
+| 15 seconds | Pauly, Nitro, Pokey |
+| 30 seconds | Shannondoa, Bronze Leopard |
+
+Existing per-activation limits still apply: Gimmy grants recruitment up to five times, Kismet affects three gates, Bronze Leopard makes six pounces, Pokey has 24 quills, and Doc's shield can be depleted. The replay balance version is now `containment-2.5.0`; earlier replays are rejected because activation timing changed. Saved credits, purchases and loadouts remain compatible.
 
 ## Charging
 

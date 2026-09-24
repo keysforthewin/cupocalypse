@@ -222,7 +222,7 @@ test("adaptive charge targets 25 seconds and changes only on firing, with no pas
   arm(s, 1);
   assert.equal(s.supers.casts.length, 2);
   assert.ok(s.supers.active("doc"));
-  assert.equal(c.end, 4080);
+  assert.equal(c.end, 7200);
   assert.equal(
     new Simulation("swarm", "Swarm", [0, 0, 0], ["doc"]).supers.slot.quota,
     30,
@@ -352,6 +352,13 @@ test("Meesh prevents combat and curb losses without granting kills", () => {
   assert.equal(s.kills, 0);
   ticks(s, 360);
   s.hitSquad(1, "contact");
+  assert.equal(
+    s.army,
+    24,
+    "Meesh remains active beyond its old six-second timer",
+  );
+  ticks(s, 3240);
+  s.hitSquad(1, "contact");
   assert.equal(s.army, 23);
 });
 test("Zunneh strikes at most five unique enemies per pulse", () => {
@@ -381,7 +388,7 @@ test("Doc recovers small casualties collectively, cannot restore the same casual
   s.shield = 12;
   s.hitSquad(20, "test");
   assert.equal(s.shield, 12);
-  ticks(s, 480);
+  ticks(s, 3600);
   assert.equal(s.shield, 12);
   assert.equal(s.supers.active("doc"), undefined);
 });
@@ -631,7 +638,12 @@ test("all 27 powers cleanly expire in every mode and preserve finite simulation 
       s.shield = 1e6;
       for (let i = 0; i < 6; i++) foe(s, ((i % 3) - 1) * 3, 24 + i);
       arm(s);
-      for (let i = 0; i < 1000 && !s.over; i++) s.update({ x: 0 }, false);
+      for (
+        let i = 0;
+        i < Math.ceil(SUPERS[id].duration * 60) + 60 && !s.over;
+        i++
+      )
+        s.update({ x: 0 }, false);
       assert.ok(Number.isFinite(s.army), `${id} ${mode}`);
       assert.equal(s.supers.casts.length, 0, `${id} ${mode}`);
       assert.ok(s.supers.events.length <= 160);
@@ -728,7 +740,7 @@ test("live loadouts preserve reactors, selection and active casts across removal
   );
   s.setSuperLoadout([]);
   assert.equal(s.supers.activate(), false);
-  ticks(s, 480);
+  ticks(s, 3600);
   assert.equal(s.supers.active("doc"), undefined);
   s.setSuperLoadout(["mortal"]);
   for (let i = 0; i < 16; i++) s.kill(foe(s));
@@ -783,4 +795,38 @@ test("replays reproduce live loadout changes, including multiple edits at the sa
       validSuperReplay({ ...record, superLoadoutChanges: changes }),
       false,
     );
+});
+
+test("requested super timers stay active until their exact new expiry tick", () => {
+  const durations: Partial<Record<SuperId, number>> = {
+    gimmy: 60,
+    doc: 60,
+    meesh: 60,
+    kismet: 60,
+    pauly: 15,
+    nitro: 15,
+    pokey: 15,
+    shannondoa: 30,
+    "bronze-leopard": 30,
+  };
+  for (const [id, seconds] of Object.entries(durations) as [
+    SuperId,
+    number,
+  ][]) {
+    const s = setup([id]);
+    s.tick = 120;
+    const cast = arm(s);
+    assert.equal(SUPERS[id].duration, seconds, id);
+    assert.equal(cast.end, 120 + seconds * 60, id);
+    ticks(s, seconds * 60 - 1);
+    assert.equal(s.supers.active(id), cast, `${id} must last the full timer`);
+    ticks(s, 1);
+    assert.equal(s.supers.active(id), undefined, `${id} expires on time`);
+    assert.equal(s.supers.casts.length, 0, id);
+    assert.equal(
+      s.supers.events.filter((event) => event.kind === "end").length,
+      1,
+      id,
+    );
+  }
 });
