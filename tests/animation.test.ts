@@ -123,13 +123,15 @@ test("opening combat is paced gently with reliable supplies in every mode", () =
     }
     assert.ok(arrivals[0] < 0.1);
     assert.ok(arrivals.length >= 9);
-    assert.ok(arrivals[1] - arrivals[0] > 3);
+    assert.ok(arrivals[1] - arrivals[0] > 2.5);
     for (let i = 1; i < arrivals.length; i++)
-      assert.ok(arrivals[i] - arrivals[i - 1] < 3.5);
-    assert.ok(supplies[0] < 6);
-    assert.equal(supplies.length, 2);
-    assert.ok(supplies[1] - supplies[0] >= 22.5);
-    assert.ok(supplies[1] - supplies[0] <= 26);
+      assert.ok(arrivals[i] - arrivals[i - 1] < 4);
+    assert.ok(supplies[0] < 8);
+    assert.ok(supplies.length >= 1 && supplies.length <= 2);
+    if (supplies.length === 2) {
+      assert.ok(supplies[1] - supplies[0] >= 17);
+      assert.ok(supplies[1] - supplies[0] <= 31);
+    }
   }
 });
 test("formation growth is uncapped and missed attacks still matter to large armies", () => {
@@ -148,23 +150,20 @@ test("formation growth is uncapped and missed attacks still matter to large armi
   assert.ok(late.damage < 6);
 });
 
-test("supply rotation exposes every pickup and opens Swarm with crowd-clearing firepower", () => {
+test("seeded supplies expose every pickup in every mode", () => {
   for (const mode of MODES) {
     const s = new Simulation("supplies", mode);
     const seen = new Set<string>();
-    let first = "";
     for (let i = 0; i < 300; i++) {
       s.distance = s.nextSupply;
       s.generate();
       for (const d of s.drops) {
         seen.add(d.kind);
-        first ||= d.kind;
       }
       s.drops = [];
       s.enemies = [];
     }
     assert.equal(seen.size, 31);
-    assert.equal(first, mode === "Swarm" ? "helix" : "seeker");
   }
 });
 
@@ -196,14 +195,27 @@ test("sidestep velocity follows actual movement, holds on pause and resets immed
   assert.ok(state.velocity > 0.9);
 });
 
-test("combat gates retain alternating barricade encounters after the safe opening", () => {
+test("combat gates vary spacing and barricades after a safe opening", () => {
   const s = new Simulation("barricades");
-  for (let i = 0; i < 11; i++) {
+  const gaps: number[] = [];
+  let prior = 0;
+  const walls = new Set<number>();
+  for (let i = 0; i < 120; i++) {
     s.distance = i * 7.5;
     s.generate();
+    if (s.gates.length) {
+      if (i === 0) assert.equal(s.gates[0].wall, -1);
+      else {
+        gaps.push(i - prior);
+        walls.add(s.gates[0].wall);
+      }
+      prior = i;
+    }
+    s.enemies = [];
+    s.gates = [];
+    s.drops = [];
   }
-  assert.equal(s.gates.length, 3);
-  assert.equal(s.gates[0].wall, -1);
-  assert.ok(s.gates[1].wall >= 0);
-  assert.equal(s.gates[2].wall, -1);
+  assert.ok(gaps.every((gap) => gap >= 3 && gap <= 7));
+  assert.ok(new Set(gaps).size > 1);
+  assert.deepEqual(walls, new Set([-1, 0, 1]));
 });

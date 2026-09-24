@@ -61,7 +61,7 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-2.6.0";
+export const VERSION = "containment-2.7.0";
 // Signs improve at a quarter of each projectile's strength, and a single hit
 // can never charge a sign by more than GATE_POWER_CAP soldiers.
 export const GATE_GAIN = 0.25,
@@ -151,6 +151,8 @@ export class Simulation {
   bossActive = false;
   nextEncounter = 0;
   encounterIndex = 0;
+  private nextGateEncounter = 0;
+  private enemyOrder: EnemyKind[];
   nextSupply = 9;
   supplyIndex = 0;
   loot: LootDeck;
@@ -197,7 +199,7 @@ export class Simulation {
   bossRemains: Enemy[] = [];
   reason = "";
   debug = false;
-  introduced = 1;
+  introduced = 3;
   template = "Insertion";
   lastReward = "";
   rewardUntil = 0;
@@ -258,6 +260,14 @@ export class Simulation {
     this.upgrades = [...upgrades];
     this.rng = new RNG(seed);
     this.loot = new LootDeck(seed);
+    // Basic enemies can mix immediately; introduce specialists in a seeded order.
+    const specialists: EnemyKind[] = ENEMIES.slice(3);
+    for (let i = specialists.length - 1; i > 0; i--) {
+      const j = this.rng.int(i + 1);
+      [specialists[i], specialists[j]] = [specialists[j], specialists[i]];
+    }
+    this.enemyOrder = [...ENEMIES.slice(0, 3), ...specialists];
+    this.nextSupply = 6 + this.loot.rng.next() * 6;
     this.army = Math.round(24 * (1 + (upgrades[0] * UPGRADE_PERCENT[0]) / 100));
     this.peak = this.army;
     this.shield = 20;
@@ -542,17 +552,23 @@ export class Simulation {
     const introduce =
       this.introduced < ENEMIES.length && this.distance >= this.introduced * 26;
     const specialist = introduce
-      ? ENEMIES[this.introduced++]
-      : ENEMIES[this.rng.int(this.introduced)];
+      ? this.enemyOrder[this.introduced++]
+      : this.enemyOrder[this.rng.int(this.introduced)];
     this.template = introduce
       ? "Introduction: " + specialist
       : "Advancing horde";
-    // Two occupied lanes, with staggered ranks and mixed silhouettes. Leave a route around contact.
+    // Seeded formations occupy at most two lanes, leaving a route around contact.
     const count =
       (this.distance < 45 ? 2 : this.mode === "Swarm" ? 7 : 4) +
       this.rng.int(this.distance < 45 ? 2 : 3) +
       Math.min(3, Math.floor(this.distance / 300)) +
       this.encounterScale.extraEnemies;
+    const firstLane = this.rng.int(2);
+    const front = 27 + this.rng.next() * 5;
+    const rankSpacing =
+      (this.encounterScale.pressure > 2 ? 1.4 : 1.8) + this.rng.next() * 1.2;
+    const specialistIndex = this.rng.int(count);
+    const guardIndex = (specialistIndex + 1 + this.rng.int(count - 1)) % count;
     for (let n = 0; n < count; n++) {
       const lane =
         this.mode === "Mirror"
@@ -561,53 +577,47 @@ export class Simulation {
               ? 0
               : 2
             : 1
-          : (safe + 1 + (n % 2)) % 3;
+          : (safe + 1 + (n < 2 ? (firstLane + n) % 2 : this.rng.int(2))) % 3;
       // Limit ranged specialists per pack so warnings do not queue minutes into the future.
       const kind =
-        n === 0 || (n === 6 && this.encounterScale.pressure > 2)
+        n === specialistIndex || (n === 6 && this.encounterScale.pressure > 2)
           ? specialist
-          : this.introduced >= 4 &&
+          : this.enemyOrder.slice(0, this.introduced).includes("Riot Guard") &&
               this.encounterScale.pressure > 1 &&
-              n % 4 === 1
+              n === guardIndex
             ? "Riot Guard"
-            : ENEMIES[this.rng.int(Math.min(3, this.introduced))];
+            : ENEMIES[this.rng.int(3)];
       this.spawnEnemy(
         kind,
-        LANES[lane] + (n >= 2 ? (n % 2 ? -0.32 : 0.32) : 0),
-        29 + Math.floor(n / 2) * (this.encounterScale.pressure > 2 ? 1.8 : 2.2),
+        LANES[lane] +
+          (this.mode === "Mirror" ? 0 : (this.rng.next() - 0.5) * 0.8),
+        front + Math.floor(n / 2) * rankSpacing + this.rng.next() * 0.6,
       );
     }
     // Gates are interleaved with combat; they no longer consume a whole empty encounter.
-    if (index % 5 === 0) {
-      this.spawnGate(index % 10 === 5 ? this.rng.int(2) : -1);
+    if (index >= this.nextGateEncounter) {
+      this.nextGateEncounter = index + 3 + this.rng.int(5);
+      this.spawnGate(index > 0 && this.rng.next() < 0.5 ? this.rng.int(2) : -1);
       const gate = this.gates[this.gates.length - 1];
-      gate.z = 40;
+      gate.z = 36 + this.rng.next() * 8;
       if (index === 0 && this.mode !== "Sudden Death") {
         gate.left = gate.right = "+";
-        gate.a = 18;
-        gate.b = 12;
+        gate.a = 12 + this.rng.int(13);
+        gate.b = 12 + this.rng.int(13);
       }
     }
     if (this.bossIndex === 0 && this.distance >= this.nextSupply)
       this.supply(LANES[safe]);
   }
   supply(x: number) {
-    // Preserve the opening's dependable firepower before introducing the larger bag.
-    const opening: Pickup[] =
-      this.mode === "Swarm"
-        ? ["helix", "seeker", "damage"]
-        : ["seeker", "helix", "damage"];
-    const index = this.supplyIndex++;
-    const kind =
-      this.bossIndex === 0 && index < opening.length
-        ? opening[index]
-        : this.bossIndex === 0 && index === 6
-          ? "spread"
-          : this.loot.next({ ...this.guns, ...this.boosts });
-    this.dropReward(kind, x, 24);
-    // Half as many scheduled pickups, with the same dependable opening rewards.
+    this.supplyIndex++;
+    const kind = this.loot.next({ ...this.guns, ...this.boosts });
+    this.dropReward(kind, x, 21 + this.loot.rng.next() * 6);
+    // Vary arrival distances around the existing supply budget, on the loot stream.
     this.nextSupply =
-      this.distance + (this.bossIndex > 0 ? 32 : this.distance < 150 ? 72 : 56);
+      this.distance +
+      (this.bossIndex > 0 ? 32 : this.distance < 150 ? 72 : 56) *
+        (0.8 + this.loot.rng.next() * 0.4);
   }
   dropReward(kind: Pickup, x: number, z: number) {
     if (this.drops.length >= 24) return;
@@ -768,8 +778,8 @@ export class Simulation {
     this.bossActive = false;
     this.bossIndex++;
     this.nextBoss = (this.bossIndex + 1) * BOSS_SPACING;
-    this.nextEncounter = this.distance + 2;
-    this.nextSupply = this.distance + 10;
+    this.nextEncounter = this.distance + 1.5 + this.rng.next();
+    this.nextSupply = this.distance + 8 + this.loot.rng.next() * 4;
     this.hazards.length = 0;
     this.fields.length = 0;
     for (const e of this.enemies) e.dead = true;
@@ -1259,7 +1269,8 @@ export class Simulation {
       this.nextEncounter =
         this.distance +
         this.encounterScale.spacing *
-          (this.mode === "Swarm" && this.distance > 45 ? 0.85 : 1);
+          (this.mode === "Swarm" && this.distance > 45 ? 0.85 : 1) *
+          (0.85 + this.rng.next() * 0.3);
     }
     if (
       this.bossIndex > 0 &&
@@ -1267,7 +1278,7 @@ export class Simulation {
       !this.bossPending &&
       this.distance >= this.nextSupply
     ) {
-      const safe = LANES.find(
+      const safe = LANES.filter(
         (x) =>
           !this.hazards.some(
             (h) => h.endAt >= this.tick && h.lanes.includes(LANES.indexOf(x)),
@@ -1276,7 +1287,7 @@ export class Simulation {
             (e) => !e.dead && Math.abs(e.x - x) < 1 && e.z < 26,
           ),
       );
-      this.supply(safe ?? this.x);
+      this.supply(safe.length ? safe[this.loot.rng.int(safe.length)] : this.x);
     }
     this.updatePayloads(scroll);
     this.fireClock -= DT;

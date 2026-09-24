@@ -229,7 +229,7 @@ test("echoes repeat the snapshot once per level without recursively scheduling",
   assert.equal(echo.payload!.echoCount, 0);
   assert.equal(s.pendingShots.length, 0);
 });
-test("scheduled supplies have twice the spacing in each phase", () => {
+test("scheduled supplies vary within the existing budget in each phase", () => {
   const s = fresh();
   for (const [distance, bossIndex, spacing] of [
     [50, 0, 72],
@@ -239,7 +239,8 @@ test("scheduled supplies have twice the spacing in each phase", () => {
     s.distance = distance;
     s.bossIndex = bossIndex;
     s.supply(0);
-    assert.equal(s.nextSupply - s.distance, spacing);
+    assert.ok(s.nextSupply - s.distance >= spacing * 0.8);
+    assert.ok(s.nextSupply - s.distance <= spacing * 1.2);
   }
 });
 test("ordinary enemy loot uses a six percent eligible drop chance", () => {
@@ -259,7 +260,8 @@ test("post-boss supplies are independent of waves; enemy pity and cooldown start
   s.bossIndex = 1;
   s.update({ x: 0 }, false);
   assert.equal(s.drops.length, 1);
-  assert.ok(Math.abs(s.nextSupply - s.distance - 32) < 1e-6);
+  assert.ok(s.nextSupply - s.distance >= 25.6);
+  assert.ok(s.nextSupply - s.distance <= 38.4);
   s.drops = [];
   s.loot.rng.next = () => 0.8;
   for (let i = 0; i < 19; i++) s.kill(enemy(s));
@@ -283,7 +285,8 @@ test("boss victories award one pickup and alternate gear categories; contact esc
   assert.equal(s.bossIndex, 1);
   assert.equal(s.drops.length, 1);
   assert.ok(GUNS.includes(s.drops[0].kind as Gun));
-  assert.equal(s.nextSupply, s.distance + 10);
+  assert.ok(s.nextSupply >= s.distance + 8);
+  assert.ok(s.nextSupply <= s.distance + 12);
   s.kill(s.spawnEnemy("Broodmass", 0, 20, true)!);
   assert.equal(s.drops.length, 2);
   assert.ok(BOOSTS.includes(s.drops[1].kind as any));
