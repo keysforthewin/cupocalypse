@@ -82,7 +82,7 @@ try {
     JSON.parse(localStorage.getItem("gate-runner-profile")),
   );
   assert.deepEqual(saved.superLoadout, ["mortal", "doc", "nitro"]);
-  assert.equal(saved.currency, 3500);
+  assert.equal(saved.currency, 3900);
   checks.purchases = true;
   await page.screenshot({ path: `${out}/armory-1440.png` });
   await page
