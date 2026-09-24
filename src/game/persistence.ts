@@ -84,7 +84,9 @@ export function saveProfile(p: Profile) {
   }
 }
 export function earnings(sim: Simulation) {
-  return sim.debug ? 0 : Math.floor(sim.distance / 4) + sim.bossKills * 25;
+  // Each boss kill pays 100 credits times that boss's level (1 for the first).
+  const bossCredits = 50 * sim.bossKills * (sim.bossKills + 1);
+  return sim.debug ? 0 : Math.floor(sim.distance / 4) + bossCredits;
 }
 export function settle(p: Profile, sim: Simulation): Profile {
   if (sim.debug) return p;

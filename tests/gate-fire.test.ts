@@ -41,9 +41,17 @@ test("live spread volleys count every projectile at impact in all modes", () => 
       s.update({ x: -3 });
       if (g.hitsA > before) {
         impacts++;
-        // Three plasma projectiles, or six for the two half-width formations.
-        assert.equal(g.hitsA - before, mode === "Mirror" ? 12 : 6);
-        assert.equal(g.a, mode === "Sudden Death" ? 0 : g.hitsA);
+        // Three plasma projectiles, or six for the two half-width formations,
+        // each charging the sign by its (quartered, capped) gate power.
+        const power = s.bullets.find((b) => b.kind === "pulse")!.gatePower;
+        assert.ok(power > 0 && power <= 2);
+        assert.ok(
+          Math.abs(g.hitsA - before - (mode === "Mirror" ? 6 : 3) * power) <
+            1e-9,
+        );
+        assert.ok(
+          Math.abs(g.a - (mode === "Sudden Death" ? 0 : g.hitsA)) < 1e-6,
+        );
         if (previousHitTick) assert.ok(s.tick - previousHitTick <= 12);
         previousHitTick = s.tick;
       }

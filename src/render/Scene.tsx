@@ -162,7 +162,9 @@ function GateLabel({
             ? "LEFT LANE"
             : "RIGHT LANE"
         : "UNIDENTIFIED",
-      g.revealed ? `${op}${Math.round(value * 1000) / 1000}` : "?",
+      g.revealed
+        ? `${op}${op === "+" || op === "−" ? Math.floor(value) : Math.round(value * 1000) / 1000}`
+        : "?",
       g.revealed ? "EVERY HIT COUNTS" : "FIRE TO REVEAL",
     ];
     texts.forEach((text, i) => {

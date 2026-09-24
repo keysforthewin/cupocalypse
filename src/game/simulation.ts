@@ -60,7 +60,11 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-2.3.0";
+export const VERSION = "containment-2.4.0";
+// Signs improve at a quarter of each projectile's strength, and a single hit
+// can never charge a sign by more than GATE_POWER_CAP soldiers.
+export const GATE_GAIN = 0.25,
+  GATE_POWER_CAP = 2;
 export const DT = 1 / 60,
   MOVE_SPEED = 6,
   ROAD_LIMIT = 3.8,
@@ -704,7 +708,7 @@ export class Simulation {
       this.bossKills++;
       this.army += 30;
       this.shield += 20;
-      this.reward("TARGET ELIMINATED · +30");
+      this.reward(`TARGET ELIMINATED · +30 · ${100 * this.bossKills} CR`);
       this.endBoss();
       if (this.outcome === "victory") return;
       const owned = { ...this.guns, ...this.boosts };
@@ -855,9 +859,15 @@ export class Simulation {
       target: -1,
       aimX: this.aim,
       damage: damage * (critical ? w.critDamage : 1),
-      gatePower: Math.ceil(
-        w.damage * (kind === "pulse" ? w.shotScale : w.gunShotScale),
-      ),
+      gatePower:
+        Math.round(
+          Math.min(
+            GATE_POWER_CAP,
+            w.damage *
+              (kind === "pulse" ? w.shotScale : w.gunShotScale) *
+              GATE_GAIN,
+          ) * 1000,
+        ) / 1000,
       coreColor: kind === "pulse" ? w.coreColor : def.core,
       haloColor: critical
         ? "#ffffff"
