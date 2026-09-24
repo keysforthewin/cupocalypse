@@ -148,7 +148,20 @@ export function debrisRecipe(e: Effect): DebrisPiece[] {
 }
 /** Ballistic flight, two diminishing bounces, then rest. Evaluated from event
  * time so pause, slow frames and replay seeking never change debris motion. */
-export function debrisPose(e: Effect, p: DebrisPiece) {
+export interface DebrisPose {
+  x: number;
+  y: number;
+  z: number;
+  rx: number;
+  ry: number;
+  rz: number;
+  fade: number;
+}
+export function debrisPose(
+  e: Effect,
+  p: DebrisPiece,
+  out: DebrisPose = { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0, fade: 1 },
+): DebrisPose {
   const t = e.age;
   const floor = Math.min(...p.size) * 0.65 + 0.025;
   const gravity = 13;
@@ -184,26 +197,25 @@ export function debrisPose(e: Effect, p: DebrisPiece) {
       Math.sin(fall * Math.PI) * (e.style === "tumble" ? 0.9 : 0.05);
     const yaw = (effectRandom(e.seed, 55) - 0.5) * 3.4;
     const localZ = localY * Math.sin(angle);
-    return {
-      x:
-        p.offset[0] * Math.cos(yaw) +
-        localZ * Math.sin(yaw) +
-        Math.sin(e.direction) * fall * 0.7,
-      y: Math.max(floor, centerY + localY * Math.cos(angle)),
-      z: localZ * Math.cos(yaw) - p.offset[0] * Math.sin(yaw) - fall * 0.4,
-      rx: angle,
-      ry: yaw,
-      rz: Math.sin(p.spin[2]) * fall * 0.35,
-      fade,
-    };
+    out.x =
+      p.offset[0] * Math.cos(yaw) +
+      localZ * Math.sin(yaw) +
+      Math.sin(e.direction) * fall * 0.7;
+    out.y = Math.max(floor, centerY + localY * Math.cos(angle));
+    out.z = localZ * Math.cos(yaw) - p.offset[0] * Math.sin(yaw) - fall * 0.4;
+    out.rx = angle;
+    out.ry = yaw;
+    out.rz = Math.sin(p.spin[2]) * fall * 0.35;
+    out.fade = fade;
+    return out;
   }
-  return {
-    x: p.offset[0] + p.velocity[0] * travel,
-    y: Math.max(floor, floor + height),
-    z: p.offset[2] + p.velocity[2] * travel,
-    rx: p.spin[0] * Math.min(t, landing + 0.3),
-    ry: p.spin[1] * Math.min(t, landing + 0.3),
-    rz: p.spin[2] * Math.min(t, landing + 0.3),
-    fade,
-  };
+  const spinTime = Math.min(t, landing + 0.3);
+  out.x = p.offset[0] + p.velocity[0] * travel;
+  out.y = Math.max(floor, floor + height);
+  out.z = p.offset[2] + p.velocity[2] * travel;
+  out.rx = p.spin[0] * spinTime;
+  out.ry = p.spin[1] * spinTime;
+  out.rz = p.spin[2] * spinTime;
+  out.fade = fade;
+  return out;
 }

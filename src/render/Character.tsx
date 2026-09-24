@@ -1,12 +1,27 @@
 import { useMemo, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useFrame, createPortal } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import * as T from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import type { Enemy } from "../game/types";
 import { characterPose, createRig } from "./motion";
 import { AttackEffects } from "./AttackEffects";
 import type { Simulation } from "../game/simulation";
+// Wound and phase markers are shared geometry and material, attached to the
+// spine bone directly. A react-three-fiber portal per enemy used to do this,
+// but each portal mirrors the root store, subscribes to it for the lifetime of
+// the canvas, and rebuilds its state every frame with a closure over the
+// previous state, so every enemy that ever spawned kept growing the heap.
+const woundGeometry = new T.SphereGeometry(1, 12, 8);
+const woundMaterial = new T.MeshStandardMaterial({
+  color: "#732d27",
+  roughness: 0.35,
+});
+const phaseGeometry = new T.SphereGeometry(1, 14, 10);
+const phaseMaterial = new T.MeshStandardMaterial({
+  color: "#742b29",
+  roughness: 0.25,
+});
 export function Character({
   url,
   enemy,
@@ -44,6 +59,23 @@ export function Character({
     return model;
   }, [gltf.scene, enemy.kind, enemy.id]);
   const spine = useMemo(() => model.getObjectByName("spine") ?? model, [model]);
+  const markers = useMemo(() => {
+    const wound = new T.Mesh(woundGeometry, woundMaterial);
+    wound.position.set(0.15, 0.15, 0.2);
+    wound.scale.set(0.15, 0.22, 0.055);
+    wound.visible = false;
+    const phase = new T.Mesh(phaseGeometry, phaseMaterial);
+    phase.position.set(0, 0.16, 0.24);
+    phase.scale.set(0.14, 0.2, 0.035);
+    phase.visible = false;
+    return { wound, phase };
+  }, []);
+  useEffect(() => {
+    spine.add(markers.wound, markers.phase);
+    return () => {
+      spine.remove(markers.wound, markers.phase);
+    };
+  }, [spine, markers]);
   const poseRig = useMemo(() => createRig(model), [model]);
   const scale =
     enemy.kind === "Bulwark"
@@ -70,6 +102,8 @@ export function Character({
   }, [model]);
   useFrame(() => {
     const preparing = enemy.prepareUntil > sim.tick;
+    markers.wound.visible = 1 - enemy.hp / enemy.maxHp > 0.25;
+    markers.phase.visible = enemy.phase === 2 && enemy.boss;
     const pose = characterPose(enemy, sim.tick);
     poseRig(pose);
     model.position.y = pose.y;
@@ -97,29 +131,11 @@ export function Character({
       }
     });
   });
-  const wound = 1 - enemy.hp / enemy.maxHp;
   return (
     <group>
       <AttackEffects enemy={enemy} sim={sim} scale={scale} />
       <group scale={scale}>
         <primitive object={model} />
-        {createPortal(
-          <group>
-            {wound > 0.25 && (
-              <mesh position={[0.15, 0.15, 0.2]} scale={[0.15, 0.22, 0.055]}>
-                <sphereGeometry args={[1, 12, 8]} />
-                <meshStandardMaterial color="#732d27" roughness={0.35} />
-              </mesh>
-            )}
-            {enemy.phase === 2 && enemy.boss && (
-              <mesh position={[0, 0.16, 0.24]} scale={[0.14, 0.2, 0.035]}>
-                <sphereGeometry args={[1, 14, 10]} />
-                <meshStandardMaterial color="#742b29" roughness={0.25} />
-              </mesh>
-            )}
-          </group>,
-          spine,
-        )}
       </group>
     </group>
   );

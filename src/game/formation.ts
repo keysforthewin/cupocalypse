@@ -170,13 +170,14 @@ export function soldierPosition(
   rearX = tipX,
   mode: Mode = "Classic",
   copy = 0,
+  envelope?: ReturnType<typeof crowdEnvelope>,
 ) {
   const { starts, columns } = crowdLayout(Math.max(1, count));
   let row = 0;
   while (row + 1 < starts.length && starts[row + 1] <= index) row++;
   const col = index - starts[row];
   const u = starts.length <= 1 ? 1 : row / (starts.length - 1);
-  const e = crowdEnvelope(army, mode, tipX, rearX);
+  const e = envelope ?? crowdEnvelope(army, mode, tipX, rearX);
   const center = centerAt(e.tips[copy], e.rears[copy], u);
   const across = columns[row] <= 1 ? 0 : (col / (columns[row] - 1)) * 2 - 1;
   const half = e.halfWidth * roundedWidth(u) * 0.94;

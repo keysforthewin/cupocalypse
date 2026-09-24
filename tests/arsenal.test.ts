@@ -220,11 +220,12 @@ test("echoes repeat the snapshot once per level without recursively scheduling",
   const s = fresh();
   s.pickup("echo");
   const b = shot(s);
+  const original = b.damage;
   b.active = false;
   s.pickup("warhead");
   for (let i = 0; i < 12; i++) s.update({ x: 0 }, false);
   const echo = s.bullets.find((p) => p.active)!;
-  assert.equal(echo.damage, 3);
+  assert.equal(echo.damage, original * weaponStats({ echo: 1 }).echoDamage);
   assert.equal(echo.payload!.echoCount, 0);
   assert.equal(s.pendingShots.length, 0);
 });
@@ -346,7 +347,7 @@ test("boss loot is placed ahead of a collecting formation in all six modes", () 
     assert.equal(s.pickupsCollected, 1, mode);
   }
 });
-test("Ripsaw redirects into moving off-lane targets and Stitcher spaces five needles", () => {
+test("Ripsaw redirects into moving off-lane targets and Stitcher spaces three needles", () => {
   const s = fresh();
   const targets = [enemy(s, 0, 3), enemy(s, 2, 7), enemy(s, -1, 12)];
   shot(s, "saw");
@@ -359,11 +360,11 @@ test("Ripsaw redirects into moving off-lane targets and Stitcher spaces five nee
     q.bullets.filter((b) => b.active && b.kind === "needle").length,
     1,
   );
-  assert.equal(q.pendingShots.length, 4);
+  assert.equal(q.pendingShots.length, 2);
   for (let i = 0; i < 12; i++) q.update({ x: 0 }, false);
   assert.equal(
     q.bullets.filter((b) => b.active && b.kind === "needle").length,
-    5,
+    3,
   );
   assert.equal(q.pendingShots.length, 0);
 });

@@ -192,10 +192,10 @@ export const ARSENAL: Record<
     core: "#fff5ed",
     speed: 35,
     interval: 1.1,
-    damage: 0.55,
+    damage: 0.9,
     radius: 0,
     size: 0.09,
-    description: "Five-needle rapid burst",
+    description: "Three-needle rapid burst",
   },
   sonic: {
     name: "BELLHAMMER",
@@ -311,8 +311,13 @@ export function moveProjectile(
     b.kind === "mortar"
       ? 0.65 + Math.sin(Math.min(1, b.age / 1.5) * Math.PI) * 2.5
       : 0.72 + (b.kind === "cursor" ? Math.sin(b.age * 5 + b.phase) * 0.16 : 0);
-  b.trail.unshift([b.x, b.y, b.z]);
-  if (b.trail.length > 12) b.trail.pop();
+  // Recycle the oldest trail point instead of allocating one per tick.
+  const point: [number, number, number] =
+    b.trail.length >= 12 ? b.trail.pop()! : [0, 0, 0];
+  point[0] = b.x;
+  point[1] = b.y;
+  point[2] = b.z;
+  b.trail.unshift(point);
 }
 // Swept lateral position is shared by enemy and gate intersections.
 export function crossingX(b: Bullet, z: number) {

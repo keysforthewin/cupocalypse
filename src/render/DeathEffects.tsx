@@ -85,6 +85,10 @@ export function DeathEffects({ sim }: { sim: Simulation }) {
   );
   const dummy = useMemo(() => new T.Object3D(), []);
   const color = useMemo(() => new T.Color(), []);
+  const pose = useMemo(
+    () => ({ x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0, fade: 1 }),
+    [],
+  );
   useFrame(() => {
     for (const mesh of batches.all) mesh.count = 0;
     const surface = (
@@ -121,7 +125,7 @@ export function DeathEffects({ sim }: { sim: Simulation }) {
         }
         for (const p of saved.recipe) {
           if (e.age >= p.life) continue;
-          const pose = debrisPose(e, p);
+          debrisPose(e, p, pose);
           const mesh = batches.debris[p.kind];
           const n = mesh.count++;
           dummy.position.set(e.x + pose.x, pose.y, -e.z + pose.z);
@@ -208,10 +212,23 @@ export function DeathEffects({ sim }: { sim: Simulation }) {
       }
     }
     for (const mesh of batches.all) {
+      // Upload only the instances written this frame, not the whole buffer.
+      const n = Math.max(1, mesh.count);
+      mesh.instanceMatrix.clearUpdateRanges();
+      mesh.instanceMatrix.addUpdateRange(0, n * 16);
       mesh.instanceMatrix.needsUpdate = true;
-      if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-      const data = mesh.geometry.getAttribute("fxData");
-      if (data) data.needsUpdate = true;
+      if (mesh.instanceColor) {
+        mesh.instanceColor.clearUpdateRanges();
+        mesh.instanceColor.addUpdateRange(0, n * 3);
+        mesh.instanceColor.needsUpdate = true;
+      }
+      const data = mesh.geometry.getAttribute("fxData") as
+        T.InstancedBufferAttribute | undefined;
+      if (data) {
+        data.clearUpdateRanges();
+        data.addUpdateRange(0, n * 4);
+        data.needsUpdate = true;
+      }
     }
   });
   return (

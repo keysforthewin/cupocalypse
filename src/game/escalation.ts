@@ -28,7 +28,7 @@ export function encounterScale(
   // A wide volley cannot focus every pellet on one target, so count its
   // contribution to lane coverage separately from single-projectile damage.
   const firepower =
-    weapon.damage * weapon.rate * (1 + (weapon.offsets.length - 1) * 0.3) +
+    weapon.damage * weapon.rate * (1 + (weapon.volley - 1) * 0.3) +
     (guns
       ? GUNS.reduce(
           (sum, k) =>

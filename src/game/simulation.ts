@@ -60,7 +60,7 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-2.1.0";
+export const VERSION = "containment-2.2.0";
 export const DT = 1 / 60,
   MOVE_SPEED = 6,
   ROAD_LIMIT = 3.8,
@@ -251,13 +251,39 @@ export class Simulation {
     this.upgrades = [...upgrades];
     this.rng = new RNG(seed);
     this.loot = new LootDeck(seed);
-    this.army = Math.round(24 * (1 + upgrades[0] * UPGRADE_PERCENT[0] / 100));
+    this.army = Math.round(24 * (1 + (upgrades[0] * UPGRADE_PERCENT[0]) / 100));
     this.peak = this.army;
     this.shield = 20;
     this.supers = new SuperSystem(this, superLoadout);
   }
+  private crowdCache?: {
+    army: number;
+    x: number;
+    crowdX: number;
+    mode: Mode;
+    value: ReturnType<typeof crowdEnvelope>;
+  };
+  // The envelope is a pure function of four numbers and is read dozens of
+  // times per tick; memoizing it removes most of the tick's small allocations.
   get crowd() {
-    return crowdEnvelope(this.army, this.mode, this.x, this.crowdX);
+    const c = this.crowdCache;
+    if (
+      c &&
+      c.army === this.army &&
+      c.x === this.x &&
+      c.crowdX === this.crowdX &&
+      c.mode === this.mode
+    )
+      return c.value;
+    const value = crowdEnvelope(this.army, this.mode, this.x, this.crowdX);
+    this.crowdCache = {
+      army: this.army,
+      x: this.x,
+      crowdX: this.crowdX,
+      mode: this.mode,
+      value,
+    };
+    return value;
   }
   exposure(left: number, right: number, front = -Infinity, back = Infinity) {
     return formationExposure(
@@ -755,13 +781,19 @@ export class Simulation {
       const b = this.bullets[this.allocationCursor];
       this.allocationCursor = (this.allocationCursor + 1) % this.bullets.length;
       if (b.active) continue;
-      Object.assign(b, template, {
-        active: true,
-        serial: ++this.shotSerial,
-        trail: [],
-        hitIds: [],
-        hitGateIds: [],
-      });
+      // Keep the slot's own arrays: a shot costs no new trail or hit lists.
+      const trail = b.trail,
+        hitIds = b.hitIds ?? [],
+        hitGateIds = b.hitGateIds ?? [];
+      trail.length = 0;
+      hitIds.length = 0;
+      hitGateIds.length = 0;
+      Object.assign(b, template);
+      b.active = true;
+      b.serial = ++this.shotSerial;
+      b.trail = trail;
+      b.hitIds = hitIds;
+      b.hitGateIds = hitGateIds;
       return b;
     }
     if (this.bullets.length < BULLET_CAPACITY) {
@@ -823,7 +855,9 @@ export class Simulation {
       target: -1,
       aimX: this.aim,
       damage: damage * (critical ? w.critDamage : 1),
-      gatePower: Math.ceil(w.damage),
+      gatePower: Math.ceil(
+        w.damage * (kind === "pulse" ? w.shotScale : w.gunShotScale),
+      ),
       coreColor: kind === "pulse" ? w.coreColor : def.core,
       haloColor: critical
         ? "#ffffff"
@@ -923,7 +957,9 @@ export class Simulation {
     this.pendingShots.length = write;
     for (const e of this.enemies) {
       if (e.dead || !e.burns?.length) continue;
-      e.burns = e.burns.filter((b) => b.until > this.tick);
+      let keep = 0;
+      for (const b of e.burns) if (b.until > this.tick) e.burns[keep++] = b;
+      e.burns.length = keep;
       for (const b of e.burns)
         this.supers.arsenalDamage(e, b.perTick, {
           superSource: b.superSource,
@@ -1094,6 +1130,19 @@ export class Simulation {
     age: number;
     color: string;
   }[] = [];
+  // Scratch storage for one projectile's swept contacts, reused every tick.
+  private contacts: { z: number; enemy?: Enemy; gate?: Gate }[] = [];
+  private contactPool: { z: number; enemy?: Enemy; gate?: Gate }[] = [];
+  private contact(z: number, enemy?: Enemy, gate?: Gate) {
+    const n = this.contacts.length;
+    let c = this.contactPool[n];
+    if (!c)
+      c = this.contactPool[n] = { z: 0, enemy: undefined, gate: undefined };
+    c.z = z;
+    c.enemy = enemy;
+    c.gate = gate;
+    this.contacts.push(c);
+  }
 
   pickup(kind: Pickup) {
     this.pickupsCollected++;
@@ -1153,9 +1202,10 @@ export class Simulation {
     this.crowdX += (this.x - this.crowdX) * (1 - Math.exp(-DT * 4));
     if (!this.bossActive)
       this.distance = Math.min(this.nextBoss, this.distance + 3.2 * DT);
-    this.bossRemains = this.bossRemains.filter(
-      (e) => this.tick - (e.deathTick ?? 0) < 360,
-    );
+    if (this.bossRemains.length)
+      this.bossRemains = this.bossRemains.filter(
+        (e) => this.tick - (e.deathTick ?? 0) < 360,
+      );
     const scroll = 8 * DT;
     if (
       !this.bossActive &&
@@ -1208,19 +1258,21 @@ export class Simulation {
     this.updatePayloads(scroll);
     this.fireClock -= DT;
     const weapon = weaponStats(this.boosts);
+    const nitro = this.supers.active("nitro") ? 3 : 1;
     const rate =
       (6 + Math.min(6, Math.sqrt(this.army) * 0.18)) *
-      (1 + this.upgrades[2] * UPGRADE_PERCENT[2] / 100) *
-      weapon.rate *
-      (this.supers.active("nitro") ? 3 : 1);
+      (1 + (this.upgrades[2] * UPGRADE_PERCENT[2]) / 100) *
+      weapon.cadence *
+      nitro;
     while (this.fireClock <= 0) {
       this.fireClock += 1 / rate;
       this.shots++;
       this.weaponSound("pulse", this.x, false);
       const damage =
         (1.4 + Math.min(12, Math.sqrt(this.army) * 0.28)) *
-        (1 + this.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
-        weapon.damage;
+        (1 + (this.upgrades[1] * UPGRADE_PERCENT[1]) / 100) *
+        weapon.damage *
+        weapon.shotScale;
       const origins = formationPositions(this.mode, this.x);
       for (const origin of origins)
         for (const dx of weapon.offsets)
@@ -1229,6 +1281,10 @@ export class Simulation {
             origin,
             dx * (this.mode === "Mirror" ? 0.5 : 1),
             damage / origins.length,
+            0,
+            0,
+            undefined,
+            weapon,
           );
     }
     for (const kind of GUNS) {
@@ -1236,23 +1292,21 @@ export class Simulation {
       this.gunClocks[kind] -= DT;
       if (this.gunClocks[kind] > 0) continue;
       const def = ARSENAL[kind];
-      this.gunClocks[kind] +=
-        def.interval / weapon.gunRate / (this.supers.active("nitro") ? 3 : 1);
+      this.gunClocks[kind] += def.interval / weapon.gunCadence / nitro;
       const origins = formationPositions(this.mode, this.x);
       const count =
         kind === "helix"
           ? 2
-          : kind === "scatter" || kind === "cryo"
+          : kind === "scatter" || kind === "cryo" || kind === "needle"
             ? 3
-            : kind === "needle"
-              ? 5
-              : 1;
+            : 1;
       for (const origin of origins)
         for (let n = 0; n < count; n++) {
           const damage =
             ((1.4 + Math.min(12, Math.sqrt(this.army) * 0.28)) *
-              (1 + this.upgrades[1] * UPGRADE_PERCENT[1] / 100) *
+              (1 + (this.upgrades[1] * UPGRADE_PERCENT[1]) / 100) *
               weapon.damage *
+              weapon.gunShotScale *
               def.damage *
               (1 + 0.22 * Math.sqrt(this.guns[kind] - 1))) /
             origins.length;
@@ -1267,6 +1321,8 @@ export class Simulation {
             damage,
             n * Math.PI,
             kind === "needle" ? n * 3 : 0,
+            undefined,
+            weapon,
           );
         }
       this.weaponSound(kind, this.x, false);
@@ -1276,14 +1332,23 @@ export class Simulation {
       arc.z -= scroll;
       arc.tz -= scroll;
     }
-    this.arcEffects = this.arcEffects.filter((a) => a.age < 0.18);
+    let arcs = 0;
+    for (const a of this.arcEffects)
+      if (a.age < 0.18) this.arcEffects[arcs++] = a;
+    this.arcEffects.length = arcs;
     for (const b of this.bullets) {
       if (!b.active) continue;
       moveProjectile(b, this.enemies, this.aim, DT);
       const low = Math.min(b.previous, b.z),
         high = Math.max(b.previous, b.z);
-      const contacts: { z: number; enemy?: Enemy; gate?: Gate }[] = [];
+      const contacts = this.contacts;
+      contacts.length = 0;
+      const shotSize = b.payload?.size ?? 1;
+      const extraWidth =
+        Math.max(0, shotSize - 1) * ARSENAL[b.kind].size +
+        (b.kind === "sonic" ? 1.4 * shotSize : 0);
       for (const e of this.enemies) {
+        if (e.dead || e.z < low - 0.5 || e.z > high + 0.5) continue;
         const width =
           (isNewBoss(e.kind)
             ? 4.1
@@ -1291,17 +1356,12 @@ export class Simulation {
               ? 2.4
               : e.kind === "Crawler"
                 ? 0.4
-                : 0.7) +
-          Math.max(0, (b.payload?.size ?? 1) - 1) * ARSENAL[b.kind].size +
-          (b.kind === "sonic" ? 1.4 * (b.payload?.size ?? 1) : 0);
+                : 0.7) + extraWidth;
         if (
-          !e.dead &&
           !b.hitIds?.includes(e.id) &&
-          Math.abs(e.x - crossingX(b, e.z)) < width &&
-          e.z >= low - 0.5 &&
-          e.z <= high + 0.5
+          Math.abs(e.x - crossingX(b, e.z)) < width
         )
-          contacts.push({ z: e.z, enemy: e });
+          this.contact(e.z, e);
       }
       for (const g of this.gates)
         if (
@@ -1311,8 +1371,9 @@ export class Simulation {
           g.z <= high + scroll &&
           bulletGate(crossingX(b, g.z), this.mode) !== undefined
         )
-          contacts.push({ z: g.z, gate: g });
-      contacts.sort((a, c) => (b.returning ? c.z - a.z : a.z - c.z));
+          this.contact(g.z, undefined, g);
+      if (contacts.length > 1)
+        contacts.sort((a, c) => (b.returning ? c.z - a.z : a.z - c.z));
       for (const contact of contacts) {
         if (!b.active) break;
         if (contact.gate) {
@@ -1354,8 +1415,8 @@ export class Simulation {
                 (next.x - b.x) /
                 Math.max(0.08, (next.z - b.z) / ARSENAL[b.kind].speed);
           } else if (b.payload?.pierce) {
-            if (b.kind !== "crescent" && b.kind !== "sonic")
-              b.payload = { ...b.payload, pierce: b.payload.pierce - 1 };
+            // Each live shot owns its payload; echoes and fragments copy it.
+            if (b.kind !== "crescent" && b.kind !== "sonic") b.payload.pierce--;
           } else b.active = false;
         }
       }
@@ -1428,9 +1489,13 @@ export class Simulation {
       const previousZ = e.z;
       const movement = this.supers.movement(e);
       e.age++;
-      e.motions = e.motions.filter(
-        (m) => this.tick <= Math.max(m.end, m.strike + 54),
-      );
+      if (e.motions.length) {
+        let keep = 0;
+        for (const m of e.motions)
+          if (this.tick <= Math.max(m.end, m.strike + 54))
+            e.motions[keep++] = m;
+        e.motions.length = keep;
+      }
       if (e.action === "summon" && e.prepareUntil <= this.tick) {
         for (
           let n = 0;

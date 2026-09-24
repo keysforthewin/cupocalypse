@@ -186,7 +186,7 @@ export function Environment({
     hemi.current?.color.copy(blend(a.ambient, b.ambient));
     hemi.current?.groundColor.copy(blend(a.ground, b.ground));
     fill.current?.color.copy(blend(a.ambient, b.ambient));
-    if (import.meta.env.DEV)
+    if (import.meta.env.DEV || import.meta.env.VITE_PERF_HOOKS)
       window.__biomeStatus = {
         ...sample,
         chunks: root.children.length,

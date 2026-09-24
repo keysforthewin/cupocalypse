@@ -11,3 +11,10 @@ data/
 artifacts/
 
 assets/biomes/.lock/
+assets/audio-quality/.generation-lock/
+
+# Performance benchmark bundle and staged replay copy
+dist-perf/
+public/perf-replay.json
+artifacts/perf/*.heapsnapshot
+artifacts/perf/*.json.gz

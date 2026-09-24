@@ -21,7 +21,14 @@ import { PickupView } from "./Pickups";
 import { Projectiles } from "./Projectiles";
 import { GATE_CENTER, GATE_WIDTH, selectedGate } from "../game/gateLayout";
 import { presentedX, presentedCrowdX, presentedDistance } from "./presentation";
-import { Suspense, useMemo, useRef, useLayoutEffect, useEffect } from "react";
+import {
+  Suspense,
+  memo,
+  useMemo,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+} from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, Text, useGLTF } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
@@ -50,9 +57,15 @@ function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
     e.z > 32 && !e.boss ? "-lod.glb" : ".glb",
   );
   const ref = useRef<T.Group>(null);
+  const buff = useRef<T.Mesh>(null);
   useFrame(() => {
     if (!ref.current) return;
     ref.current.position.set(e.x, 0, -e.z);
+    if (buff.current) {
+      buff.current.visible = e.buffUntil > sim.tick;
+      (buff.current.material as T.MeshBasicMaterial).opacity =
+        0.1 + 0.08 * Math.sin(sim.time * 10);
+    }
     if (!model.parent) return;
     const { limbs, torso, armor } = model.userData;
     const pose = characterPose(e, sim.tick);
@@ -100,17 +113,15 @@ function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
           </div>
         </Html>
       )}
-      {e.buffUntil > sim.tick && (
-        <mesh position={[0, 1, 0]}>
-          <sphereGeometry args={[0.68, 12, 8]} />
-          <meshBasicMaterial
-            color="#c04536"
-            transparent
-            opacity={0.1 + 0.08 * Math.sin(sim.time * 10)}
-            depthWrite={false}
-          />
-        </mesh>
-      )}
+      <mesh ref={buff} position={[0, 1, 0]} visible={false}>
+        <sphereGeometry args={[0.68, 12, 8]} />
+        <meshBasicMaterial
+          color="#c04536"
+          transparent
+          opacity={0.1}
+          depthWrite={false}
+        />
+      </mesh>
     </group>
   );
 }
@@ -175,10 +186,18 @@ function GateLabel({
 }
 function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
   const ref = useRef<T.Group>(null);
+  const planes = useRef<(T.Mesh | null)[]>([]);
   useFrame(() => {
     if (ref.current)
       ref.current.position.z =
         -g.z - (sim.distance - presentedDistance(sim)) * 2.5;
+    const selected = selectedGate(sim.x);
+    planes.current.forEach((plane, index) => {
+      if (!plane) return;
+      const side = index % 2 ? "b" : "a";
+      (plane.material as T.MeshBasicMaterial).opacity =
+        selected === side ? 0.22 : 0.08;
+    });
   });
   return (
     <group ref={ref} position={[0, 0, -g.z]}>
@@ -201,12 +220,18 @@ function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
               0,
             ]}
           >
-            <mesh position={[0, 0.035, 0.7]} rotation={[-Math.PI / 2, 0, 0]}>
+            <mesh
+              position={[0, 0.035, 0.7]}
+              rotation={[-Math.PI / 2, 0, 0]}
+              ref={(mesh) => {
+                planes.current[index] = mesh;
+              }}
+            >
               <planeGeometry args={[GATE_WIDTH, 1.4]} />
               <meshBasicMaterial
                 color={color}
                 transparent
-                opacity={selectedGate(sim.x) === (i ? "b" : "a") ? 0.22 : 0.08}
+                opacity={0.08}
                 depthWrite={false}
               />
             </mesh>
@@ -258,36 +283,70 @@ function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
   );
 }
 function Warning({ hazard: h, sim }: { hazard: Hazard; sim: Simulation }) {
-  if (sim.tick < h.warnAt) return null;
-  const active = sim.tick >= h.strikeAt;
-  const converted = !!sim.supers.active("platypus");
+  const root = useRef<T.Group>(null);
+  const planes = useRef<Record<number, T.Mesh | null>>({});
+  const labels = useRef<Record<number, HTMLDivElement | null>>({});
+  // Countdown text and lane tint follow the render frame; the React tree only
+  // changes when the hazard itself appears or disappears.
+  useFrame(() => {
+    const group = root.current;
+    if (!group) return;
+    const shown = sim.tick >= h.warnAt;
+    group.visible = shown;
+    if (!shown) return;
+    const active = sim.tick >= h.strikeAt;
+    const converted = !!sim.supers.active("platypus");
+    const text = converted
+      ? "REVERSED · FRIENDLY"
+      : active
+        ? "DANGER"
+        : `${h.kind.toUpperCase()} ${(Math.max(0, h.strikeAt - sim.tick) / 60).toFixed(1)}`;
+    const className = `lane-warning${converted ? " converted" : ""}`;
+    for (const l of h.lanes) {
+      const material = planes.current[l]?.material as
+        T.MeshBasicMaterial | undefined;
+      if (material) {
+        material.color.set(
+          converted ? "#54dfe8" : active ? "#ff4425" : "#f6ad4f",
+        );
+        material.opacity = converted
+          ? 0.14
+          : active
+            ? 0.4
+            : 0.12 + Math.sin(sim.time * 12) * 0.04;
+      }
+      const label = labels.current[l];
+      if (label) {
+        if (label.textContent !== text) label.textContent = text;
+        if (label.className !== className) label.className = className;
+      }
+    }
+  });
   return (
-    <group>
+    <group ref={root} visible={false}>
       {h.lanes.map((l) => (
         <group key={l} position={[LANES[l], 0.05, -7]}>
-          <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            ref={(mesh) => {
+              planes.current[l] = mesh;
+            }}
+          >
             <planeGeometry args={[3, 28]} />
             <meshBasicMaterial
-              color={converted ? "#54dfe8" : active ? "#ff4425" : "#f6ad4f"}
+              color="#f6ad4f"
               transparent
-              opacity={
-                converted
-                  ? 0.14
-                  : active
-                    ? 0.4
-                    : 0.12 + Math.sin(sim.time * 12) * 0.04
-              }
+              opacity={0.12}
               depthWrite={false}
             />
           </mesh>
           <Html center position={[0, 0.1, 7]} zIndexRange={[12, 0]}>
-            <div className={`lane-warning${converted ? " converted" : ""}`}>
-              {converted
-                ? "REVERSED · FRIENDLY"
-                : active
-                  ? "DANGER"
-                  : `${h.kind.toUpperCase()} ${(Math.max(0, h.strikeAt - sim.tick) / 60).toFixed(1)}`}
-            </div>
+            <div
+              className="lane-warning"
+              ref={(el) => {
+                labels.current[l] = el;
+              }}
+            />
           </Html>
         </group>
       ))}
@@ -360,6 +419,7 @@ function Army({ sim }: { sim: Simulation }) {
   );
   const dummy = useMemo(() => new T.Object3D(), []);
   const temp = useMemo(() => new T.Matrix4(), []);
+  const signature = useRef("");
   useFrame(() => {
     advanceSquadMotion(motion.current, sim);
     uniforms.time.value = sim.time;
@@ -401,19 +461,25 @@ function Army({ sim }: { sim: Simulation }) {
       const signs = p.mesh.geometry.getAttribute(
         "formationSign",
       ) as T.InstancedBufferAttribute;
-      for (let i = 0; i < p.mesh.count; i++)
-        signs.setX(i, mirrored ? (i >= count ? -0.5 : 0.5) : 1);
-      signs.needsUpdate = true;
+      const layout = `${p.mesh.count}:${mirrored}:${count}`;
+      if (signature.current !== layout) {
+        for (let i = 0; i < p.mesh.count; i++)
+          signs.setX(i, mirrored ? (i >= count ? -0.5 : 0.5) : 1);
+        signs.needsUpdate = true;
+      }
+      const tipX = presentedX(sim),
+        rearX = presentedCrowdX(sim);
       for (let i = 0; i < p.mesh.count; i++) {
         const j = i % count;
         const point = soldierPosition(
           j,
           count,
           sim.army,
-          presentedX(sim),
-          presentedCrowdX(sim),
+          tipX,
+          rearX,
           sim.mode,
           i >= count ? 1 : 0,
+          crowd,
         );
         dummy.position.set(point.x, 0.02, point.z);
         dummy.rotation.set(
@@ -427,8 +493,11 @@ function Army({ sim }: { sim: Simulation }) {
         temp.multiplyMatrices(dummy.matrix, p.matrix);
         p.mesh.setMatrixAt(i, temp);
       }
+      p.mesh.instanceMatrix.clearUpdateRanges();
+      p.mesh.instanceMatrix.addUpdateRange(0, Math.max(1, p.mesh.count) * 16);
       p.mesh.instanceMatrix.needsUpdate = true;
     }
+    signature.current = `${meshes[0]?.mesh.count}:${mirrored}:${count}`;
   });
   return (
     <group ref={root}>
@@ -577,18 +646,19 @@ function World({
 
   const { camera, gl, scene, size } = useThree();
   useEffect(() => {
-    if (import.meta.env.DEV)
+    if (import.meta.env.DEV || import.meta.env.VITE_PERF_HOOKS)
       Object.assign(window, { __sceneReview: { camera, scene } });
   }, [camera, scene]);
   gl.info.autoReset = false;
   useFrame(() => {
-    if (import.meta.env.DEV)
+    if (import.meta.env.DEV || import.meta.env.VITE_PERF_HOOKS)
       Object.assign(window, {
         __renderInfo: {
           calls: gl.info.render.calls,
           triangles: gl.info.render.triangles,
           geometries: gl.info.memory.geometries,
           textures: gl.info.memory.textures,
+          programs: gl.info.programs?.length,
         },
       });
     gl.info.reset();
@@ -673,7 +743,11 @@ function World({
     </>
   );
 }
-export function Scene({
+// The React tree inside the canvas only needs reconciling when entities
+// appear or disappear or a few per-entity states flip; per-frame motion lives
+// in useFrame handlers. The HUD re-renders more often, so the scene is
+// memoized on an explicit revision that the game loop advances.
+export const Scene = memo(function Scene({
   sim,
   menu,
   quality,
@@ -685,6 +759,7 @@ export function Scene({
   quality: string;
   onReady: () => void;
   onAim?: (x: number) => void;
+  revision?: number;
 }) {
   return (
     <Canvas
@@ -704,4 +779,4 @@ export function Scene({
       </Suspense>
     </Canvas>
   );
-}
+});

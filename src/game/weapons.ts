@@ -72,7 +72,7 @@ export const PICKUPS: Record<
   shield: { name: "AEGIS", color: "#76aaff", detail: "+35 SHIELD" },
   recruit: { name: "REINFORCEMENTS", color: "#8affbc", detail: "+20 SOLDIERS" },
 };
-export const BULLET_CAPACITY = 12288;
+export const BULLET_CAPACITY = 4096;
 // Levels are permanent for a run and serialize as ordinary finite numbers.
 // Rate approaches a ceiling to keep the projectile pool and audio bounded.
 export function boostLevels(): Record<Boost, number> {
@@ -80,7 +80,29 @@ export function boostLevels(): Record<Boost, number> {
 }
 export function weaponStats(input: Partial<Record<Boost, number>>) {
   const levels = { ...boostLevels(), ...input };
-  const wings = Math.min(3, levels.spread);
+  // Split Shot stops widening at five projectiles; later levels and the
+  // seven-shot volley they used to fire are paid out as per-shot damage.
+  const wings = Math.min(2, levels.spread);
+  const volley = 1 + 2 * Math.min(3, levels.spread);
+  const offsets = Array.from(
+    { length: wings * 2 + 1 },
+    (_, i) => (i - wings) * 0.9,
+  );
+  // `rate` is the damage-per-second multiplier that balance and escalation
+  // were tuned against. `cadence` is how often shots actually leave the
+  // formation: Overclock and Feedstorm now add far fewer projectiles, and the
+  // difference is folded into each projectile's damage (`shotScale`) so the
+  // arsenal keeps its damage per second with far less on screen.
+  const rate =
+    (1 + (2 * levels.rate) / (levels.rate + 2)) *
+    (1 + levels.feed / (levels.feed + 4));
+  const cadence =
+    (1 + (0.8 * levels.rate) / (levels.rate + 2)) *
+    (1 + (0.4 * levels.feed) / (levels.feed + 4));
+  const gunRate =
+    Math.sqrt(1 + (2 * levels.rate) / (levels.rate + 2)) *
+    (1 + levels.feed / (levels.feed + 4));
+  const gunCadence = Math.sqrt(cadence);
   return {
     // Each visual channel composes independently, just like damage/rate/spread.
     coreColor: levels.damage ? "#ff9855" : "#ffd69a",
@@ -101,14 +123,15 @@ export function weaponStats(input: Partial<Record<Boost, number>>) {
       : 0,
     radiusScale: 1 + (0.8 * levels.blast) / (levels.blast + 3),
     splash: levels.blast ? 0.25 + (0.5 * levels.blast) / (levels.blast + 4) : 0,
-    echoCount: Math.min(3, levels.echo),
-    echoDamage: 0.3 * (1 + 0.1 * Math.max(0, levels.echo - 3)),
-    gunRate:
-      Math.sqrt(1 + (2 * levels.rate) / (levels.rate + 2)) *
-      (1 + levels.feed / (levels.feed + 4)),
-    rate:
-      (1 + (2 * levels.rate) / (levels.rate + 2)) *
-      (1 + levels.feed / (levels.feed + 4)),
+    echoCount: Math.min(2, levels.echo),
+    echoDamage: 0.45 * (1 + 0.1 * Math.max(0, levels.echo - 2)),
+    gunRate,
+    rate,
+    cadence,
+    gunCadence,
+    shotScale: (rate / cadence) * (volley / offsets.length),
+    gunShotScale: gunRate / gunCadence,
+    volley,
     damage:
       (1 +
         Math.sqrt(levels.damage) * 0.42 +
@@ -116,6 +139,6 @@ export function weaponStats(input: Partial<Record<Boost, number>>) {
         Math.sqrt(Math.max(0, levels.spread - 3)) * 0.09) *
       (1 + 0.18 * levels.warhead) *
       (1 + 0.1 * Math.max(0, levels.phase - 6)),
-    offsets: Array.from({ length: wings * 2 + 1 }, (_, i) => (i - wings) * 0.9),
+    offsets,
   };
 }

@@ -19,7 +19,14 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Scene } from "./render/Scene";
 import { RenderBoundary } from "./render/RenderBoundary";
 import { Simulation, VERSION, clamp } from "./game/simulation";
-import { MODES, ENEMIES, BOSSES, UPGRADE_PERCENT, type Mode, type Replay } from "./game/types";
+import {
+  MODES,
+  ENEMIES,
+  BOSSES,
+  UPGRADE_PERCENT,
+  type Mode,
+  type Replay,
+} from "./game/types";
 import {
   loadProfile,
   saveProfile,
@@ -115,6 +122,12 @@ export default function App() {
   const replay = useRef<Replay | null>(null);
   const settled = useRef(false);
   const qaFrozen = useRef(false);
+  const qaAutopilot = useRef(false);
+  // Advances whenever the scene's React tree must reconcile: entity membership
+  // changed, or a coarse 10 Hz refresh for label text and LOD state.
+  const worldRevision = useRef(0);
+  const worldSignature = useRef("");
+  const qaStats = useRef({ simMs: 0, simTicks: 0, frames: 0, maxSimMs: 0 });
   const frameTimes = useRef<number[]>([]);
   const runRef = useRef(sim);
   runRef.current = sim;
@@ -205,6 +218,7 @@ export default function App() {
       previous = performance.now(),
       accumulator = 0,
       lastDraw = 0,
+      lastWorldDraw = 0,
       frames = 0,
       lastFps = previous;
     const loop = (now: number) => {
@@ -217,7 +231,8 @@ export default function App() {
           const direction =
             (keys.current.has("d") || keys.current.has("arrowright") ? 1 : 0) -
             (keys.current.has("a") || keys.current.has("arrowleft") ? 1 : 0);
-          if (!drag.current) {
+          if (qaAutopilot.current) target.current = bot(sim);
+          else if (!drag.current) {
             const next = steer(target.current, velocity.current, direction);
             target.current = next.target;
             velocity.current = next.velocity;
@@ -241,12 +256,18 @@ export default function App() {
             command !== undefined ? command >= 3 : pendingSuper.current.fire;
           pendingSuper.current = { previous: false, next: false, fire: false };
           beforeTick(sim);
+          const simStart = performance.now();
           sim.update({
             superCycle: cycle as -1 | 0 | 1,
             superPressed: fire,
             x: recorded ?? Math.round(target.current * 1000) / 1000,
             aim: replay.current ? replay.current.aims?.[sim.tick] : aim.current,
           });
+          const simElapsed = performance.now() - simStart;
+          qaStats.current.simMs += simElapsed;
+          qaStats.current.simTicks++;
+          if (simElapsed > qaStats.current.maxSimMs)
+            qaStats.current.maxSimMs = simElapsed;
           accumulator -= 1 / 60;
           if (sim.over) {
             if (!settled.current) {
@@ -262,10 +283,22 @@ export default function App() {
         audio.weapons(sim);
         audio.telegraph(sim);
         audio.supers(sim);
+        audio.ambience(sim);
+        qaStats.current.frames++;
         frameTimes.current.push(actualElapsed);
-        if (frameTimes.current.length > 7200) frameTimes.current.shift();
+        if (frameTimes.current.length > 7200)
+          frameTimes.current.splice(0, 3600);
       }
       if (screen !== "menu" && now - lastDraw > 50) {
+        const signature = `${sim.id}:${sim.enemies.length}:${sim.gates.length}:${sim.hazards.length}:${sim.drops.length}:${sim.bossRemains.length}:${sim.bossIndex}:${sim.over}`;
+        if (
+          signature !== worldSignature.current ||
+          now - lastWorldDraw >= 100
+        ) {
+          worldSignature.current = signature;
+          worldRevision.current++;
+          lastWorldDraw = now;
+        }
         draw((n) => n + 1);
         lastDraw = now;
       }
@@ -274,6 +307,13 @@ export default function App() {
         setFps(frames);
         frames = 0;
         lastFps = now;
+        // React's development build records a user-timing measure per
+        // component render and the browser keeps them all; drop them so a
+        // long session does not accumulate hundreds of thousands of entries.
+        if (import.meta.env.DEV) {
+          performance.clearMeasures();
+          performance.clearMarks();
+        }
       }
       raf = requestAnimationFrame(loop);
     };
@@ -337,7 +377,7 @@ export default function App() {
     };
   }, [sim, screen, panel]);
   useEffect(() => {
-    if (!import.meta.env.DEV) return;
+    if (!import.meta.env.DEV && !import.meta.env.VITE_PERF_HOOKS) return;
     Object.assign(window, {
       __gateRunner: {
         get audio() {
@@ -348,6 +388,14 @@ export default function App() {
         },
         freeze: (value = true) => {
           qaFrozen.current = value;
+        },
+        autopilot: (value = true) => {
+          qaAutopilot.current = value;
+        },
+        stats: () => {
+          const s = { ...qaStats.current };
+          qaStats.current = { simMs: 0, simTicks: 0, frames: 0, maxSimMs: 0 };
+          return s;
         },
         advance: (ticks: number) => {
           for (let i = 0; i < ticks && !runRef.current.over; i++)
@@ -461,6 +509,7 @@ export default function App() {
               quality={profile.quality}
               onReady={sceneReady}
               onAim={setAim}
+              revision={worldRevision.current}
             />
           </RenderBoundary>
         )}
@@ -560,7 +609,11 @@ export default function App() {
                   className="seed-pin"
                   aria-label={seedPinned ? "Unpin seed" : "Pin seed"}
                   aria-pressed={seedPinned}
-                  title={seedPinned ? "Unpin and generate a new seed" : "Keep this seed across reloads"}
+                  title={
+                    seedPinned
+                      ? "Unpin and generate a new seed"
+                      : "Keep this seed across reloads"
+                  }
                   disabled={!seed.trim()}
                   onClick={toggleSeedPin}
                 >
@@ -604,7 +657,11 @@ export default function App() {
               </strong>
               <small>CONFIGURE →</small>
             </button>
-            <button className="deploy" disabled={!seed.trim()} onClick={() => start()}>
+            <button
+              className="deploy"
+              disabled={!seed.trim()}
+              onClick={() => start()}
+            >
               <span>DEPLOY SQUAD</span>
               <span>↗</span>
             </button>
@@ -695,9 +752,9 @@ export default function App() {
 
               <p className="weapon-combination">
                 KINETIC {weapon.offsets.length} SHOTS ·{" "}
-                {weapon.damage.toFixed(2)}× DAMAGE
+                {(weapon.damage * weapon.shotScale).toFixed(2)}× DAMAGE
                 <br />
-                {weapon.rate.toFixed(2)}× FIRE RATE · UPGRADES STACK
+                {weapon.cadence.toFixed(2)}× FIRE RATE · UPGRADES STACK
               </p>
               {Object.entries(sim.boosts)
                 .filter(([, level]) => level > 0)
@@ -979,8 +1036,8 @@ export default function App() {
                           <div>
                             <h3>{name}</h3>
                             <p>
-                              +{UPGRADE_PERCENT[i] * profile.upgrades[i]}% · LEVEL{" "}
-                              {profile.upgrades[i]} / 5
+                              +{UPGRADE_PERCENT[i] * profile.upgrades[i]}% ·
+                              LEVEL {profile.upgrades[i]} / 5
                             </p>
                             <div className="upgrade-level">
                               {Array.from({ length: 5 }, (_, j) => (

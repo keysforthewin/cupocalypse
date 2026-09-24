@@ -10,7 +10,30 @@ import {
 } from "../game/projectiles";
 import type { Simulation } from "../game/simulation";
 // Cosmetic budgets do not limit simulated ordnance.
-const VISUAL_CAPACITY = 2048;
+const VISUAL_CAPACITY = 1024;
+// At most this many projectiles of one kind draw per frame; the rest are
+// sampled out so a huge volley stays readable instead of a wall of light.
+const VISIBLE_PER_KIND = 80;
+// Upload only the instances in use. Three otherwise re-sends every buffer in
+// full each frame, which for these meshes was several megabytes per frame.
+function upload(m: T.InstancedMesh) {
+  const n = Math.max(1, m.count);
+  m.instanceMatrix.clearUpdateRanges();
+  m.instanceMatrix.addUpdateRange(0, n * 16);
+  m.instanceMatrix.needsUpdate = true;
+  if (m.instanceColor) {
+    m.instanceColor.clearUpdateRanges();
+    m.instanceColor.addUpdateRange(0, n * 3);
+    m.instanceColor.needsUpdate = true;
+  }
+  const opacity = m.geometry.getAttribute("instanceOpacity") as
+    T.InstancedBufferAttribute | undefined;
+  if (opacity) {
+    opacity.clearUpdateRanges();
+    opacity.addUpdateRange(0, n);
+    opacity.needsUpdate = true;
+  }
+}
 const kinds: ProjectileKind[] = ["pulse", ...GUNS];
 function silhouette(kind: ProjectileKind) {
   const parts: T.BufferGeometry[] = [];
@@ -192,7 +215,7 @@ export function Projectiles({ sim }: { sim: Simulation }) {
         blending: T.AdditiveBlending,
         toneMapped: false,
       }),
-      VISUAL_CAPACITY * 8,
+      VISUAL_CAPACITY * 6,
     );
     const cores = mesh(
       new T.SphereGeometry(1, 8, 6),
@@ -305,7 +328,10 @@ export function Projectiles({ sim }: { sim: Simulation }) {
       visibleByKind.set(p.kind, index + 1);
       if (
         index %
-          Math.max(1, Math.ceil((activeByKind.get(p.kind) ?? 0) / 120)) !==
+          Math.max(
+            1,
+            Math.ceil((activeByKind.get(p.kind) ?? 0) / VISIBLE_PER_KIND),
+          ) !==
         0
       )
         continue;
@@ -331,9 +357,17 @@ export function Projectiles({ sim }: { sim: Simulation }) {
         size * (p.kind === "pulse" ? 1.8 : 0.7),
       );
       put(rig.cores, p.kind === "pulse" ? p.coreColor : def.core, 1.6);
-      billboard(rig.glows, p.x, p.y, p.z, size * 7, p.haloColor, 0.7);
+      billboard(
+        rig.glows,
+        p.x,
+        p.y,
+        p.z,
+        size * (p.kind === "pulse" ? 5 : 7),
+        p.haloColor,
+        p.kind === "pulse" ? 0.55 : 0.7,
+      );
       for (let i = 1; i < p.trail.length; i++) {
-        if (i > (p.kind === "pulse" ? 4 : p.kind === "scatter" ? 5 : 8)) break;
+        if (i > (p.kind === "pulse" ? 3 : p.kind === "scatter" ? 4 : 5)) break;
         const from = p.trail[i - 1],
           to = p.trail[i];
         a.set(from[0], from[1], -from[2]);
@@ -522,10 +556,7 @@ export function Projectiles({ sim }: { sim: Simulation }) {
       rig.smoke,
       rig.fire,
     ]) {
-      m.instanceMatrix.needsUpdate = true;
-      if (m.instanceColor) m.instanceColor.needsUpdate = true;
-      const opacity = m.geometry.getAttribute("instanceOpacity");
-      if (opacity) opacity.needsUpdate = true;
+      upload(m);
       if (m.material instanceof T.ShaderMaterial)
         m.material.uniforms.time.value = sim.time;
     }

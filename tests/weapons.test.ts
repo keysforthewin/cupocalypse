@@ -44,8 +44,11 @@ test("every pickup order composes with the existing weapon through actual drop c
         assert.equal(volley.length, stats.offsets.length * formations);
         for (const b of volley) {
           const base = 1.4 + Math.sqrt(s.army) * 0.28;
+          // Fewer projectiles carry the cadence reduction as per-shot damage.
           assert.ok(
-            Math.abs(b.damage - (base * stats.damage) / formations) < 1e-9,
+            Math.abs(
+              b.damage - (base * stats.damage * stats.shotScale) / formations,
+            ) < 1e-9,
           );
         }
         previous = stats;
@@ -112,12 +115,19 @@ test("all four weapon upgrades still fire at full power minutes after collection
     const bullets = s.bullets.filter((b) => b.active);
     assert.equal(bullets.length, mode === "Mirror" ? 6 : 3);
     const base = 1.4 + Math.min(12, Math.sqrt(s.army) * 0.28);
+    const stats = weaponStats(s.boosts);
+    assert.ok(Math.abs(stats.damage - 1.74) < 1e-9);
     assert.ok(
       Math.abs(
-        bullets[0].damage - (base * 1.74) / (mode === "Mirror" ? 2 : 1),
+        bullets[0].damage -
+          (base * stats.damage * stats.shotScale) / (mode === "Mirror" ? 2 : 1),
       ) < 1e-9,
     );
-    assert.ok(s.fireClock < 1 / ((6 + Math.sqrt(s.army) * 0.18) * 1.6));
+    // Overclock still shortens the interval, just less than its damage bonus.
+    assert.ok(stats.cadence > 1.2 && stats.cadence < stats.rate);
+    assert.ok(
+      s.fireClock < 1 / ((6 + Math.sqrt(s.army) * 0.18) * stats.cadence) + 1e-9,
+    );
     assert.deepEqual(new Simulation("new-run", mode).boosts, boostLevels());
   }
 });
@@ -132,7 +142,8 @@ test("duplicate pickups continually strengthen weapons and widest Mirror volleys
     const next = weaponStats(s.boosts);
     assert.ok(next.damage > prior.damage);
     assert.ok(next.rate > prior.rate);
-    assert.equal(next.offsets.length, 1 + 2 * Math.min(3, level));
+    assert.equal(next.offsets.length, 1 + 2 * Math.min(2, level));
+    assert.equal(next.volley, 1 + 2 * Math.min(3, level));
     prior = next;
   }
   assert.ok(s.lastReward.includes("PERMANENT"));
@@ -141,7 +152,7 @@ test("duplicate pickups continually strengthen weapons and widest Mirror volleys
   s.bullets.forEach((b) => (b.active = false));
   s.fireClock = 0;
   s.update({ x: 0 });
-  assert.equal(s.bullets.filter((b) => b.active).length, 14);
+  assert.equal(s.bullets.filter((b) => b.active).length, 10);
   assert.equal(s.boosts.hero, 50);
 });
 test("pickups collected through simulation survive deterministic replay", () => {
