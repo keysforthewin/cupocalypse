@@ -124,6 +124,15 @@ export class SuperSystem {
   }
   killed(e: Enemy, source?: number) {
     const s = this.sim;
+    const slot = this.slot;
+    // Every kill refills the meter, including active and lingering super damage.
+    if (this.charge < this.quota) {
+      this.charge++;
+      if (slot) {
+        this.event("charge", slot.id, e.x, e.z, this.charge / this.quota);
+        if (this.charge === this.quota) this.event("ready", slot.id);
+      }
+    }
     if (source !== undefined) {
       const c = this.archive.get(source);
       if (c?.id === "strawberry" && c.count < 35) {
@@ -136,14 +145,6 @@ export class SuperSystem {
     if (last?.tick === s.tick) last.count++;
     else this.history.push({ tick: s.tick, count: 1 });
     this.prune();
-    const slot = this.slot;
-    if (this.charge < this.quota) {
-      this.charge++;
-      if (slot) {
-        this.event("charge", slot.id, e.x, e.z, this.charge / this.quota);
-        if (this.charge === this.quota) this.event("ready", slot.id);
-      }
-    }
     const gimmy = this.active("gimmy");
     if (gimmy && ++gimmy.count % 3 === 0 && gimmy.count <= 15) s.army += 5;
   }
@@ -359,7 +360,7 @@ export class SuperSystem {
             this.hit(c, e, 0.6, 0, front);
             if (!e.boss && !e.dead) {
               e.z = Math.min(60, e.z + 12);
-              e.slowUntil = t + 240;
+              e.slowUntil = t + 15 * hz;
               e.slowFactor = 0.5;
             }
           }

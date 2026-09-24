@@ -228,7 +228,7 @@ test("shared adaptive charge targets 25 seconds and changes only on firing, with
     30,
   );
 });
-test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and grants no charge", () => {
+test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and refills charge", () => {
   const s = setup(["mortal", "doc"]);
   const a = foe(s),
     b = foe(s, 3, 24),
@@ -239,8 +239,71 @@ test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and
   ticks(s, 36);
   assert.ok(a.dead && b.dead);
   assert.ok(boss.hp >= hp * 0.65 - 1e-8);
-  assert.equal(s.supers.charge, 0);
+  assert.equal(s.supers.charge, 2);
   assert.equal(s.kills, 2);
+});
+test("kills refill during an active super and can chain into another weapon or the same weapon after expiry", () => {
+  const s = setup(["keys", "doc"]);
+  const c = arm(s);
+  s.kill(foe(s));
+  assert.equal(
+    s.supers.charge,
+    1,
+    "ordinary kills count while a super is active",
+  );
+  for (let i = 1; i < s.supers.quota + 2; i++) {
+    const e = foe(s);
+    s.damagePayload(e, 1);
+    assert.ok(e.dead, "Keys executes each target");
+    s.damagePayload(e, 1);
+  }
+  assert.equal(
+    s.supers.charge,
+    s.supers.quota,
+    "charge caps at one full meter",
+  );
+  assert.equal(s.supers.events.filter((e) => e.kind === "ready").length, 1);
+  assert.deepEqual(
+    s.supers.readySlots.map((slot) => slot.id),
+    ["doc"],
+  );
+  assert.equal(
+    s.supers.activate(),
+    false,
+    "the same weapon cannot overlap itself",
+  );
+  s.supers.select(1);
+  assert.equal(
+    s.supers.activate(),
+    true,
+    "another weapon can fire immediately",
+  );
+  assert.equal(s.supers.charge, 0);
+  assert.equal(s.supers.active("keys"), c);
+  s.supers.select(-1);
+  for (let i = 0; i < s.supers.quota; i++) s.damagePayload(foe(s), 1);
+  ticks(s, c.end - s.tick);
+  assert.equal(
+    s.supers.charge,
+    s.supers.quota,
+    "expiry preserves earned charge",
+  );
+  assert.equal(
+    s.supers.activate(),
+    true,
+    "Keys can fire again when its timer ends",
+  );
+  assert.equal(s.supers.charge, 0);
+});
+test("lingering super damage refills charge after its activation ends", () => {
+  const s = setup(["nitro"]);
+  const c = arm(s);
+  ticks(s, c.end - s.tick);
+  const e = foe(s);
+  s.supers.damage(c, e, e.hp + e.armor);
+  assert.equal(s.supers.charge, 1);
+  s.supers.damage(c, e, 1000);
+  assert.equal(s.supers.charge, 1, "a defeated enemy only charges once");
 });
 test("Keys strips armor, executes on an arsenal hit, and adapts its first boss hit", () => {
   const s = setup(["keys"]);
@@ -253,7 +316,7 @@ test("Keys strips armor, executes on an arsenal hit, and adapts its first boss h
   assert.equal(boss.armor, armor * 0.5);
   s.damagePayload(e, 1);
   assert.ok(e.dead);
-  assert.equal(s.supers.charge, 0);
+  assert.equal(s.supers.charge, 1);
   const hp = boss.hp;
   s.damagePayload(boss, 1);
   assert.ok(boss.hp <= hp - boss.maxHp * 0.25);
@@ -285,6 +348,7 @@ test("Tuna sweeps, pushes, slows and clears hazards", () => {
   assert.ok(e.hp < hp);
   assert.equal(e.z, 22);
   assert.equal(e.slowFactor, 0.5);
+  assert.equal(e.slowUntil, 38 + 15 * 60, "slow lasts 15s from impact");
   ticks(s, 140);
   assert.equal(s.hazards.length, 0);
 });
@@ -307,7 +371,7 @@ test("Nitro snapshots source attribution through projectiles, echoes and burns",
   assert.equal(e.burns?.[0].superSource, b.payload?.superSource);
   s.supers.select(1);
   s.damagePayload(e, 1000, b.payload);
-  assert.equal(s.supers.charge, 0);
+  assert.equal(s.supers.charge, 1);
 });
 test("Baezil damages inside its three sigils but not outside", () => {
   const s = setup(["baezil"]);
@@ -605,7 +669,7 @@ test("combined protection orders immunity, reduction, Panda, Doc and ordinary sh
   m.hitSquad(40, "test");
   assert.equal(p.absorbed, 0);
 });
-test("super-triggered Bloater chains neither refill charge nor harm the squad and respect boss budget", () => {
+test("super-triggered Bloater chains refill charge, spare the squad and respect boss budget", () => {
   const s = setup(["mortal", "doc"]);
   const a = s.spawnEnemy("Bloater", 0, 2)!,
     b = s.spawnEnemy("Bloater", 0, 3)!,
@@ -615,7 +679,7 @@ test("super-triggered Bloater chains neither refill charge nor harm the squad an
   s.supers.damage(c, a, a.hp + a.armor);
   assert.ok(b.dead);
   assert.equal(s.army, 24);
-  assert.equal(s.supers.charge, 0);
+  assert.equal(s.supers.charge, 2);
   assert.ok(boss.hp >= boss.maxHp * 0.65 - 1e-8);
 });
 test("selection is applied before firing on a tick, empty slots and early firing are safe", () => {
@@ -800,6 +864,15 @@ test("replays reproduce live loadout changes, including multiple edits at the sa
 
 test("requested super timers stay active until their exact new expiry tick", () => {
   const durations: Partial<Record<SuperId, number>> = {
+    keys: 30,
+    sybex: 30,
+    hondo: 30,
+    platypus: 30,
+    so1ician: 30,
+    zunneh: 15,
+    mmiguel: 15,
+    kuttula: 15,
+    baezil: 15,
     gimmy: 60,
     doc: 60,
     meesh: 60,
