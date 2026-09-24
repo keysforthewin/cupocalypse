@@ -1,17 +1,13 @@
-import { publicPath } from "../game/paths";
 import { Component, type ReactNode, useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import * as T from "three";
 import type { Enemy, Hazard } from "../game/types";
 import type { Simulation } from "../game/simulation";
 import { activeMotion, motionReleaseTick } from "../game/attacks";
 import { bossDefinition, bossProjectilePosition } from "../game/bosses";
-export const bossModelUrl = (id: string, quality: string) =>
-  publicPath(
-    `/assets/bosses/${id}${quality === "performance" ? "-lod" : ""}.glb?v=quality2`,
-  );
+import { bossModelUrl, useModel } from "./assetLibrary";
+export { bossModelUrl };
 const assetUsers = new Map<string, number>();
 
 export class BossAssetBoundary extends Component<
@@ -62,7 +58,7 @@ export function BossCharacter({
 }) {
   const d = bossDefinition(e.kind);
   const url = bossModelUrl(d.id, quality);
-  const asset = useGLTF(url);
+  const asset = useModel(url);
   const model = useMemo(() => {
     const m = clone(asset.scene);
     m.name = `boss-${d.id}-${e.id}`;
@@ -117,7 +113,8 @@ export function BossCharacter({
       queueMicrotask(() => {
         if (assetUsers.get(url) !== 0) return;
         assetUsers.delete(url);
-        useGLTF.clear(url);
+        // Frees the GPU copies once the boss is gone. The parsed model stays
+        // cached, so the next run's warm-up re-uploads it without a download.
         const textures = new Set<T.Texture>();
         asset.scene.traverse((o) => {
           if (o instanceof T.Mesh) {
@@ -242,29 +239,8 @@ export function BossCharacter({
   });
   return (
     <group>
+      {/* Key and rim lights come from the fixed pool in SceneLights. */}
       <primitive object={model} />
-      <pointLight
-        position={[
-          -d.span * 0.25,
-          d.height * 0.85,
-          -e.z - d.visualZ + d.height * 0.8,
-        ]}
-        intensity={d.height * d.height * 4}
-        distance={d.height * 2.5}
-        decay={2}
-        color="#ffe3c5"
-      />
-      <pointLight
-        position={[
-          d.span * 0.4,
-          d.height * 0.55,
-          -e.z - d.visualZ - d.height * 0.3,
-        ]}
-        intensity={d.height * d.height * 2}
-        distance={d.height * 2}
-        decay={2}
-        color={d.color}
-      />
       {!e.dead && <NerveAnchors enemy={e} sim={sim} />}
     </group>
   );

@@ -112,7 +112,13 @@ export function SuperPreview({ id }: { id: SuperId }) {
     </Canvas>
   );
 }
-function CastEffect({ sim, cast: c }: { sim: Simulation; cast: SuperCast }) {
+export function CastEffect({
+  sim,
+  cast: c,
+}: {
+  sim: Simulation;
+  cast: SuperCast;
+}) {
   const ref = useRef<T.Group>(null),
     shape = useRef<T.Group>(null);
   const reduced = useMemo(

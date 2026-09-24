@@ -20,7 +20,10 @@ const mime: Record<string, string> = {
   ".glb": "model/gltf-binary",
   ".wav": "audio/wav",
   ".mp3": "audio/mpeg",
+  ".ogg": "audio/ogg",
 };
+// Vite fingerprints bundle files (index-C817BRV2.js), so they never change.
+const fingerprinted = /-[\w-]{8}\.(js|css|woff2?)$/;
 const server = createServer((req, res) => {
   void api(req, res, () => {
     if (req.method !== "GET" && req.method !== "HEAD") {
@@ -35,12 +38,35 @@ const server = createServer((req, res) => {
         root,
         `.${pathname === "/" ? "/index.html" : pathname}`,
       );
-      if (!file.startsWith(root + sep) || !statSync(file).isFile()) {
+      const info = file.startsWith(root + sep) ? statSync(file) : null;
+      if (!info?.isFile()) {
         res.writeHead(404).end();
         return;
       }
+      // Game assets run to tens of megabytes. Without validators the browser
+      // downloaded all of them again on every visit; now it revalidates and
+      // gets a 304 when nothing changed.
+      const etag = `W/"${info.size.toString(36)}-${Math.floor(info.mtimeMs).toString(36)}"`;
+      const headers = {
+        "Cache-Control": fingerprinted.test(file)
+          ? "public, max-age=31536000, immutable"
+          : "no-cache",
+        ETag: etag,
+        "Last-Modified": info.mtime.toUTCString(),
+      };
+      const since = Date.parse(req.headers["if-modified-since"] ?? "");
+      if (
+        req.headers["if-none-match"]
+          ? req.headers["if-none-match"] === etag
+          : since >= Math.floor(info.mtimeMs / 1000) * 1000
+      ) {
+        res.writeHead(304, headers).end();
+        return;
+      }
       res.writeHead(200, {
+        ...headers,
         "Content-Type": mime[extname(file)] || "application/octet-stream",
+        "Content-Length": info.size,
       });
       if (req.method === "HEAD") {
         res.end();

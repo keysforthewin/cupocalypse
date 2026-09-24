@@ -1,4 +1,4 @@
-import { useMemo, useRef, useLayoutEffect } from "react";
+import { useMemo, useRef, type RefObject } from "react";
 import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as T from "three";
@@ -221,30 +221,64 @@ function buildIcon(kind: Pickup) {
       box(0, x, y - 0.34, 0, 0.28, 0.09, 0.25);
     }
   }
-  const geometries: T.BufferGeometry[] = [];
   batches.forEach((parts, i) => {
     if (!parts.length) return;
     const geometry = mergeGeometries(parts)!;
     parts.forEach((p) => p.dispose());
-    geometries.push(geometry);
     const mesh = new T.Mesh(geometry, materials[i]);
     mesh.castShadow = true;
     group.add(mesh);
   });
-  return {
-    group,
-    dispose: () => {
-      geometries.forEach((g) => g.dispose());
-      materials.forEach((m) => m.dispose());
-    },
-  };
+  return group;
+}
+// Extruding and merging an icon takes several milliseconds, so each kind is
+// built once and every drop of that kind shares its geometry and materials.
+const icons = new Map<Pickup, T.Group>();
+export function pickupIcon(kind: Pickup) {
+  let icon = icons.get(kind);
+  if (!icon) icons.set(kind, (icon = buildIcon(kind)));
+  return icon.clone();
+}
+/**
+ * The ground ring and orbiting arc under a drop. The warm-up keeps a hidden
+ * copy mounted: when the last drop leaves the road three.js deletes these
+ * shaders, and the next drop would recompile them mid-run.
+ */
+export function PickupBase({
+  color,
+  orbit,
+}: {
+  color: string;
+  orbit?: RefObject<T.Mesh | null>;
+}) {
+  return (
+    <>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.025, 0]}>
+        <ringGeometry args={[0.6, 0.86, 48]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.32}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh
+        ref={orbit}
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, 0.055, 0]}
+      >
+        <torusGeometry args={[0.94, 0.025, 6, 48, Math.PI * 1.45]} />
+        <meshBasicMaterial color={color} toneMapped={false} />
+      </mesh>
+    </>
+  );
 }
 export function PickupView({ drop, sim }: { drop: Drop; sim: Simulation }) {
   const root = useRef<T.Group>(null);
   const orbit = useRef<T.Mesh>(null);
-  const icon = useMemo(() => buildIcon(drop.kind), [drop.kind]);
+  const icon = useMemo(() => ({ group: pickupIcon(drop.kind) }), [drop.kind]);
   const info = PICKUPS[drop.kind];
-  useLayoutEffect(() => () => icon.dispose(), [icon]);
   useFrame(() => {
     if (root.current)
       root.current.position.set(
@@ -263,31 +297,7 @@ export function PickupView({ drop, sim }: { drop: Drop; sim: Simulation }) {
   return (
     <group ref={root} position={[drop.x, 0, -drop.z]}>
       <primitive object={icon.group} position={[0, 1.28, 0]} />
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.025, 0]}>
-        <ringGeometry args={[0.6, 0.86, 48]} />
-        <meshBasicMaterial
-          color={info.color}
-          transparent
-          opacity={0.32}
-          depthWrite={false}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh
-        ref={orbit}
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0.055, 0]}
-      >
-        <torusGeometry args={[0.94, 0.025, 6, 48, Math.PI * 1.45]} />
-        <meshBasicMaterial color={info.color} toneMapped={false} />
-      </mesh>
-      <pointLight
-        position={[0, 1.5, 0.8]}
-        color={info.color}
-        intensity={5}
-        distance={4}
-        decay={2}
-      />
+      <PickupBase color={info.color} orbit={orbit} />
       <Html
         center
         position={[0, 2.65, 0]}

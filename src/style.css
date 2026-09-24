@@ -1206,6 +1206,101 @@ kbd {
   font: 12px var(--mono);
   color: var(--text-secondary);
 }
+/* Asset preloading: a quiet line under Deploy, the bar on the deploy screen. */
+.asset-loading {
+  width: 100%;
+}
+.asset-loading-deploy {
+  width: min(440px, calc(100vw - 32px));
+  margin-top: 30px;
+}
+.asset-bar {
+  height: 4px;
+  background: var(--surface-control);
+  overflow: hidden;
+}
+.asset-loading-menu .asset-bar {
+  height: 2px;
+}
+.asset-bar {
+  position: relative;
+}
+.asset-bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  transform-origin: left;
+  transition: transform 0.25s linear;
+}
+/* A compositor-driven sweep: it keeps moving while the main thread is busy
+   building the scene, so a long synchronous step never reads as a hang. */
+.asset-loading-deploy .asset-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, #fff4, transparent);
+  animation: asset-sweep 1.4s linear infinite;
+}
+@keyframes asset-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+.asset-loading p,
+.asset-loading.asset-loading-deploy p {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 10px 0 0;
+  font: 11px var(--mono);
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+.asset-loading p b {
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.asset-loading small {
+  display: block;
+  margin-top: 6px;
+  font: 10px var(--mono);
+  color: var(--text-muted);
+}
+/* The menu line reserves only 8px and overflows into the gap under Deploy,
+   so the menu barely grows on short screens. */
+.asset-loading-menu {
+  position: relative;
+  top: 5px;
+  height: 8px;
+  margin: 0;
+  overflow: visible;
+}
+.asset-loading-menu p {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 11px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+.asset-loading-menu.is-ready {
+  font: 9px/11px var(--mono);
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .asset-bar i {
+    transition: none;
+  }
+  .asset-loading-deploy .asset-bar::after {
+    animation: none;
+  }
+}
 .pickup-label {
   background: #0b1c27e8;
   border: 1px solid;

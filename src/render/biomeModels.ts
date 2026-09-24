@@ -16,8 +16,7 @@ export function sceneryLibrary(): SceneryLibrary {
       vertexColors: true,
       roughness,
       metalness,
-      map,
-      ...(map ? { bumpMap: map, bumpScale: 0.045 } : {}),
+      ...(map ? { map, bumpMap: map, bumpScale: 0.045 } : {}),
     }));
   add("stone", 0.94, weatheredTexture("concrete"));
   add("brick", 0.9, streetTexture("brick"));

@@ -57,7 +57,10 @@ export function Barricade({ width }: { width: number }) {
   return (
     <group position={[0, 0, 1.7]}>
       <mesh geometry={geometry} castShadow receiveShadow>
+        {/* The textures are shared caches; R3F would dispose them with the
+            material on unmount and force a re-upload on the next barricade. */}
         <meshStandardMaterial
+          dispose={null}
           color="#999c89"
           map={weatheredTexture("concrete")}
           bumpMap={weatheredTexture("concrete")}
@@ -72,7 +75,11 @@ export function Barricade({ width }: { width: number }) {
             rotation={[0, side === -1 ? Math.PI : 0, 0]}
           >
             <planeGeometry args={[width - 0.16, 0.27]} />
-            <meshStandardMaterial map={hazardPaint()} roughness={0.85} />
+            <meshStandardMaterial
+              dispose={null}
+              map={hazardPaint()}
+              roughness={0.85}
+            />
           </mesh>
           <mesh
             position={[side * (width / 2 - 0.3), 0.07, 0]}

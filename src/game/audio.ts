@@ -134,6 +134,28 @@ export class AudioEngine {
       );
     if (!active) this.stop();
   }
+  private prefetched = new Map<string, Promise<ArrayBuffer | null>>();
+  /** Every sample file the cue catalogue can play. */
+  sampleUrls() {
+    return [...new Set(Object.values(this.cues).flatMap((c) => c.variants))];
+  }
+  /**
+   * Hands over bytes downloaded ahead of time (the loading screen fetches them
+   * before a user gesture allows an AudioContext), so init only decodes.
+   */
+  prefetch(url: string, bytes: Promise<ArrayBuffer | null>) {
+    this.prefetched.set(url, bytes);
+  }
+  private async sampleBytes(url: string) {
+    const early = this.prefetched.get(url);
+    // decodeAudioData detaches the buffer, so each download is used once.
+    this.prefetched.delete(url);
+    const bytes = early && (await early);
+    if (bytes) return bytes;
+    const response = await fetch(publicPath(url));
+    if (!response.ok) throw Error("Audio asset missing");
+    return response.arrayBuffer();
+  }
   async loadSamples() {
     if (!this.ctx) return;
     await Promise.all(
@@ -141,10 +163,8 @@ export class AudioEngine {
         const loaded = await Promise.all(
           cue.variants.map(async (url) => {
             try {
-              const response = await fetch(publicPath(url));
-              if (!response.ok) throw Error("Audio asset missing");
               return await this.ctx!.decodeAudioData(
-                await response.arrayBuffer(),
+                await this.sampleBytes(url),
               );
             } catch {
               console.warn(`Sound unavailable: ${name}`);

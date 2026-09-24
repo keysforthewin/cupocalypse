@@ -185,8 +185,10 @@ export function Projectiles({ sim }: { sim: Simulation }) {
           new T.InstancedBufferAttribute(new Float32Array(count), 1),
         );
       const m = new T.InstancedMesh(geometry, material, count);
-      if (material instanceof T.ShaderMaterial)
-        m.setColorAt(0, new T.Color("#ffffff"));
+      // Created up front (three.js fills it with white, i.e. untinted): the
+      // first tinted shot would otherwise switch the material to another
+      // shader variant and recompile it mid-run.
+      m.setColorAt(0, new T.Color("#ffffff"));
       m.frustumCulled = false;
       m.instanceMatrix.setUsage(T.DynamicDrawUsage);
       m.count = 0;

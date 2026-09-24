@@ -17,6 +17,8 @@ import { steer } from "./game/steering";
 import { beforeTick, setFrameAlpha } from "./render/presentation";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Scene } from "./render/Scene";
+import { preloadAssets } from "./render/assetLibrary";
+import { AssetLoading } from "./ui/AssetLoading";
 import { RenderBoundary } from "./render/RenderBoundary";
 import { Simulation, VERSION, clamp } from "./game/simulation";
 import {
@@ -135,6 +137,16 @@ export default function App() {
     setStorageError(!saveProfile(profile));
     audio.muted = profile.muted;
   }, [profile]);
+  // Stream every model and sound in while the player is on the menu, after the
+  // page itself (and its key art) has finished loading.
+  useEffect(() => {
+    const begin = () => preloadAssets(profile.quality);
+    if (document.readyState === "complete") begin();
+    else {
+      window.addEventListener("load", begin, { once: true });
+      return () => window.removeEventListener("load", begin);
+    }
+  }, [profile.quality]);
   const start = useCallback(
     (record?: Replay) => {
       if (!record && !seed.trim()) return;
@@ -416,6 +428,7 @@ export default function App() {
             );
           qaFrozen.current = true;
           settled.current = false;
+          setReady(false);
           setSim(s);
           setScreen("playing");
           setPanel("none");
@@ -434,6 +447,7 @@ export default function App() {
               12 + Math.floor(i / 3) * 2.8,
             );
           s.warn(0, [0, 1], "pool", 15, 1.8, 2);
+          setReady(false);
           setSim(s);
           setScreen("playing");
         },
@@ -441,6 +455,7 @@ export default function App() {
           const s = new Simulation("QA-SEED", m);
           s.debug = true;
           settled.current = false;
+          setReady(false);
           setSim(s);
           setScreen("playing");
         },
@@ -458,6 +473,7 @@ export default function App() {
             s.distance = (s.bossIndex + 1) * 150;
           }
           s.spawnEnemy(kind as (typeof ENEMIES)[number], 0, 22, isBoss);
+          setReady(false);
           setSim(s);
           setScreen("playing");
         },
@@ -528,6 +544,7 @@ export default function App() {
           <span className="eyebrow">THE LAST FRUIT: CUPOCALYPSE</span>
           <h2>DEPLOYING SQUAD</h2>
           <p>Getting the guild ready for the Cupocalypse…</p>
+          <AssetLoading variant="deploy" />
         </div>
       )}
       <header>
@@ -665,6 +682,7 @@ export default function App() {
               <span>DEPLOY SQUAD</span>
               <span>↗</span>
             </button>
+            <AssetLoading variant="menu" />
             <div className="menu-secondary">
               <button onClick={() => setPanel("armory")}>
                 ARMORY <span>{profile.currency} CR</span>

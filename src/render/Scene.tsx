@@ -1,12 +1,20 @@
 import { publicPath } from "../game/paths";
 import {
-  bossModelUrl,
   BossCharacter,
   BossOrdnance,
   BossAssetBoundary,
   BossFallback,
 } from "./BossCharacter";
 import { isNewBoss, bossDefinition } from "../game/bosses";
+import {
+  CROWD_MODEL,
+  TEXT_FONT,
+  modelCatalogue,
+  useModel,
+  useModels,
+} from "./assetLibrary";
+import { SceneLights } from "./SceneLights";
+import { Warmup, type SceneryWarmup } from "./Warmup";
 import { SuperWeaponEffects } from "./SuperWeaponEffects";
 import {
   ARMY_RENDER_BUDGET,
@@ -31,7 +39,7 @@ import {
   useEffect,
 } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, Text, useGLTF } from "@react-three/drei";
+import { Html, Text } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette } from "@react-three/postprocessing";
 import * as T from "three";
 import { Environment } from "./Environment";
@@ -40,11 +48,27 @@ import { humanoid } from "./models";
 import { Character } from "./Character";
 import assets from "./assets.json";
 import { Barricade } from "./Barricade";
-import { BOSSES } from "../game/types";
 import type { Enemy, Gate, Hazard } from "../game/types";
-const font = publicPath("/assets/BarlowCondensed-Bold.woff");
-function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
+const font = TEXT_FONT;
+// Blocky stand-in for an enemy whose model is unavailable (or, with the
+// preloader bypassed, not loaded yet). Built only when it is shown.
+function ProceduralUnit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
   const model = useMemo(() => humanoid(e.kind), [e.kind]);
+  useFrame(() => {
+    const { limbs, torso, armor } = model.userData;
+    const pose = characterPose(e, sim.tick);
+    const names = ["armL", "legL", "armR", "legR"];
+    limbs.forEach((limb: T.Group, i: number) =>
+      limb.rotation.set(...pose.joints[names[i]]),
+    );
+    torso.rotation.set(...pose.joints.spine);
+    armor.visible = e.armor > 0;
+    model.position.y = pose.y;
+    model.rotation.y = pose.turn;
+  });
+  return <primitive object={model} />;
+}
+function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
   const assetKind =
     !e.boss && e.maxArmor > 0 && e.armor <= 0
       ? e.kind === "Bulwark"
@@ -68,26 +92,15 @@ function Unit({ enemy: e, sim }: { enemy: Enemy; sim: Simulation }) {
       (buff.current.material as T.MeshBasicMaterial).opacity =
         0.1 + 0.08 * Math.sin(sim.time * 10);
     }
-    if (!model.parent) return;
-    const { limbs, torso, armor } = model.userData;
-    const pose = characterPose(e, sim.tick);
-    const names = ["armL", "legL", "armR", "legR"];
-    limbs.forEach((limb: T.Group, i: number) =>
-      limb.rotation.set(...pose.joints[names[i]]),
-    );
-    torso.rotation.set(...pose.joints.spine);
-    armor.visible = e.armor > 0;
-    model.position.y = pose.y;
-    model.rotation.y = pose.turn;
   });
   return (
     <group ref={ref} position={[e.x, 0, -e.z]}>
       {url ? (
-        <Suspense fallback={<primitive object={model} />}>
+        <Suspense fallback={<ProceduralUnit enemy={e} sim={sim} />}>
           <Character url={url} enemy={e} sim={sim} />
         </Suspense>
       ) : (
-        <primitive object={model} />
+        <ProceduralUnit enemy={e} sim={sim} />
       )}
       {(e.boss ||
         (e.z < 26 &&
@@ -270,14 +283,19 @@ function GateView({ gate: g, sim }: { gate: Gate; sim: Simulation }) {
             {g.wall === i && (
               <>
                 <Barricade width={GATE_WIDTH} />
-                <Text
-                  font={font}
-                  position={[0, 1.12, 1.95]}
-                  fontSize={0.17}
-                  color="#f4d395"
-                >
-                  BARRICADE · WATCH YOUR FLANK
-                </Text>
+                {/* Text suspends while its font loads; a local boundary keeps
+                    that from blanking the whole world. The warm-up has
+                    normally loaded it already. */}
+                <Suspense fallback={null}>
+                  <Text
+                    font={font}
+                    position={[0, 1.12, 1.95]}
+                    fontSize={0.17}
+                    color="#f4d395"
+                  >
+                    BARRICADE · WATCH YOUR FLANK
+                  </Text>
+                </Suspense>
               </>
             )}
           </group>
@@ -358,7 +376,7 @@ function Warning({ hazard: h, sim }: { hazard: Hazard; sim: Simulation }) {
   );
 }
 function Army({ sim }: { sim: Simulation }) {
-  const soldierAsset = useGLTF(publicPath("/assets/soldier-crowd.glb"));
+  const soldierAsset = useModel(publicPath(CROWD_MODEL));
   const uniforms = useMemo(
     () => ({ time: { value: 0 }, lateral: { value: 0 } }),
     [],
@@ -373,7 +391,12 @@ function Army({ sim }: { sim: Simulation }) {
   const marker = useRef<T.Group>(null);
   const meshes = useMemo(() => {
     const model = soldierAsset.scene;
-    const pieces: { mesh: T.InstancedMesh; matrix: T.Matrix4 }[] = [];
+    const pieces: {
+      mesh: T.InstancedMesh;
+      /** Hidden, in meesh's phased look; see below. */
+      twin: T.InstancedMesh;
+      matrix: T.Matrix4;
+    }[] = [];
     model.updateMatrixWorld(true);
     model.traverse((o) => {
       if (o instanceof T.Mesh) {
@@ -405,18 +428,27 @@ function Army({ sim }: { sim: Simulation }) {
         mesh.customDepthMaterial = squadMaterial(source, uniforms, true);
         mesh.frustumCulled = false;
         mesh.castShadow = true;
-        pieces.push({ mesh, matrix: new T.Matrix4() });
+        // Meesh phases the squad by making its materials transparent, which
+        // is a separate shader. This never-drawn twin lets the warm-up
+        // compile that shader before the first cast instead of during it.
+        const phased = squadMaterial(source, uniforms);
+        phased.transparent = true;
+        const twin = new T.InstancedMesh(geometry, phased, 1);
+        twin.visible = false;
+        pieces.push({ mesh, twin, matrix: new T.Matrix4() });
       }
     });
     return pieces;
   }, [soldierAsset.scene, uniforms]);
   useEffect(
     () => () => {
-      for (const { mesh } of meshes) {
+      for (const { mesh, twin } of meshes) {
         mesh.geometry.dispose();
         (mesh.material as T.Material).dispose();
         mesh.customDepthMaterial?.dispose();
         mesh.dispose();
+        (twin.material as T.Material).dispose();
+        twin.dispose();
       }
     },
     [meshes],
@@ -505,6 +537,9 @@ function Army({ sim }: { sim: Simulation }) {
   });
   return (
     <group ref={root}>
+      {meshes.map((p, i) => (
+        <primitive key={`twin-${i}`} object={p.twin} />
+      ))}
       {meshes.map((p, i) => (
         <primitive key={i} object={p.mesh} />
       ))}
@@ -641,12 +676,12 @@ function World({
   onReady: () => void;
   onAim?: (x: number) => void;
 }) {
-  useLayoutEffect(onReady, [onReady, sim]);
-  useEffect(() => {
-    const kind = BOSSES[sim.bossIndex];
-    if (kind && isNewBoss(kind))
-      useGLTF.preload(bossModelUrl(bossDefinition(kind).id, quality));
-  }, [sim.bossIndex, quality]);
+  // Wait for the models the first frame needs before any child renders: a
+  // render that suspends is thrown away, and the children build geometry and
+  // canvas textures that would be rebuilt on every retry.
+  const catalogue = modelCatalogue(quality);
+  useModels([...catalogue.crowd, ...catalogue.biomes]);
+  const scenery = useRef<SceneryWarmup | null>(null);
 
   const { camera, gl, scene, size } = useThree();
   useEffect(() => {
@@ -697,7 +732,9 @@ function World({
   ]);
   return (
     <>
-      <Environment sim={sim} quality={quality} />
+      <Environment sim={sim} quality={quality} warm={scenery} />
+      <SceneLights sim={sim} />
+      <Warmup sim={sim} quality={quality} scenery={scenery} onReady={onReady} />
       <Army sim={sim} />
       {sim.enemies.map((e) =>
         isNewBoss(e.kind) ? (

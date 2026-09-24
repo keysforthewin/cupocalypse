@@ -1,11 +1,11 @@
 import { useMemo, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as T from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import type { Enemy } from "../game/types";
 import { characterPose, createRig } from "./motion";
 import { AttackEffects } from "./AttackEffects";
+import { useModel } from "./assetLibrary";
 import type { Simulation } from "../game/simulation";
 // Wound and phase markers are shared geometry and material, attached to the
 // spine bone directly. A react-three-fiber portal per enemy used to do this,
@@ -31,7 +31,7 @@ export function Character({
   enemy: Enemy;
   sim: Simulation;
 }) {
-  const gltf = useGLTF(url);
+  const gltf = useModel(url);
   const model = useMemo(() => {
     const model = clone(gltf.scene);
     model.name = `animated-${enemy.kind}-${enemy.id}`;

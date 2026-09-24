@@ -1,7 +1,5 @@
-import { publicPath } from "../game/paths";
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef, type RefObject } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import * as T from "three";
 import { presentedDistance } from "./presentation";
 import { Simulation } from "../game/simulation";
@@ -15,6 +13,7 @@ import {
 } from "./roadMath";
 import {
   BIOMES,
+  BIOME_IDS,
   atmosphereAt,
   smooth,
   type BiomeReview,
@@ -27,6 +26,8 @@ import {
 } from "./biomeModels";
 import manifest from "./biomeAssets.json";
 import { BiomeAtmosphere } from "./BiomeAtmosphere";
+import { biomeModelUrl, useModels } from "./assetLibrary";
+import type { SceneryWarmup } from "./Warmup";
 
 declare global {
   interface Window {
@@ -44,11 +45,20 @@ declare global {
 export function Environment({
   sim,
   quality,
+  warm,
 }: {
   sim: Simulation;
   quality: string;
+  /** Receives a builder for per-biome sample sections the warm-up can draw. */
+  warm?: RefObject<SceneryWarmup | null>;
 }) {
   const { scene } = useThree();
+  // Suspend before building anything: React discards a suspended render's
+  // memoized values, so the library (and its canvas-drawn textures) used to be
+  // rebuilt on every retry while the models loaded.
+  const loaded = useModels(
+    (manifest as BiomeAsset[]).map((asset) => biomeModelUrl(asset, quality)),
+  );
   const library = useMemo(() => sceneryLibrary(), []);
   const root = useMemo(() => new T.Group(), []);
   const state = useRef({
@@ -68,11 +78,6 @@ export function Environment({
     return o;
   }, []);
   const colors = useMemo(() => [new T.Color(), new T.Color()], []);
-  const loaded = useGLTF(
-    (manifest as BiomeAsset[]).map((asset) =>
-      publicPath(quality === "high" ? asset.url : asset.lowUrl),
-    ),
-  ) as unknown as { scene: T.Group }[];
   const assets = useMemo(() => {
     const map = new Map<string, T.Group>();
     loaded.forEach((gltf, i) => {
@@ -88,6 +93,18 @@ export function Environment({
     });
     return map;
   }, [loaded]);
+  useLayoutEffect(() => {
+    if (!warm) return;
+    warm.current = {
+      biomes: BIOME_IDS,
+      materials: library.materials,
+      build: (biome) =>
+        createSceneryChunk(library, "WARMUP", 20, quality, { biome }, assets),
+    };
+    return () => {
+      warm.current = null;
+    };
+  }, [warm, library, assets, quality]);
   useLayoutEffect(
     () => () => {
       for (const chunk of state.current.chunks.values()) chunk.dispose();
