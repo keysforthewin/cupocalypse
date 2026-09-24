@@ -178,11 +178,14 @@ export default function App() {
         return;
       }
       const next = new Simulation(
-        record?.seed ?? seed,
+        record?.seed ?? seed.trim(),
         record?.mode || mode,
         record?.upgrades || profile.upgrades,
         record?.superLoadout ?? profile.superLoadout,
       );
+      // Consume the displayed seed once, then prepare the next operation.
+      // Replays use their recorded seed and must not consume this selection.
+      if (!record && !seedPinned) setSeed(randomSeed(seed));
       next.debug = !!record || debug;
       replay.current = record || null;
       replayLoadoutIndex.current = 0;
@@ -204,7 +207,7 @@ export default function App() {
       setPanel("none");
       audio.init();
     },
-    [seed, mode, profile.upgrades, profile.superLoadout, debug],
+    [seed, seedPinned, mode, profile.upgrades, profile.superLoadout, debug],
   );
   const postScore = useCallback(
     async (name: string) => {
@@ -664,7 +667,7 @@ export default function App() {
                   title={
                     seedPinned
                       ? "Unpin and generate a new seed"
-                      : "Keep this seed across reloads"
+                      : "Keep this seed across runs and reloads"
                   }
                   disabled={!seed.trim()}
                   onClick={toggleSeedPin}

@@ -195,7 +195,9 @@ Provider references: [FAL queue documentation](https://docs.fal.ai/model-apis/mo
 
 ## Procedural biome scenery
 
-Runs begin in **Iron District**, then visit **Haven Estates**, **Golden Hinterlands**, **Blackpine Wilds**, and **Ashfall Expanse** in seeded shuffled groups. Each group covers all five environments without consecutive repeats. Transitions begin every 60 gameplay seconds and travel through mixed scenery for roughly 20 seconds. Pausing freezes the journey; cosmetic randomness does not affect combat or replays.
+Each unpinned deployment uses a fresh random seed, including **Deploy Again**. The displayed seed is used for the next deployment; pin it to repeat the same map across runs and reloads. Replays always use their recorded seed.
+
+The seed chooses the starting biome and the route through **Iron District**, **Haven Estates**, **Golden Hinterlands**, **Blackpine Wilds**, and **Ashfall Expanse** in shuffled groups. Each group covers all five environments without consecutive repeats. Transitions begin every 60 gameplay seconds and travel through mixed scenery for roughly 20 seconds. Pausing freezes the journey; cosmetic randomness does not affect combat or replays.
 
 Scenery combines procedural architecture, terrain, and vegetation with Blender-refined Meshy assets and authored landmarks. High and Performance use the same route with different foliage density and asset LODs. The next road section is prepared incrementally before recycling.
 

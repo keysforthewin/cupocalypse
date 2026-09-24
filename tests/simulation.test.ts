@@ -217,3 +217,24 @@ test("Armory credits can be spent mid-run and are not paid twice on reopening or
   s.debug = true;
   assert.equal(claimEarnings(p, s).currency, 200);
 });
+
+test("operation seeds reach encounter generation and reproduce the same map", () => {
+  const map = (seed: string) => {
+    const s = new Simulation(seed);
+    for (let i = 0; i < 8; i++) {
+      s.distance = i * 20;
+      s.generate();
+    }
+    return {
+      enemies: s.enemies.map(({ kind, x, z, cooldown }) => ({
+        kind,
+        x,
+        z,
+        cooldown,
+      })),
+      gates: s.gates,
+    };
+  };
+  assert.deepEqual(map("seed-check-a"), map("seed-check-a"));
+  assert.notDeepEqual(map("seed-check-a"), map("seed-check-b"));
+});

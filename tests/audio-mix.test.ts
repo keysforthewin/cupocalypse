@@ -7,6 +7,7 @@ import {
   cueDefaults,
 } from "../src/game/audioManifest";
 import { Simulation } from "../src/game/simulation";
+import { biomeAtVisit } from "../src/render/biomes";
 
 function rig() {
   const nodes: FakeNode[] = [];
@@ -144,11 +145,15 @@ test("recorded ready reminders vary each phrase and cannot restart after mute", 
 });
 test("ambience randomizes on entry, remains stable while playing, and keeps all variants reachable", (t) => {
   const { a, buffer, nodes } = rig();
-  a.sampleVariants.set("ambience-city", [buffer(12), buffer(12), buffer(12)]);
+  const sim = new Simulation("ambience-variants");
+  a.sampleVariants.set(`ambience-${biomeAtVisit(sim.seed, 0)}`, [
+    buffer(12),
+    buffer(12),
+    buffer(12),
+  ]);
   const random = [0, 0.99, 0.99];
   let n = 0;
   t.mock.method(Math, "random", () => random[n++ % random.length]);
-  const sim = new Simulation("ambience-variants");
   const heard: unknown[] = [];
   for (let i = 0; i < 3; i++) {
     a.ambience(sim);

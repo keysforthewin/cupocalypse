@@ -110,10 +110,6 @@ export function biomeBag(seed: string, bag: number): BiomeId[] {
     const j = rng.int(i + 1);
     [ids[i], ids[j]] = [ids[j], ids[i]];
   }
-  if (bag === 0) {
-    const i = ids.indexOf("city");
-    [ids[0], ids[i]] = [ids[i], ids[0]];
-  }
   // Each bag's final item is fixed independently; repair only its first two items.
   // This avoids recursive lookbacks on arbitrarily long runs.
   if (bag > 0) {
@@ -122,10 +118,6 @@ export function biomeBag(seed: string, bag: number): BiomeId[] {
     for (let i = 4; i > 0; i--) {
       const j = previous.int(i + 1);
       [prior[i], prior[j]] = [prior[j], prior[i]];
-    }
-    if (bag === 1) {
-      const i = prior.indexOf("city");
-      [prior[0], prior[i]] = [prior[i], prior[0]];
     }
     if (ids[0] === prior[4]) [ids[0], ids[1]] = [ids[1], ids[0]];
   }
@@ -137,7 +129,10 @@ export function biomeAtVisit(seed: string, visit: number): BiomeId {
 }
 export function atmosphereAt(seed: string, seconds: number): BiomeSample {
   const visit = Math.max(0, Math.floor(seconds / BIOME_PERIOD));
-  if (!visit) return { from: "city", to: "city", blend: 0 };
+  if (!visit) {
+    const first = biomeAtVisit(seed, 0);
+    return { from: first, to: first, blend: 0 };
+  }
   return {
     from: biomeAtVisit(seed, visit - 1),
     to: biomeAtVisit(seed, visit),
@@ -149,7 +144,10 @@ export function routeBiome(seed: string, route: number): BiomeSample {
     0,
     Math.floor((route - 120) / (BIOME_PERIOD * WORLD_SPEED)),
   );
-  if (!visit) return { from: "city", to: "city", blend: 0 };
+  if (!visit) {
+    const first = biomeAtVisit(seed, 0);
+    return { from: first, to: first, blend: 0 };
+  }
   const start = visit * BIOME_PERIOD * WORLD_SPEED + 120;
   return {
     from: biomeAtVisit(seed, visit - 1),

@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   BIOME_IDS,
   biomeBag,
@@ -11,7 +12,7 @@ import {
 import { Simulation } from "../src/game/simulation";
 import { roadChunkZ, ROAD_CHUNK_COUNT } from "../src/render/roadMath";
 import { terrainHeight } from "../src/render/biomeModels";
-test("biome bags cover all five, start in city and never repeat at bag boundaries", () => {
+test("biome bags cover all five and never repeat at bag boundaries", () => {
   for (let seed = 0; seed < 80; seed++) {
     let last = "";
     for (let bag = 0; bag < 60; bag++) {
@@ -19,9 +20,24 @@ test("biome bags cover all five, start in city and never repeat at bag boundarie
       assert.deepEqual([...ids].sort(), [...BIOME_IDS].sort());
       assert.notEqual(ids[0], last);
       last = ids[4];
-      if (!bag) assert.equal(ids[0], "city");
     }
   }
+});
+test("the seed chooses the starting scenery and matching atmosphere across all five biomes", () => {
+  const starts = new Set<string>();
+  for (let i = 0; i < 80; i++) {
+    const seed = `opening-${i}`;
+    const biome = biomeAtVisit(seed, 0);
+    starts.add(biome);
+    const opening = { from: biome, to: biome, blend: 0 };
+    assert.deepEqual(atmosphereAt(seed, 0), opening);
+    assert.deepEqual(atmosphereAt(seed, 59.99), opening);
+    for (const route of [-240, 0, 240, 599])
+      assert.deepEqual(routeBiome(seed, route), opening);
+    assert.equal(routeBiome(seed, 600).from, biome);
+    assert.equal(atmosphereAt(seed, 60).from, biome);
+  }
+  assert.deepEqual([...starts].sort(), [...BIOME_IDS].sort());
 });
 test("biomes are reproducible and do not consume combat randomness", () => {
   const sim = new Simulation("biome-determinism"),
@@ -41,8 +57,8 @@ test("biomes are reproducible and do not consume combat randomness", () => {
 test("minute cadence, twenty second atmosphere blend, and traveling forty-unit boundaries", () => {
   const seed = "cadence";
   assert.deepEqual(atmosphereAt(seed, 59.99), {
-    from: "city",
-    to: "city",
+    from: biomeAtVisit(seed, 0),
+    to: biomeAtVisit(seed, 0),
     blend: 0,
   });
   assert.equal(atmosphereAt(seed, 60).blend, 0);
@@ -147,15 +163,38 @@ test("incremental preparation preserves the synchronous deterministic geometry",
       step = task.next();
     }
     assert.equal(stages, 6);
-    const counts = (root: T.Group) => {
-      const result: number[] = [];
-      root.traverse((o) => {
-        if (o instanceof T.Mesh)
-          result.push(o.geometry.getAttribute("position").count);
+    const geometryHash = (root: T.Group) => {
+      const hash = createHash("sha256");
+      root.traverse((object) => {
+        if (!(object instanceof T.Mesh)) return;
+        hash.update(JSON.stringify(object.matrix.elements));
+        for (const attribute of Object.values(
+          object.geometry.attributes,
+        ) as T.BufferAttribute[]) {
+          const array = attribute.array;
+          hash.update(
+            Buffer.from(array.buffer, array.byteOffset, array.byteLength),
+          );
+        }
+        if (object instanceof T.InstancedMesh)
+          hash.update(Buffer.from(object.instanceMatrix.array.buffer));
       });
-      return result;
+      return hash.digest("hex");
     };
-    assert.deepEqual(counts(direct.root), counts(step.value.root));
+    assert.equal(geometryHash(direct.root), geometryHash(step.value.root));
+    const other = createSceneryChunk(
+      library,
+      "another-seed",
+      620,
+      "performance",
+      { biome },
+    );
+    assert.notEqual(
+      geometryHash(direct.root),
+      geometryHash(other.root),
+      `${biome} scenery must vary with the seed`,
+    );
+    other.dispose();
     direct.dispose();
     step.value.dispose();
   }
