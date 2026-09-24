@@ -44,14 +44,14 @@ test("live spread volleys count every projectile at impact in all modes", () => 
         // Three plasma projectiles, or six for the two half-width formations.
         assert.equal(g.hitsA - before, mode === "Mirror" ? 12 : 6);
         assert.equal(g.a, mode === "Sudden Death" ? 0 : g.hitsA);
-        if (previousHitTick) assert.ok(s.tick - previousHitTick <= 6);
+        if (previousHitTick) assert.ok(s.tick - previousHitTick <= 12);
         previousHitTick = s.tick;
       }
       assert.equal(g.hitsB, 0);
     }
     assert.ok(
-      impacts >= 15,
-      `${mode}: sustained fire should tick up many times per second`,
+      impacts >= 7,
+      `${mode}: sustained fire should tick up several times per second`,
     );
   }
 });

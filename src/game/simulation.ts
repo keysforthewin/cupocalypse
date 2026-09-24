@@ -60,7 +60,7 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-2.2.0";
+export const VERSION = "containment-2.3.0";
 export const DT = 1 / 60,
   MOVE_SPEED = 6,
   ROAD_LIMIT = 3.8,
@@ -1260,7 +1260,7 @@ export class Simulation {
     const weapon = weaponStats(this.boosts);
     const nitro = this.supers.active("nitro") ? 3 : 1;
     const rate =
-      (6 + Math.min(6, Math.sqrt(this.army) * 0.18)) *
+      (3 + Math.min(3, Math.sqrt(this.army) * 0.09)) *
       (1 + (this.upgrades[2] * UPGRADE_PERCENT[2]) / 100) *
       weapon.cadence *
       nitro;

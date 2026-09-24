@@ -126,7 +126,7 @@ test("all four weapon upgrades still fire at full power minutes after collection
     // Overclock still shortens the interval, just less than its damage bonus.
     assert.ok(stats.cadence > 1.2 && stats.cadence < stats.rate);
     assert.ok(
-      s.fireClock < 1 / ((6 + Math.sqrt(s.army) * 0.18) * stats.cadence) + 1e-9,
+      s.fireClock < 1 / ((3 + Math.sqrt(s.army) * 0.09) * stats.cadence) + 1e-9,
     );
     assert.deepEqual(new Simulation("new-run", mode).boosts, boostLevels());
   }

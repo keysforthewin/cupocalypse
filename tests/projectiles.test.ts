@@ -172,7 +172,7 @@ test("maximum simultaneous Mirror arsenal remains below the pool limit and prese
     peak < BULLET_CAPACITY - 40,
     `${peak} projectiles leaves insufficient reserve`,
   );
-  for (const k of ["pulse", ...GUNS]) assert.ok((counts.get(k) ?? 0) > 20, k);
+  for (const k of ["pulse", ...GUNS]) assert.ok((counts.get(k) ?? 0) > 10, k);
   assert.ok(s.impacts.length === 96 && s.weaponEvents.length <= 64);
 });
 test("all modes replay acquired guns, curved flight, impacts, and separate quantized aim exactly", () => {
