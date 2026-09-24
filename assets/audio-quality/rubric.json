@@ -1,0 +1,15 @@
+{
+  "version": "cinematic-audio-1",
+  "thresholdExclusive": 95,
+  "dimensions": [
+    { "id": "impact", "label": "Impact, texture, physical credibility", "max": 25 },
+    { "id": "identity", "label": "Distinct identity and fit to the action", "max": 20 },
+    { "id": "clarity", "label": "Clarity and hierarchy during combat", "max": 20 },
+    { "id": "variation", "label": "Variation and resistance to fatigue", "max": 15 },
+    { "id": "space", "label": "Spatial placement and environmental cohesion", "max": 10 }
+  ],
+  "technicalMax": 10,
+  "families": ["weapons", "impacts", "creatures", "bosses", "supers", "ui", "ambience"],
+  "scenes": ["opening", "stacked", "boss", "super", "transition"],
+  "note": "Listening scores must come from a human reviewer. Missing or stale evidence is unreviewed, never passing. Technical success alone cannot certify perceived quality."
+}

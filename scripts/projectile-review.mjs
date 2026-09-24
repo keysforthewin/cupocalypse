@@ -47,6 +47,7 @@ try {
   });
   const audio = await page.evaluate(() => ({
     loaded: [...window.__audioReview.buffers.keys()],
+    expected: Object.keys(window.__audioReview.cues),
     durations: Object.fromEntries(
       [...window.__audioReview.buffers.entries()].map(([k, v]) => [
         k,
@@ -54,7 +55,7 @@ try {
       ]),
     ),
   }));
-  assert.equal(audio.loaded.filter(name => !name.startsWith("super-")).length, 38);
+  assert.deepEqual([...audio.loaded].sort(), [...audio.expected].sort());
   const kinds = ["seeker", "helix", "scatter", "cursor", "mortar"];
   for (const kind of process.env.SKIP_CAPTURES || process.env.ARSENAL_ONLY ? [] : kinds) {
     await page.evaluate((kind) => {

@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "tsx --test tests/*.test.ts && node --test scripts/audio-quality/core.test.mjs",
+    "audio:generate": "node scripts/audio-quality/generate.mjs scripts/audio-quality/pilot.json r2",
+    "audio:measure": "python3 scripts/audio-quality/analyze.py pilot",
+    "audio:review": "node scripts/audio-quality/review.mjs && node scripts/audio-quality/server.mjs",
+    "audio:evaluate": "node scripts/audio-quality/evaluate.mjs",
+    "audio:browser": "node scripts/audio-quality/browser-test.mjs",
     "validate": "tsx scripts/balance.ts",
     "assets": "node scripts/assets.mjs",
     "capture": "node scripts/capture.mjs",

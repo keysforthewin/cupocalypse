@@ -1,0 +1,99 @@
+{
+  "pulse": {
+    "bus": "weapons",
+    "gain": 1,
+    "priority": 1,
+    "cooldown": 0.1,
+    "maxVoices": 4,
+    "variants": [
+      "/assets/audio/v2/pulse-r2-1.wav",
+      "/assets/audio/v2/pulse-r2-2.wav",
+      "/assets/audio/v2/pulse-r2-3.wav"
+    ]
+  },
+  "seeker": {
+    "bus": "weapons",
+    "gain": 1,
+    "priority": 1,
+    "cooldown": 0.15,
+    "maxVoices": 4,
+    "variants": [
+      "/assets/audio/v2/seeker-r2-1.wav",
+      "/assets/audio/v2/seeker-r2-2.wav",
+      "/assets/audio/v2/seeker-r2-3.wav"
+    ]
+  },
+  "impact": {
+    "bus": "impacts",
+    "gain": 1,
+    "priority": 2,
+    "cooldown": 0.08,
+    "maxVoices": 4,
+    "variants": [
+      "/assets/audio/v2/impact-r2-1.wav",
+      "/assets/audio/v2/impact-r2-2.wav",
+      "/assets/audio/v2/impact-r2-3.wav"
+    ]
+  },
+  "creature-roar": {
+    "bus": "impacts",
+    "gain": 1,
+    "priority": 2,
+    "cooldown": 0.15,
+    "maxVoices": 4,
+    "variants": [
+      "/assets/audio/v2/creature-roar-r2-1.wav",
+      "/assets/audio/v2/creature-roar-r2-2.wav",
+      "/assets/audio/v2/creature-roar-r2-3.wav"
+    ]
+  },
+  "boss-grave-marshal-attack": {
+    "bus": "bosses",
+    "gain": 1,
+    "priority": 4,
+    "cooldown": 0.15,
+    "maxVoices": 2,
+    "variants": [
+      "/assets/audio/v2/boss-grave-marshal-attack-r2-1.wav",
+      "/assets/audio/v2/boss-grave-marshal-attack-r2-2.wav",
+      "/assets/audio/v2/boss-grave-marshal-attack-r2-3.wav"
+    ]
+  },
+  "super-mortal": {
+    "bus": "bosses",
+    "gain": 1,
+    "priority": 4,
+    "cooldown": 0.15,
+    "maxVoices": 2,
+    "variants": [
+      "/assets/audio/v2/super-mortal-r2-1.wav",
+      "/assets/audio/v2/super-mortal-r2-2.wav",
+      "/assets/audio/v2/super-mortal-r2-3.wav"
+    ]
+  },
+  "ui-ready": {
+    "bus": "ui",
+    "gain": 1,
+    "priority": 5,
+    "cooldown": 0.08,
+    "maxVoices": 4,
+    "variants": [
+      "/assets/audio/v2/ui-ready-r2-1.wav",
+      "/assets/audio/v2/ui-ready-r2-2.wav",
+      "/assets/audio/v2/ui-ready-r2-3.wav"
+    ]
+  },
+  "ambience-city": {
+    "bus": "ambience",
+    "gain": 1,
+    "priority": 0,
+    "cooldown": 0.15,
+    "maxVoices": 4,
+    "loop": true,
+    "variants": [
+      "/assets/audio/v2/ambience-city-r2-1.wav",
+      "/assets/audio/v2/ambience-city-r2-2.wav",
+      "/assets/audio/v2/ambience-city-r2-3.wav"
+    ]
+  }
+}

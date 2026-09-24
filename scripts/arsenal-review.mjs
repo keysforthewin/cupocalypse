@@ -57,9 +57,10 @@ try {
       guns: p.GUNS,
       boosts: t.BOOSTS,
       audio: [...window.__gateRunner.audio.buffers.keys()],
+      expectedAudio: Object.keys(window.__gateRunner.audio.cues),
     };
   });
-  assert.equal(catalog.audio.filter(name => !name.startsWith("super-")).length, 38);
+  assert.deepEqual([...catalog.audio].sort(), [...catalog.expectedAudio].sort());
   const additions = [...catalog.guns.slice(5), ...catalog.boosts.slice(4)];
   for (let i = 0; i < additions.length; i += 4) {
     await page.evaluate(

@@ -67,13 +67,14 @@ const audio = await page.evaluate(async () => {
     pausedVoices,
     bossBuffers: [...a.buffers.keys()].filter((k) => k.startsWith("boss-"))
       .length,
+    expectedBossBuffers: Object.keys(a.cues).filter(k=>k.startsWith("boss-")).length,
   };
 });
 console.log("Audio checked", audio);
 assert.ok(audio.playing > 0);
 assert.equal(audio.mutedVoices, 0);
 assert.equal(audio.pausedVoices, 0);
-assert.equal(audio.bossBuffers, 30);
+assert.equal(audio.bossBuffers, audio.expectedBossBuffers);
 await page.getByRole("button", { name: /PAUSE/ }).click();
 const tick = await page.evaluate(() => window.__gateRunner.sim.tick);
 await page.waitForTimeout(150);

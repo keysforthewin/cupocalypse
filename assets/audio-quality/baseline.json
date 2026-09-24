@@ -1,0 +1,583 @@
+{
+  "readinessGrade": "F",
+  "listeningScore": null,
+  "evidence": [
+    "No environmental ambience implementation",
+    "One recorded take per cue; pitch variation only",
+    "Original weapons filtered twice at 3200 Hz and entire game mix at 5200 Hz",
+    "Runtime duration caps discard source tails",
+    "Existing audio tests assess mechanics, not listening quality"
+  ],
+  "assets": [
+    {
+      "id": "grave-marshal-attack",
+      "path": "public/assets/audio/bosses/grave-marshal-attack.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-attack.ogg",
+      "sha256": "548e503b5bd3bc19fd9e700af8db241e05dd28883bd13530d674ffda88f3576b"
+    },
+    {
+      "id": "grave-marshal-death",
+      "path": "public/assets/audio/bosses/grave-marshal-death.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-death.ogg",
+      "sha256": "59328e8ffcc2c8e51ae113bab156191b2ea7b62a05f0c9cd990c8c5e9f00356c"
+    },
+    {
+      "id": "grave-marshal-entrance",
+      "path": "public/assets/audio/bosses/grave-marshal-entrance.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-entrance.ogg",
+      "sha256": "2387bc49f08dd5868fc5c41430be6fbfdc01bee04fb24bc13d7f0da2b7d4ebe2"
+    },
+    {
+      "id": "grave-marshal-impact",
+      "path": "public/assets/audio/bosses/grave-marshal-impact.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-impact.ogg",
+      "sha256": "c84cc19d8f31fc339fb7ea72e52c76b5f9f15698606f3d158f2040922e365796"
+    },
+    {
+      "id": "grave-marshal-phase",
+      "path": "public/assets/audio/bosses/grave-marshal-phase.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-phase.ogg",
+      "sha256": "90f1b58e5a6eb0f77d48159b4dda077d124056e372b13e346a648bb61c4a9eec"
+    },
+    {
+      "id": "grave-marshal-windup",
+      "path": "public/assets/audio/bosses/grave-marshal-windup.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/grave-marshal-windup.ogg",
+      "sha256": "bab17cfc8368a98efbcf922adc9e45dcef73db2a6ae2e4cca877eaf5b1d7f704"
+    },
+    {
+      "id": "ossuary-engine-attack",
+      "path": "public/assets/audio/bosses/ossuary-engine-attack.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-attack.ogg",
+      "sha256": "a634e10cd6c689ce2526af8e1f8f5605c14ed8e267a781d58ee12e0602e5917f"
+    },
+    {
+      "id": "ossuary-engine-death",
+      "path": "public/assets/audio/bosses/ossuary-engine-death.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-death.ogg",
+      "sha256": "95ca248310d9a4f4f039dda9997e37bb4c31c93ee8bf47c05628069f9be7385c"
+    },
+    {
+      "id": "ossuary-engine-entrance",
+      "path": "public/assets/audio/bosses/ossuary-engine-entrance.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-entrance.ogg",
+      "sha256": "291686e5af1e47eca57ee31b78ef705224078edb2b363d67a0bf18ce2d44fddd"
+    },
+    {
+      "id": "ossuary-engine-impact",
+      "path": "public/assets/audio/bosses/ossuary-engine-impact.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-impact.ogg",
+      "sha256": "1e553f15bba0a0b20fb5efc59d8c1f8ce77be500c0620a3b6e6bb962d9f572a0"
+    },
+    {
+      "id": "ossuary-engine-phase",
+      "path": "public/assets/audio/bosses/ossuary-engine-phase.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-phase.ogg",
+      "sha256": "4c1e069d9c09d74faa4649c3af236306bc248556cf6f56229d24429cc067fb0e"
+    },
+    {
+      "id": "ossuary-engine-windup",
+      "path": "public/assets/audio/bosses/ossuary-engine-windup.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/ossuary-engine-windup.ogg",
+      "sha256": "ff8055fd3905aef102529ef2c9b5446d030de1674e6454720df5252972bb56ef"
+    },
+    {
+      "id": "seraph-of-the-wound-attack",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-attack.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-attack.ogg",
+      "sha256": "30c785ac492762279c7d8ad3f076a1ff93c27b8e5ce86789631113154945f97b"
+    },
+    {
+      "id": "seraph-of-the-wound-death",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-death.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-death.ogg",
+      "sha256": "e09af79debf67a9546f0dd287542c5493da9b1e751d25535e02d5225bfbec867"
+    },
+    {
+      "id": "seraph-of-the-wound-entrance",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-entrance.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-entrance.ogg",
+      "sha256": "568be356d2810312cfc6b7e3bed7290e39693fc1b80ee786e8e224df640d518d"
+    },
+    {
+      "id": "seraph-of-the-wound-impact",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-impact.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-impact.ogg",
+      "sha256": "0d0a913440fb09abbd118c52eb916e5801a7cbadd7f8c41c234e3c183beffbb5"
+    },
+    {
+      "id": "seraph-of-the-wound-phase",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-phase.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-phase.ogg",
+      "sha256": "edd1bc8b1cb449161d7b9b9f812bbe230ae1f9da2a2c94ccf7d52cd2268fee61"
+    },
+    {
+      "id": "seraph-of-the-wound-windup",
+      "path": "public/assets/audio/bosses/seraph-of-the-wound-windup.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/seraph-of-the-wound-windup.ogg",
+      "sha256": "e46f3cba8b0b953ed56d96c284de1e8a9eb2eecfe8deff9d0ce2d5e957c2f095"
+    },
+    {
+      "id": "the-last-witness-attack",
+      "path": "public/assets/audio/bosses/the-last-witness-attack.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-attack.ogg",
+      "sha256": "d1f84bf566d6f3f189379aea62afeae0ee068d27d2a7575c3876e35be939ab08"
+    },
+    {
+      "id": "the-last-witness-death",
+      "path": "public/assets/audio/bosses/the-last-witness-death.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-death.ogg",
+      "sha256": "7860e04becce1dbd4bb16b41ac13bcbee5ec8972d4bbe4f929a38de1338b3ed1"
+    },
+    {
+      "id": "the-last-witness-entrance",
+      "path": "public/assets/audio/bosses/the-last-witness-entrance.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-entrance.ogg",
+      "sha256": "b4f196f7bd008b9456f06b942d009bf1b22be61555ab5656214e989aff26e5c7"
+    },
+    {
+      "id": "the-last-witness-impact",
+      "path": "public/assets/audio/bosses/the-last-witness-impact.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-impact.ogg",
+      "sha256": "03d48fe981a378ccf746e37f69b777439649d9825125f754d3990fa0bc11e7ae"
+    },
+    {
+      "id": "the-last-witness-phase",
+      "path": "public/assets/audio/bosses/the-last-witness-phase.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-phase.ogg",
+      "sha256": "92922c2c68435d065bfb0637b92f08978906402e5a984533d65643afd87a3577"
+    },
+    {
+      "id": "the-last-witness-windup",
+      "path": "public/assets/audio/bosses/the-last-witness-windup.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/the-last-witness-windup.ogg",
+      "sha256": "b967150212b405a888f07d5b28d776f27a541b4016f263b0eb2bc61ca48c328c"
+    },
+    {
+      "id": "widow-of-the-salvo-attack",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-attack.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-attack.ogg",
+      "sha256": "ea1d89e9ef60bdab96acad4d374ed59288e2963f49a951266aad7a8ced14373c"
+    },
+    {
+      "id": "widow-of-the-salvo-death",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-death.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-death.ogg",
+      "sha256": "0aa21570b1e4eab15531f12cf20fddae83aaf066d6c7cbbde426e89d46195ade"
+    },
+    {
+      "id": "widow-of-the-salvo-entrance",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-entrance.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-entrance.ogg",
+      "sha256": "16144ec364e8d19711858e12dfbf0d1c1ff52042a9e75f6ef4fdabe16dd09a40"
+    },
+    {
+      "id": "widow-of-the-salvo-impact",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-impact.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-impact.ogg",
+      "sha256": "3787383d9dfddaa3aee47efdf0090d06125d5004c508b48a05347d4dbda98619"
+    },
+    {
+      "id": "widow-of-the-salvo-phase",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-phase.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-phase.ogg",
+      "sha256": "f00863d37840362c028f93c52de39fac2de21588f7d87a200a7077ae64ac5b1f"
+    },
+    {
+      "id": "widow-of-the-salvo-windup",
+      "path": "public/assets/audio/bosses/widow-of-the-salvo-windup.ogg",
+      "baseline": "artifacts/audio-quality/baseline/audio/bosses/widow-of-the-salvo-windup.ogg",
+      "sha256": "cb93cd2fc274419a72f7f091356cd18cd7d776b06dd9d39642980e93fd1150d1"
+    },
+    {
+      "id": "cinder",
+      "path": "public/assets/audio/cinder.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/cinder.wav",
+      "sha256": "6a8246b0d7610037f421af3a60972fbf4f77319a70143f547240b2815e05a7f7"
+    },
+    {
+      "id": "cluster",
+      "path": "public/assets/audio/cluster.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/cluster.wav",
+      "sha256": "dc92e966cf367c78efc6a75ea9025682f1e22840f33fed9faa949d30f846fc4d"
+    },
+    {
+      "id": "crescent",
+      "path": "public/assets/audio/crescent.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/crescent.wav",
+      "sha256": "be9afe2734830b0865a2da6cd86890f1b6a3c751bebe8434634236d0e00f6695"
+    },
+    {
+      "id": "cryo",
+      "path": "public/assets/audio/cryo.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/cryo.wav",
+      "sha256": "abe05dc70caf647a5827e18f791556fdff38147e59a2721d633b4fa67023771b"
+    },
+    {
+      "id": "cursor",
+      "path": "public/assets/audio/cursor.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/cursor.mp3",
+      "sha256": "2012be80f53b9baa7b618b278e517f5432dbdd44f235e78a63d4188b41081723"
+    },
+    {
+      "id": "detonate",
+      "path": "public/assets/audio/detonate.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/detonate.mp3",
+      "sha256": "79e41b4d0ad302f73438b1c3af76684bd86e07195e3e1c8da3482c8b8951b72f"
+    },
+    {
+      "id": "gravity",
+      "path": "public/assets/audio/gravity.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/gravity.wav",
+      "sha256": "24e29aeb12e0d5700de75bcb4dad35cfa6014a466b35670a4193d7b0d5532b29"
+    },
+    {
+      "id": "helix",
+      "path": "public/assets/audio/helix.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/helix.mp3",
+      "sha256": "6e6b7d251854955122b632873afaa5dc849d38e123e0450e0b8fdc1d5c449d6d"
+    },
+    {
+      "id": "impact-cinder",
+      "path": "public/assets/audio/impact-cinder.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-cinder.wav",
+      "sha256": "7ff978afdb2810c42445300156597a5365a092a326a28328baf5490c649a978c"
+    },
+    {
+      "id": "impact-cluster",
+      "path": "public/assets/audio/impact-cluster.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-cluster.wav",
+      "sha256": "427ecf0fdee2e465f7a59d613c11e17914bc981bb12bb1c64206d26749523726"
+    },
+    {
+      "id": "impact-crescent",
+      "path": "public/assets/audio/impact-crescent.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-crescent.wav",
+      "sha256": "7e07cda3898851c0ab4c3f5ed075aa9a103c354e378ca435f699f5f1775ac849"
+    },
+    {
+      "id": "impact-cryo",
+      "path": "public/assets/audio/impact-cryo.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-cryo.wav",
+      "sha256": "1620ffb05c261788a07f95fd9e9adeb0b7016fa6b7a7fb49b747e5935480950a"
+    },
+    {
+      "id": "impact-gravity",
+      "path": "public/assets/audio/impact-gravity.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-gravity.wav",
+      "sha256": "a68a6da0f86f491c771587ab63198641ccc2734f4006166c2aabf72adcedb7b4"
+    },
+    {
+      "id": "impact-needle",
+      "path": "public/assets/audio/impact-needle.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-needle.wav",
+      "sha256": "3cf54fb84819bb47e4db55666e7bb3f337f0c1f8b50f7b4e43f347be11b473bd"
+    },
+    {
+      "id": "impact-rail",
+      "path": "public/assets/audio/impact-rail.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-rail.wav",
+      "sha256": "82dad42791d7cefe3c8f351e282d08639aee7566ee18a85d392bb299ab95b903"
+    },
+    {
+      "id": "impact-saw",
+      "path": "public/assets/audio/impact-saw.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-saw.wav",
+      "sha256": "473ac02328997c1e706db697409c444894dba25d399c396c6d3074d68dc37cef"
+    },
+    {
+      "id": "impact-sonic",
+      "path": "public/assets/audio/impact-sonic.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-sonic.wav",
+      "sha256": "29f5af42ccfdc5a9232a227686334dc1cbcd6a0cf99ee7751a2e1d5c574c1a7d"
+    },
+    {
+      "id": "impact-storm",
+      "path": "public/assets/audio/impact-storm.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact-storm.wav",
+      "sha256": "d9d7813fb544121a0ca9e170d7fcd2004456bbb7fa4e30493139eca1313276b8"
+    },
+    {
+      "id": "impact",
+      "path": "public/assets/audio/impact.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/impact.mp3",
+      "sha256": "d7bf90a745e5a0effdec0b7053a81e85d30032b6ae99545649a8bce89425c10b"
+    },
+    {
+      "id": "mortar",
+      "path": "public/assets/audio/mortar.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/mortar.mp3",
+      "sha256": "64074888e0b7930f6c2ce356452ff108349094d841e203821827419645a6858d"
+    },
+    {
+      "id": "needle",
+      "path": "public/assets/audio/needle.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/needle.wav",
+      "sha256": "0a0a96a9891d5eb0cbe12189430b58d0fdd704e866986dfca4961aaf05e6886d"
+    },
+    {
+      "id": "pickup-blast",
+      "path": "public/assets/audio/pickup-blast.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-blast.wav",
+      "sha256": "1dc4dfd9ea76fb699ce8b4ef4fdfcf2ffa3708a575094068cd870a703564f836"
+    },
+    {
+      "id": "pickup-breach",
+      "path": "public/assets/audio/pickup-breach.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-breach.wav",
+      "sha256": "88787d9a2fe575b2d4b8c2489f8ceb71da1a8324307b6a709e03645b15f899d1"
+    },
+    {
+      "id": "pickup-deadeye",
+      "path": "public/assets/audio/pickup-deadeye.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-deadeye.wav",
+      "sha256": "019cca2a82d544fb62cb67f933fb2569e98215290c7b87574634b9f68bdd9499"
+    },
+    {
+      "id": "pickup-echo",
+      "path": "public/assets/audio/pickup-echo.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-echo.wav",
+      "sha256": "6192e5058dc1e4b76e8fc29ba2aa30eb924c40a42d764624ff5fab70f8f94e4d"
+    },
+    {
+      "id": "pickup-ember",
+      "path": "public/assets/audio/pickup-ember.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-ember.wav",
+      "sha256": "b6c6ba7476ba8ddb985816fdc1a415d2340aa74c4d44d3347c1fd3560a64f8c4"
+    },
+    {
+      "id": "pickup-feed",
+      "path": "public/assets/audio/pickup-feed.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-feed.wav",
+      "sha256": "5ca6df0ffd9e57ff31f7d9f284b6b77be332dca0a6e37c85d60d03067cbe3d12"
+    },
+    {
+      "id": "pickup-fork",
+      "path": "public/assets/audio/pickup-fork.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-fork.wav",
+      "sha256": "2084ecf3bb105058af622ef38abfa36a08bb3a43b0b949384d830b68f6429f77"
+    },
+    {
+      "id": "pickup-phase",
+      "path": "public/assets/audio/pickup-phase.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-phase.wav",
+      "sha256": "bbd5673cc93f76e7387bbe8f02df0999479eb5608f5d2be312b3fc8b0439b3dc"
+    },
+    {
+      "id": "pickup-titan",
+      "path": "public/assets/audio/pickup-titan.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-titan.wav",
+      "sha256": "1d0e778b86b5368a9856494215eef20cba0f5a3a818ff7c401154879cc759183"
+    },
+    {
+      "id": "pickup-warhead",
+      "path": "public/assets/audio/pickup-warhead.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/pickup-warhead.wav",
+      "sha256": "b066afc06ba9dfbaedd55198ea7bbca19a177b5c7b29da8075ff0662fa43d5cc"
+    },
+    {
+      "id": "pulse",
+      "path": "public/assets/audio/pulse.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/pulse.mp3",
+      "sha256": "fa4d5469cba8a15978b5fe5793da11ab514598e583552b3a17843b41a073a0d5"
+    },
+    {
+      "id": "rail",
+      "path": "public/assets/audio/rail.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/rail.wav",
+      "sha256": "a25a4b1c93e2fbeaf87449b50f388bd6dcac14b63e8d76959d0112fde9570f3f"
+    },
+    {
+      "id": "saw",
+      "path": "public/assets/audio/saw.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/saw.wav",
+      "sha256": "0cc5bb9800b165842fa9ef5dedc307b1feefa141a1aed394cf495fade862bb05"
+    },
+    {
+      "id": "scatter",
+      "path": "public/assets/audio/scatter.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/scatter.mp3",
+      "sha256": "18a4fd3fdad4197ae3d0e92ecaed8981b64d92fa61f82a5684240b6553572fd1"
+    },
+    {
+      "id": "seeker",
+      "path": "public/assets/audio/seeker.mp3",
+      "baseline": "artifacts/audio-quality/baseline/audio/seeker.mp3",
+      "sha256": "cacea655f04e2a78e304cdb6bf0f8931c103de7c412b069a412b78a0d67ea2e3"
+    },
+    {
+      "id": "sonic",
+      "path": "public/assets/audio/sonic.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/sonic.wav",
+      "sha256": "df4d6fe264584a4e9d0286d0308a61d3ba17c95eac01eb92c115fa13baf13ea1"
+    },
+    {
+      "id": "storm",
+      "path": "public/assets/audio/storm.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/storm.wav",
+      "sha256": "1dc6d5e5022bc04446fe2bc97a1c994b71674e32f71ef98c4f2211fd8ceccd37"
+    },
+    {
+      "id": "super-baezil",
+      "path": "public/assets/audio/super-baezil.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-baezil.wav",
+      "sha256": "450a8d9ef455016311a399dd397c259935bd63d724d6ddd03f24ad3f1d103092"
+    },
+    {
+      "id": "super-bronze-leopard",
+      "path": "public/assets/audio/super-bronze-leopard.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-bronze-leopard.wav",
+      "sha256": "6b84bc81c949eae3c162294e0bf58b21a89cc35c6aaab216939e4fb43bb633b7"
+    },
+    {
+      "id": "super-doc",
+      "path": "public/assets/audio/super-doc.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-doc.wav",
+      "sha256": "493c470db56520c6d344e22b170945cee1bcd97d42d5cfafe07eb77f14f8ae08"
+    },
+    {
+      "id": "super-five10",
+      "path": "public/assets/audio/super-five10.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-five10.wav",
+      "sha256": "3ed86121e862bbd616e835b01353fa8cf8cf84dd6eead3ea06bb33331be53c00"
+    },
+    {
+      "id": "super-gimmy",
+      "path": "public/assets/audio/super-gimmy.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-gimmy.wav",
+      "sha256": "b088d11edfcc3d3bf1756c01bfdc316ea4f2832164c364bb2419727164a165cd"
+    },
+    {
+      "id": "super-haut-carl",
+      "path": "public/assets/audio/super-haut-carl.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-haut-carl.wav",
+      "sha256": "0205afe6a61991e21629bff9a03389f95600e4607196de93f89c7edec02f442c"
+    },
+    {
+      "id": "super-hondo",
+      "path": "public/assets/audio/super-hondo.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-hondo.wav",
+      "sha256": "0ffea2fd403e47b1771e64ad2f33b16170b3956d72a9b1b6de4bd46c3e1491ac"
+    },
+    {
+      "id": "super-keys",
+      "path": "public/assets/audio/super-keys.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-keys.wav",
+      "sha256": "386792edfea37e63c54b7074ffe48fcbc805c13822628b5a756892c5b0b6004d"
+    },
+    {
+      "id": "super-kismet",
+      "path": "public/assets/audio/super-kismet.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-kismet.wav",
+      "sha256": "f0019acfdd4b48eb25e8e6201ecf2f43dec523ee6503bbf14cfccccd4f7a49d6"
+    },
+    {
+      "id": "super-kuttula",
+      "path": "public/assets/audio/super-kuttula.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-kuttula.wav",
+      "sha256": "01be60f43a3124384535420c92839fb3b1a0845d77d288637a9dc7a368959e99"
+    },
+    {
+      "id": "super-machinegunqueen",
+      "path": "public/assets/audio/super-machinegunqueen.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-machinegunqueen.wav",
+      "sha256": "871da0e4f87a265a64d0ae4c15a5e2cbc866f8d01fe66b13600e068156176e7f"
+    },
+    {
+      "id": "super-meesh",
+      "path": "public/assets/audio/super-meesh.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-meesh.wav",
+      "sha256": "289908982ce22df02deed7dd57eccae211a141ca471fa2e84cddf688af89538c"
+    },
+    {
+      "id": "super-mmiguel",
+      "path": "public/assets/audio/super-mmiguel.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-mmiguel.wav",
+      "sha256": "6fa5a1dfb85b500342a0c3de6dc7b15ffa4d0c9e778208f1907680a2a477736e"
+    },
+    {
+      "id": "super-mortal",
+      "path": "public/assets/audio/super-mortal.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-mortal.wav",
+      "sha256": "0cf1faff37c6244c244325389e6d3b884a52ea01d38f196f5890993ec622eec5"
+    },
+    {
+      "id": "super-nemesis",
+      "path": "public/assets/audio/super-nemesis.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-nemesis.wav",
+      "sha256": "7b25c51fbbf0ddce70aa0fb24e3578cc0c489e169f4095ad100eeb0efbe27e67"
+    },
+    {
+      "id": "super-nitro",
+      "path": "public/assets/audio/super-nitro.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-nitro.wav",
+      "sha256": "6d663ff74d5cb9bf267f4351ac5b19b1a2b0301e2122b7856d2416c13df43b19"
+    },
+    {
+      "id": "super-panda",
+      "path": "public/assets/audio/super-panda.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-panda.wav",
+      "sha256": "06e4b0ac5cc50076feffe8eebbac64dd1daa1adc12799befea107b7719d36439"
+    },
+    {
+      "id": "super-pauly",
+      "path": "public/assets/audio/super-pauly.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-pauly.wav",
+      "sha256": "7cde46598b0f443be8b780866efda89bf3559a16ce8b8d760888ad22e92de929"
+    },
+    {
+      "id": "super-platypus",
+      "path": "public/assets/audio/super-platypus.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-platypus.wav",
+      "sha256": "1e5e715bc5606a6edeb39cb9471c15c5f0d9a069f7bc1975aa6961fde1e92998"
+    },
+    {
+      "id": "super-pokey",
+      "path": "public/assets/audio/super-pokey.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-pokey.wav",
+      "sha256": "43a3fd35ea4d3ab4500b97fa9a7dc84878c56c52fa6df7907f11afc4b758be0f"
+    },
+    {
+      "id": "super-rae",
+      "path": "public/assets/audio/super-rae.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-rae.wav",
+      "sha256": "897956e5fbbbe01ed468da232778c41499d888cbdc255e0129f04678f4c4a267"
+    },
+    {
+      "id": "super-shannondoa",
+      "path": "public/assets/audio/super-shannondoa.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-shannondoa.wav",
+      "sha256": "2df361cad0120ad71154d412b2647a4b207e075be30617b05c756ee0e3f9a5c0"
+    },
+    {
+      "id": "super-so1ician",
+      "path": "public/assets/audio/super-so1ician.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-so1ician.wav",
+      "sha256": "430fb20acf95ca2626a2f30c21770034fe153177fd660232e2472cd23cb371ce"
+    },
+    {
+      "id": "super-strawberry",
+      "path": "public/assets/audio/super-strawberry.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-strawberry.wav",
+      "sha256": "5df9fa91b741fb2d7a120857c1843caaf9f6aabbee14b9935b59403aa782035b"
+    },
+    {
+      "id": "super-sybex",
+      "path": "public/assets/audio/super-sybex.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-sybex.wav",
+      "sha256": "2bd18707210fec756d1c22a9beab3509e59e931b630a5f4a2db20ae8cf88d86f"
+    },
+    {
+      "id": "super-tuna",
+      "path": "public/assets/audio/super-tuna.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-tuna.wav",
+      "sha256": "895504dcbe4b6701f7969a5a848aa9e429b878701603a4fab98b51e602dd741f"
+    },
+    {
+      "id": "super-zunneh",
+      "path": "public/assets/audio/super-zunneh.wav",
+      "baseline": "artifacts/audio-quality/baseline/audio/super-zunneh.wav",
+      "sha256": "cfc7ba113c7637bf06ef7935e1a3582f822b5891bc5cece87e2f5b27752e3128"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "phase": "pilot",
+  "status": "pilot-accepted",
+  "rubric": "cinematic-audio-1",
+  "numericalQualityVerified": false,
+  "groups": [
+    {
+      "cue": "pulse",
+      "status": "user-accepted",
+      "selected": "pulse-r2-1",
+      "retained": [
+        "pulse-r2-1",
+        "pulse-r2-2",
+        "pulse-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "pulse-r2-1",
+          "evidenceHash": "ab23be7120bf662e8342668cfef33933c319e264d7072cc64ace02b29a8d974c",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "pulse-r2-2",
+          "evidenceHash": "cfccb33dd19b7a12cea41b6a3c45c8b8b5df658b9feadd75686eef5540c64dd1",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "pulse-r2-3",
+          "evidenceHash": "d7d471b6131818a7d58a6c9d6e75af93d5c076f3d4db30e1fe8d83f53e7a9a3b",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "seeker",
+      "status": "user-accepted",
+      "selected": "seeker-r2-1",
+      "retained": [
+        "seeker-r2-1",
+        "seeker-r2-2",
+        "seeker-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "seeker-r2-1",
+          "evidenceHash": "9cfeda77fad6a81b687e162e67c871221f6f45f682b3c1ed4f41a3759c36409d",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "seeker-r2-2",
+          "evidenceHash": "6182e334ae681f8f7b6371e167ca9aa99c965610e6e065694c408cfb059114b8",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "seeker-r2-3",
+          "evidenceHash": "d5ef7c5df41d4c7d938eba6a50065e744f37d8bb538b682110eef32bb0b312a0",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "impact",
+      "status": "user-accepted",
+      "selected": "impact-r2-1",
+      "retained": [
+        "impact-r2-1",
+        "impact-r2-2",
+        "impact-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "impact-r2-1",
+          "evidenceHash": "a002c2810e03fedb13fef826eb95eb5dc24e52f050a4a1f0be582493304b691c",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "impact-r2-2",
+          "evidenceHash": "ccd6305ae90cce8f69c3fbab73ea42c2ce11b5ed09457d1065faf0030b9b7bbb",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "impact-r2-3",
+          "evidenceHash": "a0b1383de27da637734369741e102382199071b2b953f0f7ddd629524aeea843",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "creature-roar",
+      "status": "user-accepted",
+      "selected": "creature-roar-r2-1",
+      "retained": [
+        "creature-roar-r2-1",
+        "creature-roar-r2-2",
+        "creature-roar-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "creature-roar-r2-1",
+          "evidenceHash": "5fe7cbc627530a9c40f5e05e56b21c6893ea20651ec8ff9a8973f359dce5d728",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "creature-roar-r2-2",
+          "evidenceHash": "0d77fe28ddbcb029ef4654f300a9dd5a17202a64c3b053f634191c00a79ce695",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "creature-roar-r2-3",
+          "evidenceHash": "9d406e659673c8d5ea8c415270178c7340f6cc90a2fa6f900fa2a577b072454c",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "boss-grave-marshal-attack",
+      "status": "user-accepted",
+      "selected": "boss-grave-marshal-attack-r2-1",
+      "retained": [
+        "boss-grave-marshal-attack-r2-1",
+        "boss-grave-marshal-attack-r2-2",
+        "boss-grave-marshal-attack-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "boss-grave-marshal-attack-r2-1",
+          "evidenceHash": "dd219e9a6f2cc7981e60899c04259cb75f235705a2e7497ce1f78fbe827824e0",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "boss-grave-marshal-attack-r2-2",
+          "evidenceHash": "3991c1285dc591eaedb5114f07c633754cf0b9e1ca2492911b40291d078b5677",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "boss-grave-marshal-attack-r2-3",
+          "evidenceHash": "f5af45ca5714f5b422819a8c6124393c578d425677e8d26d05df844f55c19188",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "super-mortal",
+      "status": "user-accepted",
+      "selected": "super-mortal-r2-1",
+      "retained": [
+        "super-mortal-r2-1",
+        "super-mortal-r2-2",
+        "super-mortal-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "super-mortal-r2-1",
+          "evidenceHash": "07a6fa4a02d65cdce37a4312f83ad28df6444a2fe82daa8a0d4068523103da48",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "super-mortal-r2-2",
+          "evidenceHash": "fbeb8b2c9fee84a999ef7f0e03550acd8a540dafa4ddf934e585ede968811f9b",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "super-mortal-r2-3",
+          "evidenceHash": "d7d5c284a5886c4c39cd8b6a6cff45489dc11e3f599b3adaf7f2588b6e6dcd36",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "ui-ready",
+      "status": "user-accepted",
+      "selected": "ui-ready-r2-1",
+      "retained": [
+        "ui-ready-r2-1",
+        "ui-ready-r2-2",
+        "ui-ready-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "ui-ready-r2-1",
+          "evidenceHash": "7794f43a23578dd83121f92d22e3647451d7a7a8deab619960a531801a2e8069",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "ui-ready-r2-2",
+          "evidenceHash": "8b1f5f8505b53c4b440060ba92a0f3585d056ada4d7983819f4f95e03f642fe3",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "ui-ready-r2-3",
+          "evidenceHash": "502a7fc1a6d5acf229819c0d8878e9e105c0e79479bc31efaa9969934c162331",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    },
+    {
+      "cue": "ambience-city",
+      "status": "user-accepted",
+      "selected": "ambience-city-r2-1",
+      "retained": [
+        "ambience-city-r2-1",
+        "ambience-city-r2-2",
+        "ambience-city-r2-3"
+      ],
+      "candidates": [
+        {
+          "id": "ambience-city-r2-1",
+          "evidenceHash": "2aab8b49dd3bc66bf2329271a7d976c388e1e1dc96c7eb89d01d624c334734af",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "ambience-city-r2-2",
+          "evidenceHash": "169391d3b74b9e83c3592088bfaae1ed9bd67f83b7df04d0c1e8548ca33f9b2c",
+          "status": "user-accepted",
+          "score": null
+        },
+        {
+          "id": "ambience-city-r2-3",
+          "evidenceHash": "1e98f178262dd269aab90c102882ca40ce5960401a565b86b43096055a592073",
+          "status": "user-accepted",
+          "score": null
+        }
+      ]
+    }
+  ]
+}

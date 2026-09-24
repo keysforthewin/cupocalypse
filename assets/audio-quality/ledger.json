@@ -1,0 +1,1089 @@
+{
+  "capUSD": 100,
+  "currency": "USD",
+  "jobs": {
+    "pulse-r1-1": {
+      "id": "pulse-r1-1",
+      "cue": "pulse",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r1",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Original grounded cinematic game sound effect. One isolated modern military rifle shot, immediate crisp ballistic crack, tight chesty body, audible steel bolt cycle and a brief outdoor reflection. Close perspective. Physical firearm, not a laser. Preserve the sharp transient without a piercing whistle. Focus on authentic material detail and a clear readable gesture. No speech, music or unrelated background sounds.",
+        "duration_seconds": 1,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:08:39.457Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d050-5153-73c3-ad91-fb2bf528849c",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-5153-73c3-ad91-fb2bf528849c",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-5153-73c3-ad91-fb2bf528849c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-5153-73c3-ad91-fb2bf528849c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba164/Vj_ot058_XWEhti4Db4is_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 176444
+        }
+      },
+      "sha256": "0973db21accce7d53d25e9a4c30897ab7eabe1dba937e4e50aab4f3e88473f90",
+      "original": "assets/audio-quality/originals/pulse-r1-1.bin"
+    },
+    "pulse-r1-2": {
+      "id": "pulse-r1-2",
+      "cue": "pulse",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r1",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Original grounded cinematic game sound effect. One isolated modern military rifle shot, immediate crisp ballistic crack, tight chesty body, audible steel bolt cycle and a brief outdoor reflection. Close perspective. Physical firearm, not a laser. Preserve the sharp transient without a piercing whistle. Alternate performance: slightly tighter attack, drier close texture, intricate small mechanical or organic details. No speech, music or unrelated background sounds.",
+        "duration_seconds": 1,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:08:45.398Z",
+      "reserveUSD": 0.01,
+      "state": "failed",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d050-6783-7271-8566-38572e0b0384",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-6783-7271-8566-38572e0b0384",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-6783-7271-8566-38572e0b0384/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d050-6783-7271-8566-38572e0b0384/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "reconciliation": "Provider result HTTP 422: text exceeds 450 characters. Failed request retained; replacement submitted under r2, not retried under the same ID."
+    },
+    "pulse-r2-1": {
+      "id": "pulse-r2-1",
+      "cue": "pulse",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One isolated modern military rifle shot, immediate crisp ballistic crack, tight chesty body, audible steel bolt cycle and a brief outdoor reflection. Close perspective. Physical firearm, not a laser. Preserve the sharp transient without a piercing whistle. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 1,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:21.348Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d052-c94d-7b73-83c5-fc0eca96df07",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-c94d-7b73-83c5-fc0eca96df07",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-c94d-7b73-83c5-fc0eca96df07/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-c94d-7b73-83c5-fc0eca96df07/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba174/tZNTdpEC-TlpnjN9LINbp_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 176444
+        }
+      },
+      "sha256": "83bf7ed18e7b25c8e1dc490eca13dd783682f8012d6adbcd523730fcbf2ea82e",
+      "original": "assets/audio-quality/originals/pulse-r2-1.bin"
+    },
+    "pulse-r2-2": {
+      "id": "pulse-r2-2",
+      "cue": "pulse",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One isolated modern military rifle shot, immediate crisp ballistic crack, tight chesty body, audible steel bolt cycle and a brief outdoor reflection. Close perspective. Physical firearm, not a laser. Preserve the sharp transient without a piercing whistle. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 1,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:27.486Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d052-e09c-7e62-8b08-b16538846531",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-e09c-7e62-8b08-b16538846531",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-e09c-7e62-8b08-b16538846531/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d052-e09c-7e62-8b08-b16538846531/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba175/eelnleoMKNrojoKplJUcC_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 176444
+        }
+      },
+      "sha256": "8f37329700e11a9170bba2c41530f12b141b3ed46e4e656415c64c11ae0ed918",
+      "original": "assets/audio-quality/originals/pulse-r2-2.bin"
+    },
+    "pulse-r2-3": {
+      "id": "pulse-r2-3",
+      "cue": "pulse",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One isolated modern military rifle shot, immediate crisp ballistic crack, tight chesty body, audible steel bolt cycle and a brief outdoor reflection. Close perspective. Physical firearm, not a laser. Preserve the sharp transient without a piercing whistle. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 1,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:38.956Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-0d68-78b0-bdf9-b5449245076b",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-0d68-78b0-bdf9-b5449245076b",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-0d68-78b0-bdf9-b5449245076b/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-0d68-78b0-bdf9-b5449245076b/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba176/9NOO1tsbmElYA_9DmHWr-_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 176444
+        }
+      },
+      "sha256": "60b88d3d958e9f021c027e1eb1708dc5d19d428f17d231d1604d27c97b472164",
+      "original": "assets/audio-quality/originals/pulse-r2-3.bin"
+    },
+    "seeker-r2-1": {
+      "id": "seeker-r2-1",
+      "cue": "seeker",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One compact shoulder-fired missile launch, immediate pressure-tube punch, textured rocket ignition and a short accelerating exhaust trail. Mechanical latch detail and controlled bass weight. No explosion, no second launch. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 1.6,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:44.387Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-229b-7692-acb0-4fe9d72f6304",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-229b-7692-acb0-4fe9d72f6304",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-229b-7692-acb0-4fe9d72f6304/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-229b-7692-acb0-4fe9d72f6304/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba176/KLmRY4CS1RsKXUv9IIiOf_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 282284
+        }
+      },
+      "sha256": "47ff3149c3a6e84d0d313940a9c652775d2106b49d987080f3b618169c9ba739",
+      "original": "assets/audio-quality/originals/seeker-r2-1.bin"
+    },
+    "seeker-r2-2": {
+      "id": "seeker-r2-2",
+      "cue": "seeker",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One compact shoulder-fired missile launch, immediate pressure-tube punch, textured rocket ignition and a short accelerating exhaust trail. Mechanical latch detail and controlled bass weight. No explosion, no second launch. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 1.6,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:49.866Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-3802-7823-b430-e46f557ab7da",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-3802-7823-b430-e46f557ab7da",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-3802-7823-b430-e46f557ab7da/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-3802-7823-b430-e46f557ab7da/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba177/Q_0b-mnwiO9GsGwgTp-Se_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 282284
+        }
+      },
+      "sha256": "1550f777f6c3ae8cf0414e45e673aa5938ecf19408d913c3a738ecbfd7bd56e1",
+      "original": "assets/audio-quality/originals/seeker-r2-2.bin"
+    },
+    "seeker-r2-3": {
+      "id": "seeker-r2-3",
+      "cue": "seeker",
+      "family": "weapons",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One compact shoulder-fired missile launch, immediate pressure-tube punch, textured rocket ignition and a short accelerating exhaust trail. Mechanical latch detail and controlled bass weight. No explosion, no second launch. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 1.6,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:11:55.143Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-4ca9-7213-bd54-69cef9f64cc7",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-4ca9-7213-bd54-69cef9f64cc7",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-4ca9-7213-bd54-69cef9f64cc7/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-4ca9-7213-bd54-69cef9f64cc7/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba177/o4Gwcz_f7OqgB7wgpJ_2N_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 282284
+        }
+      },
+      "sha256": "db242e5a8ff28e99beb30b880380a14a90ae1efde8d5a8bf6126cf71e30f7a34",
+      "original": "assets/audio-quality/originals/seeker-r2-3.bin"
+    },
+    "impact-r2-1": {
+      "id": "impact-r2-1",
+      "cue": "impact",
+      "family": "impacts",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One close ballistic impact into infected flesh and damaged armor. Immediate tactile dry crack, wet compact body hit, tiny brittle metal fragments, fast natural decay. Weighty but not an explosion or cartoon squelch. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 0.65,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:00.664Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-623f-7e03-b8c9-400adae3f05c",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-623f-7e03-b8c9-400adae3f05c",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-623f-7e03-b8c9-400adae3f05c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-623f-7e03-b8c9-400adae3f05c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba178/7_4y9OLNp10GqLuYXiWRH_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 112940
+        }
+      },
+      "sha256": "fcfcb5dcc3f29e9b754afdbbfb711b9ce3b25456296e28a7adc5cdae279b2638",
+      "original": "assets/audio-quality/originals/impact-r2-1.bin"
+    },
+    "impact-r2-2": {
+      "id": "impact-r2-2",
+      "cue": "impact",
+      "family": "impacts",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One close ballistic impact into infected flesh and damaged armor. Immediate tactile dry crack, wet compact body hit, tiny brittle metal fragments, fast natural decay. Weighty but not an explosion or cartoon squelch. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 0.65,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:05.909Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-76ad-7093-901c-1ca6b6b898c8",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-76ad-7093-901c-1ca6b6b898c8",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-76ad-7093-901c-1ca6b6b898c8/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-76ad-7093-901c-1ca6b6b898c8/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba178/wJ5bMai4Zvr3uInDNyGdj_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 112940
+        }
+      },
+      "sha256": "400a7fdfe22c95b16b707c89bf63f335a102d52488a5b3319a17d4e743832dbd",
+      "original": "assets/audio-quality/originals/impact-r2-2.bin"
+    },
+    "impact-r2-3": {
+      "id": "impact-r2-3",
+      "cue": "impact",
+      "family": "impacts",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One close ballistic impact into infected flesh and damaged armor. Immediate tactile dry crack, wet compact body hit, tiny brittle metal fragments, fast natural decay. Weighty but not an explosion or cartoon squelch. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 0.65,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:11.023Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-8aab-7fd0-96fc-81aa29dbb8e3",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-8aab-7fd0-96fc-81aa29dbb8e3",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-8aab-7fd0-96fc-81aa29dbb8e3/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-8aab-7fd0-96fc-81aa29dbb8e3/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba179/6i-mTl74Nd_hajoz93hwi_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 112940
+        }
+      },
+      "sha256": "ec1c3a4415dfe9b5f230a182de35b516abd83e1dcb737d05f572a97e5e4fa29d",
+      "original": "assets/audio-quality/originals/impact-r2-3.bin"
+    },
+    "creature-roar-r2-1": {
+      "id": "creature-roar-r2-1",
+      "cue": "creature-roar",
+      "family": "creatures",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One aggressive infected creature growl, raw breath and strained throat texture, organic chest resonance, saliva and short exhalation. Human-sized feral enemy nearby, frightening and physical. Nonverbal, no intelligible words, no synthetic buzz. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 1.5,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:16.960Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-a1de-7280-98d4-f6b7933b5cee",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-a1de-7280-98d4-f6b7933b5cee",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-a1de-7280-98d4-f6b7933b5cee/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-a1de-7280-98d4-f6b7933b5cee/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba179/y6jR1JsfoGDkn8cETkyTo_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 261116
+        }
+      },
+      "sha256": "58f51b87487ad255a1e2aeb1edf0073f8f72f829226a35ab6c6110bd6c9b3879",
+      "original": "assets/audio-quality/originals/creature-roar-r2-1.bin"
+    },
+    "creature-roar-r2-2": {
+      "id": "creature-roar-r2-2",
+      "cue": "creature-roar",
+      "family": "creatures",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One aggressive infected creature growl, raw breath and strained throat texture, organic chest resonance, saliva and short exhalation. Human-sized feral enemy nearby, frightening and physical. Nonverbal, no intelligible words, no synthetic buzz. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 1.5,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:22.219Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-b660-7930-b213-e43eeaa7ddba",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-b660-7930-b213-e43eeaa7ddba",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-b660-7930-b213-e43eeaa7ddba/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-b660-7930-b213-e43eeaa7ddba/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17a/Ld3COoLLWh8HIyxBpc4yY_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 261116
+        }
+      },
+      "sha256": "97a0f60bd0f09f4d805bf8e3d84807e543403cd1276ddbda88b5a3c350e0511d",
+      "original": "assets/audio-quality/originals/creature-roar-r2-2.bin"
+    },
+    "creature-roar-r2-3": {
+      "id": "creature-roar-r2-3",
+      "cue": "creature-roar",
+      "family": "creatures",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One aggressive infected creature growl, raw breath and strained throat texture, organic chest resonance, saliva and short exhalation. Human-sized feral enemy nearby, frightening and physical. Nonverbal, no intelligible words, no synthetic buzz. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 1.5,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:27.377Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-ca8c-7c10-ab9b-34b08d91b22c",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-ca8c-7c10-ab9b-34b08d91b22c",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-ca8c-7c10-ab9b-34b08d91b22c/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-ca8c-7c10-ab9b-34b08d91b22c/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17b/KDVNjJfjY5wvr5vs0LzT6_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 261116
+        }
+      },
+      "sha256": "9f65ba985ec9bdff2de042eaa1039e61570855391c932dc189bc3c66778aad83",
+      "original": "assets/audio-quality/originals/creature-roar-r2-3.bin"
+    },
+    "boss-grave-marshal-attack-r2-1": {
+      "id": "boss-grave-marshal-attack-r2-1",
+      "cue": "boss-grave-marshal-attack",
+      "family": "bosses",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One massive armored concrete giant hammering a military blast door into pavement. Immediate violent steel and concrete collision, layered stone fracture, resonant steel plate strain and tumbling heavy rubble. Enormous weight conveyed through detailed midrange and controlled deep pressure, not just a sub-bass boom. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 2.2,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:32.535Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-deb4-79f3-9ef5-138f380bf8bf",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-deb4-79f3-9ef5-138f380bf8bf",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-deb4-79f3-9ef5-138f380bf8bf/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-deb4-79f3-9ef5-138f380bf8bf/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17b/BzSFbeCn_8vf1aL09uFfH_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 388124
+        }
+      },
+      "sha256": "21b9e6d5aebcaa4524a9e2f667a10d87cc738985ae737a9b1d592f60b982f8e6",
+      "original": "assets/audio-quality/originals/boss-grave-marshal-attack-r2-1.bin"
+    },
+    "boss-grave-marshal-attack-r2-2": {
+      "id": "boss-grave-marshal-attack-r2-2",
+      "cue": "boss-grave-marshal-attack",
+      "family": "bosses",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One massive armored concrete giant hammering a military blast door into pavement. Immediate violent steel and concrete collision, layered stone fracture, resonant steel plate strain and tumbling heavy rubble. Enormous weight conveyed through detailed midrange and controlled deep pressure, not just a sub-bass boom. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 2.2,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:39.784Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d053-fb04-7db1-bbc0-c87c963df2fb",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-fb04-7db1-bbc0-c87c963df2fb",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-fb04-7db1-bbc0-c87c963df2fb/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d053-fb04-7db1-bbc0-c87c963df2fb/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17c/VL4-YRNBYcFx9lZ4LeGen_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 388124
+        }
+      },
+      "sha256": "ef5ea9e3bbceae96268db3fe413ca712d9a9d5edcca6297121845907cc70875f",
+      "original": "assets/audio-quality/originals/boss-grave-marshal-attack-r2-2.bin"
+    },
+    "boss-grave-marshal-attack-r2-3": {
+      "id": "boss-grave-marshal-attack-r2-3",
+      "cue": "boss-grave-marshal-attack",
+      "family": "bosses",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One massive armored concrete giant hammering a military blast door into pavement. Immediate violent steel and concrete collision, layered stone fracture, resonant steel plate strain and tumbling heavy rubble. Enormous weight conveyed through detailed midrange and controlled deep pressure, not just a sub-bass boom. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 2.2,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:46.983Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-172c-7290-be5a-7c8e41ac78fe",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-172c-7290-be5a-7c8e41ac78fe",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-172c-7290-be5a-7c8e41ac78fe/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-172c-7290-be5a-7c8e41ac78fe/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17c/dyOh_nQfXCP51CiHzgX50_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 388124
+        }
+      },
+      "sha256": "f241bc6b69d063029c391a3d26049e602f0d94b95750b1b4393d976b3ad060a0",
+      "original": "assets/audio-quality/originals/boss-grave-marshal-attack-r2-3.bin"
+    },
+    "super-mortal-r2-1": {
+      "id": "super-mortal-r2-1",
+      "cue": "super-mortal",
+      "family": "supers",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. A colossal execution scythe attack. Half-second air intake and taut metal strain building into a single forceful blade sweep at 0.6 seconds, physical slicing transient, deep pressure release, scattered metallic grit settling naturally. Cinematic dark science fiction, grounded tactile detail rather than musical notes. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 2.4,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:12:54.399Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-3416-7f61-ba1a-f1346873afc2",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-3416-7f61-ba1a-f1346873afc2",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-3416-7f61-ba1a-f1346873afc2/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-3416-7f61-ba1a-f1346873afc2/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17d/1dzr5dPQXd0RxQZpDnyIY_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 423404
+        }
+      },
+      "sha256": "5d8de4d46f44caab56180fea520867ab296013725286fab361769953cf6a5371",
+      "original": "assets/audio-quality/originals/super-mortal-r2-1.bin"
+    },
+    "super-mortal-r2-2": {
+      "id": "super-mortal-r2-2",
+      "cue": "super-mortal",
+      "family": "supers",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. A colossal execution scythe attack. Half-second air intake and taut metal strain building into a single forceful blade sweep at 0.6 seconds, physical slicing transient, deep pressure release, scattered metallic grit settling naturally. Cinematic dark science fiction, grounded tactile detail rather than musical notes. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 2.4,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:13:00.236Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-4aee-7981-82ef-3c4cc23abee8",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-4aee-7981-82ef-3c4cc23abee8",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-4aee-7981-82ef-3c4cc23abee8/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-4aee-7981-82ef-3c4cc23abee8/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 1,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17e/OfHSzv3otuCzONAy-izVt_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 423404
+        }
+      },
+      "sha256": "ccfdc15c50b3083e4b404447e426643274616243fcca9ddbec1d0cb76e7e64bb",
+      "original": "assets/audio-quality/originals/super-mortal-r2-2.bin"
+    },
+    "super-mortal-r2-3": {
+      "id": "super-mortal-r2-3",
+      "cue": "super-mortal",
+      "family": "supers",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. A colossal execution scythe attack. Half-second air intake and taut metal strain building into a single forceful blade sweep at 0.6 seconds, physical slicing transient, deep pressure release, scattered metallic grit settling naturally. Cinematic dark science fiction, grounded tactile detail rather than musical notes. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 2.4,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:13:06.135Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-61fb-7c21-ae71-a50396c4728f",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-61fb-7c21-ae71-a50396c4728f",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-61fb-7c21-ae71-a50396c4728f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-61fb-7c21-ae71-a50396c4728f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17e/yyXYC-E35bvr1QJqlJuCA_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 423404
+        }
+      },
+      "sha256": "1d2714feb4d7ea019597bc37984f8791369602d05aa3596f9b5581b3f0434ce4",
+      "original": "assets/audio-quality/originals/super-mortal-r2-3.bin"
+    },
+    "ui-ready-r2-1": {
+      "id": "ui-ready-r2-1",
+      "cue": "ui-ready",
+      "family": "ui",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One subtle military equipment ready confirmation. A tactile relay click followed by two short refined glassy electronic pulses, clear and reassuring with warm mechanical body. Restrained premium game interface sound, audible without piercing or sounding like an alarm, clean short decay. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 0.8,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:13:13.449Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-7e94-7122-abf9-84139263ae76",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-7e94-7122-abf9-84139263ae76",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-7e94-7122-abf9-84139263ae76/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-7e94-7122-abf9-84139263ae76/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba17f/aI0cZmpcR5FiF6RWA8q6G_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 141164
+        }
+      },
+      "sha256": "cc9c67b1628c7bdc635df0fc7a0585ddc3278b2c07f7e7c003f73e268c31ae28",
+      "original": "assets/audio-quality/originals/ui-ready-r2-1.bin"
+    },
+    "ui-ready-r2-2": {
+      "id": "ui-ready-r2-2",
+      "cue": "ui-ready",
+      "family": "ui",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One subtle military equipment ready confirmation. A tactile relay click followed by two short refined glassy electronic pulses, clear and reassuring with warm mechanical body. Restrained premium game interface sound, audible without piercing or sounding like an alarm, clean short decay. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 0.8,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:13:18.761Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d054-9347-7793-a0cb-333026575a0f",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-9347-7793-a0cb-333026575a0f",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-9347-7793-a0cb-333026575a0f/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d054-9347-7793-a0cb-333026575a0f/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba180/6CACwlz5XwOpL8sSeyDNk_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 141164
+        }
+      },
+      "sha256": "ea68bfe4fc8fd2389fa4ed69f1d07d9337224e273f7734835aa78173e5133cb7",
+      "original": "assets/audio-quality/originals/ui-ready-r2-2.bin"
+    },
+    "ui-ready-r2-3": {
+      "id": "ui-ready-r2-3",
+      "cue": "ui-ready",
+      "family": "ui",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. One subtle military equipment ready confirmation. A tactile relay click followed by two short refined glassy electronic pulses, clear and reassuring with warm mechanical body. Restrained premium game interface sound, audible without piercing or sounding like an alarm, clean short decay. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 0.8,
+        "loop": false,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:16:29.430Z",
+      "reserveUSD": 0.01,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d057-7caf-7180-b801-86a42e1bccad",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-7caf-7180-b801-86a42e1bccad",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-7caf-7180-b801-86a42e1bccad/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-7caf-7180-b801-86a42e1bccad/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba193/gBZRjeYnL1testHVj1gYO_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 141164
+        }
+      },
+      "sha256": "1042264005bfdaecccb8eb5f74b2cbf20baadde854d40944eabd35a61d27093f",
+      "original": "assets/audio-quality/originals/ui-ready-r2-3.bin"
+    },
+    "ambience-city-r2-1": {
+      "id": "ambience-city-r2-1",
+      "cue": "ambience-city",
+      "family": "ambience",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. Seamless quiet abandoned industrial city ambience, distant wind through concrete streets, soft intermittent loose sheet metal movement and subtle far-off structural creaks. Spacious outdoor environmental recording, restrained ominous presence. No foreground events, gunfire, voices, sirens, music, tonal drone or sudden loud sounds. Detailed, clear gesture. No speech or music.",
+        "duration_seconds": 12,
+        "loop": true,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:16:35.260Z",
+      "reserveUSD": 0.03,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d057-92d2-7263-b229-c5814ae89802",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-92d2-7263-b229-c5814ae89802",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-92d2-7263-b229-c5814ae89802/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-92d2-7263-b229-c5814ae89802/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba194/nYQzLU-qQxpB8y260FOZh_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 2116844
+        }
+      },
+      "sha256": "a949ebe5b3d41a03ea425a3858c9b4d2a16f02f479f000569e3d23705d741057",
+      "original": "assets/audio-quality/originals/ambience-city-r2-1.bin"
+    },
+    "ambience-city-r2-2": {
+      "id": "ambience-city-r2-2",
+      "cue": "ambience-city",
+      "family": "ambience",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. Seamless quiet abandoned industrial city ambience, distant wind through concrete streets, soft intermittent loose sheet metal movement and subtle far-off structural creaks. Spacious outdoor environmental recording, restrained ominous presence. No foreground events, gunfire, voices, sirens, music, tonal drone or sudden loud sounds. Drier, tighter alternate take. No speech or music.",
+        "duration_seconds": 12,
+        "loop": true,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:16:44.037Z",
+      "reserveUSD": 0.03,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d057-b518-75b0-8460-74594bb46298",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-b518-75b0-8460-74594bb46298",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-b518-75b0-8460-74594bb46298/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-b518-75b0-8460-74594bb46298/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba194/eBymOWWu8cfYlFS6HXSTC_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 2116844
+        }
+      },
+      "sha256": "8f87f3500410c4705dfbdbb0c863deab6199d8f897dadad84cd804fd53756d15",
+      "original": "assets/audio-quality/originals/ambience-city-r2-2.bin"
+    },
+    "ambience-city-r2-3": {
+      "id": "ambience-city-r2-3",
+      "cue": "ambience-city",
+      "family": "ambience",
+      "stage": "pilot",
+      "revision": "r2",
+      "model": "fal-ai/elevenlabs/sound-effects/v2",
+      "input": {
+        "text": "Cinematic game SFX. Seamless quiet abandoned industrial city ambience, distant wind through concrete streets, soft intermittent loose sheet metal movement and subtle far-off structural creaks. Spacious outdoor environmental recording, restrained ominous presence. No foreground events, gunfire, voices, sirens, music, tonal drone or sudden loud sounds. Broader body, deeper alternate take. No speech or music.",
+        "duration_seconds": 12,
+        "loop": true,
+        "prompt_influence": 0.55,
+        "output_format": "pcm_44100"
+      },
+      "price": {
+        "endpoint_id": "fal-ai/elevenlabs/sound-effects/v2",
+        "unit_price": 0.002,
+        "unit": "seconds",
+        "currency": "USD"
+      },
+      "quotedAt": "2026-09-23T22:17:02.325Z",
+      "reserveUSD": 0.03,
+      "state": "complete",
+      "status": "IN_QUEUE",
+      "request_id": "01a0d057-fc90-7893-89be-9a9448adf2a4",
+      "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-fc90-7893-89be-9a9448adf2a4",
+      "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-fc90-7893-89be-9a9448adf2a4/status",
+      "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0d057-fc90-7893-89be-9a9448adf2a4/cancel",
+      "logs": null,
+      "metrics": {},
+      "queue_position": 0,
+      "result": {
+        "audio": {
+          "url": "https://v3b.fal.media/files/b/0aaba196/Bj7pPjfkUhghip8ntI0Qj_sound_effect.wav",
+          "content_type": "audio/L16; rate=44100; channels=2",
+          "file_name": "sound_effect.wav",
+          "file_size": 2116844
+        }
+      },
+      "sha256": "661f59cb55dc44e73abbd1db45531e684c542ec5459089ca87258055fd88d6bb",
+      "original": "assets/audio-quality/originals/ambience-city-r2-3.bin"
+    }
+  }
+}

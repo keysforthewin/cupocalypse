@@ -1,0 +1,48 @@
+{
+  "selection": {
+    "pulse": [
+      "pulse-r2-1",
+      "pulse-r2-2",
+      "pulse-r2-3"
+    ],
+    "seeker": [
+      "seeker-r2-1",
+      "seeker-r2-2",
+      "seeker-r2-3"
+    ],
+    "impact": [
+      "impact-r2-1",
+      "impact-r2-2",
+      "impact-r2-3"
+    ],
+    "creature-roar": [
+      "creature-roar-r2-1",
+      "creature-roar-r2-2",
+      "creature-roar-r2-3"
+    ],
+    "boss-grave-marshal-attack": [
+      "boss-grave-marshal-attack-r2-1",
+      "boss-grave-marshal-attack-r2-2",
+      "boss-grave-marshal-attack-r2-3"
+    ],
+    "super-mortal": [
+      "super-mortal-r2-1",
+      "super-mortal-r2-2",
+      "super-mortal-r2-3"
+    ],
+    "ui-ready": [
+      "ui-ready-r2-1",
+      "ui-ready-r2-2",
+      "ui-ready-r2-3"
+    ],
+    "ambience-city": [
+      "ambience-city-r2-1",
+      "ambience-city-r2-2",
+      "ambience-city-r2-3"
+    ]
+  },
+  "reviewHash": "9432e7ccf5f28242fca5a767ea5ca0b471a82c5c92a8585274d00ac4bb94d516",
+  "acceptanceHash": "e03f8e231652a237a9a0557c265189f2e29b20ac58cdbfb09977949e3a06fe9d",
+  "promotedAt": "2026-09-23T23:18:13.352Z",
+  "note": "Recapture gameplay and obtain final listening scores for the newly installed mix."
+}

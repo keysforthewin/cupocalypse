@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Audio audition · Cupocalypse</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#e6e9e8;background:#15191a;color-scheme:dark}body{max-width:1100px;margin:auto;padding:40px 24px}h1{font-size:38px;letter-spacing:-1.4px;margin:8px 0}h2{font-size:23px;margin:38px 0 8px}p{max-width:760px;color:#b9c4c4;line-height:1.6}.eyebrow{color:#80d6b0;font:12px monospace;letter-spacing:2px}header{border-bottom:1px solid #3b4545;padding-bottom:22px}button,input,textarea,select{font:inherit;border:1px solid #586262;border-radius:4px;padding:8px;background:#252c2d;color:inherit}button{cursor:pointer}button:hover{border-color:#80d6b0}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #80d6b0;outline-offset:2px}label{display:block;font-size:13px;color:#bdc9c7}.toolbar{display:flex;gap:14px;flex-wrap:wrap;align-items:end;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.take{border:1px solid #435050;padding:18px;border-radius:6px;background:#1c2223}.take h3{margin:0 0 15px}.take audio{width:100%;margin-bottom:10px}.rating{display:grid;grid-template-columns:1fr 65px;gap:8px;align-items:center;margin:9px 0}.rating input{width:46px}textarea{width:100%;box-sizing:border-box;min-height:76px;margin:8px 0}.status{min-height:1.5em;font-size:13px;color:#80d6b0;margin-top:10px}details{margin-top:12px}summary{cursor:pointer}.muted{color:#9caeaa;font-size:13px}.buttons{display:flex;gap:8px;flex-wrap:wrap}.sticky{position:sticky;top:0;background:#15191af5;z-index:2;border-bottom:1px solid #435050;padding:12px 0}#message{color:#e6b477}a{color:#80d6b0}
+</style>
+<header><div class="eyebrow">CUPOCALYPSE / SOUND DIRECTION / PILOT</div><h1>Listen before we call it better.</h1><p>Grounded cinematic effects. Each group is shuffled and level-matched for comparison. Start quietly, compare the isolated takes, then use repeat and gameplay recordings to judge fatigue and clarity. Accepted takes are retained as randomized variants in the game.</p><p class="muted">Baseline production readiness: F. This is an engineering finding, not a listening score. A passing result needs more than 95/100 and no critical defect. Saved scores apply only to the exact audio and mix reviewed.</p></header>
+<div class="toolbar sticky"><label>Your name<input id="reviewer" autocomplete="name" placeholder="Reviewer" required></label><label>Show<select id="filter"><option value="all">All pilot groups</option><option value="mix">Gameplay mixes</option><option value="weapons">Weapons</option><option value="impacts">Impacts</option><option value="creatures">Creatures</option><option value="bosses">Bosses</option><option value="supers">Supers</option><option value="ui">UI feedback</option><option value="ambience">Ambience</option></select></label><button id="stop">Stop all</button><button id="export">Export scores</button><span id="progress" class="muted"></span></div>
+<p id="message" role="status"></p><main id="groups"></main>
+<script type="module">
+const data=await fetch('/api/review').then(r=>r.json());const scores={};let repeating=null;
+const retained=data.items.filter(i=>i.accepted).length;if(retained)document.querySelector('#message').textContent=`${retained} generated takes accepted and kept. Effects vary per trigger; ready reminders vary each phrase; ambience varies on entry. No numerical rating was inferred from your approval.`;
+const el=(tag,text,className)=>{const node=document.createElement(tag);if(text)node.textContent=text;if(className)node.className=className;return node;};
+const reviewer=document.querySelector('#reviewer');reviewer.value=localStorage.getItem('audio-reviewer')||'';reviewer.onchange=()=>localStorage.setItem('audio-reviewer',reviewer.value);
+function stop(){clearTimeout(repeating);repeating=null;document.querySelectorAll('audio').forEach(a=>{a.pause();a.currentTime=0;a.onended=null;});}
+document.querySelector('#stop').onclick=stop;
+document.querySelector('#export').onclick=()=>{const blob=new Blob([JSON.stringify({rubric:data.rubric.version,assessments:scores},null,2)],{type:'application/json'});const a=el('a');a.href=URL.createObjectURL(blob);a.download='audio-listening-scores.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+function progress(){document.querySelector('#progress').textContent=`${Object.keys(scores).length} / ${data.items.length} takes reviewed`;}
+for(const item of data.items)if(item.assessment && item.evaluation.status!=='unreviewed')scores[item.id]=item.assessment;
+for(const cue of [...new Set(data.items.map(i=>i.cue))]){
+ const items=data.items.filter(i=>i.cue===cue);
+ // Session-persistent random order keeps A/B labels stable while reviewing.
+ const key=`audio-order-${cue}-${data.engineHash}`;let order;try{order=JSON.parse(sessionStorage.getItem(key));}catch{}
+ if(!order || order.length!==items.length || order.some(id=>!items.some(i=>i.id===id))){order=items.map(i=>i.id);for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}sessionStorage.setItem(key,JSON.stringify(order));}
+ const section=el('section');section.dataset.family=items[0].family;section.append(el('h2',items[0].label));
+ if(cue==='ambience-city')section.append(el('p','The current game has no environmental ambience to compare. Listen for seamless repetition and unobtrusive atmosphere.','muted'));
+ const grid=el('div',null,'grid');section.append(grid);document.querySelector('#groups').append(section);
+ order.forEach((id,index)=>{
+  const item=items.find(i=>i.id===id),card=el('article',null,'take');card.append(el('h3',`Take ${String.fromCharCode(65+index)}`));
+  const player=el('audio');player.controls=true;player.preload='metadata';player.src=item.url;player.onplay=()=>{document.querySelectorAll('audio').forEach(other=>{if(other!==player)other.pause();});};card.append(player);
+  const buttons=el('div',null,'buttons'),repeat=el('button','Repeat × 8'),reveal=el('button','Reveal source');
+  repeat.onclick=()=>{stop();let remaining=8;player.onended=()=>{if(--remaining>0)repeating=setTimeout(()=>{player.currentTime=0;player.play();},item.family==='weapons'?120:500);};player.play();};
+  reveal.onclick=()=>{reveal.textContent=item.kind==='baseline'?'Current baseline':item.id;};buttons.append(repeat,reveal);card.append(buttons);
+  const form=el('form'),details=el('details');details.append(el('summary','Score this take'));
+  for(const dimension of data.rubric.dimensions){const row=el('label',null,'rating');row.append(el('span',`${dimension.label} / ${dimension.max}`));const input=el('input');input.type='number';input.min=0;input.max=dimension.max;input.step=.5;input.required=true;input.name=dimension.id;input.value=item.assessment?.scores?.[dimension.id]??'';row.append(input);form.append(row);}
+  form.append(el('p',`Technical gate: ${item.technicalPassed?'10 / 10':'0 / 10 or pending verification'}.`,'muted'));
+  const notes=el('textarea');notes.name='notes';notes.required=true;notes.placeholder='What you heard; defects and the change needed';notes.value=item.assessment?.notes||'';notes.setAttribute('aria-label','Listening observations');form.append(notes);
+  const criticalLabel=el('label'),critical=el('input');critical.type='checkbox';critical.checked=item.assessment?.criticalDefect||false;criticalLabel.append(critical,document.createTextNode(' Critical defect remains'));form.append(criticalLabel);
+  const save=el('button','Save listening score');save.type='submit';form.append(save);const status=el('div',item.evaluation.status==='unreviewed'?(item.accepted?'Kept · randomized variant':'Not scored'):`${item.evaluation.status}: ${item.evaluation.score}/100`,'status');status.setAttribute('role','status');
+  form.onsubmit=async event=>{event.preventDefault();const values=Object.fromEntries(data.rubric.dimensions.map(d=>[d.id,Number(form.elements[d.id].value)]));const payload={id:item.id,reviewer:reviewer.value.trim(),notes:notes.value.trim(),scores:values,criticalDefect:critical.checked,evidenceHash:item.evidenceHash,rubric:data.rubric.version};const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const result=await response.json();status.textContent=response.ok?`${result.status}: ${result.score}/100`:result.error;if(response.ok){scores[item.id]=payload;progress();}};
+  details.append(form);card.append(details,status);grid.append(card);
+ });
+}
+document.querySelector('#filter').onchange=event=>{stop();document.querySelectorAll('section').forEach(s=>s.hidden=event.target.value!=='all'&&s.dataset.family!==event.target.value);};progress();
+</script></html>
