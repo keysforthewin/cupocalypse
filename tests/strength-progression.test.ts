@@ -107,7 +107,7 @@ test("permanent upgrades improve survivability and firepower without raising ene
   const base = new Simulation("upgrade-value");
   const upgraded = new Simulation("upgrade-value", "Classic", [5, 5, 5]);
   assert.equal(base.army, 24);
-  assert.equal(upgraded.army, 48);
+  assert.equal(upgraded.army, 72);
   for (const s of [base, upgraded]) {
     s.army = 100;
     s.distance = 300;
@@ -122,13 +122,13 @@ test("permanent upgrades improve survivability and firepower without raising ene
   base.update({ x: 0 });
   upgraded.update({ x: 0 });
   assert.ok(
-    Math.abs(upgraded.bullets[0].damage / base.bullets[0].damage - 1.6) < 1e-9,
+    Math.abs(upgraded.bullets[0].damage / base.bullets[0].damage - 2.2) < 1e-9,
   );
   for (let i = 0; i < 120; i++) {
     base.update({ x: 0 });
     upgraded.update({ x: 0 });
   }
-  assert.ok(upgraded.shots >= base.shots * 1.3);
+  assert.ok(upgraded.shots >= base.shots * 1.7);
 });
 
 test("four early defeats can fund a permanent upgrade; practice earns nothing", () => {

@@ -5,6 +5,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createServer } from "node:http";
+import { DatabaseSync } from "node:sqlite";
 import {
   openScores,
   scoresHandler,
@@ -24,13 +25,15 @@ const score = (values: Partial<ScoreSubmission> = {}): ScoreSubmission => ({
   ...values,
 });
 
-test("distance rankings return ten distinct players per protocol, even after restart", () => {
+test("distance rankings return ten distinct names per protocol, even after restart", () => {
   const directory = mkdtempSync(join(tmpdir(), "cupocalypse-scores-"));
   const file = join(directory, "scores.sqlite");
   let store = openScores(file);
   try {
     for (let i = 1; i <= 15; i++)
-      store.submit(score({ distance: i * 10, kills: i }));
+      store.submit(
+        score({ name: `Survivor ${i}`, distance: i * 10, kills: i }),
+      );
     const playerId = randomUUID();
     const distanceRun = score({
       playerId,
@@ -40,14 +43,12 @@ test("distance rankings return ten distinct players per protocol, even after res
     });
     store.submit(distanceRun);
     store.submit(distanceRun);
-    store.submit(
-      score({ playerId, name: "Kill Ace", distance: 1, kills: 1000 }),
-    );
+    store.submit(score({ name: " distance ACE ", distance: 1, kills: 1000 }));
     for (const mode of MODES.filter((mode) => mode !== "Classic")) {
       store.submit(
         score({ playerId, name: `${mode} Ace`, mode, distance: 2000 }),
       );
-      store.submit(score({ playerId, mode, distance: 500 }));
+      store.submit(score({ name: `${mode} Ace`, mode, distance: 500 }));
     }
     store.close();
     store = openScores(file);
@@ -67,6 +68,116 @@ test("distance rankings return ten distinct players per protocol, even after res
       1,
     );
     assert.equal(boards.distance[1].distance, 150);
+  } finally {
+    store.close();
+    rmSync(directory, { recursive: true });
+  }
+});
+
+test("same-name scores replace only improved records across browser identities", () => {
+  const store = openScores(":memory:");
+  try {
+    const first = score({ name: "Rust Guild" });
+    store.submit(first);
+    const better = score({ name: "  RUST   guild ", distance: 200 });
+    store.submit(better);
+    store.submit(score({ name: "rust guild", distance: 199, kills: 1000 }));
+    store.submit({ ...first, distance: 9999 });
+    store.submit({ ...better, distance: 9999 });
+    assert.equal(store.list("Classic").distance.length, 1);
+    assert.equal(store.list("Classic").distance[0].distance, 200);
+    assert.equal(store.list("Classic").distance[0].playerId, better.playerId);
+    const tieBreaker = score({ name: "Rust Guild", distance: 200, kills: 21 });
+    store.submit(tieBreaker);
+    store.submit(score({ name: "Rust Guild", distance: 200, kills: 21 }));
+    assert.equal(
+      store.list("Classic").distance[0].playerId,
+      tieBreaker.playerId,
+    );
+    store.submit(score({ name: "Rust Guild", mode: "Swarm" }));
+    assert.equal(store.list("Swarm").distance.length, 1);
+  } finally {
+    store.close();
+  }
+});
+
+test("migration removes duplicate names, preserves best scores and old retry IDs, and is repeatable", () => {
+  const directory = mkdtempSync(join(tmpdir(), "cupocalypse-migrate-"));
+  const file = join(directory, "scores.sqlite");
+  const legacy = new DatabaseSync(file);
+  legacy.exec(`CREATE TABLE scores (
+    runId TEXT PRIMARY KEY, playerId TEXT NOT NULL, name TEXT NOT NULL,
+    distance INTEGER NOT NULL, kills INTEGER NOT NULL, mode TEXT NOT NULL,
+    createdAt INTEGER NOT NULL
+  )`);
+  const old = score({ name: "  Rust   Guild ", distance: 100 });
+  const best = score({ name: "RUST GUILD", distance: 500 });
+  const tied = score({ name: "rust guild", distance: 500, kills: 21 });
+  const otherMode = score({ name: "Rust Guild", mode: "Swarm" });
+  const otherName = score({ name: "Another Player" });
+  for (const [i, run] of [
+    old,
+    best,
+    tied,
+    { ...tied, runId: randomUUID() },
+    otherMode,
+    otherName,
+  ].entries()) {
+    legacy
+      .prepare("INSERT INTO scores VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .run(
+        run.runId,
+        run.playerId,
+        run.name,
+        run.distance,
+        run.kills,
+        run.mode,
+        i,
+      );
+  }
+  legacy.close();
+  let store = openScores(file);
+  try {
+    assert.equal(store.list("Classic").distance.length, 2);
+    assert.equal(store.list("Classic").distance[0].playerId, tied.playerId);
+    assert.equal(store.list("Swarm").distance.length, 1);
+    store.submit({ ...old, distance: 9999 });
+    assert.equal(store.list("Classic").distance[0].distance, 500);
+    store.close();
+    store = openScores(file);
+    const db = new DatabaseSync(file);
+    try {
+      assert.equal(db.prepare("SELECT COUNT(*) AS n FROM scores").get()!.n, 3);
+      assert.equal(
+        db.prepare("SELECT COUNT(*) AS n FROM score_runs").get()!.n,
+        6,
+      );
+      assert.equal(
+        db.prepare("PRAGMA integrity_check").get()!.integrity_check,
+        "ok",
+      );
+      assert.throws(
+        () =>
+          db
+            .prepare(
+              `INSERT INTO scores
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            )
+            .run(
+              randomUUID(),
+              randomUUID(),
+              "Rust Guild",
+              1,
+              1,
+              "Classic",
+              1,
+              "rust guild",
+            ),
+        /UNIQUE/,
+      );
+    } finally {
+      db.close();
+    }
   } finally {
     store.close();
     rmSync(directory, { recursive: true });

@@ -61,7 +61,7 @@ test("eight sequential victories end combat once; updates and incoming damage ca
   assert.equal(s.tick, tick);
   assert.equal(s.army, army);
   assert.equal(s.outcome, "victory");
-  assert.equal(VERSION, "containment-2.9.0");
+  assert.equal(VERSION, "containment-2.10.0");
 });
 test("final boss has three health phases; each other boss has two", () => {
   for (const kind of BOSSES) {

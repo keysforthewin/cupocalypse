@@ -1,4 +1,4 @@
-# Super weapons — containment-2.9.0
+# Super weapons — containment-2.10.0
 
 The permanent armory contains all 27 named super weapons. Buy each once for 50, 500, or 1000 credits. Equip up to three different weapons anytime through the Armory, including during an operation or from the death screen. Opening it pauses combat and banks credits earned so far; settlement awards only the remainder. Live loadout changes preserve the universal charge meter and its quota, including when all weapons are removed. Newly equipped weapons use that same charge, and active powers finish normally. Death-screen changes apply to the next deployment. New and migrated profiles own none.
 
@@ -12,7 +12,7 @@ The permanent armory contains all 27 named super weapons. Buy each once for 50, 
 | 15 seconds | Pauly, Nitro, Pokey |
 | 30 seconds | Shannondoa, Bronze Leopard, Panda, Nemesis, MachineGunQueen, Rae, Mortal, Five10 |
 
-Existing per-activation limits still apply: Gimmy grants recruitment up to five times, Kismet affects three gates, Bronze Leopard makes six pounces, Pokey has 24 quills, Mortal executes once after its windup, Nemesis marks up to three targets, Panda releases early if its absorption is depleted, and Doc's shield can be depleted. Five10 repeats its five paired strikes every five seconds throughout its 30-second activation, retaining one shared boss-damage cap. The replay balance version is now `containment-2.9.0`; earlier replays are rejected because encounter generation, activation timing and shared charging changed. Saved credits, purchases and loadouts remain compatible.
+Existing per-activation limits still apply: Gimmy grants recruitment up to five times, Kismet affects three gates, Bronze Leopard makes six pounces, Pokey has 24 quills, Mortal executes once after its windup, Nemesis marks up to three targets, Panda releases early if its absorption is depleted, and Doc's shield can be depleted. Five10 repeats its five paired strikes every five seconds throughout its 30-second activation, retaining one shared boss-damage cap. The replay balance version is now `containment-2.10.0`; earlier replays are rejected because encounter generation, activation timing and shared charging changed. Saved credits, purchases and loadouts remain compatible.
 
 ## Charging
 

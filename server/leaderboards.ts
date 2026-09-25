@@ -3,6 +3,7 @@ import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { MODES, type Mode } from "../src/game/types";
+import { migrateScores, scoreNameKey } from "./scoreMigrations";
 import {
   playerName,
   type ScoreSubmission,
@@ -29,30 +30,49 @@ export function openScores(filename: string) {
     CREATE INDEX IF NOT EXISTS scores_player ON scores(playerId);
     CREATE INDEX IF NOT EXISTS scores_mode_player ON scores(mode, playerId);
   `);
+  migrateScores(db);
   return {
     submit(score: ScoreSubmission) {
-      // A retry keeps the same run ID, so a lost response cannot duplicate a run.
-      db.prepare(
-        "INSERT OR IGNORE INTO scores VALUES (?, ?, ?, ?, ?, ?, ?)",
-      ).run(
-        score.runId,
-        score.playerId,
-        score.name,
-        score.distance,
-        score.kills,
-        score.mode,
-        Date.now(),
-      );
+      db.exec("BEGIN IMMEDIATE");
+      try {
+        const receipt = db
+          .prepare("INSERT OR IGNORE INTO score_runs VALUES (?)")
+          .run(score.runId);
+        if (receipt.changes) {
+          const name = playerName(score.name);
+          db.prepare(
+            `
+            INSERT INTO scores (runId, playerId, name, distance, kills, mode, createdAt, nameKey)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(mode, nameKey) DO UPDATE SET
+              runId = excluded.runId, playerId = excluded.playerId,
+              name = excluded.name, distance = excluded.distance,
+              kills = excluded.kills, createdAt = excluded.createdAt
+            WHERE excluded.distance > scores.distance
+               OR (excluded.distance = scores.distance AND excluded.kills > scores.kills)
+          `,
+          ).run(
+            score.runId,
+            score.playerId,
+            name,
+            score.distance,
+            score.kills,
+            score.mode,
+            Date.now(),
+            scoreNameKey(name),
+          );
+        }
+        db.exec("COMMIT");
+      } catch (error) {
+        db.exec("ROLLBACK");
+        throw error;
+      }
     },
     list(mode: Mode): Leaderboards {
       const distance = db
         .prepare(
           `
-        SELECT playerId, name, distance, kills, mode FROM (
-          SELECT *, ROW_NUMBER() OVER (
-            PARTITION BY playerId ORDER BY distance DESC, kills DESC, createdAt ASC, runId ASC
-          ) AS place FROM scores WHERE mode = ?
-        ) WHERE place = 1
+        SELECT playerId, name, distance, kills, mode FROM scores WHERE mode = ?
         ORDER BY distance DESC, kills DESC, createdAt ASC, runId ASC LIMIT 10
       `,
         )

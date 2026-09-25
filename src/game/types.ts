@@ -35,7 +35,7 @@ export const BOSSES = [
 ] as const;
 export type BossKind = (typeof BOSSES)[number];
 export type Upgrade = [number, number, number];
-export const UPGRADE_PERCENT = [20, 12, 8] as const;
+export const UPGRADE_PERCENT = [40, 24, 16] as const;
 export const BOOSTS = [
   "damage",
   "rate",

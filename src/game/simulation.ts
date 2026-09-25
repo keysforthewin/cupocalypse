@@ -61,7 +61,7 @@ import {
   type ShotPayload,
 } from "./types";
 import { BULLET_CAPACITY, PICKUPS, weaponStats, boostLevels } from "./weapons";
-export const VERSION = "containment-2.9.0";
+export const VERSION = "containment-2.10.0";
 // Signs improve at a quarter of each projectile's strength, and a single hit
 // can never charge a sign by more than GATE_POWER_CAP soldiers.
 export const GATE_GAIN = 0.25,

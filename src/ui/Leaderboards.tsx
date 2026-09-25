@@ -67,7 +67,7 @@ export function Leaderboards({
         <tbody>
           {boards?.distance.map((entry, i) => (
             <tr
-              key={entry.playerId}
+              key={entry.name}
               className={entry.playerId === playerId ? "your-score" : ""}
             >
               <td>{String(i + 1).padStart(2, "0")}</td>
@@ -84,7 +84,7 @@ export function Leaderboards({
           No scores yet for {mode}. Set the first record.
         </p>
       )}
-      <p className="leaderboard-note">Each player’s furthest run in {mode}.</p>
+      <p className="leaderboard-note">One best score per name in {mode}.</p>
     </section>
   );
 }
