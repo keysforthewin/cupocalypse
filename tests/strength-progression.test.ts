@@ -142,7 +142,7 @@ test("four early defeats can fund a permanent upgrade; practice earns nothing", 
   for (let run = 0; run < 4; run++) profile = settle(profile, s);
   profile = purchase(profile, 1);
   assert.equal(profile.upgrades[1], 1);
-  assert.equal(profile.currency, 348);
+  assert.equal(profile.currency, 598);
   s.debug = true;
   assert.equal(earnings(s), 0);
 });

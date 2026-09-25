@@ -34,7 +34,7 @@ export const fresh = (): Profile => ({
   quality: "high",
   runs: 0,
 });
-export const PRICES = [300, 900, 2500, 6000, 10000];
+export const PRICES = [50, 150, 300, 600, 1000];
 // Keep the original storage key so the title change preserves existing profiles.
 export function loadProfile(): Profile {
   try {
