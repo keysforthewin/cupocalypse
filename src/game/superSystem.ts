@@ -478,13 +478,8 @@ export class SuperSystem {
           this.hit(c, e, e.boss ? (e.maxHp * 0.1) / (e.maxHp + e.maxArmor) : 1);
         }
       }
-      if (
-        c.id === "five10" &&
-        age >= 30 &&
-        (age - 30) % 60 === 0 &&
-        c.count < 5
-      ) {
-        const pair = c.count++;
+      if (c.id === "five10" && age >= 30 && (age - 30) % 60 === 0) {
+        const pair = c.count++ % 5;
         for (const x of [-4.05 + pair * 0.9, 4.05 - pair * 0.9]) {
           this.event("hit", c.id, x, 24, 1, x, 48);
           for (const e of list)

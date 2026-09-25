@@ -241,6 +241,12 @@ test("Mortal executes a screen once, caps bosses, preserves ordinary rewards and
   assert.ok(boss.hp >= hp * 0.65 - 1e-8);
   assert.equal(s.supers.charge, 2);
   assert.equal(s.kills, 2);
+  const survivor = foe(s);
+  ticks(s, 1763);
+  assert.ok(s.supers.active("mortal"));
+  assert.equal(survivor.hp, survivor.maxHp);
+  ticks(s, 1);
+  assert.equal(s.supers.active("mortal"), undefined);
 });
 test("kills refill during an active super and can chain into another weapon or the same weapon after expiry", () => {
   const s = setup(["keys", "doc"]);
@@ -406,6 +412,14 @@ test("MachineGunQueen prioritizes ordinary threats and fires repeatedly", () => 
   assert.equal(boss.hp, boss.maxHp);
   ticks(s, 25);
   assert.ok(e.dead);
+  ticks(s, 1744);
+  const late = foe(s, 3, 20);
+  ticks(s, 29);
+  assert.ok(late.dead, "turret keeps firing through the final second");
+  ticks(s, 1);
+  const survivor = foe(s, 3, 20);
+  ticks(s, 30);
+  assert.equal(survivor.hp, survivor.maxHp);
 });
 test("Meesh prevents combat and curb losses without granting kills", () => {
   const s = setup(["meesh"]);
@@ -441,6 +455,13 @@ test("Rae follows aim and ignores other lanes", () => {
   ticks(s, 6);
   assert.ok(hit.hp < hit.maxHp);
   assert.equal(miss.hp, miss.maxHp);
+  ticks(s, 1782);
+  s.aim = -3;
+  ticks(s, 6);
+  assert.ok(miss.hp < miss.maxHp, "beam still follows aim near expiry");
+  const hp = miss.hp;
+  ticks(s, 12);
+  assert.equal(miss.hp, hp, "beam stops at 30 seconds");
 });
 test("Doc recovers small casualties collectively, cannot restore the same casualties twice, and keeps shield separate", () => {
   const s = setup(["doc"]);
@@ -512,6 +533,12 @@ test("Nemesis marks a boss and supplies separately capped bonus damage", () => {
   s.damagePayload(boss, 5);
   assert.equal(boss.hp, hp - 15);
   assert.equal(c.bossDamage.get(boss.id), 10);
+  ticks(s, 1798);
+  s.damagePayload(boss, 1);
+  assert.equal(boss.hp, hp - 18, "bonus remains until 30 seconds");
+  ticks(s, 1);
+  s.damagePayload(boss, 1);
+  assert.equal(boss.hp, hp - 19, "only ordinary damage applies after expiry");
 });
 test("Bronze Leopard executes six targets and no more", () => {
   const s = setup(["bronze-leopard"]);
@@ -520,13 +547,27 @@ test("Bronze Leopard executes six targets and no more", () => {
   ticks(s, 155);
   assert.equal(s.kills, 6);
 });
-test("Five10 covers ten columns over five paired impacts", () => {
+test("Five10 repeats all ten columns for 30 seconds with one boss damage budget", () => {
   const s = setup(["five10"]);
-  for (let i = 0; i < 10; i++) foe(s, -4.05 + i * 0.9, 20);
+  const boss = foe(s, 0, 30, true);
+  boss.armor = 0;
   const c = arm(s);
+  for (let cycle = 0; cycle < 6; cycle++) {
+    const enemies = Array.from({ length: 10 }, (_, i) =>
+      foe(s, -4.05 + i * 0.9, 20),
+    );
+    ticks(s, cycle === 5 ? 299 : 300);
+    assert.equal(c.count, (cycle + 1) * 5);
+    assert.ok(enemies.every((e) => e.dead));
+    assert.ok(boss.hp >= boss.maxHp * 0.65 - 1e-8);
+  }
+  assert.equal(s.supers.active("five10"), c);
+  ticks(s, 1);
+  assert.equal(s.supers.active("five10"), undefined);
+  const survivor = foe(s, -4.05, 20);
   ticks(s, 300);
-  assert.equal(c.count, 5);
-  assert.equal(s.kills, 10);
+  assert.equal(c.count, 30);
+  assert.equal(survivor.hp, survivor.maxHp);
 });
 test("Shannondoa creates a center corridor and removes only center hazard coverage", () => {
   const s = setup(["shannondoa"]);
@@ -612,6 +653,22 @@ test("Panda stores only absorbed damage then releases one capped clap", () => {
   const hp = e.hp;
   ticks(s, 2);
   assert.equal(e.hp, hp);
+});
+test("Panda keeps unused absorption for 30 seconds and claps on expiry", () => {
+  const s = setup(["panda"]);
+  const e = foe(s);
+  const c = arm(s);
+  s.hitSquad(10, "test");
+  ticks(s, 1799);
+  assert.equal(e.hp, e.maxHp);
+  s.hitSquad(10, "test");
+  assert.equal(s.army, 24);
+  assert.equal(c.absorbed, 20);
+  ticks(s, 1);
+  assert.equal(s.supers.active("panda"), undefined);
+  assert.ok(e.hp < e.maxHp);
+  s.hitSquad(1, "test");
+  assert.equal(s.army, 23);
 });
 test("Pokey only launches at nearby threats and has 24 quills", () => {
   const s = setup(["pokey"]);
